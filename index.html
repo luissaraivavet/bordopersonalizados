@@ -1155,6 +1155,412 @@
       .modal-media { height: 220px; min-height: 220px; }
       .modal-details { padding: 24px; }
     }
+  
+    /* E-COMMERCE & BOUTIQUE STYLES */
+    .cart-trigger-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 18px;
+      border-radius: var(--radius-full);
+      background: var(--color-accent-soft);
+      border: 1px solid rgba(197, 160, 89, 0.4);
+      color: var(--color-primary);
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition);
+      position: relative;
+    }
+    .cart-trigger-btn:hover {
+      background: var(--color-accent);
+      color: #FFF;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
+    }
+    .cart-badge {
+      background: var(--color-primary);
+      color: #FFF;
+      font-size: 0.72rem;
+      font-weight: 800;
+      min-width: 20px;
+      height: 20px;
+      border-radius: 10px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 5px;
+    }
+    .cart-trigger-btn:hover .cart-badge {
+      background: #FFF;
+      color: var(--color-primary);
+    }
+
+    /* Vitrine de Produtos da Loja */
+    .shop-section {
+      background: var(--color-bg);
+      border-top: 1px solid var(--color-border);
+    }
+    .shop-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 28px;
+    }
+    .shop-card {
+      background: var(--color-card);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--color-border);
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      transition: var(--transition);
+      position: relative;
+    }
+    .shop-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--color-accent);
+    }
+    .shop-img-box {
+      position: relative;
+      height: 240px;
+      overflow: hidden;
+      background: var(--color-bg-alt);
+    }
+    .shop-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .shop-card:hover .shop-img-box img {
+      transform: scale(1.05);
+    }
+    .shop-badge-status {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: rgba(99, 31, 53, 0.9);
+      backdrop-filter: blur(4px);
+      color: #FFF;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .shop-body {
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+    .shop-category {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--color-copper);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+    }
+    .shop-title {
+      font-family: "Libre Baskerville", serif;
+      font-size: 1.15rem;
+      color: var(--color-primary-dark);
+      margin-bottom: 8px;
+      line-height: 1.3;
+    }
+    .shop-desc {
+      font-size: 0.85rem;
+      color: var(--color-text-muted);
+      line-height: 1.5;
+      margin-bottom: 16px;
+      flex-grow: 1;
+    }
+    .shop-variant-select {
+      width: 100%;
+      padding: 8px 12px;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      font-size: 0.82rem;
+      background: var(--color-bg);
+      color: var(--color-text);
+      margin-bottom: 16px;
+      outline: none;
+      font-family: inherit;
+    }
+    .shop-price-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      padding-top: 12px;
+      border-top: 1px dashed var(--color-border);
+    }
+    .shop-price {
+      font-family: "Libre Baskerville", serif;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--color-primary);
+    }
+    .shop-installment {
+      font-size: 0.76rem;
+      color: var(--color-text-muted);
+    }
+    .btn-buy {
+      width: 100%;
+      padding: 12px;
+      background: var(--color-primary);
+      color: #FFF;
+      border: none;
+      border-radius: var(--radius-full);
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .btn-buy:hover {
+      background: var(--color-primary-dark);
+      box-shadow: 0 4px 12px rgba(99, 31, 53, 0.25);
+    }
+
+    /* GAVETA LATERAL DO CARRINHO (CART DRAWER) */
+    .cart-drawer-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(32, 18, 18, 0.6);
+      backdrop-filter: blur(4px);
+      z-index: 2500;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .cart-drawer-backdrop.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .cart-drawer {
+      position: fixed;
+      top: 0;
+      right: -440px;
+      bottom: 0;
+      width: 100%;
+      max-width: 420px;
+      background: var(--color-card);
+      z-index: 2600;
+      box-shadow: var(--shadow-lg);
+      transition: right 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+    }
+    .cart-drawer.open {
+      right: 0;
+    }
+    .cart-header {
+      padding: 22px 24px;
+      border-bottom: 1px solid var(--color-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--color-bg);
+    }
+    .cart-header h3 {
+      font-family: "Libre Baskerville", serif;
+      font-size: 1.3rem;
+      color: var(--color-primary);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0;
+    }
+    .cart-close-btn {
+      background: none;
+      border: none;
+      font-size: 1.4rem;
+      color: var(--color-text-muted);
+      cursor: pointer;
+      padding: 4px;
+      line-height: 1;
+      transition: var(--transition);
+    }
+    .cart-close-btn:hover {
+      color: var(--color-primary);
+    }
+    .cart-items-container {
+      flex-grow: 1;
+      overflow-y: auto;
+      padding: 20px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .cart-empty {
+      text-align: center;
+      padding: 60px 20px;
+      color: var(--color-text-muted);
+    }
+    .cart-empty-icon {
+      font-size: 3rem;
+      margin-bottom: 14px;
+      display: block;
+      opacity: 0.6;
+    }
+    .cart-item {
+      display: grid;
+      grid-template-columns: 70px 1fr auto;
+      gap: 14px;
+      align-items: center;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--color-border-subtle);
+    }
+    .cart-item-img {
+      width: 70px;
+      height: 70px;
+      border-radius: var(--radius-sm);
+      object-fit: cover;
+      background: var(--color-bg-alt);
+    }
+    .cart-item-info h4 {
+      font-size: 0.92rem;
+      color: var(--color-primary-dark);
+      margin-bottom: 3px;
+    }
+    .cart-item-variant {
+      font-size: 0.75rem;
+      color: var(--color-copper);
+      margin-bottom: 6px;
+      display: block;
+    }
+    .cart-item-price {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--color-primary);
+    }
+    .cart-qty-control {
+      display: flex;
+      align-items: center;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      overflow: hidden;
+      background: var(--color-bg);
+      margin-top: 6px;
+      width: fit-content;
+    }
+    .cart-qty-btn {
+      background: none;
+      border: none;
+      padding: 4px 10px;
+      cursor: pointer;
+      font-weight: 700;
+      color: var(--color-primary);
+    }
+    .cart-qty-val {
+      font-size: 0.84rem;
+      font-weight: 600;
+      padding: 0 6px;
+    }
+    .cart-item-remove {
+      background: none;
+      border: none;
+      color: #D32F2F;
+      cursor: pointer;
+      padding: 6px;
+      font-size: 1rem;
+      opacity: 0.6;
+      transition: var(--transition);
+    }
+    .cart-item-remove:hover {
+      opacity: 1;
+    }
+    .cart-footer {
+      padding: 24px;
+      border-top: 1px solid var(--color-border);
+      background: var(--color-bg);
+    }
+    .cart-summary-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.92rem;
+      margin-bottom: 10px;
+      color: var(--color-text-muted);
+    }
+    .cart-total-row {
+      display: flex;
+      justify-content: space-between;
+      font-family: "Libre Baskerville", serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--color-primary-dark);
+      padding-top: 10px;
+      border-top: 1px solid var(--color-border);
+      margin-bottom: 18px;
+    }
+    .cart-customer-inputs {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+    .cart-input {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-sm);
+      font-size: 0.85rem;
+      background: #FFF;
+      font-family: inherit;
+    }
+    .cart-gift-box {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.82rem;
+      color: var(--color-text);
+      margin-bottom: 16px;
+      cursor: pointer;
+    }
+
+    /* TOAST DE FEEDBACK */
+    .cart-toast {
+      position: fixed;
+      bottom: 100px;
+      right: 28px;
+      background: var(--color-primary-dark);
+      color: #FFF;
+      padding: 14px 20px;
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-lg);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      z-index: 3000;
+      transform: translateY(120px);
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      border: 1px solid var(--color-accent);
+    }
+    .cart-toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    @media (max-width: 1024px) {
+      .shop-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .shop-grid { grid-template-columns: 1fr; }
+      .cart-drawer { max-width: 100%; }
+    }
+
   </style>
 </head>
 <body>
@@ -1183,6 +1589,7 @@
         <ul class="nav-menu">
           <li><a href="#sobre">O Ateliê</a></li>
           <li><a href="#colecao">Especialidades</a></li>
+          <li><a href="#loja" style="color: var(--color-primary); font-weight: 700;">Loja & Peças Prontas</a></li>
           <li><a href="#precisao">Qualidade do Ponto</a></li>
           <li><a href="#personalizar">Simulador de Pedido</a></li>
           <li><a href="#como-funciona">Como Pedir</a></li>
@@ -1191,8 +1598,18 @@
         </ul>
       </nav>
 
-      <!-- CTA SOCIAL & WHATSAPP -->
+      <!-- CTA SOCIAL, SACOLA & WHATSAPP -->
       <div style="display: flex; align-items: center; gap: 10px;">
+        <!-- BOTÃO DA SACOLA DE COMPRAS -->
+        <button type="button" class="cart-trigger-btn" onclick="openCart()" aria-label="Abrir Sacola de Compras" title="Ver Sacola de Compras">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <path d="M16 10a4 4 0 0 1-8 0"></path>
+          </svg>
+          <span>Sacola</span>
+          <span class="cart-badge" id="cartCount">0</span>
+        </button>
         <a href="https://www.instagram.com/bordobordadospersonalizados/" target="_blank" rel="noopener" class="btn btn-outline" style="padding: 9px 16px; font-size: 0.84rem; display: inline-flex; align-items: center; gap: 6px;" title="Siga @bordobordadospersonalizados no Instagram">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
           <span>Instagram</span>
@@ -1215,6 +1632,7 @@
   <div class="mobile-drawer" id="mobileDrawer">
     <a href="#sobre" onclick="closeMenu()">O Ateliê</a>
     <a href="#colecao" onclick="closeMenu()">Especialidades</a>
+    <a href="#loja" onclick="closeMenu()" style="color: var(--color-primary); font-weight: 700;">🛍️ Loja da Coleção</a>
     <a href="#precisao" onclick="closeMenu()">Qualidade do Ponto</a>
     <a href="#personalizar" onclick="closeMenu()">Simulador de Pedido</a>
     <a href="#como-funciona" onclick="closeMenu()">Como Pedir</a>
@@ -1434,7 +1852,138 @@
     </div>
   </section>
 
-  <!-- QUALIDADE DO PONTO & CRAFTSMANSHIP -->
+
+  <!-- BOUTIQUE BORDÔ - VENDA DIRETA DAS PRÓPRIAS COLEÇÕES -->
+  <section class="section shop-section" id="loja">
+    <div class="container">
+      <div class="section-title-wrap">
+        <span class="section-subtitle">Venda Direta da Coleção</span>
+        <h2 class="section-title">Boutique Bordô</h2>
+        <p class="section-desc">
+          Peças exclusivas prontas para presentear ou vestir. Adicione à sua sacola e finalize o pedido de forma prática com atendimento dedicado pelo WhatsApp ou Pix.
+        </p>
+      </div>
+
+      <div class="shop-grid">
+        <!-- PRODUTO 1 -->
+        <div class="shop-card">
+          <div class="shop-img-box">
+            <img src="assets/bows.webp" alt="Laço Bordô Clássico em Linho" loading="lazy">
+            <span class="shop-badge-status">Pronta Entrega</span>
+          </div>
+          <div class="shop-body">
+            <span class="shop-category">Laços & Acessórios</span>
+            <h3 class="shop-title">Laço Clássico Bordô</h3>
+            <p class="shop-desc">Confeccionado em linho puro com bordado floral em relevo nobre. Presilha bico de pato 100% forrada para total conforto.</p>
+            
+            <label style="font-size: 0.75rem; font-weight: 600; color: var(--color-text-muted); margin-bottom: 4px; display: block;">Acabamento:</label>
+            <select class="shop-variant-select" id="var-prod-1">
+              <option value="Presilha Forrada (Bico de Pato)">Presilha Forrada (Bico de Pato)</option>
+              <option value="Faixa de Meia de Seda Suave">Faixa de Meia de Seda Suave</option>
+            </select>
+
+            <div class="shop-price-row">
+              <span class="shop-price">R$ 38,00</span>
+              <span class="shop-installment">em até 2x no Pix/Cartão</span>
+            </div>
+
+            <button type="button" class="btn-buy" onclick="addToCart(1)">
+              Adicionar à Sacola 🛍️
+            </button>
+          </div>
+        </div>
+
+        <!-- PRODUTO 2 -->
+        <div class="shop-card">
+          <div class="shop-img-box">
+            <img src="assets/hero.webp" alt="Laço Helena Monograma Floral" loading="lazy">
+            <span class="shop-badge-status">Coleção Própria</span>
+          </div>
+          <div class="shop-body">
+            <span class="shop-category">Linha Personalizada</span>
+            <h3 class="shop-title">Laço com Monograma</h3>
+            <p class="shop-desc">Linho nobre com a inicial da criança bordada com arabesco floral em ponto acetinado. Você escolhe a letra no pedido.</p>
+            
+            <label style="font-size: 0.75rem; font-weight: 600; color: var(--color-text-muted); margin-bottom: 4px; display: block;">Cor do Linho:</label>
+            <select class="shop-variant-select" id="var-prod-2">
+              <option value="Linho Cru / Marfim">Linho Cru / Marfim</option>
+              <option value="Linho Rosa Seco">Linho Rosa Seco</option>
+              <option value="Linho Branco Puro">Linho Branco Puro</option>
+            </select>
+
+            <div class="shop-price-row">
+              <span class="shop-price">R$ 45,00</span>
+              <span class="shop-installment">Personalizado</span>
+            </div>
+
+            <button type="button" class="btn-buy" onclick="addToCart(2)">
+              Adicionar à Sacola 🛍️
+            </button>
+          </div>
+        </div>
+
+        <!-- PRODUTO 3 -->
+        <div class="shop-card">
+          <div class="shop-img-box">
+            <img src="assets/gifts.webp" alt="Toalha de Lavabo Monograma Nobre" loading="lazy">
+            <span class="shop-badge-status">Enxoval Nobre</span>
+          </div>
+          <div class="shop-body">
+            <span class="shop-category">Enxoval & Lavabo</span>
+            <h3 class="shop-title">Toalha Lavabo Nobre</h3>
+            <p class="shop-desc">Toalha felpuda premium de alta absorção com barra especial e monograma clássico bordado em fio luminoso.</p>
+            
+            <label style="font-size: 0.75rem; font-weight: 600; color: var(--color-text-muted); margin-bottom: 4px; display: block;">Cor da Linha do Monograma:</label>
+            <select class="shop-variant-select" id="var-prod-3">
+              <option value="Monograma em Dourado Suave">Monograma em Dourado Suave</option>
+              <option value="Monograma em Tom Bordô Oficial">Monograma em Tom Bordô Oficial</option>
+              <option value="Monograma em Prata / Rosé">Monograma em Prata / Rosé</option>
+            </select>
+
+            <div class="shop-price-row">
+              <span class="shop-price">R$ 58,00</span>
+              <span class="shop-installment">Ideal para Presentear</span>
+            </div>
+
+            <button type="button" class="btn-buy" onclick="addToCart(3)">
+              Adicionar à Sacola 🛍️
+            </button>
+          </div>
+        </div>
+
+        <!-- PRODUTO 4 -->
+        <div class="shop-card">
+          <div class="shop-img-box">
+            <img src="assets/art.webp" alt="Quadro Bastidor Botânico Coleção Bordô" loading="lazy">
+            <span class="shop-badge-status">Decoração & Arte</span>
+          </div>
+          <div class="shop-body">
+            <span class="shop-category">Arte em Bastidor</span>
+            <h3 class="shop-title">Bastidor Botânico 20cm</h3>
+            <p class="shop-desc">Bastidor em madeira maciça com linho natural e composição botânica bordada. Acompanha fita acetinada para pendurar.</p>
+            
+            <label style="font-size: 0.75rem; font-weight: 600; color: var(--color-text-muted); margin-bottom: 4px; display: block;">Tema do Bordado:</label>
+            <select class="shop-variant-select" id="var-prod-4">
+              <option value="Ramos de Lavanda & Flores">Ramos de Lavanda & Flores</option>
+              <option value="Coroa de Folhagens com Inicial">Coroa de Folhagens com Inicial</option>
+            </select>
+
+            <div class="shop-price-row">
+              <span class="shop-price">R$ 85,00</span>
+              <span class="shop-installment">Peça de Decoração</span>
+            </div>
+
+            <button type="button" class="btn-buy" onclick="addToCart(4)">
+              Adicionar à Sacola 🛍️
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+    <!-- QUALIDADE DO PONTO & CRAFTSMANSHIP -->
   <section class="section craft-section" id="precisao">
     <div class="container">
       <div class="craft-grid">
@@ -1736,6 +2285,7 @@
           <ul class="footer-links">
             <li><a href="#sobre">O Ateliê</a></li>
             <li><a href="#colecao">Especialidades</a></li>
+          <li><a href="#loja" style="color: var(--color-primary); font-weight: 700;">Loja & Peças Prontas</a></li>
             <li><a href="#precisao">Qualidade do Ponto</a></li>
             <li><a href="#personalizar">Simulador de Pedido</a></li>
             <li><a href="#como-funciona">Como Encomendar</a></li>
@@ -1778,6 +2328,57 @@
       <path d="M16 2a13.9 13.9 0 0 0-12 21L2 30l7.2-1.9A14 14 0 1 0 16 2zm0 25.5a11.5 11.5 0 0 1-5.9-1.6l-.4-.3-4.3 1.1 1.2-4.2-.3-.5A11.5 11.5 0 1 1 16 27.5zm6.3-8.6c-.3-.2-2-.9-2.3-1s-.6-.2-.8.2-.9 1.1-1.1 1.3-.4.3-.7.1a9.2 9.2 0 0 1-2.7-1.7 10.2 10.2 0 0 1-1.9-2.3c-.2-.4 0-.6.2-.8s.3-.4.5-.6l.3-.5c.1-.2 0-.4 0-.6s-.8-2-1.1-2.7c-.3-.7-.6-.6-.8-.6h-.7a1.4 1.4 0 0 0-1 0.5 4.3 4.3 0 0 0-1.3 3.2 7.5 7.5 0 0 0 1.6 4 17.2 17.2 0 0 0 6.6 5.8c.9.4 1.6.7 2.2.8a5.2 5.2 0 0 0 2.4.2 3.9 3.9 0 0 0 2.6-1.8 3.2 3.2 0 0 0 .2-1.8c-.2-.2-.5-.3-.8-.5z"/>
     </svg>
   </a>
+
+
+  <!-- BACKDROP E GAVETA DA SACOLA DE COMPRAS -->
+  <div class="cart-drawer-backdrop" id="cartBackdrop" onclick="closeCart()"></div>
+  <aside class="cart-drawer" id="cartDrawer" aria-label="Sacola de Compras">
+    <div class="cart-header">
+      <h3>
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <path d="M16 10a4 4 0 0 1-8 0"></path>
+        </svg>
+        Sua Sacola Bordô
+      </h3>
+      <button type="button" class="cart-close-btn" onclick="closeCart()" aria-label="Fechar Sacola">✕</button>
+    </div>
+
+    <div class="cart-items-container" id="cartItemsList">
+      <!-- Itens renderizados dinamicamente pelo JS -->
+    </div>
+
+    <div class="cart-footer" id="cartFooter">
+      <div class="cart-summary-row">
+        <span>Itens selecionados:</span>
+        <span id="cartItemsSummary">0 itens</span>
+      </div>
+      <label class="cart-gift-box">
+        <input type="checkbox" id="cartGiftCheck">
+        <span>Embalagem especial de presente com aroma e laço</span>
+      </label>
+
+      <div class="cart-total-row">
+        <span>Subtotal:</span>
+        <span id="cartTotalVal">R$ 0,00</span>
+      </div>
+
+      <div class="cart-customer-inputs">
+        <input type="text" id="cartCustName" class="cart-input" placeholder="Seu nome completo">
+        <input type="text" id="cartCustCity" class="cart-input" placeholder="Cidade / Bairro para entrega">
+      </div>
+
+      <button type="button" class="btn btn-primary" style="width: 100%; padding: 14px; font-size: 0.95rem;" onclick="checkoutWhatsApp()">
+        Finalizar Pedido via WhatsApp 💬
+      </button>
+    </div>
+  </aside>
+
+  <!-- TOAST DE NOTIFICAÇÃO -->
+  <div class="cart-toast" id="cartToast">
+    <span>✓ Peça adicionada à sua sacola!</span>
+  </div>
 
   <!-- MODAL DE DETALHES DE COLEÇÃO -->
   <div class="modal-backdrop" id="collectionModal" role="dialog" aria-modal="true" aria-hidden="true">
@@ -1966,6 +2567,190 @@
       el.addEventListener('input', updatePreview);
       el.addEventListener('change', updatePreview);
     });
+
+    
+    // CATÁLOGO DE PRODUTOS DA BOUTIQUE
+    const catalogProducts = [
+      {
+        id: 1,
+        title: "Laço Clássico Bordô",
+        price: 38.00,
+        image: "assets/bows.webp",
+        varSelectId: "var-prod-1"
+      },
+      {
+        id: 2,
+        title: "Laço com Monograma",
+        price: 45.00,
+        image: "assets/hero.webp",
+        varSelectId: "var-prod-2"
+      },
+      {
+        id: 3,
+        title: "Toalha Lavabo Nobre",
+        price: 58.00,
+        image: "assets/gifts.webp",
+        varSelectId: "var-prod-3"
+      },
+      {
+        id: 4,
+        title: "Bastidor Botânico 20cm",
+        price: 85.00,
+        image: "assets/art.webp",
+        varSelectId: "var-prod-4"
+      }
+    ];
+
+    // ESTADO DO CARRINHO (com persistência no localStorage)
+    let cart = [];
+    try {
+      const saved = localStorage.getItem("bordo_cart");
+      if (saved) cart = JSON.parse(saved);
+    } catch(e) {}
+
+    function saveCart() {
+      try {
+        localStorage.setItem("bordo_cart", JSON.stringify(cart));
+      } catch(e) {}
+      renderCartUI();
+    }
+
+    function openCart() {
+      document.getElementById('cartDrawer').classList.add('open');
+      document.getElementById('cartBackdrop').classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeCart() {
+      document.getElementById('cartDrawer').classList.remove('open');
+      document.getElementById('cartBackdrop').classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    function showToast(msg) {
+      const t = document.getElementById('cartToast');
+      t.querySelector('span').textContent = msg || "✓ Peça adicionada à sua sacola!";
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2600);
+    }
+
+    function addToCart(productId) {
+      const prod = catalogProducts.find(p => p.id === productId);
+      if (!prod) return;
+
+      const varElem = document.getElementById(prod.varSelectId);
+      const variant = varElem ? varElem.value : "Padrão";
+
+      const existingIndex = cart.findIndex(it => it.id === productId && it.variant === variant);
+      if (existingIndex > -1) {
+        cart[existingIndex].qty += 1;
+      } else {
+        cart.push({
+          id: prod.id,
+          title: prod.title,
+          price: prod.price,
+          image: prod.image,
+          variant: variant,
+          qty: 1
+        });
+      }
+
+      saveCart();
+      showToast(`✓ "${prod.title}" adicionado à sacola!`);
+      openCart();
+    }
+
+    function updateCartQty(index, delta) {
+      if (!cart[index]) return;
+      cart[index].qty += delta;
+      if (cart[index].qty <= 0) {
+        cart.splice(index, 1);
+      }
+      saveCart();
+    }
+
+    function removeCartItem(index) {
+      if (!cart[index]) return;
+      cart.splice(index, 1);
+      saveCart();
+    }
+
+    function renderCartUI() {
+      const countEl = document.getElementById('cartCount');
+      const listEl = document.getElementById('cartItemsList');
+      const totalEl = document.getElementById('cartTotalVal');
+      const summaryEl = document.getElementById('cartItemsSummary');
+      const footerEl = document.getElementById('cartFooter');
+
+      const totalItems = cart.reduce((sum, it) => sum + it.qty, 0);
+      const totalVal = cart.reduce((sum, it) => sum + (it.price * it.qty), 0);
+
+      countEl.textContent = totalItems;
+      summaryEl.textContent = `${totalItems} ${totalItems === 1 ? 'item' : 'itens'}`;
+      totalEl.textContent = `R$ ${totalVal.toFixed(2).replace('.', ',')}`;
+
+      if (cart.length === 0) {
+        listEl.innerHTML = `
+          <div class="cart-empty">
+            <span class="cart-empty-icon">🛍️</span>
+            <h4>Sua sacola está vazia</h4>
+            <p style="font-size: 0.85rem; margin-top: 6px;">Explore nossa boutique e escolha suas peças da coleção Bordô.</p>
+            <a href="#loja" onclick="closeCart()" class="btn btn-primary" style="margin-top: 18px; font-size: 0.82rem; padding: 10px 18px;">
+              Ver Peças da Loja
+            </a>
+          </div>
+        `;
+        footerEl.style.opacity = '0.5';
+        footerEl.style.pointerEvents = 'none';
+      } else {
+        footerEl.style.opacity = '1';
+        footerEl.style.pointerEvents = 'auto';
+
+        listEl.innerHTML = cart.map((it, idx) => `
+          <div class="cart-item">
+            <img src="${it.image}" alt="${it.title}" class="cart-item-img">
+            <div class="cart-item-info">
+              <h4>${it.title}</h4>
+              <span class="cart-item-variant">${it.variant}</span>
+              <span class="cart-item-price">R$ ${(it.price * it.qty).toFixed(2).replace('.', ',')}</span>
+              <div class="cart-qty-control">
+                <button type="button" class="cart-qty-btn" onclick="updateCartQty(${idx}, -1)">-</button>
+                <span class="cart-qty-val">${it.qty}</span>
+                <button type="button" class="cart-qty-btn" onclick="updateCartQty(${idx}, 1)">+</button>
+              </div>
+            </div>
+            <button type="button" class="cart-item-remove" onclick="removeCartItem(${idx})" title="Remover item">✕</button>
+          </div>
+        `).join('');
+      }
+    }
+
+    function checkoutWhatsApp() {
+      if (cart.length === 0) return;
+
+      const custName = document.getElementById('cartCustName').value.trim() || "Cliente Especial";
+      const custCity = document.getElementById('cartCustCity').value.trim() || "A combinar";
+      const isGift = document.getElementById('cartGiftCheck').checked;
+
+      const totalVal = cart.reduce((sum, it) => sum + (it.price * it.qty), 0);
+
+      let itemsTxt = cart.map(it => `• ${it.qty}x ${it.title} (${it.variant}) - R$ ${(it.price * it.qty).toFixed(2).replace('.', ',')}`).join('\n');
+
+      let msg = `Olá, Bordô! Gostaria de finalizar o meu pedido da Boutique.\n\n`;
+      msg += `*Nome:* ${custName}\n`;
+      msg += `*Cidade / Entrega:* ${custCity}\n`;
+      msg += `*Embalagem para Presente:* ${isGift ? 'Sim, com aroma e laço especial 🎁' : 'Não necessária'}\n\n`;
+      msg += `*Itens Escolhidos:*\n${itemsTxt}\n\n`;
+      msg += `*TOTAL DO PEDIDO:* R$ ${totalVal.toFixed(2).replace('.', ',')}\n\n`;
+      msg += `Poderia me confirmar a disponibilidade e a chave Pix / dados de pagamento para envio?`;
+
+      const url = `https://wa.me/${PHONE_NUMBER}?text=${encodeURIComponent(msg)}`;
+      window.open(url, '_blank');
+    }
+
+    // Inicializar UI do Carrinho
+    renderCartUI();
+
 
     // Inicialização da prévia
     updatePreview();
