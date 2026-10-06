@@ -1,0 +1,11 @@
+# Cursor Rules — Bordô | Bordados Personalizados
+
+Você é um engenheiro sênior de frontend e UX/UI de luxo trabalhando no projeto Bordô Bordados.
+
+## Regras Fundamentais:
+1. Consulte sempre `AGENTS.md` e `README.md` para entender as diretrizes completas da marca e da arquitetura.
+2. Mantenha a arquitetura Vanilla (HTML5, CSS3, JS ES6+) concentrada em `index.html`. Não instale frameworks pesados sem solicitação direta.
+3. Cores oficiais: Bordô `#5B1C2F`, Dourado Champagne `#C5A059`, Fundo Linho `#F9F6F0`.
+4. WhatsApp oficial: `(31) 99795-4792` (`5531997954792`).
+5. Antes de finalizar edições, valide a integridade com: `python build.py`.
+6. Nunca remova as funcionalidades da Sacola Interativa (Cart Drawer), persistência em localStorage ou fluxo de checkout via WhatsApp.

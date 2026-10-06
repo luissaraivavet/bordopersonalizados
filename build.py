@@ -50,16 +50,21 @@ def check_html():
 
 def check_assets():
     assets_dir = os.path.join(ROOT_DIR, 'assets')
-    required = ['logo.svg', 'logo.png', 'hero.webp', 'bows.webp', 'art.webp']
+    required = [
+        'logo.svg', 'logo.png', 'unboxing.webp', 'sinfonia-poster.webp',
+        'bow-coruja.webp', 'bow-leao.webp', 'bow-gato.webp', 'gifts.webp',
+        'corporate.webp', 'craft.webp', 'hero.webp', 'art.webp',
+        'sinfonia-reel.mp4', 'laco-animado.gif'
+    ]
     all_ok = True
     print("\nVerificando arquivos em assets/:")
     for req in required:
         p = os.path.join(assets_dir, req)
         if os.path.exists(p):
             sz_kb = round(os.path.getsize(p) / 1024, 1)
-            print(f"  [OK] {req:<12} ({sz_kb} KB)")
+            print(f"  [OK] {req:<22} ({sz_kb} KB)")
         else:
-            print(f"  [FALHA] {req:<12} AUSENTE!")
+            print(f"  [FALHA] {req:<22} AUSENTE!")
             all_ok = False
     return all_ok
 
