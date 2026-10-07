@@ -16,7 +16,7 @@ Requer Python 3.10 ou mais recente. Não há dependências Python externas nem i
 
 O painel permite criar, editar, ordenar, ocultar e excluir produtos, coleções, depoimentos, artigos e links. Fotos PNG, JPEG ou WebP de até 10 MB ficam na biblioteca. Preço vazio indica consulta pelo WhatsApp.
 
-Edite um item, conclua a edição e salve o rascunho. A prévia e o ZIP também salvam antes de abrir. Configurações permitem alterar contatos, história, desconto Pix e embalagem. Use apenas depoimentos autorizados e mantenha a sinalização de imagens ilustrativas.
+Edite um item, conclua a edição e salve o rascunho. A prévia e o ZIP também salvam antes de abrir. Configurações permitem alterar contatos, história, desconto Pix e embalagem. Use apenas depoimentos autorizados.
 
 Rascunhos ficam em `.bordo-admin/draft.json`, com uma cópia anterior em `backup.json`. Essa pasta é ignorada pelo Git. Fechar o processo encerra o painel; os rascunhos permanecem. Reabra pelo atalho para obter uma nova sessão.
 
@@ -39,4 +39,4 @@ Para usar um pacote sem Git, exporte o ZIP e entregue os arquivos à hospedagem.
 - `tests/`: testes automatizados sem alteração do catálogo real.
 - `CNAME`: domínio configurado no GitHub Pages.
 
-O logo original e as fontes Lora/Manrope foram preservados. As imagens sinalizadas são ilustrativas. Preços e condições iniciais foram preservados do catálogo existente: desconto Pix de 5% sobre peças e embalagem opcional de R$ 15 por pedido. Frete, prazo, materiais e disponibilidade são confirmados no atendimento.
+O logo original e as fontes Lora/Manrope foram preservados. Preços e condições iniciais foram preservados do catálogo existente: desconto Pix de 5% sobre peças e embalagem opcional de R$ 15 por pedido. Frete, prazo, materiais e disponibilidade são confirmados no atendimento.
