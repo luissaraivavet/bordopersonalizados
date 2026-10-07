@@ -26,6 +26,13 @@ class ValidationTests(unittest.TestCase):
         kits = [p for p in self.data['products'] if p['collection'] == 'kits']
         self.assertEqual(len(kits), 2)
         self.assertTrue(all(p['price'] == 119.90 and len(p['bundle']) == 3 for p in kits))
+        self.assertFalse(any('faix' in option.lower() for p in self.data['products'] for option in p['options']))
+
+    def test_founder_images_are_local(self):
+        self.assertIn('Priscila', self.data['settings']['story'])
+        self.data['settings']['storyImage'] = 'https://example.com/photo.jpg'
+        with self.assertRaises(ValueError):
+            app.validate(self.data)
 
     def test_invalid_prices_and_discount(self):
         for value in (-1, float('nan'), float('inf'), True, '55'):
@@ -150,6 +157,10 @@ class PrivateServerTests(unittest.TestCase):
         result = json.loads(self.request('/api/content')[2])
         data = result['content']
         data['products'][3]['price'] = 60
+        portrait = app.ROOT / 'assets/uploads/founder-test.jpg'
+        portrait.parent.mkdir(parents=True, exist_ok=True)
+        portrait.write_bytes((app.ROOT / 'assets/priscila-bordo.jpg').read_bytes())
+        data['settings']['storyImage'] = 'assets/uploads/founder-test.jpg'
         body = {'content': data, 'revision': result['revision']}
         self.assertEqual(self.request('/api/save', 'POST', body)[0], 200)
         self.assertEqual(self.request('/api/save', 'POST', body)[0], 409)
@@ -159,6 +170,7 @@ class PrivateServerTests(unittest.TestCase):
         self.assertEqual(response[0], 200)
         with zipfile.ZipFile(io.BytesIO(response[2])) as archive:
             self.assertIn(b'"price": 60', archive.read('assets/content.js'))
+            self.assertEqual(archive.read('assets/uploads/founder-test.jpg'), portrait.read_bytes())
             self.assertNotIn('admin_server.py', archive.namelist())
             self.assertFalse(any(name.startswith(('.git/', '.bordo-admin/', 'admin/')) for name in archive.namelist()))
 
