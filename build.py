@@ -10,6 +10,8 @@ import sys
 import os
 import http.server
 import socketserver
+import json
+from pathlib import Path
 from html.parser import HTMLParser
 
 if hasattr(sys.stdout, 'reconfigure'):
@@ -51,10 +53,11 @@ def check_html():
 def check_assets():
     assets_dir = os.path.join(ROOT_DIR, 'assets')
     required = [
-        'logo.svg', 'logo.png', 'unboxing.webp', 'sinfonia-poster.webp',
+        'brand-logo.png', 'jardim-cover.webp', 'sinfonia-poster.webp',
         'bow-coruja.webp', 'bow-leao.webp', 'bow-gato.webp', 'gifts.webp',
-        'corporate.webp', 'craft.webp', 'hero.webp', 'art.webp',
-        'sinfonia-reel.mp4', 'laco-animado.gif'
+        'craft.webp', 'art.webp', 'caixa-artesanal.webp',
+        'sinfonia-reel.mp4', 'jardim-margarida.webp', 'jardim-girassol.webp',
+        'jardim-rosa.webp', 'site.js', 'content.js', 'fonts/Lora.ttf', 'fonts/Manrope.ttf'
     ]
     all_ok = True
     print("\nVerificando arquivos em assets/:")
@@ -69,10 +72,25 @@ def check_assets():
     return all_ok
 
 
+def check_content():
+    from admin_server import validate
+    try:
+        data = validate(json.loads((Path(ROOT_DIR) / 'content/site.json').read_text(encoding='utf-8')))
+        source = (Path(ROOT_DIR) / 'assets/content.js').read_text(encoding='utf-8')
+        rendered = json.loads(source.removeprefix('window.BORDO_CONTENT = ').strip().removesuffix(';'))
+        if data != rendered:
+            raise ValueError('content/site.json e assets/content.js divergem.')
+        print('[OK] Conteudo editavel e imagens validos.')
+        return True
+    except (ValueError, OSError) as error:
+        print(f'[ERRO] {error}')
+        return False
+
+
 def serve(port=8080):
     os.chdir(ROOT_DIR)
     Handler = http.server.SimpleHTTPRequestHandler
-    with socketserver.TCPServer(("", port), Handler) as httpd:
+    with socketserver.TCPServer(("127.0.0.1", port), Handler) as httpd:
         print(f"\n🚀 Servidor local rodando em: http://localhost:{port}")
         print("Pressione Ctrl+C para encerrar.")
         try:
@@ -84,9 +102,12 @@ if __name__ == '__main__':
     print("=== OTIMIZAÇÃO BORDÔ BORDADOS ===")
     h_ok = check_html()
     a_ok = check_assets()
+    c_ok = check_content()
+    if not (h_ok and a_ok and c_ok):
+        sys.exit(1)
 
     if '--serve' in sys.argv:
-        if h_ok and a_ok:
+        if h_ok and a_ok and c_ok:
             port = 8080
             for arg in sys.argv:
                 if arg.startswith('--port='):

@@ -1,138 +1,42 @@
 # Bordô | Bordados Personalizados
 
-> **Landing Page & Boutique Digital de Alto Padrão**  
-> Peças autorais em linho puro, laços infantis com acabamento antialérgico, enxovais personalizados e presentes corporativos refinados.
+Site estático da Bordô, de Teixeiras, MG, com atendimento online por encomenda. Coleções, presentes, orçamento personalizado e sacola que continua pelo WhatsApp. Os laços utilizam diferentes tecidos.
 
-🌐 **Site Oficial:** [https://bordopersonalizados.com.br](https://bordopersonalizados.com.br)  
-📱 **WhatsApp Oficial:** [+55 (31) 99795-4792](https://wa.me/5531997954792)  
-📸 **Instagram:** [@bordobordadospersonalizados](https://www.instagram.com/bordobordadospersonalizados/)  
-📍 **Deploy:** GitHub Pages (`luissaraivavet/bordopersonalizados`)
+## Executar
 
----
+Requer Python 3.10 ou mais recente. Não há dependências Python externas nem instalação npm.
 
-## 📖 Visão Geral do Projeto
+- `python build.py`: valida HTML, imagens e consistência do conteúdo.
+- `python build.py --serve --port=8080`: prévia estática em localhost.
+- `python admin_server.py` ou duplo clique em `Abrir_Painel.cmd`: abre o painel privado.
+- `python -m unittest discover -s tests -v`: testa validação, autenticação, rascunhos, exportação e proteção de publicação.
+- `node --check assets/site.js` e `node --check admin/admin.js`: verificam sintaxe JavaScript, quando Node estiver disponível.
 
-Este projeto é a presença digital oficial da marca **Bordô | Bordados Personalizados**. Foi concebido sob uma direção de arte editorial de luxo, inspirada em publicações de moda europeias e ateliês de alta costura, com foco em conversão e experiência de compra premium para mães, famílias e clientes corporativos.
+## Gestão do Conteúdo
 
-### Principais Dores Solucionadas pelo Produto
-- **Avesso Envelopado e Macio:** Elimina nós ásperos e linhas soltas que irritam a pele sensível da cabeça do bebê.
-- **Presilhas 100% Forradas:** Sem metal exposto, impedindo puxões ou quebra de fios finos de cabelo.
-- **Linho Nobre Puro:** Tecido termorregulador, respirável e hipoalergênico.
-- **Fios de Brilho Acetinado:** Fios de bordado de alta tenacidade que não desbotam com lavagens.
+O painel permite criar, editar, ordenar, ocultar e excluir produtos, coleções, depoimentos, artigos e links. Fotos PNG, JPEG ou WebP de até 10 MB ficam na biblioteca. Preço vazio indica consulta pelo WhatsApp.
 
----
+Edite um item, conclua a edição e salve o rascunho. A prévia e o ZIP também salvam antes de abrir. Configurações permitem alterar contatos, história, desconto Pix e embalagem. Use apenas depoimentos autorizados e mantenha a sinalização de imagens ilustrativas.
 
-## 💎 Coleções & Produtos em Destaque
+Rascunhos ficam em `.bordo-admin/draft.json`, com uma cópia anterior em `backup.json`. Essa pasta é ignorada pelo Git. Fechar o processo encerra o painel; os rascunhos permanecem. Reabra pelo atalho para obter uma nova sessão.
 
-### 1. Coleção Autoral: *Sinfonia das Matas*
-Peças de assinatura autoral bordadas à mão e máquina sobre linho puro, retratando bichinhos músicos tocando instrumentos de sopro (Saxofone):
-- **Corujinha do Sax:** Bordada em linho areia nobre com notas musicais douradas.
-- **Leãozinho do Sax:** Bordado em linho verde sálvia com juba em textura especial.
-- **Gatinho do Sax:** Bordado em linho crú aveludado com detalhes em tom bordô.
-- *Opções de Fixação:* Presilha Bico de Pato 100% forrada com fita de gorgurão ou Faixa de Seda Anatômica ultraelástica.
+O servidor aceita conexões somente em `127.0.0.1`, exige sessão local e protege alterações com verificação de origem e token CSRF. Não exponha o processo na rede nem em hospedagem. As páginas do painel não contêm credenciais; o site público não executa o servidor.
 
-### 2. Boutique Bordô (Pronta-Entrega & Presentes)
-- **Toalha de Lavabo Nobre com Monograma:** Algodão egípcio e barra em linho bordado.
-- **Bastidores de Madeira Decorativos:** Bordados decorativos de maternidade e quarto infantil.
+## Publicação
 
-### 3. Personalizados Sob Medida
-- Simulador interativo em tempo real para enxovais infantis, lembrancinhas de batizado e bordados corporativos.
+Na branch de revisão, o botão Publicar fica desabilitado. Depois que a versão inicial for integrada ao `main`, execute o painel neste checkout atualizado. Git precisa estar instalado e autenticado no repositório `luissaraivavet/bordopersonalizados`.
 
----
+Publicar exige confirmação, branch `main`, remoto correto e ausência de mudanças alheias. O painel atualiza apenas o conteúdo e as fotos selecionadas, cria commit e envia ao GitHub. GitHub Pages processa o envio posteriormente; sucesso do push não confirma a conclusão do deploy.
 
-## 🛠️ Arquitetura Técnica
+Para usar um pacote sem Git, exporte o ZIP e entregue os arquivos à hospedagem. O ZIP contém somente o site e assets, sem painel, sessão ou rascunhos internos.
 
-O projeto foi construído propositalmente com **Vanilla Web Technologies** (HTML5, CSS3, JavaScript ES6+) sem frameworks pesados (Node/React/Vue/Tailwind), trazendo vantagens estratégicas:
-- **Zero build step complexo:** Funciona diretamente no navegador e no GitHub Pages.
-- **Performance extrema:** Carregamento em menos de 1 segundo (First Contentful Paint < 0.6s).
-- **Sem quebras de dependências ou vulnerabilidades de terceiros.**
-- **SEO e Acessibilidade:** Marcação semântica com Open Graph, Twitter Cards, Schema.org e contrastes validados.
+## Arquivos
 
-### Recursos Interativos Implementados
-1. **Sacola de Compras Interativa (Shopping Cart Drawer):**
-   - Gaveta lateral animada com controle de itens e quantidades.
-   - Cálculo dinâmico de subtotal e desconto de 5% via Pix.
-   - Opção de Embalagem Especial de Presente Kraft (+R$ 15,00).
-   - Persistência em `localStorage` (o cliente não perde o carrinho ao recarregar).
-   - **Checkout Estruturado no WhatsApp:** Gera uma mensagem perfeitamente formatada com lista de itens, acabamentos, total com desconto e dados de entrega.
-2. **Simulador de Personalizados:**
-   - Seletores de categoria, estilo de bordado, tecido e acabamento que geram briefing pronto para o WhatsApp do ateliê.
-3. **Mídia Imersiva:**
-   - Vídeo Reel vertical da produção artesanal (`assets/sinfonia-reel.mp4`).
-   - Animação artesanal de laço em movimento (`assets/laco-animado.gif`).
-   - Fotos reais de alta definição comprimidas em formato moderno WebP.
-4. **FAQ Acordeão:**
-   - Dúvidas sobre prazos, cuidados de lavagem, segurança e formas de pagamento.
+- `index.html`: apresentação responsiva, estilos e estrutura.
+- `assets/site.js`: catálogo, sacola, orçamento e conteúdo editorial.
+- `content/site.json` e `assets/content.js`: conteúdo público equivalente.
+- `admin/` e `admin_server.py`: interface e servidor privado.
+- `tests/`: testes automatizados sem alteração do catálogo real.
+- `CNAME`: domínio configurado no GitHub Pages.
 
----
-
-## 📁 Estrutura de Diretórios
-
-```text
-bordo-bordados/
-├── assets/
-│   ├── logo.svg               # Logotipo vetorial oficial Bordô
-│   ├── logo.png               # Logotipo em alta resolução
-│   ├── unboxing.webp          # Foto hero: embalagem kraft de luxo com laços
-│   ├── sinfonia-poster.webp   # Pôster editorial da coleção Sinfonia das Matas
-│   ├── bow-coruja.webp        # Foto de produto: Laço Corujinha do Sax
-│   ├── bow-leao.webp          # Foto de produto: Laço Leãozinho do Sax
-│   ├── bow-gato.webp          # Foto de produto: Laço Gatinho do Sax
-│   ├── gifts.webp             # Foto de toalhas nobres monogramadas
-│   ├── corporate.webp         # Foto de camisas com bordado corporativo
-│   ├── craft.webp             # Macro de fios e pontos de bordado
-│   ├── hero.webp              # Imagem clássica de laço em linho
-│   ├── art.webp               # Bastidor decorativo bordado
-│   ├── sinfonia-reel.mp4      # Vídeo de demonstração da coleção
-│   ├── laco-animado.gif       # Animação fluida de laço em cetim
-│   └── original.css           # Estilos base e tokens CSS
-├── build.py                   # Validador de tags HTML e servidor local
-├── CNAME                      # Apontamento de domínio para bordopersonalizados.com.br
-├── index.html                 # Página única com layout responsivo, CSS e scripts
-├── AGENTS.md                  # Instruções e diretrizes técnicas para Agentes de IA
-└── README.md                  # Documentação geral do projeto
-```
-
----
-
-## 🚀 Como Executar Localmente
-
-### Pré-requisitos
-- Python 3.8+ (ou qualquer servidor HTTP estático, como Live Server do VSCode).
-
-### 1. Validar integridade dos arquivos
-```bash
-python build.py
-```
-*Verifica o fechamento de todas as tags em `index.html` e a presença dos assets necessários.*
-
-### 2. Iniciar servidor local
-```bash
-python build.py --serve
-# ou definir uma porta específica:
-python build.py --serve --port=3000
-```
-Acesse no navegador: [http://localhost:8080](http://localhost:8080)
-
----
-
-## 🎨 Paleta de Cores & Tipografia
-
-| Nome da Cor | Hexadecimal | Uso Principal |
-| :--- | :--- | :--- |
-| **Bordô Imperial** | `#5B1C2F` | Cor primária, botões principais, destaques |
-| **Bordô Escuro** | `#3A0F1D` | Rodapé, contrastes profundos |
-| **Dourado Champagne** | `#C5A059` / `#D4AF37` | Selos, acentos, estrelas e bordas sutis |
-| **Linho Areia** | `#F9F6F0` | Fundo principal da página |
-| **Branco Puro** | `#FFFFFF` | Cards e superfícies destacadas |
-| **Cinza Grafite** | `#2C2A29` | Textos de leitura e tipografia base |
-
-- **Títulos & Headlines:** `Playfair Display` (Serif de alto contraste editorial)
-- **Corpo & Interface:** `Plus Jakarta Sans` (Sans-serif moderno e ultra legível)
-- **Monogramas & Detalhes:** `Cinzel` (Serif clássico romano)
-
----
-
-## 🤝 Instruções para Outras IAs
-
-Se você estiver utilizando assistentes de inteligência artificial (ChatGPT, Claude, Cursor, Lovable, Copilot, v0) para continuar o desenvolvimento deste projeto, consulte o arquivo [`AGENTS.md`](./AGENTS.md) presente na raiz. Ele contém regras rígidas de preservação arquitetural, padrões de design e convenções de código estabelecidas para a marca.
+O logo original e as fontes Lora/Manrope foram preservados. As imagens sinalizadas são ilustrativas. Preços e condições iniciais foram preservados do catálogo existente: desconto Pix de 5% sobre peças e embalagem opcional de R$ 15 por pedido. Frete, prazo, materiais e disponibilidade são confirmados no atendimento.
