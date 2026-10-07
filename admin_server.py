@@ -95,9 +95,14 @@ def validate(data):
             if group == 'links':
                 url(item.get('url'))
     collection_ids = {item['id'] for item in data['collections']}
+    product_ids = {item['id'] for item in data['products'] if not item.get('bundle')}
     for product in data['products']:
         if product.get('collection') not in collection_ids:
             raise ValueError('Todo produto precisa pertencer a uma colecao existente.')
+        if 'bundle' in product:
+            bundle = product['bundle']
+            if not isinstance(bundle, list) or len(bundle) != 3 or not all(isinstance(ident, str) and ident in product_ids for ident in bundle) or len(set(bundle)) != 3:
+                raise ValueError('Um kit precisa conter tres produtos distintos existentes.')
     if not any(c['published'] and c['featured'] for c in data['collections']):
         raise ValueError('Mantenha pelo menos uma colecao ativa em destaque.')
     return data
@@ -117,6 +122,8 @@ def public_content(data):
         result[group] = [item for item in data[group] if item['published']]
     visible_collections = {item['id'] for item in result['collections']}
     result['products'] = [item for item in result['products'] if item['collection'] in visible_collections]
+    visible_products = {item['id'] for item in result['products']}
+    result['products'] = [item for item in result['products'] if all(ident in visible_products for ident in item.get('bundle', []))]
     return result
 
 
