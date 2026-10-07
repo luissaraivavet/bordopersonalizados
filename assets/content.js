@@ -9,8 +9,8 @@ window.BORDO_CONTENT = {
     "pixDiscount": 5,
     "giftPrice": 15,
     "story": "A Bordô tem um rosto e um nome: Priscila, idealizadora deste projeto em Teixeiras, Minas Gerais. Por trás dos laços e dos bordados, está uma proposta simples: dar forma ao carinho que acompanha um presente.\n\nUma flor pode lembrar um passeio. Um bichinho pode se tornar o personagem favorito de uma criança. Um nome bordado pode fazer uma peça pertencer a alguém de um jeito especial. É nesse encontro entre desenho e significado que a Bordô encontra sua identidade.\n\nO Jardim de Encantos leva flores e borboletas aos laços. A Sinfonia das Matas transforma bichinhos músicos em pequenos personagens. Cada coleção é um convite para escolher um detalhe que converse com a sua história, seja para usar, presentear ou guardar.\n\nAté o nosso nome carrega um pedacinho de quem somos. “Bordou” é a ideia que ganhou forma no tecido. No nosso jeito mineiro de falar, vira “bordô”. E bordô também é a cor da nossa marca: um encontro entre o bordado, o mineirês e a identidade que escolhemos.\n\nSomos de Teixeiras, MG, e atendemos online, por encomenda. A conversa faz parte de cada pedido: nela combinamos o desenho, os materiais, o acabamento e os detalhes da entrega. Assim, uma ideia sua encontra um caminho para virar peça.\n\nPriscila é a idealizadora. Você traz o nome, a ocasião, a pessoa que quer surpreender. E a próxima história que a Bordô vai bordar pode começar nessa conversa.",
-    "storyImage": "assets/priscila-bordo.jpg",
-    "storyImageSecondary": "assets/priscila-retrato.jpg"
+    "storyImage": "assets/priscila-presentes.png",
+    "storyImageSecondary": "assets/priscila-sinfonia.png"
   },
   "collections": [
     {

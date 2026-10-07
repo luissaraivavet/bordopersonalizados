@@ -22,7 +22,7 @@ Priscila é a idealizadora. Você traz o nome, a ocasião, a pessoa que quer sur
 
 def update(data):
     result = copy.deepcopy(data)
-    result['settings'].update(story=STORY, storyImage='assets/priscila-bordo.jpg', storyImageSecondary='assets/priscila-retrato.jpg')
+    result['settings'].update(story=STORY, storyImage='assets/priscila-presentes.png', storyImageSecondary='assets/priscila-sinfonia.png')
     for product in result['products']:
         product['options'] = [option for option in product['options'] if 'faix' not in option.lower()]
         if not product['options']:
