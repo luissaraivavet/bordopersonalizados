@@ -60,6 +60,9 @@ def validate(data):
     url(settings.get('instagram'))
     number(settings.get('pixDiscount'), 'Desconto Pix', 100)
     number(settings.get('giftPrice'), 'Embalagem', 10000)
+    for field in ('storyImage', 'storyImageSecondary'):
+        if settings.get(field):
+            image_path(settings[field])
     all_ids = set(RESERVED)
     for group in ('collections', 'products', 'testimonials', 'articles', 'links'):
         items = data.get(group)
@@ -175,6 +178,7 @@ def publish(data):
     paths = ['content/site.json', 'assets/content.js']
     visible = public_content(data)
     paths += sorted({item['image'] for group in ('products', 'collections', 'articles') for item in visible[group] if item['image'].startswith('assets/uploads/')})
+    paths += [visible['settings'][field] for field in ('storyImage', 'storyImageSecondary') if visible['settings'].get(field, '').startswith('assets/uploads/')]
     git('add', '--', *paths)
     if git('diff', '--cached', '--name-only'):
         git('commit', '-m', 'content: atualizar catalogo pelo painel Bordo')
@@ -243,6 +247,7 @@ class Handler(BaseHTTPRequestHandler):
                 with LOCK:
                     data = public_content(validate(draft()))
                     used_uploads = {item['image'] for group in ('collections', 'products', 'articles') for item in data[group]}
+                    used_uploads.update(data['settings'].get(field, '') for field in ('storyImage', 'storyImageSecondary'))
                     buffer = io.BytesIO()
                     with zipfile.ZipFile(buffer, 'w', zipfile.ZIP_DEFLATED) as archive:
                         archive.write(ROOT / 'index.html', 'index.html')

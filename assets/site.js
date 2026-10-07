@@ -31,6 +31,8 @@
       const story=document.querySelector('.story-copy'), link=story.querySelector('a');
       story.querySelectorAll('p').forEach(p=>p.remove());
       settings.story.split(/\n\s*\n/).forEach(text=>{const p=document.createElement('p');p.textContent=text;story.insertBefore(p,link);});
+      document.getElementById('storyPortrait').src=settings.storyImage||'assets/priscila-bordo.jpg';
+      document.getElementById('storySecondary').src=settings.storyImageSecondary||'assets/priscila-retrato.jpg';
       document.querySelectorAll('a[href*="instagram.com"]').forEach(a=>a.href=settings.instagram);
       document.querySelectorAll('a[href^="https://wa.me/"]').forEach(a=>a.href=whatsApp('Olá, Bordô! Gostaria de saber mais sobre uma encomenda.'));
       const contact=document.querySelector('.footer-main>div:last-child a');

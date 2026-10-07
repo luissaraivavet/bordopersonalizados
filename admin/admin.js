@@ -6,7 +6,7 @@ const schemas={
   testimonials:[['name','Nome do cliente'],['text','Depoimento autorizado','textarea'],['published','Ativo no site','bool']],
   articles:[['title','Título'],['excerpt','Resumo','textarea'],['body','Artigo','long'],['image','Foto','image'],['published','Ativo no site','bool']],
   links:[['title','Nome'],['url','Endereço https://','url'],['published','Ativo no site','bool']],
-  settings:[['headline','Título da página'],['intro','Texto de abertura'],['location','Cidade e estado'],['whatsapp','WhatsApp (55 + DDD + número)'],['instagram','Instagram','url'],['pixDiscount','Desconto Pix (%)','number'],['giftPrice','Embalagem para presente (R$)','number'],['story','História da marca','long']]
+  settings:[['headline','Título da página'],['intro','Texto de abertura'],['location','Cidade e estado'],['whatsapp','WhatsApp (55 + DDD + número)'],['instagram','Instagram','url'],['pixDiscount','Desconto Pix (%)','number'],['giftPrice','Embalagem para presente (R$)','number'],['story','História da marca','long'],['storyImage','Foto principal de Priscila','image'],['storyImageSecondary','Segunda foto de Priscila','image']]
 };
 let data,revision,csrf,active='products',dirty=false,editing=null,imageField=null,busy=false;
 const $=id=>document.getElementById(id);
@@ -22,7 +22,7 @@ async function request(path,body){
 function fieldHTML(field,item){
   const [key,label,type='text']=field,value=item[key];
   if(type==='bool')return `<label class="switch field wide"><input type="checkbox" name="${key}" ${value?'checked':''}>${label}</label>`;
-  if(type==='image')return `<div class="field wide"><span>${label}</span><div class="photo-field"><img id="selectedPhoto" src="/${escape(value||'assets/brand-logo.png')}" alt="Foto selecionada"><input name="${key}" value="${escape(value||'')}" type="hidden"><button class="button secondary" type="button" data-action="choose-photo">${icon('plus')}Escolher foto</button></div></div>`;
+  if(type==='image')return `<div class="field wide"><span>${label}</span><div class="photo-field"><img src="/${escape(value||'assets/brand-logo.png')}" alt="Foto selecionada"><input name="${key}" value="${escape(value||'')}" type="hidden"><button class="button secondary" type="button" data-action="choose-photo" data-field="${key}">${icon('plus')}Escolher foto</button></div></div>`;
   if(type==='collection')return `<label class="field">${label}<select name="${key}">${data.collections.map(c=>`<option value="${escape(c.id)}" ${value===c.id?'selected':''}>${escape(c.name)}</option>`).join('')}</select></label>`;
   if(['textarea','long','options'].includes(type))return `<label class="field wide">${label}<textarea name="${key}" rows="${type==='long'?8:3}" required maxlength="${type==='long'?20000:4000}">${escape(type==='options'?(value||['Padrão']).join('\n'):value)}</textarea></label>`;
   return `<label class="field">${label}<input name="${key}" value="${escape(value??'')}" type="${['price','number'].includes(type)?'number':type==='url'?'url':'text'}" ${['price','number'].includes(type)?'min="0" step="0.01"':''} ${type==='price'?'placeholder="Vazio: sob consulta"':'required'} maxlength="250"></label>`;
@@ -67,10 +67,10 @@ document.addEventListener('click',event=>{
     if(active==='settings'&&$('settingsForm')){if(!$('settingsForm').reportValidity())return;const updated=parseForm($('settingsForm'),'settings',data.settings);if(JSON.stringify(updated)!==JSON.stringify(data.settings)){data.settings=updated;changed();}}
     active=nav.dataset.section;render();return;
   }
-  const photo=event.target.closest('[data-image]');if(photo){imageField.value=photo.dataset.image;$('selectedPhoto').src='/'+photo.dataset.image;$('media').close();return;}
+  const photo=event.target.closest('[data-image]');if(photo){imageField.value=photo.dataset.image;imageField.closest('.photo-field').querySelector('img').src='/'+photo.dataset.image;$('media').close();if(active==='settings')changed();return;}
   const button=event.target.closest('[data-action]');if(!button)return;
   const action=button.dataset.action,id=button.dataset.id;
-  if(action==='choose-photo'){imageField=$('editForm').elements.image;showMedia('mediaGrid',true);$('media').showModal();return;}
+  if(action==='choose-photo'){imageField=button.closest('.photo-field').querySelector('input');showMedia('mediaGrid',true);$('media').showModal();return;}
   if(action==='edit'){edit(id);return;}
   const list=data[active],index=list.findIndex(i=>i.id===id);if(index<0)return;
   if(action==='delete'){
@@ -96,7 +96,7 @@ document.querySelector('.export').addEventListener('click',async event=>{event.p
 $('upload').addEventListener('change',async event=>{
   const file=event.target.files[0];if(!file)return;
   if(file.size>10*1024*1024){toast('Escolha uma foto de até 10 MB.');return;}
-  try{const response=await fetch('/api/upload',{method:'POST',headers:{'Content-Type':file.type,'X-CSRF-Token':csrf},body:file});const result=await response.json();if(!response.ok)throw Error(result.error);if(imageField){imageField.value=result.path;$('selectedPhoto').src='/'+result.path;$('media').close();}else{showMedia('content',false);toast('Foto disponível na biblioteca.');}}catch(error){toast(error.message);}finally{event.target.value='';}
+  try{const response=await fetch('/api/upload',{method:'POST',headers:{'Content-Type':file.type,'X-CSRF-Token':csrf},body:file});const result=await response.json();if(!response.ok)throw Error(result.error);if(imageField){imageField.value=result.path;imageField.closest('.photo-field').querySelector('img').src='/'+result.path;$('media').close();if(active==='settings')changed();}else{showMedia('content',false);toast('Foto disponível na biblioteca.');}}catch(error){toast(error.message);}finally{event.target.value='';}
 });
 $('publish').addEventListener('click',async()=>{if(await save())$('confirmPublish').showModal();});
 $('confirmPublishButton').addEventListener('click',async()=>{

@@ -8,7 +8,9 @@
     "instagram": "https://www.instagram.com/bordobordadospersonalizados/",
     "pixDiscount": 5,
     "giftPrice": 15,
-    "story": "“Bordou” vem do verbo bordar: a ideia ganhou forma no tecido. No nosso jeito mineiro de falar, esse “bordou” vira “bordô”. E bordô também é a cor que escolhemos para a marca.\n\nÉ desse encontro entre o bordado, o nosso mineirês e a cor que vem o nome Bordô.\n\nLaços, coleções próprias e bordados personalizados para pessoas, famílias e empresas. Somos de Teixeiras, MG. Atendemos online e por encomenda, com envio combinado para todo o Brasil."
+    "story": "A Bordô tem um rosto e um nome: Priscila, idealizadora deste projeto em Teixeiras, Minas Gerais. Por trás dos laços e dos bordados, está uma proposta simples: dar forma ao carinho que acompanha um presente.\n\nUma flor pode lembrar um passeio. Um bichinho pode se tornar o personagem favorito de uma criança. Um nome bordado pode fazer uma peça pertencer a alguém de um jeito especial. É nesse encontro entre desenho e significado que a Bordô encontra sua identidade.\n\nO Jardim de Encantos leva flores e borboletas aos laços. A Sinfonia das Matas transforma bichinhos músicos em pequenos personagens. Cada coleção é um convite para escolher um detalhe que converse com a sua história, seja para usar, presentear ou guardar.\n\nAté o nosso nome carrega um pedacinho de quem somos. “Bordou” é a ideia que ganhou forma no tecido. No nosso jeito mineiro de falar, vira “bordô”. E bordô também é a cor da nossa marca: um encontro entre o bordado, o mineirês e a identidade que escolhemos.\n\nSomos de Teixeiras, MG, e atendemos online, por encomenda. A conversa faz parte de cada pedido: nela combinamos o desenho, os materiais, o acabamento e os detalhes da entrega. Assim, uma ideia sua encontra um caminho para virar peça.\n\nPriscila é a idealizadora. Você traz o nome, a ocasião, a pessoa que quer surpreender. E a próxima história que a Bordô vai bordar pode começar nessa conversa.",
+    "storyImage": "assets/priscila-bordo.jpg",
+    "storyImageSecondary": "assets/priscila-retrato.jpg"
   },
   "collections": [
     {
@@ -329,8 +331,7 @@
       "image": "assets/sinfonia-gato.webp",
       "description": "Na banda Sinfonia das Matas, Milo adora ensaiar sua próxima canção de boina. O bordado de gatinho com saxofone e a clave em forma de coração trazem um toque lúdico ao penteado. Um laço infantil bordado para acompanhar passeios, festas e presentes cheios de personalidade. Escolha Milo para fazer parte da sua coleção.",
       "options": [
-        "Presilha Bico de Pato 100% Forrada (6+ meses)",
-        "Faixinha de Seda Anatômica (RN até 2 anos)"
+        "Presilha Bico de Pato 100% Forrada (6+ meses)"
       ],
       "collection": "sinfonia",
       "published": true,
@@ -369,8 +370,7 @@
       "image": "assets/sinfonia-leao.webp",
       "description": "Na banda Sinfonia das Matas, Leon adora comandar a banda com seu chapéu. O bordado de leãozinho com saxofone e a clave em forma de coração trazem um toque lúdico ao penteado. Um laço infantil bordado para acompanhar passeios, festas e presentes cheios de personalidade. Escolha Leon para fazer parte da sua coleção.",
       "options": [
-        "Presilha Bico de Pato 100% Forrada (6+ meses)",
-        "Faixinha de Seda Anatômica (RN até 2 anos)"
+        "Presilha Bico de Pato 100% Forrada (6+ meses)"
       ],
       "collection": "sinfonia",
       "published": true,
@@ -396,8 +396,7 @@
       "image": "assets/sinfonia-coruja.webp",
       "description": "Na banda Sinfonia das Matas, Olívia adora abrir o concerto quando a mata fica quietinha. O bordado de corujinha com saxofone e a clave em forma de coração trazem um toque lúdico ao penteado. Um laço infantil bordado para acompanhar passeios, festas e presentes cheios de personalidade. Escolha Olívia para fazer parte da sua coleção.",
       "options": [
-        "Presilha Bico de Pato 100% Forrada (6+ meses)",
-        "Faixinha de Seda Anatômica (RN até 2 anos)"
+        "Presilha Bico de Pato 100% Forrada (6+ meses)"
       ],
       "collection": "sinfonia",
       "published": true,
@@ -584,9 +583,7 @@
       "image": "assets/caixa-artesanal.webp",
       "description": "Olívia, Leon e Milo formam uma pequena banda: Corujinha, Leãozinho e Gatinho do Sax em três laços infantis bordados. Um kit Sinfonia das Matas para variar os penteados e criar novas histórias a cada passeio. Economia de R$ 29,80 sobre três unidades avulsas. Escolha o acabamento das peças na encomenda.",
       "options": [
-        "3 Presilhas 100% Forradas",
-        "3 Faixinhas de Seda Anatômicas",
-        "Misto (2 Presilhas + 1 Faixinha)"
+        "3 Presilhas 100% Forradas"
       ],
       "collection": "kits",
       "published": true,
