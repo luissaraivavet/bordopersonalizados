@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Bordô | Gestão</title>
+  <link rel="icon" href="../assets/brand-logo.png">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <aside><img class="logo" src="../assets/brand-logo.png" alt="Bordô"><span class="workspace">Gestão do site</span><nav aria-label="Seções do painel" id="navigation"></nav><div class="private">Neste computador<br><small>Rascunho privado</small></div></aside>
+  <div class="workspace-main"><header><div><h1 id="sectionTitle">Produtos</h1><p id="saveState" role="status">Carregando conteúdo…</p></div><div class="actions"><a class="button secondary" href="/preview/" target="_blank" rel="noopener"><img src="../assets/icons/arrow-up-right.svg" alt="">Prévia</a><button id="save" class="button"><img src="../assets/icons/check.svg" alt="">Salvar rascunho</button><button id="publish" class="button secondary"><img src="../assets/icons/arrow-up-right.svg" alt="">Publicar</button></div></header>
+  <main><div class="toolbar"><label class="search-label">Buscar<input id="search" type="search" placeholder="Nome ou descrição"></label><div><a class="export" href="/api/export">Baixar site ZIP</a><button id="create" class="button"><img src="../assets/icons/plus.svg" alt="">Adicionar</button></div></div><div id="content"></div></main>
+  <footer id="publishStatus"></footer></div>
+  <dialog id="editor"><form id="editForm"><div class="dialog-heading"><h2 id="editorTitle">Editar</h2><button type="button" class="icon-button" data-close="editor" aria-label="Fechar edição" title="Fechar"><img src="../assets/icons/x.svg" alt=""></button></div><div id="fields"></div><div class="dialog-actions"><button type="button" class="button secondary" data-close="editor">Cancelar</button><button class="button" type="submit"><img src="../assets/icons/check.svg" alt="">Concluir edição</button></div></form></dialog>
+  <dialog id="media"><div class="dialog-heading"><h2>Escolher foto</h2><button class="icon-button" data-close="media" aria-label="Fechar fotos" title="Fechar"><img src="../assets/icons/x.svg" alt=""></button></div><label class="upload button secondary"><img src="../assets/icons/plus.svg" alt="">Enviar foto<input id="upload" type="file" accept="image/png,image/jpeg,image/webp"></label><div class="media-grid" id="mediaGrid"></div></dialog>
+  <dialog id="confirmPublish"><div class="dialog-heading"><h2>Publicar alterações?</h2></div><p>O rascunho será enviado ao GitHub e atualizará o site público após o processamento do GitHub Pages.</p><div class="dialog-actions"><button class="button secondary" data-close="confirmPublish">Cancelar</button><button class="button" id="confirmPublishButton">Confirmar publicação</button></div></dialog>
+  <div id="toast" role="alert" hidden></div>
+  <script src="admin.js"></script>
+</body>
+</html>

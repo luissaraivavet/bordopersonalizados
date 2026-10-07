@@ -1,0 +1,6 @@
+.bordo-admin/
+__pycache__/
+*.pyc
+.env
+.env.*
+.venv/
