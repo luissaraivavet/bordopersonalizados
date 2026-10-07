@@ -20,7 +20,12 @@ class ValidationTests(unittest.TestCase):
     def test_original_catalog(self):
         app.validate(self.data)
         self.assertEqual(self.data['settings']['location'], 'Teixeiras, MG')
-        self.assertEqual(len(self.data['products']), 9)
+        bows = [p for p in self.data['products'] if p['collection'] in ('jardim', 'sinfonia')]
+        self.assertEqual(len(bows), 39)
+        self.assertTrue(all(p['price'] == 49.90 for p in bows))
+        kits = [p for p in self.data['products'] if p['collection'] == 'kits']
+        self.assertEqual(len(kits), 2)
+        self.assertTrue(all(p['price'] == 119.90 and len(p['bundle']) == 3 for p in kits))
 
     def test_invalid_prices_and_discount(self):
         for value in (-1, float('nan'), float('inf'), True, '55'):
@@ -31,6 +36,16 @@ class ValidationTests(unittest.TestCase):
         self.data['settings']['pixDiscount'] = 101
         with self.assertRaises(ValueError):
             app.validate(self.data)
+
+    def test_kit_members_and_visibility(self):
+        kit = next(p for p in self.data['products'] if p['id'] == 'trio')
+        for members in (['gato'], ['gato', 'gato', 'coruja'], ['gato', 'coruja', 'missing']):
+            kit['bundle'] = members
+            with self.assertRaises(ValueError):
+                app.validate(self.data)
+        kit['bundle'] = ['gato', 'coruja', 'leao']
+        next(p for p in self.data['products'] if p['id'] == 'gato')['published'] = False
+        self.assertNotIn('trio', [p['id'] for p in app.public_content(self.data)['products']])
 
     def test_foreign_collection_and_duplicate_id(self):
         self.data['products'][0]['collection'] = 'missing'

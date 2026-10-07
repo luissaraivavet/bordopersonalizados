@@ -14,6 +14,12 @@
     function notify(message) { const toast=document.getElementById('toast'); toast.textContent=message; toast.hidden=false; clearTimeout(toastTimer); toastTimer=setTimeout(()=>{toast.hidden=true;},3500); }
     function productCard(p) {
       const title=escapeHTML(p.title), image=escapeHTML(p.image), id=escapeHTML(p.id);
+      if(p.bundle) {
+        const members=p.bundle.map(id=>products.find(item=>item.id===id)).filter(Boolean);
+        const photos=members.map(item=>`<img src="${escapeHTML(item.image)}" alt="${escapeHTML(item.title)}" width="600" height="600" loading="lazy">`).join('');
+        const card=productCard({...p,bundle:null});
+        return card.replace(/<figure class="product-figure">[\s\S]*?<\/figure>/, `<figure class="product-figure kit-figure"><div class="kit-images">${photos}</div><span class="illustrative">Imagens ilustrativas · 3 laços</span></figure>`);
+      }
       return `<article class="product"><figure class="product-figure"><img src="${image}" alt="${title}" width="600" height="600" loading="lazy">${p.illustrative ? '<span class="illustrative">Imagem ilustrativa</span>' : ''}<button class="icon-button zoom-button" data-zoom="${image}" data-title="${title}" aria-label="Ampliar ${title}" title="Ampliar imagem">${icon('zoom-in')}</button></figure><div class="product-info"><h3>${title}</h3><p>${escapeHTML(p.description)}</p>${Number.isFinite(p.price) ? `<div class="product-price"><strong>${money(p.price)}</strong><small>${money(p.price*(1-settings.pixDiscount/100))} no Pix</small></div><label class="field-label" for="var-${id}">Opção da peça</label><select id="var-${id}">${p.options.map(o => `<option>${escapeHTML(o)}</option>`).join('')}</select><button class="button" data-add="${id}">${icon('plus')} Adicionar à sacola</button>` : `<a class="text-link" href="#personalizados" data-inquiry="Gostaria de consultar: ${title}.">Quero este encanto ${icon('arrow-right')}</a>`}</div></article>`;
     }
     function renderProducts() {
