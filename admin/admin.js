@@ -1,8 +1,8 @@
 'use strict';
 const sections={products:'Produtos',collections:'Coleções',media:'Fotos',testimonials:'Depoimentos',articles:'Artigos',links:'Links',settings:'Configurações'};
 const schemas={
-  products:[['title','Nome'],['collection','Coleção','collection'],['price','Preço em reais','price'],['description','Descrição','textarea'],['options','Opções da peça (uma por linha)','options'],['image','Foto','image'],['illustrative','Imagem ilustrativa','bool'],['published','Ativo no site','bool']],
-  collections:[['name','Nome'],['description','Descrição','textarea'],['image','Capa','image'],['featured','Destaque na abertura','bool'],['illustrative','Imagem ilustrativa','bool'],['published','Ativa no site','bool']],
+  products:[['title','Nome'],['collection','Coleção','collection'],['price','Preço em reais','price'],['description','Descrição','textarea'],['options','Opções da peça (uma por linha)','options'],['image','Foto','image'],['published','Ativo no site','bool']],
+  collections:[['name','Nome'],['description','Descrição','textarea'],['image','Capa','image'],['featured','Destaque na abertura','bool'],['published','Ativa no site','bool']],
   testimonials:[['name','Nome do cliente'],['text','Depoimento autorizado','textarea'],['published','Ativo no site','bool']],
   articles:[['title','Título'],['excerpt','Resumo','textarea'],['body','Artigo','long'],['image','Foto','image'],['published','Ativo no site','bool']],
   links:[['title','Nome'],['url','Endereço https://','url'],['published','Ativo no site','bool']],

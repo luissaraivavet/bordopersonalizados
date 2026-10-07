@@ -35,6 +35,6 @@ Explique problema, solução e validação no PR. Vincule issues quando aplicáv
 
 ## Marca e Segurança
 
-A Bordô é de Teixeiras, MG, com atendimento online por encomenda. Não enfatize exclusividade do linho. Preserve o logo, português brasileiro e sinalização de imagens ilustrativas. Não invente preços, depoimentos ou propriedades.
+A Bordô é de Teixeiras, MG, com atendimento online por encomenda. Não enfatize exclusividade do linho. Preserve o logo e o português brasileiro. Por solicitação do proprietário, não exiba avisos de imagens ilustrativas no site. Não invente preços, depoimentos ou propriedades.
 
 Preserve `bordo_cart_v2` e valide dados armazenados. Nunca versione credenciais ou `.bordo-admin/`. Mantenha o servidor restrito a loopback, autenticação e proteção CSRF. Confirme alterações de contatos e condições comerciais.
