@@ -6,6 +6,7 @@
     const GIFT_PRICE = settings.giftPrice;
     const collections = content.collections.filter(item => item.published);
     const products = content.products.filter(item => item.published && collections.some(group => group.id === item.collection));
+    const pixPrice = value => Math.round(Math.round(value * 100) * (100 - settings.pixDiscount) / 100) / 100;
     const money = value => value.toLocaleString('pt-BR', {style:'currency', currency:'BRL'});
     const icon = name => `<img class="icon" src="assets/icons/${name}.svg" alt="">`;
     const escapeHTML = value => String(value).replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
@@ -20,12 +21,12 @@
         const card=productCard({...p,bundle:null});
         return card.replace(/<figure class="product-figure">[\s\S]*?<\/figure>/, `<figure class="product-figure kit-figure"><div class="kit-images">${photos}</div></figure>`);
       }
-      return `<article class="product"><figure class="product-figure"><img src="${image}" alt="${title}" width="600" height="600" loading="lazy"><button class="icon-button zoom-button" data-zoom="${image}" data-title="${title}" aria-label="Ampliar ${title}" title="Ampliar imagem">${icon('zoom-in')}</button></figure><div class="product-info"><h3>${title}</h3><p>${escapeHTML(p.description)}</p>${Number.isFinite(p.price) ? `<div class="product-price"><strong>${money(p.price)}</strong><small>${money(p.price*(1-settings.pixDiscount/100))} no Pix</small></div><label class="field-label" for="var-${id}">Opção da peça</label><select id="var-${id}">${p.options.map(o => `<option>${escapeHTML(o)}</option>`).join('')}</select><button class="button" data-add="${id}">${icon('plus')} Adicionar à sacola</button>` : `<a class="text-link" href="#personalizados" data-inquiry="Gostaria de consultar: ${title}.">Quero este encanto ${icon('arrow-right')}</a>`}</div></article>`;
+      return `<article class="product"><figure class="product-figure"><img src="${image}" alt="${title}" width="600" height="600" loading="lazy"><button class="icon-button zoom-button" data-zoom="${image}" data-title="${title}" aria-label="Ampliar ${title}" title="Ampliar imagem">${icon('zoom-in')}</button></figure><div class="product-info"><h3>${title}</h3><p>${escapeHTML(p.description.split(/(?<=[.!?])\s/)[0])}</p>${p.description.split(/(?<=[.!?])\s/).length > 1 ? `<details class="product-details"><summary>Detalhes da peça</summary><p>${escapeHTML(p.description)}</p></details>` : ''}${Number.isFinite(p.price) ? `<div class="product-price"><strong>${money(p.price)}</strong><small>${money(pixPrice(p.price))} no Pix</small></div>${p.options.length > 1 ? `<label class="field-label" for="var-${id}">Opção da peça</label><select id="var-${id}">${p.options.map(o => `<option>${escapeHTML(o)}</option>`).join('')}</select>` : `<p class="product-option">${escapeHTML(p.options[0] || 'Detalhes no atendimento')}</p>`}<button class="button" data-add="${id}">${icon('plus')} Adicionar à sacola</button>` : `<a class="text-link" href="#personalizados" data-inquiry="Gostaria de consultar: ${title}.">Quero este encanto ${icon('arrow-right')}</a>`}</div></article>`;
     }
     function renderProducts() {
       document.querySelector('.dropdown').innerHTML = collections.map(c => `<a href="#${escapeHTML(c.id)}">${escapeHTML(c.name)}</a>`).join('');
       document.querySelector('.collection-grid').innerHTML = collections.filter(c => c.featured).map((c,index) => `<a class="collection-link" href="#${escapeHTML(c.id)}"><figure class="collection-photo"><img src="${escapeHTML(c.image)}" alt="${escapeHTML(c.name)}" width="1400" height="850" ${index ? '' : 'fetchpriority="high"'}></figure><div class="collection-caption"><h2>${escapeHTML(c.name)}</h2><span class="text-link">Conhecer a coleção ${icon('arrow-right')}</span></div></a>`).join('');
-      document.getElementById('catalogSections').innerHTML = collections.map(c => `<section class="section ${escapeHTML(c.id)}" id="${escapeHTML(c.id)}" aria-labelledby="${escapeHTML(c.id)}Title"><div class="wrap"><div class="section-heading"><div><div class="eyebrow">Uma coleção Bordô</div><h2 id="${escapeHTML(c.id)}Title">${escapeHTML(c.name)}</h2><p>${escapeHTML(c.description)}</p></div><a class="text-link" href="#personalizados">Conversar sobre uma peça ${icon('arrow-up-right')}</a></div><div class="product-grid">${products.filter(p => p.collection === c.id).map(productCard).join('')}</div><p class="collection-note">Disponibilidade, frete, materiais e prazo são confirmados no atendimento.</p>${c.id === 'sinfonia' ? document.getElementById('filmTemplate').innerHTML : ''}</div></section>`).join('');
+      document.getElementById('catalogSections').innerHTML = collections.map(c => `<section class="section ${escapeHTML(c.id)}" id="${escapeHTML(c.id)}" aria-labelledby="${escapeHTML(c.id)}Title"><div class="wrap"><div class="section-heading"><div><div class="eyebrow">Uma coleção Bordô</div><h2 id="${escapeHTML(c.id)}Title">${escapeHTML(c.name)}</h2><p>${escapeHTML(c.description)}</p></div><a class="text-link" href="#personalizados">Conversar sobre uma peça ${icon('arrow-up-right')}</a></div><div class="product-grid" id="grid-${escapeHTML(c.id)}">${products.filter(p => p.collection === c.id).map((p,index) => productCard(p).replace('<article class="product">', `<article class="product"${index >= 6 ? ' hidden data-extra-product' : ''}>`)).join('')}</div>${products.filter(p => p.collection === c.id).length > 6 ? `<button class="button secondary collection-more" data-expand="${escapeHTML(c.id)}" aria-expanded="false" aria-controls="grid-${escapeHTML(c.id)}">Ver coleção completa (${products.filter(p => p.collection === c.id).length} peças)</button>` : ''}<p class="collection-note">Disponibilidade, frete, materiais e prazo são confirmados no atendimento.</p>${c.id === 'sinfonia' ? document.getElementById('filmTemplate').innerHTML : ''}</div></section>`).join('');
       document.getElementById('pageTitle').textContent=settings.headline;
       document.querySelector('.intro p').textContent=settings.intro;
       const story=document.querySelector('.story-copy'), link=story.querySelector('a');
@@ -68,7 +69,7 @@
     }
     let cart=loadCart();
     function saveCart(){ try{localStorage.setItem(STORAGE_KEY,JSON.stringify(cart));}catch{notify('Sua sacola funciona nesta visita, mas não pôde ser salva neste navegador.');} renderCartUI(); }
-    function cartTotals(){ const subtotal=cart.reduce((sum,item)=>sum+item.price*item.qty,0); const gift=cart.length && document.getElementById('cartGiftCheck').checked ? GIFT_PRICE : 0; return {subtotal,gift,total:subtotal+gift,pix:Math.round(subtotal*(100-settings.pixDiscount))/100+gift}; }
+    function cartTotals(){ const subtotal=cart.reduce((sum,item)=>sum+item.price*item.qty,0); const gift=cart.length && document.getElementById('cartGiftCheck').checked ? GIFT_PRICE : 0; return {subtotal,gift,total:subtotal+gift,pix:pixPrice(subtotal)+gift}; }
     function checkoutMessage(){
       const totals=cartTotals();
       return `Olá, Bordô! Gostaria de consultar este pedido:\n\n`+cart.map(item=>`${item.qty}x ${item.title}\nAcabamento: ${item.variation}\nValor: ${money(item.price*item.qty)}`).join('\n\n')+`\n\nSubtotal: ${money(totals.subtotal)}\n`+(totals.gift?`Embalagem kraft para presente: ${money(totals.gift)}\n`:'Sem embalagem adicional\n')+`Total estimado: ${money(totals.total)}\nAlternativa no Pix (${settings.pixDiscount}% de desconto nas peças): ${money(totals.pix)}\n\nPor favor, confirmem disponibilidade, prazo, frete e formas de pagamento.`;
@@ -84,23 +85,26 @@
     }
     function addToCart(id){
       const product=products.find(item=>item.id===id); if(!product || !Number.isFinite(product.price)) return;
-      const variation=document.getElementById(`var-${id}`).value; const existing=cart.find(item=>item.id===id && item.variation===variation);
+      const variation=document.getElementById(`var-${id}`)?.value || product.options[0]; const existing=cart.find(item=>item.id===id && item.variation===variation);
       if(existing){if(existing.qty>=99){notify('Para mais de 99 peças, consulte um projeto personalizado.');return;} existing.qty++;}
       else cart.push({id,title:product.title,price:product.price,variation,imgPath:product.image,qty:1});
       saveCart(); document.getElementById('cartDrawer').showModal();
     }
     function updateSimulatorPreview(){
       const form=document.getElementById('customForm'); const data=new FormData(form); const detail=String(data.get('details')||'').trim();
-      const summary=`Projeto: ${data.get('project')}\nQuantidade: ${data.get('quantity')}`+(detail?`\nDetalhes: ${detail}`:'');
+      const city=String(data.get('city')||'').trim();
+      const date=String(data.get('date')||'').trim();
+      const summary=`Projeto: ${data.get('project')}\nQuantidade: ${data.get('quantity')}`+(detail?`\nDetalhes: ${detail}`:'')+(city?`\nCidade de entrega: ${city}`:'')+(date?`\nData desejada: ${date.split('-').reverse().join('/')}`:'');
       document.getElementById('simMsgPreviewText').textContent=summary;
       document.getElementById('customWhatsApp').href=whatsApp(`Olá! Vim pelo site da Bordô e gostaria de um orçamento personalizado.\n\n${summary}\n\nPodem me informar possibilidades, valores e prazo?`);
     }
     function closeMenu(){document.getElementById('mainNav').classList.remove('open');document.getElementById('menuButton').setAttribute('aria-expanded','false');document.getElementById('menuButton').setAttribute('aria-label','Abrir menu');document.querySelector('.collection-nav').open=false;}
     document.getElementById('menuButton').addEventListener('click',()=>{const open=document.getElementById('mainNav').classList.toggle('open');document.getElementById('menuButton').setAttribute('aria-expanded',String(open));document.getElementById('menuButton').setAttribute('aria-label',open?'Fechar menu':'Abrir menu');});
-    document.querySelectorAll('#mainNav a').forEach(link=>link.addEventListener('click',closeMenu));
+    document.getElementById('mainNav').addEventListener('click',event=>{if(event.target.closest('a'))closeMenu();});
     document.addEventListener('keydown',event=>{if(event.key==='Escape'){const menuWasOpen=document.getElementById('mainNav').classList.contains('open');closeMenu();if(menuWasOpen)document.getElementById('menuButton').focus();}});
     document.addEventListener('click',event=>{
       const button=event.target.closest('button');
+      if(button?.dataset.expand){const grid=document.getElementById(`grid-${button.dataset.expand}`);const expanded=button.getAttribute('aria-expanded')==='true';grid.querySelectorAll('[data-extra-product]').forEach(item=>item.hidden=expanded);button.setAttribute('aria-expanded',String(!expanded));button.textContent=expanded?`Ver coleção completa (${grid.children.length} peças)`:'Mostrar menos';if(!expanded)grid.querySelector('[data-extra-product] button')?.focus();return;}
       if(button?.dataset.add){addToCart(button.dataset.add);return;}
       if(button?.dataset.close){document.getElementById(button.dataset.close).close();return;}
       if(button?.dataset.zoom){document.getElementById('lightboxImage').src=button.dataset.zoom;document.getElementById('lightboxImage').alt=button.dataset.title;document.getElementById('imageTitle').textContent=button.dataset.title;document.getElementById('imageDialog').showModal();return;}
