@@ -237,6 +237,19 @@ def description(page, product):
     return None
 
 
+def product_properties(product):
+    """Inclui propriedades estruturadas mesmo quando não há tabela visível."""
+    properties = {}
+    for prop in product.get("additionalProperty", []) if isinstance(product.get("additionalProperty", []), list) else []:
+        if not isinstance(prop, dict):
+            continue
+        key = clean(prop.get("name") or prop.get("propertyID"), 120)
+        value = clean(prop.get("value"), 500)
+        if key and value and len(properties) < 100:
+            properties[key] = value
+    return properties
+
+
 def parse_page(page, affiliate_url: str, slug: str):
     """Extrai campos públicos identificáveis; nunca inventa valores ausentes."""
     product = product_node(page)
@@ -256,8 +269,13 @@ def parse_page(page, affiliate_url: str, slug: str):
     visible_description = description(page, product)
     image_urls = product_images(product, page)
     seller = name_of(offer.get("seller")) or first(page, [".ui-pdp-seller__header__title::text"])
-    status = "revisar" if title else "inacessivel"
+    page_title = first(page, ["title::text"]) or ""
+    anti_bot = bool(re.search(r"captcha|verifique.{0,15}humano|acesso negado|access denied", page_title, re.I))
+    status = "bloqueado" if anti_bot else ("revisar" if title else "inacessivel")
     warnings = []
+    if anti_bot:
+        warnings.append("Resposta parece ser verificação de acesso; conteúdo não confiável.")
+        title = None
     if not title:
         warnings.append("Página sem título verificável; pode estar bloqueada, vazia ou alterada.")
     if not displayed_price:
@@ -280,7 +298,10 @@ def parse_page(page, affiliate_url: str, slug: str):
         "sku": clean(product.get("sku") or product.get("productID"), 200),
         "preco_brl": displayed_price if (offer.get("priceCurrency") or "BRL") == "BRL" else None,
         "moeda": clean(offer.get("priceCurrency")) or ("BRL" if displayed_price else None),
-        "preco_original_brl": None,
+        "preco_original_brl": number_string(first(page, [
+            ".andes-money-amount--previous .andes-money-amount__fraction::text",
+            ".ui-pdp-price__original-value .andes-money-amount__fraction::text"
+        ])),
         "disponibilidade": clean(offer.get("availability"), 200),
         "condicao": clean(offer.get("itemCondition"), 200),
         "vendedor": seller,
@@ -288,10 +309,18 @@ def parse_page(page, affiliate_url: str, slug: str):
         "quantidade_avaliacoes": rating.get("reviewCount") or rating.get("ratingCount"),
         "imagens": image_urls,
         "descricao_publica": visible_description,
-        "caracteristicas": attribute_table(page),
+        "caracteristicas": {**product_properties(product), **attribute_table(page)},
         "variacoes": product.get("hasVariant", []) if isinstance(product.get("hasVariant", []), list) else [],
+        # Frete/prazo dependem de CEP e não são deduzidos do anúncio público.
         "frete": None,
         "prazo_entrega": None,
+        "parcelamento_informado_no_anuncio": first(page, [
+            ".ui-pdp-price__subtitles::text", ".ui-pdp-payment__installments::text"
+        ]),
+        "cor": clean(product.get("color"), 200),
+        "tamanho": clean(product.get("size"), 200),
+        "gtin": clean(product.get("gtin") or product.get("gtin13"), 100),
+        "mpn": clean(product.get("mpn"), 100),
         "observacoes": warnings,
         "revisado": False,
         "publicar_no_site": False,
@@ -338,7 +367,7 @@ def load_links(path: Path):
     return output
 
 
-def import_one(slug, url, fixture=None):
+def import_one(slug, url, fixture=None, html_dir=None):
     if fixture:
         from scrapling import Selector
         page = Selector(fixture.read_text(encoding="utf-8"), url=url)
@@ -360,6 +389,12 @@ def import_one(slug, url, fixture=None):
         validate_affiliate_url(final_url)
         result = parse_page(page, url, slug)
         result["origem"] = "scrapling_fetcher"
+        if html_dir is not None and result["status"] == "revisar":
+            body = bytes(getattr(page, "body", b""))[:6_000_000]
+            html_dir.mkdir(parents=True, exist_ok=True)
+            html_file = html_dir / (slug + ".html")
+            html_file.write_bytes(body)
+            result["arquivo_html_local"] = str(html_file)
         return result
     except Exception as exc:  # falha de transporte/parser deve afetar apenas este item
         return {"slug": slug, "url_afiliado": url, "status": "inacessivel",
@@ -371,6 +406,7 @@ def main(argv=None):
     parser.add_argument("--links", type=Path, default=DEFAULT_LINKS, help="Arquivo JSON de links")
     parser.add_argument("--saida", type=Path, default=DEFAULT_OUTPUT, help="JSON de saída para revisão")
     parser.add_argument("--fixture", type=Path, help="HTML local para teste de um único link, sem rede")
+    parser.add_argument("--guardar-html", action="store_true", help="Guardar HTML bruto para análise local (até 6 MB por item)")
     parser.add_argument("--intervalo", type=float, default=3.0, help="Pausa entre anúncios (mínimo 2 s)")
     args = parser.parse_args(argv)
     if not args.fixture and args.intervalo < 2.0:
@@ -389,7 +425,8 @@ def main(argv=None):
     for index, (slug, url) in enumerate(links):
         if index and not args.fixture:
             time.sleep(args.intervalo)
-        result = import_one(slug, url, fixture=args.fixture)
+        result = import_one(slug, url, fixture=args.fixture,
+                            html_dir=(ROOT / ".bordo-scraping" / "html") if args.guardar_html else None)
         results.append(result)
         print(f"{slug}: {result['status']}")
     args.saida.parent.mkdir(parents=True, exist_ok=True)
