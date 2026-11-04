@@ -93,7 +93,11 @@ def all_values(page, selectors, limit=MAX_GALLERY):
 
 
 def jsonld_nodes(page):
-    blocks = all_values(page, ["script[type='application/ld+json']::text"], limit=100)
+    # JSON-LD pode superar 4 KB. Ler o script inteiro, sem truncar JSON.
+    try:
+        blocks = page.css("script[type='application/ld+json']::text").getall()[:100]
+    except (AttributeError, KeyError, ValueError):
+        blocks = []
     nodes = []
     for block in blocks:
         try:
@@ -357,7 +361,7 @@ def import_one(slug, url, fixture=None):
         result = parse_page(page, url, slug)
         result["origem"] = "scrapling_fetcher"
         return result
-    except (OSError, RuntimeError, ValueError) as exc:
+    except Exception as exc:  # falha de transporte/parser deve afetar apenas este item
         return {"slug": slug, "url_afiliado": url, "status": "inacessivel",
                 "erro": f"{type(exc).__name__}: {str(exc)[:180]}", "publicar_no_site": False}
 
