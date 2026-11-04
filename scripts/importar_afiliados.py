@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Importação revisável de anúncios do Mercado Livre usando Scrapling.
 
-Não publica produtos. Consulta apenas a API oficial via OAuth ou analisa
-HTML local autorizado. Não tenta acessar anúncios via scraping do site.
+Não publica produtos. Tenta leitura pública simples sem API quando permitida
+por robots.txt, sem contornar bloqueios. API e HTML local são opcionais.
 """
 from __future__ import annotations
 
@@ -16,6 +16,9 @@ from datetime import datetime, timezone
 from decimal import Decimal, InvalidOperation
 from pathlib import Path
 from urllib.parse import parse_qs, urlsplit
+from urllib.request import Request, urlopen
+from urllib.error import HTTPError, URLError
+from urllib.robotparser import RobotFileParser
 
 ALLOWED_HOSTS = {"mercadolivre.com.br", "www.mercadolivre.com.br", "produto.mercadolivre.com.br"}
 USER_AGENT = "BordoCuradoriaBot/1.0 (+https://bordopersonalizados.com.br/)"
@@ -433,13 +436,74 @@ def load_links(path: Path):
     return output
 
 
-def import_one(slug, url, fixture=None, token=None):
+def public_page_robots(url):
+    """Falha de modo conservador se robots.txt não puder ser consultado."""
+    parsed = urlsplit(url)
+    robots_url = parsed.scheme + "://" + parsed.netloc + "/robots.txt"
+    try:
+        request = Request(robots_url, headers={"User-Agent": USER_AGENT})
+        with urlopen(request, timeout=12) as resp:
+            data = resp.read(512_000).decode("utf-8", "replace")
+    except HTTPError as exc:
+        if exc.code in (404, 410):
+            return True, "Sem robots.txt"
+        return False, "robots.txt não acessível (HTTP " + str(exc.code) + ")"
+    except (URLError, TimeoutError, OSError) as exc:
+        return False, "Não foi possível consultar robots.txt (" + type(exc).__name__ + ")"
+    rules = RobotFileParser()
+    rules.parse(data.splitlines())
+    return rules.can_fetch(USER_AGENT, url), "Política robots.txt consultada"
+
+
+def public_page_url(affiliate_url):
+    ids = product_ids(affiliate_url)
+    if ids["id_catalogo"]:
+        return "https://www.mercadolivre.com.br/p/" + ids["id_catalogo"]
+    if ids["id_anuncio"]:
+        return "https://produto.mercadolivre.com.br/MLB-" + ids["id_anuncio"][3:] + "-_JM"
+    return affiliate_url
+
+
+def import_public_one(slug, affiliate_url):
+    """Tenta uma consulta pública simples; sem autorização, não contorna bloqueios."""
+    url = public_page_url(affiliate_url)
+    allowed, reason = public_page_robots(url)
+    if not allowed:
+        return {"slug": slug, "url_afiliado": affiliate_url, "status": "bloqueado",
+                "erro": reason, "publicar_no_site": False}
+    from scrapling.fetchers import Fetcher
+    try:
+        page = Fetcher.get(url, timeout=20, retries=1, stealthy_headers=False,
+                           follow_redirects="safe", headers={
+                               "User-Agent": USER_AGENT,
+                               "Accept-Language": "pt-BR,pt;q=0.9"})
+        status = getattr(page, "status", None)
+        if status != 200:
+            return {"slug": slug, "url_afiliado": affiliate_url,
+                    "status": "bloqueado" if status in (401, 403, 429) else "inacessivel",
+                    "erro": "Consulta pública retornou HTTP " + str(status),
+                    "publicar_no_site": False}
+        final_url = str(getattr(page, "url", url))
+        validate_affiliate_url(final_url)
+        record = parse_page(page, affiliate_url, slug)
+        record["origem"] = "pagina_publica_sujeita_a_restricoes"
+        record["url_resposta"] = final_url
+        return record
+    except Exception as exc:
+        return {"slug": slug, "url_afiliado": affiliate_url,
+                "status": "inacessivel", "erro": "Leitura pública indisponível (" + type(exc).__name__ + ")",
+                "publicar_no_site": False}
+
+
+def import_one(slug, url, fixture=None, token=None, modo="publico"):
     if fixture:
         from scrapling import Selector
         page = Selector(fixture.read_text(encoding="utf-8"), url=url)
         result = parse_page(page, url, slug)
         result["origem"] = "html_local_autorizado"
         return result
+    if modo == "publico":
+        return import_public_one(slug, url)
     if not token:
         return {"slug": slug, "url_afiliado": url, "status": "sem_credenciais",
                 "erro": "Defina MELI_ACCESS_TOKEN no ambiente local (não cole a chave no chat).",
@@ -476,11 +540,13 @@ def import_one(slug, url, fixture=None, token=None):
 
 
 def main(argv=None):
-    parser = argparse.ArgumentParser(description="Importação revisável via API oficial (Scrapling) ou HTML local autorizado")
+    parser = argparse.ArgumentParser(description="Importação revisável de anúncios públicos com Scrapling (API opcional)")
     parser.add_argument("--links", type=Path, default=DEFAULT_LINKS, help="Arquivo JSON de links")
     parser.add_argument("--saida", type=Path, default=DEFAULT_OUTPUT, help="JSON de saída para revisão")
     parser.add_argument("--fixture", type=Path, help="HTML local para teste de um único link, sem rede")
-    parser.add_argument("--token-env", default="MELI_ACCESS_TOKEN", help="Nome da variável de ambiente para token OAuth da API")
+    parser.add_argument("--modo", choices=["publico", "api"], default="publico",
+                        help="Modo padrão sem API; consulta pública pode ser bloqueada")
+    parser.add_argument("--token-env", default="MELI_ACCESS_TOKEN", help="Variável de token OAuth para modo api")
     parser.add_argument("--intervalo", type=float, default=3.0, help="Pausa entre anúncios (mínimo 2 s)")
     args = parser.parse_args(argv)
     if not args.fixture and args.intervalo < 2.0:
@@ -495,12 +561,12 @@ def main(argv=None):
         import scrapling  # noqa: F401  (pré-checagem amigável)
     except ImportError:
         parser.error('Instale a dependência: python -m pip install "scrapling>=0.5,<0.6"')
-    token = os.environ.get(args.token_env, "").strip() if not args.fixture else None
+    token = os.environ.get(args.token_env, "").strip() if args.modo == "api" and not args.fixture else None
     results = []
     for index, (slug, url) in enumerate(links):
         if index and not args.fixture:
             time.sleep(args.intervalo)
-        result = import_one(slug, url, fixture=args.fixture, token=token)
+        result = import_one(slug, url, fixture=args.fixture, token=token, modo=args.modo)
         results.append(result)
         print(f"{slug}: {result['status']}")
     args.saida.parent.mkdir(parents=True, exist_ok=True)
