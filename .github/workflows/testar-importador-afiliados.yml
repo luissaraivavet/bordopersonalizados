@@ -8,6 +8,11 @@ on:
       - 'tests/test_importar_afiliados.py'
       - 'tests/fixtures/anuncio_afiliado_exemplo.html'
       - 'content/afiliados-links.json'
+      - 'content/afiliados-rascunho-arvore.json'
+      - 'blog/**'
+      - 'preview/**'
+      - 'sitemap.xml'
+      - 'tests/test_blog.py'
       - '.github/workflows/testar-importador-afiliados.yml'
   workflow_dispatch:
 
@@ -29,3 +34,5 @@ jobs:
         run: python -m py_compile scripts/importar_afiliados.py tests/test_importar_afiliados.py
       - name: Testar parser e URLs sem acessar o Mercado Livre
         run: python -m unittest discover -s tests -p test_importar_afiliados.py -v
+      - name: Testar SEO e evidências dos guias da Bordô
+        run: python -m unittest discover -s tests -p test_blog.py -v
