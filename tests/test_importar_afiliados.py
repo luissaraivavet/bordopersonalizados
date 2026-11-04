@@ -56,6 +56,43 @@ class TestImportarAfiliados(unittest.TestCase):
         self.assertEqual(entries[0][0], "arvore-de-natal-210-600-galhos")
         self.assertEqual(entries[0][1], importador.validate_affiliate_url(entries[0][1]))
 
+    def test_api_item_parsing_conserva_resposta_e_link(self):
+        item = {
+            "id": "MLB4263473855",
+            "title": "Árvore ilustrativa, teste do importador",
+            "price": 159.90,
+            "original_price": 199.90,
+            "currency_id": "BRL",
+            "status": "active",
+            "condition": "new",
+            "seller_id": 987,
+            "category_id": "MLB2020",
+            "available_quantity": 8,
+            "pictures": [{"secure_url": "https://http2.mlstatic.com/D_Q_NP_123-EXEMPLO.webp"}],
+            "attributes": [
+                {"name": "Marca", "value_name": "Exemplo"},
+                {"name": "Altura", "value_name": "2,10 m"}
+            ],
+            "variations": [],
+            "shipping": {"mode": "me2"},
+        }
+        details = {"plain_text": "Descrição de teste, sem relação com produto real."}
+        result = importador.parse_api_item(item, details, LINK, "arvore-teste")
+        self.assertEqual(result["status"], "revisar")
+        self.assertEqual(result["preco_brl"], "159.90")
+        self.assertEqual(result["preco_original_brl"], "199.90")
+        self.assertEqual(result["caracteristicas"]["Altura"], "2,10 m")
+        self.assertEqual(result["id_anuncio_api"], "MLB4263473855")
+        self.assertEqual(result["dados_brutos_api"]["anuncio"], item)
+        self.assertEqual(result["dados_brutos_api"]["descricao"], details)
+        self.assertEqual(result["url_afiliado"], LINK)
+        self.assertFalse(result["publicar_no_site"])
+
+    def test_nao_tenta_api_sem_token(self):
+        result = importador.import_one("teste", LINK, token=None)
+        self.assertEqual(result["status"], "sem_credenciais")
+        self.assertFalse(result["publicar_no_site"])
+
     def test_fixture_sem_rede_com_scrapling(self):
         try:
             from scrapling import Selector
