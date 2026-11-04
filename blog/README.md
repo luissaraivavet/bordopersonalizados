@@ -4,7 +4,7 @@ Seção editorial integrada ao site estático existente. Não utiliza WordPress 
 
 ## Publicação
 
-- As páginas residem em /blog/ e quatro diretórios de artigos.
+- As páginas residem em /blog/ e quatro diretórios de artigos, página de política editorial e um feed RSS.
 - O CSS fica em /blog/estilos.css e reutiliza as fontes e logomarca originais do repositório.
 - O link para a árvore veio da URL compartilhada pelo proprietário em 2026-11-04. **A atribuição de afiliado não foi comprovada.** Antes de publicar, substitua os href de produtos por links gerados e validados no Gerador de Links do programa, com etiqueta de campanha.
 - Confirmar que o domínio foi informado/cadastrado na conta de afiliado.
