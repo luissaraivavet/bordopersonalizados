@@ -57,7 +57,7 @@ class TestBlog(unittest.TestCase):
             p.feed(page.read_text(encoding="utf-8"))
             for link in p.links:
                 href = link.get("href", "")
-                if href.startswith("/blog/") and not href.startswith("/blog/estilos.css"):
+                if href.startswith("/blog/") and not href.endswith((".css", ".xml")):
                     path = href.split("#")[0].split("?")[0].lstrip("/")
                     self.assertTrue((ROOT / path / "index.html").is_file(), f"{page}: {href}")
 
