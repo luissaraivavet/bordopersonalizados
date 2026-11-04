@@ -1,0 +1,29 @@
+{
+  "aviso": "Rascunho baseado em informações públicas encontradas em resultado de busca. Não foi raspado com Scrapling, não constitui atualização automática e não está publicado.",
+  "coletado_em": "2026-11-04",
+  "fonte_consulta": "https://www.mercadolivre.com.br/arvore-de-natal-2-metros-600-galhos-grande-tradicional-luxo-cor-verde/p/MLB54646018",
+  "slug": "arvore-de-natal-210-600-galhos",
+  "url_afiliado": "https://www.mercadolivre.com.br/p/MLB54646018?matt_tool=38524122&pdp_filters=item_id:MLB4263473855&ua=77_a7mIw-TVKAJOZloTjiweFqQejwgSDtCI3DM0aBMooFIZe#origin=share&sid=share&wid=MLB4263473855&action=whatsapp",
+  "id_catalogo": "MLB54646018",
+  "id_anuncio": "MLB4263473855",
+  "marca": "DEKASA",
+  "titulo_publico": "Árvore de Natal 2,10 m, 600 galhos, verde",
+  "descricao_editorial": "Árvore artificial verde, desmontável, com base de ferro. O anúncio informa 2,10 m de altura, largura máxima de 1,05 m, peso de 3,4 kg e 600 galhos. As luzes e os enfeites são vendidos separadamente.",
+  "caracteristicas": {
+    "altura_cm": 210,
+    "largura_maxima_cm": 105,
+    "peso_kg": 3.4,
+    "galhos": 600,
+    "base": "Ferro",
+    "material": "Feltro, PVC, plástico",
+    "desmontavel": true,
+    "iluminacao_inclusa": false,
+    "enfeites_inclusos": false
+  },
+  "preco": null,
+  "preco_motivo": "Preço é variável e resultado de busca não prova o valor no momento da compra.",
+  "imagens": [],
+  "revisado": false,
+  "publicar_no_site": false,
+  "origem": "resultado_de_busca_publico"
+}
