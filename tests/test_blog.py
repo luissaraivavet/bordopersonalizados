@@ -1,5 +1,7 @@
 """Verificações básicas do blog editorial sem dependências externas."""
+import json
 import re
+import xml.etree.ElementTree as ET
 import unittest
 from html.parser import HTMLParser
 from pathlib import Path
@@ -59,11 +61,48 @@ class TestBlog(unittest.TestCase):
                     path = href.split("#")[0].split("?")[0].lstrip("/")
                     self.assertTrue((ROOT / path / "index.html").is_file(), f"{page}: {href}")
 
+    def test_estrutura_seo_e_autoria(self):
+        pages = [BLOG / "index.html"] + [BLOG / slug / "index.html" for slug in ARTIGOS]
+        pages.append(BLOG / "como-selecionamos" / "index.html")
+        for page in pages:
+            with self.subTest(page=page):
+                html = page.read_text(encoding="utf-8")
+                title = re.search(r"<title>([^<]+)</title>", html)
+                self.assertIsNotNone(title)
+                self.assertLessEqual(len(title.group(1)), 65)
+                canonical = re.search(r'<link rel="canonical" href="([^"]+)"', html)
+                self.assertIsNotNone(canonical)
+                expected = "https://bordopersonalizados.com.br/" + str(page.parent.relative_to(ROOT)).replace("\\", "/") + "/"
+                self.assertEqual(canonical.group(1), expected)
+                scripts = re.findall(r'<script type="application/ld\\+json">([\\s\\S]*?)</script>', html)
+                self.assertEqual(len(scripts), 1)
+                structured = json.loads(scripts[0])
+                graph = structured.get("@graph", [])
+                types = {node.get("@type") for node in graph}
+                self.assertIn("BreadcrumbList", types)
+                self.assertTrue("BlogPosting" in types or "CollectionPage" in types or "AboutPage" in types)
+                self.assertIn('href="/blog/feed.xml"', html)
+
+    def test_feed_e_sitemap_validos(self):
+        rss = ET.parse(BLOG / "feed.xml").getroot()
+        self.assertEqual(len(rss.findall("./channel/item")), 4)
+        sitemap = ET.parse(ROOT / "sitemap.xml").getroot()
+        urls = [elem.text for elem in sitemap.iter() if elem.tag.endswith("loc")]
+        self.assertEqual(len(urls), len(set(urls)))
+        self.assertIn("https://bordopersonalizados.com.br/blog/como-selecionamos/", urls)
+
+    def test_previa_nao_indexavel(self):
+        preview = ROOT / "preview"
+        for html_file in preview.rglob("index.html"):
+            with self.subTest(page=html_file):
+                html = html_file.read_text(encoding="utf-8")
+                self.assertIn('content="noindex,nofollow"', html)
+
     def test_navegacao_e_sitemap(self):
         home = (ROOT / "index.html").read_text(encoding="utf-8")
         sitemap = (ROOT / "sitemap.xml").read_text(encoding="utf-8")
         self.assertIn('href="/blog/"', home)
-        for slug in [""] + [s + "/" for s in ARTIGOS]:
+        for slug in [""] + [s + "/" for s in ARTIGOS] + ["como-selecionamos/"]:
             self.assertIn("https://bordopersonalizados.com.br/blog/" + slug, sitemap)
 
 if __name__ == "__main__":
