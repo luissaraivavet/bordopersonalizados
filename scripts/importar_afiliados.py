@@ -405,6 +405,7 @@ def parse_api_item(item: dict, details: dict, affiliate_url: str, slug: str):
         "informacoes_envio": item.get("shipping") or {},
         "termos_venda": item.get("sale_terms") or [],
         "observacoes": warnings,
+        "dados_brutos_api": {"anuncio": item, "descricao": details},
         "revisado": False,
         "publicar_no_site": False,
     }
