@@ -1,23 +1,21 @@
 #!/usr/bin/env python3
 """Importação revisável de anúncios do Mercado Livre usando Scrapling.
 
-Não publica produtos. Não tenta contornar autenticação, CAPTCHA, bloqueios
-ou regras de robots.txt. Execute localmente com URLs autorizadas.
+Não publica produtos. Consulta apenas a API oficial via OAuth ou analisa
+HTML local autorizado. Não tenta acessar anúncios via scraping do site.
 """
 from __future__ import annotations
 
 import argparse
 import json
+import os
 import re
 import sys
 import time
 from datetime import datetime, timezone
 from decimal import Decimal, InvalidOperation
 from pathlib import Path
-from urllib.error import HTTPError, URLError
 from urllib.parse import parse_qs, urlsplit
-from urllib.request import Request, urlopen
-from urllib.robotparser import RobotFileParser
 
 ALLOWED_HOSTS = {"mercadolivre.com.br", "www.mercadolivre.com.br", "produto.mercadolivre.com.br"}
 USER_AGENT = "BordoCuradoriaBot/1.0 (+https://bordopersonalizados.com.br/)"
@@ -327,22 +325,89 @@ def parse_page(page, affiliate_url: str, slug: str):
     }
 
 
-def robots_permits(url: str):
-    parsed = urlsplit(url)
-    robots_url = f"{parsed.scheme}://{parsed.netloc}/robots.txt"
-    try:
-        req = Request(robots_url, headers={"User-Agent": USER_AGENT, "Accept": "text/plain"})
-        with urlopen(req, timeout=12) as response:
-            body = response.read(1024 * 512).decode("utf-8", "replace")
-    except HTTPError as exc:
-        if exc.code in (404, 410):
-            return True, "robots.txt inexistente"
-        return False, f"robots.txt não acessível (HTTP {exc.code})"
-    except (URLError, OSError, TimeoutError) as exc:
-        return False, f"Não foi possível consultar robots.txt ({type(exc).__name__})"
-    parser = RobotFileParser()
-    parser.parse(body.splitlines())
-    return parser.can_fetch(USER_AGENT, url), "Política robots.txt verificada"
+def _api_attributes(item):
+    table = {}
+    for attr in item.get("attributes", []) if isinstance(item.get("attributes"), list) else []:
+        if not isinstance(attr, dict):
+            continue
+        key = clean(attr.get("name"), 120)
+        value = clean(attr.get("value_name"), 500)
+        if key and value and len(table) < 150:
+            table[key] = value
+    return table
+
+
+def parse_api_item(item: dict, details: dict, affiliate_url: str, slug: str):
+    """Extrai campos autorizados da API, sem confundir catálogo com anúncio."""
+    ids = product_ids(affiliate_url)
+    attrs = _api_attributes(item)
+    pictures = item.get("pictures") or []
+    images, seen = [], set()
+    for picture in pictures if isinstance(pictures, list) else []:
+        if not isinstance(picture, dict):
+            continue
+        src = picture.get("secure_url") or picture.get("url")
+        if not isinstance(src, str):
+            continue
+        parsed = urlsplit(src)
+        if parsed.scheme != "https" or parsed.hostname not in ("http2.mlstatic.com", "http2.mlstatic.com.br"):
+            continue
+        if src not in seen:
+            images.append(src)
+            seen.add(src)
+        if len(images) >= MAX_GALLERY:
+            break
+    description = clean(details.get("plain_text") or details.get("text"))
+    currency = item.get("currency_id")
+    price = number_string(item.get("price"))
+    if currency != "BRL":
+        price = None
+    status = "revisar" if item.get("title") else "inacessivel"
+    warnings = []
+    if item.get("status") != "active":
+        warnings.append("Anúncio não está ativo na resposta consultada.")
+    if not description:
+        warnings.append("API não retornou uma descrição; consultar fonte autorizada.")
+    if not images:
+        warnings.append("API não retornou fotos do produto.")
+    if price is None:
+        warnings.append("Não foi possível verificar preço em BRL.")
+    return {
+        "slug": slug,
+        "status": status,
+        "capturado_em": datetime.now(timezone.utc).isoformat(timespec="seconds"),
+        "origem": "api_oficial_mercado_livre_via_scrapling",
+        "url_afiliado": affiliate_url,
+        "url_anuncio_oficial": clean(item.get("permalink"), 1000),
+        **ids,
+        "id_anuncio_api": clean(item.get("id"), 100),
+        "titulo": clean(item.get("title"), 350),
+        "marca": attrs.get("Marca") or attrs.get("Brand"),
+        "modelo": attrs.get("Modelo"),
+        "categoria": clean(item.get("category_id"), 200),
+        "sku": clean(item.get("seller_custom_field"), 200),
+        "preco_brl": price,
+        "moeda": currency,
+        "preco_original_brl": number_string(item.get("original_price")) if currency == "BRL" else None,
+        "disponibilidade": clean(item.get("status"), 100),
+        "condicao": clean(item.get("condition"), 200),
+        "vendedor": None,
+        "id_vendedor": item.get("seller_id"),
+        "avaliacao": None,
+        "quantidade_avaliacoes": None,
+        "imagens": images,
+        "descricao_publica": description,
+        "caracteristicas": attrs,
+        "variacoes": item.get("variations") or [],
+        "estoque_informado": item.get("available_quantity"),
+        "frete": None,
+        "prazo_entrega": None,
+        "informacoes_envio": item.get("shipping") or {},
+        "termos_venda": item.get("sale_terms") or [],
+        "observacoes": warnings,
+        "revisado": False,
+        "publicar_no_site": False,
+    }
 
 
 def load_links(path: Path):
@@ -367,46 +432,54 @@ def load_links(path: Path):
     return output
 
 
-def import_one(slug, url, fixture=None, html_dir=None):
+def import_one(slug, url, fixture=None, token=None):
     if fixture:
         from scrapling import Selector
         page = Selector(fixture.read_text(encoding="utf-8"), url=url)
         result = parse_page(page, url, slug)
-        result["origem"] = "fixture_local"
+        result["origem"] = "html_local_autorizado"
         return result
-    allowed, explanation = robots_permits(url)
-    if not allowed:
-        return {"slug": slug, "url_afiliado": url, "status": "bloqueado",
-                "erro": explanation, "publicar_no_site": False}
+    if not token:
+        return {"slug": slug, "url_afiliado": url, "status": "sem_credenciais",
+                "erro": "Defina MELI_ACCESS_TOKEN no ambiente local (não cole a chave no chat).",
+                "publicar_no_site": False}
+    item_id = product_ids(url)["id_anuncio"]
+    if not item_id or not IDENTIFIER.fullmatch(item_id):
+        return {"slug": slug, "url_afiliado": url, "status": "sem_id_anuncio",
+                "erro": "URL não contém identificador MLB de anúncio consultável pela API.",
+                "publicar_no_site": False}
     from scrapling.fetchers import Fetcher
+    endpoint = "https://api.mercadolibre.com/items/" + item_id
+    headers = {"Authorization": "Bearer " + token,
+               "Accept": "application/json", "Accept-Language": "pt-BR"}
     try:
-        page = Fetcher.get(url, timeout=25, retries=1, stealthy_headers=False,
-                           follow_redirects="safe", headers={
-                               "User-Agent": USER_AGENT, "Accept-Language": "pt-BR,pt;q=0.9"})
-        if getattr(page, "status", 0) != 200:
-            raise RuntimeError(f"HTTP {getattr(page, 'status', 'desconhecido')}")
-        final_url = str(getattr(page, "url", url))
-        validate_affiliate_url(final_url)
-        result = parse_page(page, url, slug)
-        result["origem"] = "scrapling_fetcher"
-        if html_dir is not None and result["status"] == "revisar":
-            body = bytes(getattr(page, "body", b""))[:6_000_000]
-            html_dir.mkdir(parents=True, exist_ok=True)
-            html_file = html_dir / (slug + ".html")
-            html_file.write_bytes(body)
-            result["arquivo_html_local"] = str(html_file)
-        return result
-    except Exception as exc:  # falha de transporte/parser deve afetar apenas este item
+        response = Fetcher.get(endpoint, headers=headers, retries=1, timeout=25,
+                               stealthy_headers=False, follow_redirects=False)
+        if getattr(response, "status", 0) != 200:
+            raise RuntimeError("API de itens retornou HTTP " + str(response.status))
+        item = response.json()
+        if not isinstance(item, dict) or item.get("id") != item_id:
+            raise ValueError("ID do anúncio retornado diverge do link original.")
+        desc_resp = Fetcher.get(endpoint + "/description", headers=headers,
+                                retries=1, timeout=25, stealthy_headers=False,
+                                follow_redirects=False)
+        details = desc_resp.json() if getattr(desc_resp, "status", 0) == 200 else {}
+        return parse_api_item(item, details if isinstance(details, dict) else {}, url, slug)
+    except Exception as exc:
+        # Nunca registrar cabeçalhos de autenticação ou tokens.
         return {"slug": slug, "url_afiliado": url, "status": "inacessivel",
-                "erro": f"{type(exc).__name__}: {str(exc)[:180]}", "publicar_no_site": False}
+                "erro": "Consulta à API não concluída (" + type(exc).__name__ + ").",
+                "publicar_no_site": False}
+
+
 
 
 def main(argv=None):
-    parser = argparse.ArgumentParser(description="Importação revisável de anúncios Mercado Livre por Scrapling")
+    parser = argparse.ArgumentParser(description="Importação revisável via API oficial (Scrapling) ou HTML local autorizado")
     parser.add_argument("--links", type=Path, default=DEFAULT_LINKS, help="Arquivo JSON de links")
     parser.add_argument("--saida", type=Path, default=DEFAULT_OUTPUT, help="JSON de saída para revisão")
     parser.add_argument("--fixture", type=Path, help="HTML local para teste de um único link, sem rede")
-    parser.add_argument("--guardar-html", action="store_true", help="Guardar HTML bruto para análise local (até 6 MB por item)")
+    parser.add_argument("--token-env", default="MELI_ACCESS_TOKEN", help="Nome da variável de ambiente para token OAuth da API")
     parser.add_argument("--intervalo", type=float, default=3.0, help="Pausa entre anúncios (mínimo 2 s)")
     args = parser.parse_args(argv)
     if not args.fixture and args.intervalo < 2.0:
@@ -421,12 +494,12 @@ def main(argv=None):
         import scrapling  # noqa: F401  (pré-checagem amigável)
     except ImportError:
         parser.error('Instale a dependência: python -m pip install "scrapling>=0.5,<0.6"')
+    token = os.environ.get(args.token_env, "").strip() if not args.fixture else None
     results = []
     for index, (slug, url) in enumerate(links):
         if index and not args.fixture:
             time.sleep(args.intervalo)
-        result = import_one(slug, url, fixture=args.fixture,
-                            html_dir=(ROOT / ".bordo-scraping" / "html") if args.guardar_html else None)
+        result = import_one(slug, url, fixture=args.fixture, token=token)
         results.append(result)
         print(f"{slug}: {result['status']}")
     args.saida.parent.mkdir(parents=True, exist_ok=True)
