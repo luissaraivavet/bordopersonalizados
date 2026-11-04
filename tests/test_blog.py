@@ -74,7 +74,7 @@ class TestBlog(unittest.TestCase):
                 self.assertIsNotNone(canonical)
                 expected = "https://bordopersonalizados.com.br/" + str(page.parent.relative_to(ROOT)).replace("\\", "/") + "/"
                 self.assertEqual(canonical.group(1), expected)
-                scripts = re.findall(r'<script type="application/ld\\+json">([\\s\\S]*?)</script>', html)
+                scripts = re.findall(r'<script type="application/ld\+json">([\s\S]*?)</script>', html)
                 self.assertEqual(len(scripts), 1)
                 structured = json.loads(scripts[0])
                 graph = structured.get("@graph", [])
