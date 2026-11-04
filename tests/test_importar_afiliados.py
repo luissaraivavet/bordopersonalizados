@@ -88,8 +88,21 @@ class TestImportarAfiliados(unittest.TestCase):
         self.assertEqual(result["url_afiliado"], LINK)
         self.assertFalse(result["publicar_no_site"])
 
+    def test_link_publico_nao_altera_afiliado(self):
+        self.assertEqual(importador.public_page_url(LINK),
+                         "https://www.mercadolivre.com.br/p/MLB54646018")
+        self.assertEqual(importador.validate_affiliate_url(LINK), LINK)
+
+    def test_modo_publico_respeita_bloqueio_robots(self):
+        from unittest.mock import patch
+        with patch.object(importador, "public_page_robots", return_value=(False, "Bloqueado por robots")):
+            result = importador.import_one("teste", LINK, modo="publico")
+        self.assertEqual(result["status"], "bloqueado")
+        self.assertEqual(result["url_afiliado"], LINK)
+        self.assertFalse(result["publicar_no_site"])
+
     def test_nao_tenta_api_sem_token(self):
-        result = importador.import_one("teste", LINK, token=None)
+        result = importador.import_one("teste", LINK, token=None, modo="api")
         self.assertEqual(result["status"], "sem_credenciais")
         self.assertFalse(result["publicar_no_site"])
 
