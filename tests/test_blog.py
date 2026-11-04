@@ -91,6 +91,26 @@ class TestBlog(unittest.TestCase):
         self.assertEqual(len(urls), len(set(urls)))
         self.assertIn("https://bordopersonalizados.com.br/blog/como-selecionamos/", urls)
 
+    def test_pesquisa_produto_rastreavel_e_nao_publicada(self):
+        dossier = json.loads((ROOT / "content" / "afiliados-rascunho-arvore.json").read_text(encoding="utf-8"))
+        catalogo = json.loads((ROOT / "content" / "afiliados-links.json").read_text(encoding="utf-8"))
+        original = next(item for item in catalogo["links"]
+                        if item["slug"] == dossier["slug"])
+        self.assertEqual(dossier["url_afiliado"], original["url_afiliado"])
+        self.assertEqual(dossier["caracteristicas"]["altura_cm"], 210)
+        self.assertEqual(dossier["caracteristicas"]["largura_maxima_cm"], 105)
+        self.assertEqual(dossier["painel_avaliacoes"]["total_avaliacoes"], 333)
+        self.assertEqual(dossier["painel_avaliacoes"]["total_comentarios_visiveis_indicados"], 150)
+        self.assertTrue(dossier["procedencia"]["fonte_primaria"].startswith("https://www.mercadolivre.com.br/"))
+        self.assertFalse(dossier["revisado"])
+        self.assertFalse(dossier["publicar_no_site"])
+        self.assertFalse(dossier["painel_avaliacoes"]["fotos_de_compradores_baixadas"])
+        artigo = (BLOG / "arvore-de-natal-180-ou-210" / "index.html").read_text(encoding="utf-8")
+        self.assertIn("600 galhos", artigo)
+        self.assertIn("333 avaliações e 150 comentários", artigo)
+        self.assertIn("Não incluídos", artigo)
+        self.assertIn("A Bordô não realizou teste físico", artigo)
+
     def test_previa_nao_indexavel(self):
         preview = ROOT / "preview"
         for html_file in preview.rglob("index.html"):
