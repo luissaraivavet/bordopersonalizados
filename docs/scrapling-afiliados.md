@@ -84,7 +84,7 @@ Com a dependência instalada, utilize a página de teste sintética incluída no
 
 ```powershell
 py scripts/importar_afiliados.py --fixture tests/fixtures/anuncio_afiliado_exemplo.html
-py -m unittest tests.test_importar_afiliados
+py -m unittest discover -s tests -p test_importar_afiliados.py -v
 ```
 
 A fixture é **sintética**. Ela não representa dados reais da árvore de Natal.
