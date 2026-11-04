@@ -1,89 +1,103 @@
-# Importador de anúncios afiliados | Bordô
+# Importador de produtos afiliados da Bordô
 
-Integração opcional com [Scrapling](https://github.com/D4Vinci/Scrapling), separada do site público. **Não é um plugin de checkout, nem publica produtos automaticamente.**
+Integração opcional com [Scrapling](https://github.com/D4Vinci/Scrapling), independente do site público e do carrinho. O importador **não publica** automaticamente nada na Bordô.
 
-O importador lê URLs previamente escolhidas pelo proprietário, consulta `robots.txt` e tenta extrair os campos públicos de cada anúncio para análise editorial e curadoria.
+## Por que não raspar o site do Mercado Livre?
 
-## O que é coletado
+A [cláusula 7.6 do programa de desenvolvedores](https://developers.mercadolivre.com.br/pt_br/termos-e-condicoes) proíbe robôs, spiders e scraping do site/conteúdo. Para proteger a operação de afiliados, este código **não coleta diretamente páginas do Mercado Livre por scraping**, nem tenta transpor CAPTCHA, login, bloqueios ou proteções.
 
-- Identificadores MLB de catálogo e anúncio, URL afiliada **sem alterar parâmetros**, título e categoria, marca, modelo, SKU/GTIN/MPN, cor e tamanho, quando existentes.
-- Preço apresentado no código estruturado ou HTML, moeda, eventual preço anterior, disponibilidade e condição.
-- Vendedor indicado, avaliação agregada, quantidade de avaliações e texto de parcelas visível.
-- Fotografias do **produto** vinculadas ao catálogo/anúncio, descrição pública, tabela de características e variantes disponíveis no HTML.
-- Data e fonte de captura, advertências e estado de revisão.
-- Opcionalmente, uma cópia do HTML recebido (`--guardar-html`), limitada a 6 MB e guardada **somente no computador**, não no GitHub.
+O importador possui dois caminhos legítimos:
 
-**Não se garante a coleta integral de todas as informações**: preços por usuário, frete, entrega, CEP, estoque atualizado, variações carregadas sob demanda, perguntas, todas as avaliações ou conteúdo acessível apenas por autenticação podem ficar indisponíveis.
+1. **API oficial, recomendada:** usa o `Fetcher` do Scrapling como cliente HTTP autorizado com token OAuth para consultar os endpoints de itens e descrições da API Mercado Livre, conforme [documentação de busca de itens](https://developers.mercadolivre.com.br/pt_br/itens-e-buscas).
+2. **HTML local autorizado:** usa o `Selector` do Scrapling para extrair dados de um documento HTML obtido com permissão do titular dos direitos; não faz requisições ao site.
 
-Imagens/textos de terceiros não devem ser automaticamente republicados no blog. A Bordô transforma as informações verificadas em guias editoriais originais e sempre identifica links comerciais.
+## Campos coletados
 
-## Instalação no Windows
+Quando a fonte os oferece: título, URLs originais, identificadores MLB de catálogo e anúncio, preço e preço anterior, moeda, condição, status, características, marca, modelo, SKU, categoria, descrição, fotografias, variações, disponibilidade informada, dados de envio não personalizados, número de unidades indicado pela API e identificação do vendedor.
 
-No terminal, na pasta do repositório da Bordô:
+**O JSON local também preserva a resposta bruta autorizada da API** em `dados_brutos_api`, permitindo revisar outros campos sem perder informação. Os campos incompletos permanecem vazios; o sistema não estima preço, frete, CEP, parcelamento, reputação, dados de clientes ou comissão.
+
+Itens de terceiros podem exigir permissões específicas. Nem todo endpoint está disponível em todas as contas e produtos. Disponibilidade e preço podem mudar imediatamente após a consulta.
+
+## Instalação Windows
+
+Abra o terminal na pasta do repositório da Bordô:
 
 ```powershell
 py -m pip install -r scripts/requirements-scrapling.txt
-py scripts/importar_afiliados.py --guardar-html
 ```
 
-No Linux/macOS:
+Configure um **token OAuth válido** do Mercado Livre em variável de ambiente no seu computador, conforme o fluxo oficial do programa de desenvolvedores. Por exemplo, em uma sessão do PowerShell:
 
-```bash
-python3 -m pip install -r scripts/requirements-scrapling.txt
-python3 scripts/importar_afiliados.py --guardar-html
+```powershell
+$env:MELI_ACCESS_TOKEN = "COLE_AQUI_O_TOKEN_APENAS_NO_SEU_COMPUTADOR"
+py scripts/importar_afiliados.py
 ```
 
-Por padrão, o arquivo de entrada é `content/afiliados-links.json`, com o link da árvore já fornecido pelo proprietário. Para adicionar outros anúncios, acrescente entradas:
+Não publique o token no GitHub, no HTML, nos screenshots ou no chat. O script não obtém nem renova tokens automaticamente.
+
+## Como adicionar vários anúncios
+
+O arquivo `content/afiliados-links.json` contém o link original da árvore de Natal informado pelo proprietário. Inclua novos objetos na lista:
 
 ```json
 {
   "links": [
     {
       "slug": "arvore-de-natal-210-600-galhos",
-      "url_afiliado": "https://www.mercadolivre.com.br/p/MLB54646018?...seus-parametros-de-afiliado..."
+      "url_afiliado": "https://www.mercadolivre.com.br/p/MLB54646018?matt_tool=38524122&pdp_filters=item_id:MLB4263473855"
     },
     {
       "slug": "outro-produto",
-      "url_afiliado": "https://produto.mercadolivre.com.br/MLB-1234567890-anuncio-_JM"
+      "url_afiliado": "https://produto.mercadolivre.com.br/MLB-1234567890-exemplo-_JM"
     }
   ]
 }
 ```
 
-**O exemplo acima tem endereço ilustrativo para a segunda entrada.** Cole somente links gerados e validados pela sua conta de afiliado. Não substitua o link pelo endereço canônico na vitrine: os parâmetros de atribuição podem estar na URL completa.
+Exemplos de links acima são simplificados: no arquivo de produção, **preserve a URL completa fornecida pelo programa de afiliados**, incluindo parâmetros de atribuição. O exemplo `MLB-1234567890` é fictício e deve ser substituído.
 
-O comando grava `.bordo-scraping/resultados.json` e `.bordo-scraping/html/`, ambos ignorados pelo Git. Os campos `revisado` e `publicar_no_site` começam sempre como `false`. O importador **não** altera `content/site.json` nem o carrinho.
+O importador extrai `MLB4263473855` do filtro do link da árvore e consulta esse identificador pela API. Em URLs de catálogo sem item específico, será necessário um link que identifique o anúncio, não só a ficha do produto.
 
-Para ler uma única página de teste previamente salva, sem realizar chamadas à internet:
+## Saída
 
-```powershell
-py scripts/importar_afiliados.py --links content/afiliados-links.json --fixture tests/fixtures/anuncio_afiliado_exemplo.html
+A execução cria o arquivo local:
+
+```text
+.bordo-scraping/resultados.json
 ```
 
-A fixture é sintética, não é um dado verdadeiro do Mercado Livre.
+Ele contém `produtos[]` com valores, imagens, características e `dados_brutos_api`. A pasta é ignorada pelo Git, para evitar publicar conteúdo externo ou dados de conta por engano.
 
-## Estados do resultado
+Todos os produtos permanecem com `revisado: false` e `publicar_no_site: false`. O blog, a loja e o carrinho continuam intactos.
 
-| Estado | Significado | Ação |
-| --- | --- | --- |
-| `revisar` | Há título e alguns campos recuperados | Conferir tudo no anúncio oficial |
-| `inacessivel` | Falha HTTP, erro de acesso, conteúdo sem título | Não publicar; buscar fonte autorizada |
-| `bloqueado` | `robots.txt` não autoriza ou a página exige verificação | Não contornar CAPTCHA/bloqueio |
+Estados possíveis:
+- `revisar`: API retornou informações para conferência editorial.
+- `sem_credenciais`: token OAuth não configurado.
+- `sem_id_anuncio`: URL não identifica um anúncio MLB consultável.
+- `inacessivel`: API negou acesso ou retornou erro.
+- `bloqueado`: reservado para respostas HTML que exigem verificação de acesso.
 
-O importador respeita `robots.txt`, recusa domínios não permitidos, mantém pausa mínima de dois segundos, faz apenas uma tentativa por anúncio e não usa rotação de proxies nem mecanismos de evasão. Se o Mercado Livre negar acesso, encerre a tentativa e obtenha dados por integrações autorizadas, exportação do vendedor ou cadastramento manual.
+## Teste offline do Scrapling
 
-## Checklist editorial após a coleta
+Com a dependência instalada, utilize a página de teste sintética incluída no repositório:
 
-1. Confirmar que URL e identificador MLB correspondem exatamente ao produto escolhido.
-2. Conferir foto, nome, descrição, materiais, dimensões, acessórios incluídos e variantes.
-3. Conferir preço, frete e prazo no anúncio real, sem apresentar o dado histórico como oferta atual.
-4. Confirmar direitos de uso de fotos e descrições antes de publicar.
-5. Gerar a **descrição original da Bordô** como orientação de compra, não copiar textos integrais do anúncio.
-6. Verificar a atribuição de comissões e as regras do programa.
-7. Só então aprovar a publicação manual no site.
+```powershell
+py scripts/importar_afiliados.py --fixture tests/fixtures/anuncio_afiliado_exemplo.html
+py -m unittest tests.test_importar_afiliados
+```
 
-## Limitações desta entrega
+A fixture é **sintética**. Ela não representa dados reais da árvore de Natal.
 
-O script está implementado e documentado no repositório. **Não houve extração real bem-sucedida do anúncio neste ambiente**: o runtime disponível não possui Scrapling instalado nem acesso de rede ao Mercado Livre, que também pode bloquear consultas automatizadas. Os testes de parsing precisam ser executados após a instalação local da dependência; os testes unitários comuns verificam o restante sem baixar conteúdo externo.
+## Transformar dados em conteúdo para o blog
 
-O código suporta múltiplos links, mas apenas **um** link real foi fornecido nesta conversa. Nenhum cadastro de produto adicional foi inventado.
+1. Validar o anúncio e os parâmetros do link de afiliado com o painel do programa.
+2. Comparar título, modelo, imagens, características e acessórios com a ficha autorizada.
+3. Verificar se os direitos de uso permitem exibir imagens ou textos do anunciante.
+4. Redigir textos próprios que resolvam dúvidas reais dos compradores, não reproduzir descrições inteiras.
+5. Identificar claramente publicidade, não divulgar preço ou estoque sem atualização confiável.
+6. Publicar somente depois de revisão humana e das verificações das regras de aquisição por SEO.
+
+## Estado desta implementação
+
+O código e a entrada inicial estão no PR de revisão da Bordô. **Não foi realizada extração real da API neste ambiente**, porque não há token OAuth autorizado nem acesso de rede para executar o Scrapling. Não é possível afirmar que o anúncio de terceiros retornará todos os campos até autenticar e testar a API em um ambiente autorizado.
