@@ -45,7 +45,7 @@ class TestBlog(unittest.TestCase):
                 self.assertIn('href="/blog/estilos.css"', html)
                 self.assertIn('</html>', html)
                 for link in p.links:
-                    if "mercadolivre.com.br" in link.get("href", ""):
+                    if "matt_tool=" in link.get("href", ""):
                         self.assertIn("sponsored", link.get("rel", ""))
                         self.assertIn("nofollow", link.get("rel", ""))
                         self.assertIn("Publicidade", html)
@@ -105,9 +105,14 @@ class TestBlog(unittest.TestCase):
         self.assertFalse(dossier["revisado"])
         self.assertFalse(dossier["publicar_no_site"])
         self.assertFalse(dossier["painel_avaliacoes"]["fotos_de_compradores_baixadas"])
+        self.assertEqual(len(dossier["imagens"]), 1)
+        self.assertEqual(len(dossier["comentarios_curto_trecho"]), 3)
         artigo = (BLOG / "arvore-de-natal-180-ou-210" / "index.html").read_text(encoding="utf-8")
         self.assertIn("600 galhos", artigo)
         self.assertIn("333 avaliações e 150 comentários", artigo)
+        self.assertIn(dossier["imagens"][0]["url"], artigo)
+        self.assertIn("Muito boa qualidade, ótimo tamanho recomendo muito.", artigo)
+        self.assertIn("Ver galeria e fotos dos compradores", artigo)
         self.assertIn("Não incluídos", artigo)
         self.assertIn("A Bordô não realizou teste físico", artigo)
 
