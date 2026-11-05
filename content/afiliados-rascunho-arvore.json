@@ -228,5 +228,13 @@
       "origem": "https://www.mercadolivre.com.br/arvore-de-natal-2-metros-600-galhos-grande-tradicional-luxo-cor-verde/p/MLB54646018",
       "licenca_republicacao_confirmada": false
     }
-  ]
+  ],
+  "ultima_consulta_publica": {
+    "data": "2026-11-05",
+    "detalhe": "Nova coleta direta bloqueada pelo Mercado Livre. Resultados indexados mostram R$189,90 como preço de referência de listagem e nota 4,7/5, mas não permitem afirmar preço final ou estoque. Fotos e contagens de comentários continuam sendo as da captura anterior.",
+    "preco_referencia_brl": 189.9,
+    "confianca": "parcial",
+    "caminho_snapshot": "content/coletas/2026-11-05-MLB4263473855.json",
+    "revalidou_fotos_video_comentarios": false
+  }
 }
