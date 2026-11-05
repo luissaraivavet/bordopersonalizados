@@ -1,5 +1,5 @@
 {
-  "aviso": "Ficha de pesquisa editorial, ainda não aprovada para publicação. Dados obtidos de resultado público indexado do Mercado Livre em 04/11/2026; a página ao vivo pode ter sido alterada. Nenhuma mídia foi baixada ou reproduzida.",
+  "aviso": "Rascunho editorial baseado em catálogo e loja oficial DEKASA, não uma coleta integral de mídias. O blog mostra uma imagem comercial vinculada ao produto por URL externa; a autorização para republicação não foi confirmada. Revisar termos e direitos antes de publicação definitiva.",
   "coletado_em": "2026-11-04",
   "fonte_consulta": "https://www.mercadolivre.com.br/arvore-de-natal-2-metros-600-galhos-grande-tradicional-luxo-cor-verde/p/MLB54646018",
   "slug": "arvore-de-natal-210-600-galhos",
@@ -22,7 +22,16 @@
   },
   "preco": null,
   "preco_motivo": "Preço é variável e resultado de busca não prova o valor no momento da compra.",
-  "imagens": [],
+  "imagens": [
+    {
+      "url": "https://http2.mlstatic.com/D_Q_NP_2X_668957-MLA116827078109_082026-AB.webp",
+      "tipo": "foto_de_produto",
+      "descricao": "Imagem que acompanha exatamente o cartão do produto 'Árvore De Natal 2 Metros 600 Galhos Grande Tradicional Luxo Cor Verde' na loja oficial DEKASA no Mercado Livre.",
+      "origem": "https://www.mercadolivre.com.br/loja/dekasa?category_id=MLB1574&client=recoview-selleritems&item_id=MLB4228450007&official_store_id=191282&recos_listing=true",
+      "confirmacao": "card do mesmo catálogo MLB54646018; validação da associação pelo site da loja oficial",
+      "licenca_republicacao_confirmada": false
+    }
+  ],
   "revisado": false,
   "publicar_no_site": false,
   "origem": "resultado_de_busca_publico",
@@ -61,17 +70,19 @@
   },
   "foto_video_perguntas": {
     "fotos_galeria_anuncio": {
-      "status": "não obtidas integralmente",
-      "quantidade": null,
-      "urls_verificadas": []
+      "status": "1 imagem principal associada ao item confirmada na loja oficial; demais não verificadas",
+      "quantidade": 1,
+      "urls_verificadas": [
+        "https://http2.mlstatic.com/D_Q_NP_2X_668957-MLA116827078109_082026-AB.webp"
+      ]
     },
     "fotos_de_compradores": {
-      "status": "a página indexada informa a existência, mas os arquivos não foram obtidos",
+      "status": "Existência de fotos de compradores indicada no anúncio; arquivos não obtidos.",
       "quantidade": null,
       "urls_verificadas": []
     },
     "videos": {
-      "status": "não verificados",
+      "status": "Nenhum vídeo comprovadamente vinculado a este item foi localizado",
       "quantidade": null,
       "urls_verificadas": []
     },
@@ -113,5 +124,28 @@
     "Ler amostra equilibrada de avaliações, inclusive de 1 a 3 estrelas, antes de concluir análise de satisfação",
     "Verificar perguntas dos compradores e eventuais limitações não descritas",
     "Conferir se o anúncio MLB4263473855 representa exatamente a variante do catálogo exibido."
+  ],
+  "comentarios_curto_trecho": [
+    {
+      "texto": "Muito boa qualidade, ótimo tamanho recomendo muito.",
+      "avaliacao": 5,
+      "origem": "https://www.mercadolivre.com.br/arvore-de-natal-2-metros-600-galhos-grande-tradicional-luxo-cor-verde/p/MLB54646018",
+      "tipo": "opinião pública individual",
+      "verificacao": "resultado indexado do Mercado Livre"
+    },
+    {
+      "texto": "Muito boa , conforme anuncio.",
+      "avaliacao": 5,
+      "origem": "https://www.mercadolivre.com.br/arvore-de-natal-2-metros-600-galhos-grande-tradicional-luxo-cor-verde/p/MLB54646018",
+      "tipo": "opinião pública individual",
+      "verificacao": "resultado indexado do Mercado Livre"
+    },
+    {
+      "texto": "Eu amei minha árvore.",
+      "avaliacao": 5,
+      "origem": "https://www.mercadolivre.com.br/arvore-de-natal-2-metros-600-galhos-grande-tradicional-luxo-cor-verde/p/MLB54646018",
+      "tipo": "opinião pública individual",
+      "verificacao": "resultado indexado do Mercado Livre"
+    }
   ]
 }
