@@ -115,7 +115,7 @@ class TestBlog(unittest.TestCase):
         self.assertIn("Muito boa qualidade, ótimo tamanho recomendo muito.", artigo)
         self.assertIn('data-gallery-switch="buyers"', artigo)
         self.assertIn('data-gallery-dialog', artigo)
-        self.assertIn("Ver galeria e fotos dos compradores", artigo)
+        self.assertIn("Fotos de compradores", artigo)
         self.assertIn("Não incluídos", artigo)
         self.assertIn("A Bordô não realizou teste físico", artigo)
 
