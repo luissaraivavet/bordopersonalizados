@@ -86,3 +86,65 @@
 .media-foot{display:block}
 .media-foot a{display:inline-block;margin-top:10px;white-space:normal}
 }
+
+/* Curadoria Bordô: apresentação editorial do anúncio com galerias reais */
+.bd-dekasa{margin:35px 0 25px;background:#fff;border:1px solid #e6ded9;border-radius:5px;overflow:hidden;scroll-margin-top:22px}
+.bd-dekasa [hidden]{display:none!important}
+.bd-dekasa .bd-product-top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start}
+.bd-gallery{background:#f8f8f4;padding:23px 22px 18px;min-width:0}
+.bd-gallery-label{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:13px}
+.bd-gallery-count{color:#657065;font-size:11px;font-weight:700}
+.bd-gallery-stage{display:flex;width:100%;min-height:365px;aspect-ratio:1/1;position:relative;justify-content:center;align-items:center;background:#fff;border:1px solid #e2e3dc;border-radius:3px;padding:17px;cursor:zoom-in}
+.bd-gallery-stage img{width:100%;height:100%;max-height:430px;object-fit:contain;display:block}
+.bd-gallery-zoom{position:absolute;right:12px;bottom:12px;padding:6px 10px;border:1px solid #e9e9e6;border-radius:20px;background:#fffdfbea;color:#394239;font-size:10px;font-weight:800}
+.bd-gallery-tabs{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin:15px 0 12px;padding:4px;background:#eaece5;border-radius:4px}
+.bd-gallery-tabs button{background:transparent;color:#515b51;border:0;border-radius:3px;padding:11px 5px;font-size:11px;line-height:1.3;font-weight:800;cursor:pointer}
+.bd-gallery-tabs button[aria-pressed=true]{background:#fff;box-shadow:0 1px 3px #0001;color:#631f35}
+.bd-gallery-tabs button span{font-weight:600;color:#7a8177;margin-left:3px}
+.bd-gallery-thumbs{display:flex;gap:8px;overflow-x:auto;padding:2px 1px 8px;scrollbar-color:#c4c7c0 transparent;scrollbar-width:thin}
+.bd-gallery-thumb{width:70px;height:70px;min-width:70px;border:2px solid transparent;background:#fff;padding:4px;border-radius:4px;cursor:pointer;overflow:hidden}
+.bd-gallery-thumb[aria-pressed=true]{border-color:#631f35}
+.bd-gallery-thumb img{width:100%;height:100%;object-fit:contain}
+.bd-gallery-source{font-size:10px;color:#656f65;line-height:1.5;margin:11px 0 0}
+.bd-gallery-source a{color:#631f35}
+.bd-product-info{min-width:0;padding:29px 29px 24px;align-items:stretch}
+.bd-product-info>.eyebrow{margin:0}
+.bd-product-info h3{font-size:clamp(30px,3vw,39px);line-height:1.18}
+.bd-product-info .product-subtitle{margin-top:5px;margin-bottom:12px}
+.bd-pdp-trust{display:flex;align-items:center;gap:10px;flex-wrap:wrap;padding:8px 0 2px}
+.bd-rating{font-size:21px;line-height:1.2;color:#293c2f;font-weight:800}
+.bd-rating span{font-size:12px;letter-spacing:0;color:#b48744}
+.bd-pdp-trust a{font-size:11px;font-weight:800}
+.bd-social-proof{font-size:11px!important;margin:0 0 16px!important;color:#697268!important}
+.bd-dekasa .product-facts{margin-top:0;margin-bottom:14px}
+.bd-dekasa .product-facts strong{font-size:16px}
+.bd-product-pitch{font-size:14px!important;line-height:1.65!important;color:#444c43!important;margin:0 0 12px!important}
+.bd-procon{border-left:3px solid #b29367;background:#f7f5f0;padding:12px 14px;margin:0 0 18px}
+.bd-procon p{font-size:12px!important;line-height:1.65!important;color:#4a554b!important;margin:0 0 8px!important}
+.bd-procon p:last-child{margin-bottom:0!important}
+.bd-primary-cta{display:flex;width:100%;text-align:center}
+.bd-product-info .disclosure{margin-top:12px!important}
+.bd-review-area{border-top:1px solid #e6ded9;padding:28px 27px;background:#fbfaf7}
+.bd-review-title{display:flex;align-items:end;justify-content:space-between;gap:15px;flex-wrap:wrap;margin-bottom:16px}
+.bd-review-title h4{font-size:clamp(25px,2.5vw,33px);font-weight:400;font-family:Lora,Georgia,serif;color:#631f35;line-height:1.25;margin:4px 0 0}
+.bd-review-title>a{font-size:12px;font-weight:800}
+.bd-review-intro{display:flex;align-items:center;gap:19px;border:1px solid #e8e1dc;background:#fff;padding:14px 18px;margin-bottom:15px}
+.bd-review-big{white-space:nowrap;font-size:30px;color:#631f35;font-family:Lora,Georgia,serif}
+.bd-review-big span{color:#b48744}
+.bd-review-intro p{color:#555f54;font-size:12px;line-height:1.65;margin:0}
+.bd-dekasa .bd-reviews{grid-template-columns:repeat(3,minmax(0,1fr))}
+.bd-dekasa .bd-reviews blockquote{padding:16px!important}
+.bd-dekasa .bd-reviews blockquote>p{font-size:15px}
+.bd-review-footnote{font-size:11px;color:#6b7269;line-height:1.65;margin:15px 0 0}
+.bd-feature-footer{border-top:1px solid #e6ded9;background:#fff;padding:17px 27px;display:flex;gap:20px;align-items:center;justify-content:space-between}
+.bd-feature-footer p{font-size:11px;line-height:1.6;color:#666d65;margin:0;max-width:650px}
+.bd-feature-footer a{font-size:12px;font-weight:800;white-space:nowrap}
+.bd-gallery-dialog{max-height:93vh;max-width:min(95vw,860px);width:100%;padding:0 18px 17px;border:1px solid #ece7e4;border-radius:6px;box-shadow:0 15px 65px #0006;background:#fff}
+.bd-gallery-dialog::backdrop{background:#101410de}
+.bd-dialog-header{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 -18px 15px;padding:12px 18px;border-bottom:1px solid #e6ded9;color:#631f35;font-weight:800;font-size:13px}
+.bd-dialog-header button{border:1px solid #d9d4cf;border-radius:3px;background:#fff;padding:8px 10px;color:#631f35;cursor:pointer}
+.bd-gallery-dialog img{object-fit:contain;display:block;height:min(70vh,680px);width:100%}
+.bd-gallery-dialog p{text-align:center;font-size:11px;color:#687168;margin:7px 0 0}
+@media(max-width:1050px){.bd-dekasa .bd-product-top{grid-template-columns:1fr}.bd-gallery-stage{max-height:490px;aspect-ratio:1.2/1;min-height:300px}.bd-gallery-stage img{max-height:435px}.bd-dekasa .bd-reviews{grid-template-columns:1fr 1fr}.bd-gallery-thumbs{justify-content:flex-start}}
+@media(max-width:600px){.bd-dekasa{margin:23px 0}.bd-gallery{padding:15px 13px 13px}.bd-gallery-stage{min-height:0;height:300px;aspect-ratio:auto;padding:9px}.bd-gallery-stage img{max-height:290px}.bd-gallery-thumb{min-width:59px;width:59px;height:59px}.bd-gallery-tabs button{font-size:11px;padding:10px 4px}.bd-product-info{padding:22px 18px}.bd-product-info h3{font-size:30px}.bd-dekasa .bd-reviews{grid-template-columns:1fr}.bd-review-area{padding:20px 17px}.bd-review-intro{display:block;padding:14px}.bd-review-big{display:block;margin-bottom:5px}.bd-feature-footer{display:block;padding:16px 18px}.bd-feature-footer a{display:inline-block;margin-top:10px;white-space:normal}}
+@media(prefers-reduced-motion:reduce){.bd-gallery-thumbs{scroll-behavior:auto}}
