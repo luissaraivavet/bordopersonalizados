@@ -1,6 +1,6 @@
 {
-  "aviso": "Rascunho editorial baseado em catálogo e loja oficial DEKASA, não uma coleta integral de mídias. O blog mostra uma imagem comercial vinculada ao produto por URL externa; a autorização para republicação não foi confirmada. Revisar termos e direitos antes de publicação definitiva.",
-  "coletado_em": "2026-11-04",
+  "aviso": "Ficha editorial baseada no anúncio capturado em novembro de 2026; a pontuação, disponibilidade, preço e avaliações podem variar. A imagem de produtos e de compradores pertence aos respectivos titulares; autorização para republicação fora do Mercado Livre não está confirmada. Não publicar como catálogo comercial definitivo sem conferir os direitos e as regras do programa.",
+  "coletado_em": "2026-11-05",
   "fonte_consulta": "https://www.mercadolivre.com.br/arvore-de-natal-2-metros-600-galhos-grande-tradicional-luxo-cor-verde/p/MLB54646018",
   "slug": "arvore-de-natal-210-600-galhos",
   "url_afiliado": "https://www.mercadolivre.com.br/p/MLB54646018?matt_tool=38524122&pdp_filters=item_id:MLB4263473855&ua=77_a7mIw-TVKAJOZloTjiweFqQejwgSDtCI3DM0aBMooFIZe#origin=share&sid=share&wid=MLB4263473855&action=whatsapp",
@@ -24,11 +24,45 @@
   "preco_motivo": "Preço é variável e resultado de busca não prova o valor no momento da compra.",
   "imagens": [
     {
-      "url": "https://http2.mlstatic.com/D_Q_NP_2X_668957-MLA116827078109_082026-AB.webp",
-      "tipo": "foto_de_produto",
-      "descricao": "Imagem que acompanha exatamente o cartão do produto 'Árvore De Natal 2 Metros 600 Galhos Grande Tradicional Luxo Cor Verde' na loja oficial DEKASA no Mercado Livre.",
-      "origem": "https://www.mercadolivre.com.br/loja/dekasa?category_id=MLB1574&client=recoview-selleritems&item_id=MLB4228450007&official_store_id=191282&recos_listing=true",
-      "confirmacao": "card do mesmo catálogo MLB54646018; validação da associação pelo site da loja oficial",
+      "url": "https://http2.mlstatic.com/D_NQ_NP_668957-MLA116827078109_082026-F.webp",
+      "tipo": "galeria_de_produto",
+      "descricao": "Fotografia principal",
+      "origem": "https://www.mercadolivre.com.br/arvore-de-natal-2-metros-600-galhos-grande-tradicional-luxo-cor-verde/p/MLB54646018",
+      "licenca_republicacao_confirmada": false
+    },
+    {
+      "url": "https://http2.mlstatic.com/D_NQ_NP_743557-MLA116826752515_082026-F.webp",
+      "tipo": "galeria_de_produto",
+      "descricao": "Segunda fotografia",
+      "origem": "https://www.mercadolivre.com.br/arvore-de-natal-2-metros-600-galhos-grande-tradicional-luxo-cor-verde/p/MLB54646018",
+      "licenca_republicacao_confirmada": false
+    },
+    {
+      "url": "https://http2.mlstatic.com/D_NQ_NP_694338-MLA115406252658_082026-O.webp",
+      "tipo": "galeria_de_produto",
+      "descricao": "Terceira fotografia",
+      "origem": "https://www.mercadolivre.com.br/arvore-de-natal-2-metros-600-galhos-grande-tradicional-luxo-cor-verde/p/MLB54646018",
+      "licenca_republicacao_confirmada": false
+    },
+    {
+      "url": "https://http2.mlstatic.com/D_NQ_NP_927741-MLA116826752549_082026-O.webp",
+      "tipo": "galeria_de_produto",
+      "descricao": "Quarta fotografia",
+      "origem": "https://www.mercadolivre.com.br/arvore-de-natal-2-metros-600-galhos-grande-tradicional-luxo-cor-verde/p/MLB54646018",
+      "licenca_republicacao_confirmada": false
+    },
+    {
+      "url": "https://http2.mlstatic.com/D_NQ_NP_711173-MLA116827196071_082026-O.webp",
+      "tipo": "galeria_de_produto",
+      "descricao": "Quinta fotografia",
+      "origem": "https://www.mercadolivre.com.br/arvore-de-natal-2-metros-600-galhos-grande-tradicional-luxo-cor-verde/p/MLB54646018",
+      "licenca_republicacao_confirmada": false
+    },
+    {
+      "url": "https://http2.mlstatic.com/D_NQ_NP_944370-MLA116826519231_082026-O.webp",
+      "tipo": "galeria_de_produto",
+      "descricao": "Sexta fotografia",
+      "origem": "https://www.mercadolivre.com.br/arvore-de-natal-2-metros-600-galhos-grande-tradicional-luxo-cor-verde/p/MLB54646018",
       "licenca_republicacao_confirmada": false
     }
   ],
@@ -38,7 +72,8 @@
   "consulta_em": "2026-11-04",
   "procedencia": {
     "fonte_primaria": "https://www.mercadolivre.com.br/arvore-de-natal-2-metros-600-galhos-grande-tradicional-luxo-cor-verde/p/MLB54646018",
-    "acesso": "Resultado público indexado pelo mecanismo de busca; abertura ao vivo retornou erro 403 nesta sessão.",
+    "documento": "Registro textual enviado pelo proprietário com seção Fotos do produto, Informações e Opiniões",
+    "tipo": "captura do anúncio exato MLB4263473855, catálogo MLB54646018",
     "atualizacao_automatica": false,
     "validacao_atribuicao_afiliado": false
   },
@@ -47,11 +82,11 @@
   "painel_avaliacoes": {
     "nota_publicada": 4.7,
     "escala": 5,
-    "total_avaliacoes": 333,
-    "total_comentarios_visiveis_indicados": 150,
+    "total_avaliacoes": 420,
+    "total_comentarios_visiveis_indicados": 190,
     "alcance": "Página de produto/catálogo; o Mercado Livre indica que as opiniões incluem pessoas de outros países.",
     "fonte": "https://www.mercadolivre.com.br/arvore-de-natal-2-metros-600-galhos-grande-tradicional-luxo-cor-verde/p/MLB54646018",
-    "consulta_em": "2026-11-04",
+    "consulta_em": "2026-11-05",
     "tem_fotos_de_compradores_na_pagina": true,
     "fotos_de_compradores_baixadas": false
   },
@@ -70,19 +105,30 @@
   },
   "foto_video_perguntas": {
     "fotos_galeria_anuncio": {
-      "status": "1 imagem principal associada ao item confirmada na loja oficial; demais não verificadas",
-      "quantidade": 1,
+      "status": "Seis URLs de imagens identificadas no arquivo fornecido com o anúncio",
+      "quantidade": 6,
       "urls_verificadas": [
-        "https://http2.mlstatic.com/D_Q_NP_2X_668957-MLA116827078109_082026-AB.webp"
+        "https://http2.mlstatic.com/D_NQ_NP_668957-MLA116827078109_082026-F.webp",
+        "https://http2.mlstatic.com/D_NQ_NP_743557-MLA116826752515_082026-F.webp",
+        "https://http2.mlstatic.com/D_NQ_NP_694338-MLA115406252658_082026-O.webp",
+        "https://http2.mlstatic.com/D_NQ_NP_927741-MLA116826752549_082026-O.webp",
+        "https://http2.mlstatic.com/D_NQ_NP_711173-MLA116827196071_082026-O.webp",
+        "https://http2.mlstatic.com/D_NQ_NP_944370-MLA116826519231_082026-O.webp"
       ]
     },
     "fotos_de_compradores": {
-      "status": "Existência de fotos de compradores indicada no anúncio; arquivos não obtidos.",
-      "quantidade": null,
-      "urls_verificadas": []
+      "status": "Cinco fotografias públicas identificadas na seção Opiniões com fotos do anúncio",
+      "quantidade": 5,
+      "urls_verificadas": [
+        "https://http2.mlstatic.com/D_NQ_NP_995022-MLA118739551303_102026-B.jpg",
+        "https://http2.mlstatic.com/D_NQ_NP_973725-MLA114776222184_082026-B.jpg",
+        "https://http2.mlstatic.com/D_NQ_NP_775002-MLA119222723035_102026-B.jpg",
+        "https://http2.mlstatic.com/D_NQ_NP_2X_943502-MLA79918790762_102024-O.webp",
+        "https://http2.mlstatic.com/D_NQ_NP_999248-MLA116456478132_092026-B.jpg"
+      ]
     },
     "videos": {
-      "status": "Nenhum vídeo comprovadamente vinculado a este item foi localizado",
+      "status": "Página contém ícone de vídeo, mas não expõe vídeo reproduzível; duração do widget 0:00",
       "quantidade": null,
       "urls_verificadas": []
     },
@@ -120,32 +166,67 @@
   "checklist_pendencias": [
     "Confirmar autenticidade e rastreamento do link de afiliado no painel",
     "Conferir disponibilidade, preço e frete no momento da publicação",
-    "Obter direitos de uso e URLs verificadas para imagens e vídeos antes de incluí-los no site",
     "Ler amostra equilibrada de avaliações, inclusive de 1 a 3 estrelas, antes de concluir análise de satisfação",
     "Verificar perguntas dos compradores e eventuais limitações não descritas",
-    "Conferir se o anúncio MLB4263473855 representa exatamente a variante do catálogo exibido."
+    "Conferir se o anúncio MLB4263473855 representa exatamente a variante do catálogo exibido.",
+    "Solicitar autorização para exibir as fotos da galeria e de compradores fora do Mercado Livre",
+    "Verificar opiniões críticas e negativas antes de apresentar classificação editorial comparativa"
   ],
   "comentarios_curto_trecho": [
     {
       "texto": "Muito boa qualidade, ótimo tamanho recomendo muito.",
       "avaliacao": 5,
       "origem": "https://www.mercadolivre.com.br/arvore-de-natal-2-metros-600-galhos-grande-tradicional-luxo-cor-verde/p/MLB54646018",
-      "tipo": "opinião pública individual",
-      "verificacao": "resultado indexado do Mercado Livre"
+      "tipo": "opinião pública individual"
     },
     {
       "texto": "Muito boa , conforme anuncio.",
       "avaliacao": 5,
       "origem": "https://www.mercadolivre.com.br/arvore-de-natal-2-metros-600-galhos-grande-tradicional-luxo-cor-verde/p/MLB54646018",
-      "tipo": "opinião pública individual",
-      "verificacao": "resultado indexado do Mercado Livre"
+      "tipo": "opinião pública individual"
     },
     {
       "texto": "Eu amei minha árvore.",
       "avaliacao": 5,
       "origem": "https://www.mercadolivre.com.br/arvore-de-natal-2-metros-600-galhos-grande-tradicional-luxo-cor-verde/p/MLB54646018",
-      "tipo": "opinião pública individual",
-      "verificacao": "resultado indexado do Mercado Livre"
+      "tipo": "opinião pública individual"
+    }
+  ],
+  "imagens_de_compradores": [
+    {
+      "url": "https://http2.mlstatic.com/D_NQ_NP_995022-MLA118739551303_102026-B.jpg",
+      "tipo": "fotografia_publicada_por_comprador",
+      "descricao": "Fotografia do comprador 1",
+      "origem": "https://www.mercadolivre.com.br/arvore-de-natal-2-metros-600-galhos-grande-tradicional-luxo-cor-verde/p/MLB54646018",
+      "licenca_republicacao_confirmada": false
+    },
+    {
+      "url": "https://http2.mlstatic.com/D_NQ_NP_973725-MLA114776222184_082026-B.jpg",
+      "tipo": "fotografia_publicada_por_comprador",
+      "descricao": "Fotografia do comprador 2",
+      "origem": "https://www.mercadolivre.com.br/arvore-de-natal-2-metros-600-galhos-grande-tradicional-luxo-cor-verde/p/MLB54646018",
+      "licenca_republicacao_confirmada": false
+    },
+    {
+      "url": "https://http2.mlstatic.com/D_NQ_NP_775002-MLA119222723035_102026-B.jpg",
+      "tipo": "fotografia_publicada_por_comprador",
+      "descricao": "Fotografia do comprador 3",
+      "origem": "https://www.mercadolivre.com.br/arvore-de-natal-2-metros-600-galhos-grande-tradicional-luxo-cor-verde/p/MLB54646018",
+      "licenca_republicacao_confirmada": false
+    },
+    {
+      "url": "https://http2.mlstatic.com/D_NQ_NP_2X_943502-MLA79918790762_102024-O.webp",
+      "tipo": "fotografia_publicada_por_comprador",
+      "descricao": "Fotografia do comprador 4",
+      "origem": "https://www.mercadolivre.com.br/arvore-de-natal-2-metros-600-galhos-grande-tradicional-luxo-cor-verde/p/MLB54646018",
+      "licenca_republicacao_confirmada": false
+    },
+    {
+      "url": "https://http2.mlstatic.com/D_NQ_NP_999248-MLA116456478132_092026-B.jpg",
+      "tipo": "fotografia_publicada_por_comprador",
+      "descricao": "Fotografia do comprador 5",
+      "origem": "https://www.mercadolivre.com.br/arvore-de-natal-2-metros-600-galhos-grande-tradicional-luxo-cor-verde/p/MLB54646018",
+      "licenca_republicacao_confirmada": false
     }
   ]
 }
