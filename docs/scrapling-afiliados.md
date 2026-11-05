@@ -4,6 +4,26 @@
 
 O Mercado Livre pode impedir consultas automatizadas, e suas condições de uso podem restringir scraping mesmo de dados públicos. Por isso, o modo público verifica robots.txt e retorna `bloqueado` se não houver acesso permitido. Não há promessa de raspagem invisível nem de coleta completa.
 
+## Instalação no computador Windows (recomendado)
+
+Dentro da pasta do repositório Bordô, abra o PowerShell e execute:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\instalar_scrapling.ps1
+```
+
+Esse instalador cria a pasta isolada `.venv-scrapling`, instala `scrapling[fetchers]` e executa os testes locais sobre uma página HTML de exemplo. A pasta está no `.gitignore`.
+
+Para instalar também o navegador utilizado pelo Scrapling para renderizar páginas com JavaScript, use:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\instalar_scrapling.ps1 -ComNavegador
+```
+
+O segundo comando baixa dependências adicionais e pode exigir mais espaço em disco. O navegador é opcional para processar HTML salvo e fazer requisições HTTP normais. Python 3.10 ou superior e internet são necessários para instalar.
+
+**A instalação no GitHub Actions foi comprovada em 05/11/2026**, mas ela ocorre em um computador temporário do GitHub; não instala nada no notebook do proprietário nem nos servidores do site.
+
 ## Comando rápido, sem API
 
 Na pasta do repositório:
