@@ -39,3 +39,16 @@ jobs:
         run: python -m unittest discover -s tests -p test_importar_afiliados.py -v
       - name: Testar SEO e evidências dos guias da Bordô
         run: python -m unittest discover -s tests -p test_blog.py -v
+
+  instalacao-windows:
+    runs-on: windows-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Instalar Scrapling em ambiente isolado no Windows
+        shell: pwsh
+        run: |
+          powershell -ExecutionPolicy Bypass -File .\scripts\instalar_scrapling.ps1
