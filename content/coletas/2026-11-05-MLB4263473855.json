@@ -1,0 +1,81 @@
+{
+  "id_anuncio": "MLB4263473855",
+  "id_catalogo": "MLB54646018",
+  "slug": "arvore-de-natal-210-600-galhos",
+  "data_consulta": "2026-11-05",
+  "tipo": "verificacao_publica_indexada_nao_scraping_direto",
+  "link_afiliado_original": "https://www.mercadolivre.com.br/p/MLB54646018?matt_tool=38524122&pdp_filters=item_id:MLB4263473855&ua=77_a7mIw-TVKAJOZloTjiweFqQejwgSDtCI3DM0aBMooFIZe#origin=share&sid=share&wid=MLB4263473855&action=whatsapp",
+  "status_captura_direta": "bloqueada",
+  "tentativas": [
+    {
+      "metodo": "acesso direto ao anuncio e catalogo",
+      "resultado": "403 Forbidden / bot_blocked",
+      "informacoes_recuperadas": 0
+    },
+    {
+      "metodo": "cliente de extracao automatica sem contornar bloqueios",
+      "resultado": "All scraping engines failed",
+      "informacoes_recuperadas": 0
+    },
+    {
+      "metodo": "consulta a resultados publicos indexados do Mercado Livre",
+      "resultado": "sucesso_parcial",
+      "informacoes_recuperadas": "titulo, marca, nota, precos de referencia, parcelamento, volume de vendas"
+    }
+  ],
+  "informacoes_confirmadas_nos_resultados_recentemente_indexados": {
+    "titulo": "Árvore De Natal 2 Metros 600 Galhos Grande Tradicional Luxo Cor Verde",
+    "marca": "DEKASA",
+    "nota_media": 4.7,
+    "preco_referencia_brl": 189.9,
+    "preco_anterior_exibido_brl": 209.9,
+    "parcelamento_exibido": "6 parcelas de R$ 31,65 sem juros",
+    "aviso_sobre_preco": "Valor de listagem pública, sujeito a localização, cupom, modalidade de pagamento, data e variação por sessão; não usar como preço atual garantido.",
+    "vendido_mais_de_1000": true,
+    "dados_comerciais_nao_confirmados": "frete para Teixeiras, estoque do item exato e preço do carrinho",
+    "fontes": [
+      {
+        "url": "https://www.mercadolivre.com.br/loja/dekasa?category_id=MLB107292&client=recoview-selleritems&item_id=MLB6616694386&official_store_id=191282&recos_listing=true",
+        "descricao": "Loja oficial DEKASA, indexada no dia da consulta: R$189,90, R$209,90 anterior, mais de 1000 vendidos"
+      },
+      {
+        "url": "https://lista.mercadolivre.com.br/arvore-de-natal-2%2C10-com-600-galhos",
+        "descricao": "Lista de resultados indexada no dia da consulta: nota 4,7/5 e R$189,90"
+      },
+      {
+        "url": "https://lista.mercadolivre.com.br/loja/dekasa/_Container_fh-lp-natal-arvores-2-1m",
+        "descricao": "Resultados da loja DEKASA: foram encontrados preços promocionais diferentes em consultas recentes"
+      }
+    ]
+  },
+  "dados_que_continuam_sendo_da_captura_anterior": {
+    "ficha_tecnica": {
+      "altura_cm": 210,
+      "largura_maxima_cm": 105,
+      "peso_kg": 3.4,
+      "galhos": 600,
+      "base": "Ferro",
+      "material": "Feltro, PVC, plástico",
+      "desmontavel": true,
+      "iluminacao_inclusa": false,
+      "enfeites_inclusos": false
+    },
+    "fonte": "https://www.mercadolivre.com.br/arvore-de-natal-2-metros-600-galhos-grande-tradicional-luxo-cor-verde/p/MLB54646018",
+    "data_base": "2026-11-05",
+    "total_fotos_produto_identificadas": 6,
+    "total_fotos_compradores_identificadas": 5,
+    "total_avaliacoes_registradas": 420,
+    "total_comentarios_registrados": 190,
+    "video": "Página contém ícone de vídeo, mas não expõe vídeo reproduzível; duração do widget 0:00",
+    "nota": "Fotos, contagens de opiniões e especificações preservadas do registro anterior e NÃO reextraídas nesta tentativa."
+  },
+  "proximas_acoes": [
+    "Conferir preço e estoque no anúncio antes de divulgar oferta",
+    "Não atualizar número de avaliações/galeria como se fosse coleta do dia",
+    "Usar link de afiliado original somente após validar atribuição",
+    "Revisar direitos de reprodução das fotos",
+    "Usar fluxo de captura HTML autorizado ou fonte oficial quando disponível"
+  ],
+  "publicado_automaticamente": false,
+  "revisado_por_humano": false
+}
