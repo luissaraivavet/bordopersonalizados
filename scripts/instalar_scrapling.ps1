@@ -10,15 +10,15 @@ $requirements = Join-Path $PSScriptRoot "requirements-scrapling.txt"
 
 if (-not (Test-Path $python)) {
     Write-Host "Criando ambiente isolado do Scrapling..." -ForegroundColor Cyan
-    $launcher = Get-Command py -ErrorAction SilentlyContinue
-    if ($launcher) {
-        & py -3 -m venv $venv
+    $command = Get-Command python -ErrorAction SilentlyContinue
+    if ($command) {
+        & python -m venv $venv
     } else {
-        $command = Get-Command python -ErrorAction SilentlyContinue
-        if (-not $command) {
+        $launcher = Get-Command py -ErrorAction SilentlyContinue
+        if (-not $launcher) {
             throw "Python 3.10+ não encontrado. Instale o Python e execute este arquivo novamente."
         }
-        & python -m venv $venv
+        & py -3 -m venv $venv
     }
     if ($LASTEXITCODE -ne 0) { throw "Não foi possível criar o ambiente Python." }
 }
