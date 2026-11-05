@@ -28,8 +28,9 @@ Write-Host "Instalando Scrapling com os recursos de leitura HTTP..." -Foreground
 & $python -m pip install --disable-pip-version-check -r $requirements
 if ($LASTEXITCODE -ne 0) { throw "Falha ao baixar dependências. Confira a conexão com a internet." }
 
-& $python -c 'from scrapling import Selector; from scrapling.fetchers import Fetcher; print("OK: Scrapling e Fetcher importados.")'
+& $python -c "from scrapling import Selector; from scrapling.fetchers import Fetcher"
 if ($LASTEXITCODE -ne 0) { throw "Scrapling instalado, mas uma importação falhou." }
+Write-Host "OK: Scrapling e Fetcher importados." -ForegroundColor Green
 
 if ($ComNavegador) {
     $executable = Join-Path $venv "Scripts\scrapling.exe"
