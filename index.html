@@ -321,10 +321,10 @@ dialog::backdrop{background:var(--color-scrim)}
   .dropdown{position:static;min-width:0;padding:0 0 var(--space-xs) var(--space-sm);border:0;background:transparent}
   .dropdown a{font-size:var(--text-md)}
   .brand img{height:42px}
-  .hero{min-height:min(86dvh,720px)}
-  .hero-photo{object-position:84% 30%}
-  .hero::after{background:linear-gradient(0deg,var(--color-veil-strong) 0%,var(--color-veil-strong) 40%,var(--color-veil-none) 80%)}
-  .hero>.wrap{padding-block:var(--space-2xl)}
+  .hero{display:block;min-height:0;background:var(--color-paper)}
+  .hero-photo{position:static;height:auto;aspect-ratio:4/5;max-height:62dvh;object-position:82% 30%}
+  .hero::after{display:none}
+  .hero>.wrap{padding-block:var(--space-xl) var(--space-2xl)}
   .collection-grid{gap:var(--space-xl);margin-inline:calc(-1 * var(--gutter));padding-inline:var(--gutter);scroll-padding-inline:var(--gutter)}
   .section-heading,.film-row,.feature-layout,.custom-band-inner,.personalize-layout,.story,.founder-gallery,.faq-layout{grid-template-columns:minmax(0,1fr)}
   .discovery-grid{grid-template-columns:minmax(0,1fr)}
