@@ -13,30 +13,89 @@
   <meta property="og:description" content="Bordados personalizados sob encomenda em Teixeiras, MG. Matrizes exclusivas, bordado computadorizado e acabamento cuidadoso. Conte sua ideia à Bordô.">
   <meta property="og:url" content="https://bordopersonalizados.com.br/bordados-personalizados/">
   <meta property="og:image" content="https://bordopersonalizados.com.br/assets/detalhe-bordado.webp">
+  <link rel="preload" href="/assets/tokens.css?v=20261117-hallmark" as="style">
+  <link rel="preload" href="/assets/base.css?v=20261117-hallmark" as="style">
   <link rel="icon" href="/assets/brand-logo.png" type="image/png">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Bordados personalizados em Teixeiras, MG","url":"https://bordopersonalizados.com.br/bordados-personalizados/","description":"Bordados personalizados sob encomenda em Teixeiras, MG. Matrizes exclusivas, bordado computadorizado e acabamento cuidadoso. Conte sua ideia à Bordô.","isPartOf":{"@type":"WebSite","name":"Bordô - Bordados Personalizados","url":"https://bordopersonalizados.com.br/"},"about":{"@type":"Organization","name":"Bordô - Bordados Personalizados"}}</script>
   <style>
-    @font-face{font-family:Lora;src:url('/assets/fonts/Lora.ttf') format('truetype');font-display:swap}
-    @font-face{font-family:Manrope;src:url('/assets/fonts/Manrope.ttf') format('truetype');font-display:swap}
-    :root{font-family:Manrope,Arial,sans-serif;color:#292c29;background:#fff;line-height:1.7}
-    *{box-sizing:border-box}body{margin:0}a{color:#631f35}a:focus-visible{outline:3px solid #631f35;outline-offset:4px}
-    header{border-bottom:1px solid #e9e0e3;padding:18px 24px}header div,main,footer div{max-width:1100px;margin:auto}
-    header img{width:170px;height:auto}nav{display:flex;gap:18px;flex-wrap:wrap;font-size:14px}
-    main{padding:45px 24px 80px}h1,h2{font-family:Lora,Georgia,serif;color:#631f35;font-weight:400;line-height:1.2}h1{font-size:clamp(34px,5vw,58px)}h2{font-size:30px}
-    .hero{display:grid;grid-template-columns:1.15fr 0.85fr;gap:50px;align-items:center;margin-bottom:65px}
-    .hero p{max-width:620px;font-size:18px}.hero img{display:block;width:100%;height:auto;object-fit:cover;border-radius:8px}
-    .action{display:inline-block;padding:12px 20px;background:#631f35;color:white;text-decoration:none;border-radius:4px;font-weight:bold;margin:12px 0}
-    .sections{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px}.sections article{padding:24px;background:#faf8f8;border-radius:6px}
-    footer{background:#631f35;color:white;padding:32px 24px}footer a{color:white}footer a:focus-visible{outline-color:white}
-    @media(max-width:700px){.hero,.sections{grid-template-columns:1fr}.hero{gap:22px}main{padding-top:20px}}
+/* Hallmark · shape: Split Studio · genre: editorial · theme: brand · redesign: full · job: buy
+ * paper: oklch(98.2% 0.005 130) · accent: oklch(35.2% 0.1 4) · display: Lora · body: Manrope · hero: Stage · nav: edge-aligned · footer: colophon block · signature: one embroidered piece shown large beside the offer
+ * axes: light/roman-serif/chromatic-red · posture: full-palette · contrast: pass · fold: pass · v2.0.0 */
+/* Hallmark · pre-emit critique: P3 H4 E4 S3 R4 V3 · weakest: S, a short discovery page shares its frame with two siblings; each keeps its own photograph and its own two destinations */
+/* Hallmark · dismissed 77 · the page keeps the four sections it had; a redesign adds no section, claim or picture the owner did not write */
+@import url("/assets/tokens.css?v=20261117-hallmark");
+@import url("/assets/base.css?v=20261117-hallmark");
+html,body{overflow-x:clip}
+h1,h2{color:var(--color-display);text-wrap:balance}
+a{text-decoration:none}
+figure{margin:0}
+.wrap{width:100%;max-width:var(--container);margin-inline:auto;padding-inline:var(--gutter)}
+.masthead{position:sticky;top:0;z-index:var(--z-sticky-nav);background:var(--color-paper);border-bottom:1px solid var(--color-rule)}
+.masthead>.wrap{display:flex;align-items:center;justify-content:space-between;gap:var(--space-lg);min-height:var(--nav-h)}
+.brand{flex:none}
+.brand img{width:auto;height:52px}
+.nav{display:flex;flex-wrap:wrap;justify-content:end;gap:0 var(--space-lg)}
+.nav a{display:flex;align-items:center;min-height:44px;font-size:var(--text-sm);font-weight:600;white-space:nowrap;transition:color var(--dur-short) var(--ease-out)}
+.nav a:hover{color:var(--color-accent)}
+.nav a:active{color:var(--color-accent-deep)}
+.hero{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);justify-content:space-between;gap:var(--space-xl) var(--space-3xl);align-items:center;min-height:calc(100dvh - var(--nav-h));padding-block:var(--space-xl)}
+.hero h1{font-size:var(--text-hero)}
+.hero .lead{margin-block:var(--space-lg) var(--space-xl)}
+.hero-note{margin-top:var(--space-lg);font-size:var(--text-sm);color:var(--color-muted)}
+.hero figure img{width:100%;aspect-ratio:1/1;max-height:600px;object-fit:cover;border-radius:var(--radius-card)}
+.hero figcaption{margin-top:var(--space-sm);font-size:var(--text-sm);color:var(--color-muted)}
+.action{min-height:48px;display:inline-flex;align-items:center;justify-content:center;padding:0 var(--space-lg);border:1px solid var(--color-accent);border-radius:var(--radius-card);background:var(--color-accent);color:var(--color-accent-ink);font-size:var(--text-sm);font-weight:600;line-height:1;white-space:nowrap;transition:background-color var(--dur-short) var(--ease-out),transform var(--dur-micro) var(--ease-out)}
+.action:hover{background:var(--color-accent-deep)}
+.action:active{transform:translateY(1px)}
+.sections{padding-bottom:var(--section-gap-s)}
+.sections article{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);justify-content:space-between;gap:var(--space-md) var(--space-3xl);align-items:start;padding-block:var(--space-2xl);border-top:1px solid var(--color-rule)}
+.sections article:last-child{border-bottom:1px solid var(--color-rule)}
+.sections h2{grid-row:span 2}
+.sections p{font-size:var(--text-lead);color:var(--color-ink-2)}
+.sections .text-link{justify-self:start;grid-column:2}
+.text-link{display:inline-flex;align-items:center;min-height:44px;margin-top:auto;border-bottom:1px solid var(--color-gold);font-size:var(--text-sm);font-weight:600;transition:color var(--dur-short) var(--ease-out)}
+.text-link:hover{color:var(--color-accent)}
+.text-link:active{color:var(--color-accent-deep)}
+.closing{padding-block:var(--section-gap-s);background:var(--color-sage-deep);color:var(--color-paper)}
+.closing :focus-visible{outline-color:var(--color-paper)}
+.closing>.wrap{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);justify-content:space-between;gap:var(--space-lg) var(--space-3xl);align-items:end}
+.closing h2{color:var(--color-paper)}
+.closing p{margin-top:var(--space-md);font-size:var(--text-lead)}
+.closing .action{justify-self:end;background:var(--color-paper);border-color:var(--color-paper);color:var(--color-sage-deep)}
+.closing .action:hover{background:var(--color-paper-3)}
+.footer{padding-block:var(--space-2xl);background:var(--color-accent);color:var(--color-accent-ink)}
+.footer :focus-visible{outline-color:var(--color-accent-ink)}
+.footer>.wrap{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:var(--space-lg)}
+.footer p{font-size:var(--text-sm);color:var(--color-accent-soft)}
+.footer strong{display:block;font-family:var(--font-display);font-size:var(--text-xl);font-weight:400;color:var(--color-accent-ink)}
+.footer nav{display:flex;flex-wrap:wrap;gap:0 var(--space-lg)}
+.footer a{display:flex;align-items:center;min-height:44px}
+.footer a:hover{text-decoration:underline}
+@media(max-width:60rem){
+  .hero,.closing>.wrap,.sections article{grid-template-columns:minmax(0,1fr)}
+  .sections h2{grid-row:auto}
+  .sections .text-link{grid-column:auto}
+  .hero{min-height:0}
+  .closing .action{justify-self:start}
+  .brand img{height:44px}
+  .masthead>.wrap{flex-wrap:wrap;gap:0 var(--space-lg);padding-block:var(--space-xs)}
+  .nav{justify-content:start}
+}
+@media(max-width:40rem){
+  .sections article{grid-template-columns:minmax(0,1fr);padding-block:var(--space-xl)}
+  .sections h2{grid-row:auto}
+  .sections .text-link{grid-column:auto}
+  .action{width:100%}
+}
+@media(prefers-reduced-motion:reduce){.action,.nav a,.text-link{transition:none}}
   </style>
 </head>
 <body>
-<header><div><a href="/" aria-label="Bordô - página inicial"><img src="/assets/brand-logo.png" alt="Bordô Bordados Personalizados" width="170" height="70"></a><nav aria-label="Navegação"><a href="/">Início</a><a href="/lacos-infantis-bordados/">Laços bordados</a><a href="/bordados-personalizados/">Bordados personalizados</a><a href="/presentes-personalizados/">Presentes personalizados</a></nav></div></header>
+<header class="masthead"><div class="wrap"><a class="brand" href="/" aria-label="Bordô - página inicial"><img src="/assets/brand-logo.png" alt="Bordô Bordados Personalizados" width="1964" height="800"></a><nav class="nav" aria-label="Navegação"><a href="/">Início</a><a href="/lacos-infantis-bordados/">Laços bordados</a><a href="/bordados-personalizados/">Bordados personalizados</a><a href="/presentes-personalizados/">Presentes personalizados</a></nav></div></header>
 <main>
-<section class="hero"><div><p>Uma criação Bordô | Teixeiras, MG</p><h1>Bordados personalizados em Teixeiras, MG</h1><p>A Bordô transforma ideias, nomes e lembranças em bordados personalizados sob encomenda, com desenvolvimento de matrizes e bordado computadorizado.</p><a class="action" href="/#personalizados">Solicitar orçamento</a><p>Atendimento online e por encomenda. Consulte prazo, opções, frete e disponibilidade pelo WhatsApp.</p></div><img src="/assets/detalhe-bordado.webp" width="800" height="800" alt="Detalhe de peça com bordado personalizado Bordô"></section>
-<div class="sections"><article><h2>Criação de bordados personalizados</h2><p>Conte sua ideia e combine os detalhes no atendimento. Consulte opções de materiais, cores, tamanhos e disponibilidade.</p><a href="/#personalizados">Saiba mais na Bordô</a></article><article><h2>Bordados para presentes e ocasiões especiais</h2><p>Peças com significado para momentos importantes, feitas sob encomenda e com acabamento cuidadoso.</p><a href="/presentes-personalizados/">Saiba mais na Bordô</a></article></div>
-<section><h2>Seu próximo bordado começa com uma conversa</h2><p>A Bordô atende em Teixeiras, Minas Gerais, e recebe pedidos online. Cada detalhe do projeto é confirmado antes da encomenda.</p><a class="action" href="https://wa.me/5531997954792?text=Ol%C3%A1%2C%20Bord%C3%B4%21%20Gostaria%20de%20um%20or%C3%A7amento." target="_blank" rel="noopener noreferrer">Conversar pelo WhatsApp</a></section>
+<section class="hero wrap"><div><h1>Bordados personalizados em Teixeiras, MG</h1><p class="lead">A Bordô transforma ideias, nomes e lembranças em bordados personalizados sob encomenda, com desenvolvimento de matrizes e bordado computadorizado.</p><a class="action" href="/#personalizados">Solicitar orçamento</a><p class="hero-note">Atendimento online e por encomenda. Consulte prazo, opções, frete e disponibilidade pelo WhatsApp.</p></div><figure><img fetchpriority="high" src="/assets/detalhe-bordado.webp" width="800" height="800" alt="Detalhe de peça com bordado personalizado Bordô"><figcaption>Uma criação Bordô, de Teixeiras, MG.</figcaption></figure></section>
+<div class="sections wrap"><article><h2>Criação de bordados personalizados</h2><p>Conte sua ideia e combine os detalhes no atendimento. Consulte opções de materiais, cores, tamanhos e disponibilidade.</p><a class="text-link" href="/#personalizados">Saiba mais na Bordô</a></article><article><h2>Bordados para presentes e ocasiões especiais</h2><p>Peças com significado para momentos importantes, feitas sob encomenda e com acabamento cuidadoso.</p><a class="text-link" href="/presentes-personalizados/">Saiba mais na Bordô</a></article></div>
+<section class="closing"><div class="wrap"><div><h2>Seu próximo bordado começa com uma conversa</h2><p>A Bordô atende em Teixeiras, Minas Gerais, e recebe pedidos online. Cada detalhe do projeto é confirmado antes da encomenda.</p></div><a class="action" href="https://wa.me/5531997954792?text=Ol%C3%A1%2C%20Bord%C3%B4%21%20Gostaria%20de%20um%20or%C3%A7amento." target="_blank" rel="noopener noreferrer">Conversar pelo WhatsApp</a></div></section>
 </main>
-<footer><div><p><strong>Bordô | Bordados Personalizados</strong> · Teixeiras, Minas Gerais.</p><p><a href="/">Página inicial</a> · <a href="/#historia">Conheça a Priscila e a história da Bordô</a></p></div></footer>
+<footer class="footer"><div class="wrap"><p><strong>Bordô | Bordados Personalizados</strong>Teixeiras, Minas Gerais.</p><nav aria-label="Rodapé"><a href="/">Página inicial</a><a href="/#historia">Conheça a Priscila e a história da Bordô</a></nav></div></footer>
 </body></html>
