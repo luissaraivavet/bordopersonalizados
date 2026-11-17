@@ -85,7 +85,7 @@ class ValidationTests(unittest.TestCase):
 
     def test_hidden_items_remain_private(self):
         self.data['testimonials'] = [{'id': 'private-review', 'name': 'Rascunho', 'text': 'Ainda nao autorizado', 'published': False}]
-        self.data['collections'][1]['published'] = False
+        next(c for c in self.data['collections'] if c['id'] == 'sinfonia')['published'] = False
         public = app.public_content(self.data)
         self.assertEqual(public['testimonials'], [])
         self.assertFalse(any(p['collection'] == 'sinfonia' for p in public['products']))
