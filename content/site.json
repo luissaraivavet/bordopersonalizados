@@ -659,10 +659,10 @@
     },
     {
       "id": "naninha-fatima",
-      "title": "Naninha Nossa Senhora de Fátima",
+      "title": "Naninha Nossa Senhora de Fátima – manto branco",
       "price": 59.9,
       "image": "assets/naninha-fatima.webp",
-      "description": "Naninha macia off-white com Nossa Senhora de Fátima bordado à máquina. Um presente de fé para o berço, o batizado ou a maternidade.",
+      "description": "Naninha macia off-white com Nossa Senhora de Fátima de manto branco bordado à máquina. Um presente de fé para o berço, o batizado ou a maternidade.",
       "options": [
         "Acabamento a confirmar no atendimento"
       ],
@@ -671,11 +671,11 @@
       "illustrative": false
     },
     {
-      "id": "naninha-nossa-senhora-rosa",
-      "title": "Naninha Nossa Senhora – manto rosa",
+      "id": "naninha-fatima-rosa",
+      "title": "Naninha Nossa Senhora de Fátima – manto rosa",
       "price": 59.9,
-      "image": "assets/naninha-nossa-senhora-rosa.webp",
-      "description": "Naninha macia off-white com Nossa Senhora com véu branco e manto rosa bordado à máquina. Um presente de fé para o berço, o batizado ou a maternidade.",
+      "image": "assets/naninha-fatima-rosa.webp",
+      "description": "Naninha macia off-white com Nossa Senhora de Fátima de manto rosa bordado à máquina. Um presente de fé para o berço, o batizado ou a maternidade.",
       "options": [
         "Acabamento a confirmar no atendimento"
       ],
@@ -762,11 +762,11 @@
       "illustrative": false
     },
     {
-      "id": "naninha-santo-manto-azul",
-      "title": "Naninha santo de manto azul",
+      "id": "naninha-sao-bento",
+      "title": "Naninha São Bento",
       "price": 59.9,
-      "image": "assets/naninha-santo-manto-azul.webp",
-      "description": "Naninha macia off-white com um santo de manto azul, com livro e cajado bordado à máquina. Um presente de fé para o berço, o batizado ou a maternidade.",
+      "image": "assets/naninha-sao-bento.webp",
+      "description": "Naninha macia off-white com São Bento bordado à máquina. Um presente de fé para o berço, o batizado ou a maternidade.",
       "options": [
         "Acabamento a confirmar no atendimento"
       ],
@@ -775,11 +775,11 @@
       "illustrative": false
     },
     {
-      "id": "naninha-nossa-senhora-menino",
-      "title": "Naninha Nossa Senhora com o Menino Jesus",
+      "id": "naninha-nossa-senhora-nazare",
+      "title": "Naninha Nossa Senhora de Nazaré",
       "price": 59.9,
-      "image": "assets/naninha-nossa-senhora-menino.webp",
-      "description": "Naninha macia off-white com Nossa Senhora com o Menino Jesus no colo bordado à máquina. Um presente de fé para o berço, o batizado ou a maternidade.",
+      "image": "assets/naninha-nossa-senhora-nazare.webp",
+      "description": "Naninha macia off-white com Nossa Senhora de Nazaré com o Menino Jesus bordado à máquina. Um presente de fé para o berço, o batizado ou a maternidade.",
       "options": [
         "Acabamento a confirmar no atendimento"
       ],
