@@ -13,18 +13,18 @@
   <meta property="og:description" content="Presentes bordados personalizados sob encomenda: laços, lembranças e peças especiais. Conheça a Bordô, de Teixeiras, MG, e converse sobre seu presente.">
   <meta property="og:url" content="https://bordopersonalizados.com.br/presentes-personalizados/">
   <meta property="og:image" content="https://bordopersonalizados.com.br/assets/gifts.webp">
-  <link rel="preload" href="/assets/tokens.css?v=20261117-hallmark" as="style">
-  <link rel="preload" href="/assets/base.css?v=20261117-hallmark" as="style">
+  <link rel="preload" href="/assets/tokens.css?v=20261117-bordo" as="style">
+  <link rel="preload" href="/assets/base.css?v=20261117-bordo" as="style">
   <link rel="icon" href="/assets/brand-logo.png" type="image/png">
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"Presentes bordados personalizados com carinho","url":"https://bordopersonalizados.com.br/presentes-personalizados/","description":"Presentes bordados personalizados sob encomenda: laços, lembranças e peças especiais. Conheça a Bordô, de Teixeiras, MG, e converse sobre seu presente.","isPartOf":{"@type":"WebSite","name":"Bordô - Bordados Personalizados","url":"https://bordopersonalizados.com.br/"},"about":{"@type":"Organization","name":"Bordô - Bordados Personalizados"}}</script>
   <style>
 /* Hallmark · shape: Split Studio · genre: editorial · theme: brand · redesign: full · job: buy
- * paper: oklch(98.2% 0.005 130) · accent: oklch(35.2% 0.1 4) · display: Lora · body: Manrope · hero: Stage · nav: edge-aligned · footer: colophon block · signature: one embroidered piece shown large beside the offer
- * axes: light/roman-serif/chromatic-red · posture: full-palette · contrast: pass · fold: pass · v2.0.0 */
+ * paper: oklch(97.6% 0.008 30) · accent: oklch(35.2% 0.1 4) · display: Cormorant Garamond · body: Manrope · hero: Stage · nav: edge-aligned · footer: colophon block · signature: one embroidered piece shown large in an arched frame beside the offer
+ * axes: light/high-contrast-serif/chromatic-red · posture: full-palette · contrast: pass · fold: pass · v2.0.0 */
 /* Hallmark · pre-emit critique: P3 H4 E4 S3 R4 V3 · weakest: S, a short discovery page shares its frame with two siblings; each keeps its own photograph and its own two destinations */
 /* Hallmark · dismissed 77 · the page keeps the four sections it had; a redesign adds no section, claim or picture the owner did not write */
-@import url("/assets/tokens.css?v=20261117-hallmark");
-@import url("/assets/base.css?v=20261117-hallmark");
+@import url("/assets/tokens.css?v=20261117-bordo");
+@import url("/assets/base.css?v=20261117-bordo");
 html,body{overflow-x:clip}
 h1,h2{color:var(--color-display);text-wrap:balance}
 a{text-decoration:none}
@@ -39,35 +39,33 @@ figure{margin:0}
 .nav a:hover{color:var(--color-accent)}
 .nav a:active{color:var(--color-accent-deep)}
 .hero{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);justify-content:space-between;gap:var(--space-xl) var(--space-3xl);align-items:center;min-height:calc(100dvh - var(--nav-h));padding-block:var(--space-xl)}
-.hero h1{font-size:var(--text-hero)}
+.hero h1{font-size:var(--text-display-s);line-height:1}
 .hero .lead{margin-block:var(--space-lg) var(--space-xl)}
 .hero-note{margin-top:var(--space-lg);font-size:var(--text-sm);color:var(--color-muted)}
-.hero figure img{width:100%;aspect-ratio:1/1;max-height:600px;object-fit:cover;border-radius:var(--radius-card)}
+.hero figure img{width:100%;aspect-ratio:4/5;max-height:640px;object-fit:cover;border-radius:var(--radius-arch)}
 .hero figcaption{margin-top:var(--space-sm);font-size:var(--text-sm);color:var(--color-muted)}
-.action{min-height:48px;display:inline-flex;align-items:center;justify-content:center;padding:0 var(--space-lg);border:1px solid var(--color-accent);border-radius:var(--radius-card);background:var(--color-accent);color:var(--color-accent-ink);font-size:var(--text-sm);font-weight:600;line-height:1;white-space:nowrap;transition:background-color var(--dur-short) var(--ease-out),transform var(--dur-micro) var(--ease-out)}
+.action{min-height:52px;display:inline-flex;align-items:center;justify-content:center;padding:0 var(--space-xl);border:1px solid var(--color-accent);border-radius:var(--radius-pill);background:var(--color-accent);color:var(--color-accent-ink);font-size:var(--text-sm);font-weight:600;line-height:1;white-space:nowrap;transition:background-color var(--dur-short) var(--ease-out),transform var(--dur-micro) var(--ease-out)}
 .action:hover{background:var(--color-accent-deep)}
 .action:active{transform:translateY(1px)}
 .sections{padding-bottom:var(--section-gap-s)}
 .sections article{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);justify-content:space-between;gap:var(--space-md) var(--space-3xl);align-items:start;padding-block:var(--space-2xl);border-top:1px solid var(--color-rule)}
 .sections article:last-child{border-bottom:1px solid var(--color-rule)}
-.sections h2{grid-row:span 2}
+.sections h2{grid-row:span 2;font-size:var(--text-display-s);line-height:1}
 .sections p{font-size:var(--text-lead);color:var(--color-ink-2)}
 .sections .text-link{justify-self:start;grid-column:2}
-.text-link{display:inline-flex;align-items:center;min-height:44px;margin-top:auto;border-bottom:1px solid var(--color-gold);font-size:var(--text-sm);font-weight:600;transition:color var(--dur-short) var(--ease-out)}
+.text-link{display:inline-flex;align-items:center;min-height:44px;margin-top:auto;border-bottom:1px solid var(--color-gold-deep);font-size:var(--text-sm);font-weight:600;transition:color var(--dur-short) var(--ease-out)}
 .text-link:hover{color:var(--color-accent)}
 .text-link:active{color:var(--color-accent-deep)}
-.closing{padding-block:var(--section-gap-s);background:var(--color-sage-deep);color:var(--color-paper)}
-.closing :focus-visible{outline-color:var(--color-paper)}
+.closing{padding-block:var(--section-gap-s);background:var(--color-paper-2)}
 .closing>.wrap{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,4fr);justify-content:space-between;gap:var(--space-lg) var(--space-3xl);align-items:end}
-.closing h2{color:var(--color-paper)}
-.closing p{margin-top:var(--space-md);font-size:var(--text-lead)}
-.closing .action{justify-self:end;background:var(--color-paper);border-color:var(--color-paper);color:var(--color-sage-deep)}
-.closing .action:hover{background:var(--color-paper-3)}
-.footer{padding-block:var(--space-2xl);background:var(--color-accent);color:var(--color-accent-ink)}
-.footer :focus-visible{outline-color:var(--color-accent-ink)}
+.closing h2{font-size:var(--text-display-s);line-height:1}
+.closing p{margin-top:var(--space-md);font-size:var(--text-lead);color:var(--color-ink-2)}
+.closing .action{justify-self:end}
+.footer{padding-block:var(--space-2xl);background:var(--color-field);color:var(--color-on-field)}
+.footer :focus-visible{outline-color:var(--color-gold)}
 .footer>.wrap{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:var(--space-lg)}
-.footer p{font-size:var(--text-sm);color:var(--color-accent-soft)}
-.footer strong{display:block;font-family:var(--font-display);font-size:var(--text-xl);font-weight:400;color:var(--color-accent-ink)}
+.footer p{font-size:var(--text-sm);color:var(--color-on-field-soft)}
+.footer strong{display:block;font-family:var(--font-display);font-size:var(--text-2xl);font-weight:500;color:var(--color-on-field)}
 .footer nav{display:flex;flex-wrap:wrap;gap:0 var(--space-lg)}
 .footer a{display:flex;align-items:center;min-height:44px}
 .footer a:hover{text-decoration:underline}

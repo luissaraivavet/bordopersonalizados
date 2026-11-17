@@ -17,22 +17,20 @@
   <link rel="sitemap" type="application/xml" href="/sitemap.xml">
   <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://bordopersonalizados.com.br/#organization","name":"Bordô - Bordados Personalizados","url":"https://bordopersonalizados.com.br/","logo":"https://bordopersonalizados.com.br/assets/brand-logo.png","description":"Laços infantis, presentes e bordados personalizados sob encomenda em Teixeiras, Minas Gerais.","sameAs":["https://www.instagram.com/bordobordadospersonalizados/"]},{"@type":"WebSite","@id":"https://bordopersonalizados.com.br/#website","url":"https://bordopersonalizados.com.br/","name":"Bordô | Bordados Personalizados","inLanguage":"pt-BR","publisher":{"@id":"https://bordopersonalizados.com.br/#organization"}}]}</script>
   <link rel="icon" href="assets/brand-logo.png" type="image/png">
-  <link rel="preload" href="assets/fonts/Lora.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="assets/fonts/CormorantGaramond.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/Manrope.ttf" as="font" type="font/ttf" crossorigin>
-  <link rel="preload" href="assets/tokens.css?v=20261117-hallmark" as="style">
-  <link rel="preload" href="assets/base.css?v=20261117-hallmark" as="style">
+  <link rel="preload" href="assets/tokens.css?v=20261117-bordo" as="style">
+  <link rel="preload" href="assets/base.css?v=20261117-bordo" as="style">
   <style>
 /* Hallmark · shape: Catalogue · genre: editorial · theme: brand · redesign: full · job: buy · draw: ced14a
- * paper: oklch(98.2% 0.005 130) · accent: oklch(35.2% 0.1 4) · display: Lora · body: Manrope · hero: Ledge · nav: edge-aligned · footer: letter close · signature: the two collections as tall photographs with their names resting on them
- * axes: light/roman-serif/chromatic-red · posture: full-palette · contrast: pass · fold: pass · v2.0.0 */
-/* Hallmark · dismissed 40 · the collection name and its link sit in the lower half of the caption, where the scrim holds at 82% ink; the 1.07:1 reading is the transparent top edge above the text */
-/* Hallmark · pre-emit critique: P3 H4 E4 S4 R4 V3 · weakest: P, a shop page argues little; the two collections open at full height so the bows make the case */
+ * paper: oklch(97.6% 0.008 30) · accent: oklch(35.2% 0.1 4) · display: Cormorant Garamond · body: Manrope · hero: Poster · nav: edge-aligned · footer: mast · signature: the bows on pale linen with the house line set large beside them, and arched frames on the collection tabs
+ * axes: light/high-contrast-serif/chromatic-red · posture: full-palette · contrast: pass · fold: pass · v2.0.0 */
+/* Hallmark · pre-emit critique: P4 H4 E4 S4 R4 V4 · weakest: R, arches and motion arrive together; the arch is kept to the collection tabs and two portraits, and bordô to type, actions and the footer */
 /* Hallmark · dropped "Uma coleção Bordô", "Um olhar mais de perto", "Quem somos", "Da nossa história para a sua", "Vamos conversar" · 54 names each as an eyebrow over a heading that already says it */
-/* Hallmark · dropped .brand-white · the logo already sits in the sticky nav above the band */
+/* Hallmark · dropped .brand-white, "Conhecer a coleção" · the logo sits in the nav above the band, and the collection tabs now switch the catalogue in place */
 /* Hallmark · reworded "Manto Celeste · azul suave" to "Manto Celeste, azul suave" · 63 names the middle dot */
-/* Hallmark · hero-review: in-thread · 1 finding, the tile link wrapped on phones · resolved · finish-review: in-thread, from the 1440 and 375 full pages · no further finding */
-@import url("assets/tokens.css?v=20261117-hallmark");
-@import url("assets/base.css?v=20261117-hallmark");
+@import url("assets/tokens.css?v=20261117-bordo");
+@import url("assets/base.css?v=20261117-bordo");
 html{scroll-behavior:smooth;scroll-padding-top:calc(var(--nav-h) + var(--space-lg))}
 body{overflow-wrap:break-word}
 body:has(dialog[open]){overflow-y:hidden}
@@ -44,31 +42,30 @@ figure{margin:0}
 button,a,input,select,textarea,summary{-webkit-tap-highlight-color:transparent}
 .wrap{width:100%;max-width:var(--container);margin-inline:auto;padding-inline:var(--gutter)}
 .section{padding-block:var(--section-gap-s)}
-#historia{padding-block:var(--section-gap)}
 .muted{color:var(--color-muted)}
 .lead{color:var(--color-ink-2)}
 .icon{width:20px;height:20px;flex:none}
-.icon-button{width:48px;height:48px;display:inline-flex;align-items:center;justify-content:center;border-radius:var(--radius-card);transition:background-color var(--dur-short) var(--ease-out)}
+.icon-button{width:48px;height:48px;display:inline-flex;align-items:center;justify-content:center;border-radius:var(--radius-pill);transition:background-color var(--dur-short) var(--ease-out)}
 .icon-button:hover{background:var(--color-paper-2)}
 .icon-button:active{background:var(--color-paper-3)}
-.button{min-height:48px;display:inline-flex;align-items:center;justify-content:center;gap:var(--space-sm);padding:0 var(--space-lg);border:1px solid var(--color-accent);border-radius:var(--radius-card);background:var(--color-accent);color:var(--color-accent-ink);font-size:var(--text-sm);font-weight:600;line-height:1;white-space:nowrap;transition:background-color var(--dur-short) var(--ease-out),transform var(--dur-micro) var(--ease-out)}
+.button{min-height:52px;display:inline-flex;align-items:center;justify-content:center;gap:var(--space-sm);padding:0 var(--space-xl);border:1px solid var(--color-accent);border-radius:var(--radius-pill);background:var(--color-accent);color:var(--color-accent-ink);font-size:var(--text-sm);font-weight:600;line-height:1;white-space:nowrap;transition:background-color var(--dur-short) var(--ease-out),transform var(--dur-micro) var(--ease-out)}
 .button:hover{background:var(--color-accent-deep)}
 .button:active{transform:translateY(1px)}
 .button[aria-disabled=true],.button:disabled{opacity:.55;cursor:not-allowed;transform:none}
 .button .icon{filter:brightness(0) invert(1)}
-.button.secondary{background:transparent;color:var(--color-accent);border-color:var(--color-muted)}
+.button.secondary{background:transparent;color:var(--color-display);border-color:var(--color-muted)}
 .button.secondary:hover{background:var(--color-paper-2)}
 .button.secondary .icon{filter:none}
-.text-link{display:inline-flex;align-items:center;gap:var(--space-xs);min-height:44px;border-bottom:1px solid var(--color-gold);font-size:var(--text-sm);font-weight:600;transition:color var(--dur-short) var(--ease-out)}
+.text-link{display:inline-flex;align-items:center;gap:var(--space-xs);min-height:44px;border-bottom:1px solid var(--color-gold-deep);font-size:var(--text-sm);font-weight:600;transition:color var(--dur-short) var(--ease-out)}
 .text-link:hover{color:var(--color-accent)}
 .text-link:active{color:var(--color-accent-deep)}
-.skip{position:absolute;left:var(--space-md);top:calc(-1 * var(--space-3xl));z-index:var(--z-toast);padding:var(--space-xs) var(--space-md);background:var(--color-ink);color:var(--color-paper)}
+.skip{position:absolute;left:var(--space-md);top:calc(-1 * var(--space-3xl));z-index:var(--z-toast);padding:var(--space-xs) var(--space-md);background:var(--color-paper);color:var(--color-ink)}
 .skip:focus-visible{top:var(--space-md)}
 
 .masthead{position:sticky;top:0;z-index:var(--z-sticky-nav);background:var(--color-paper);border-bottom:1px solid var(--color-rule)}
 .masthead>.wrap{position:relative;display:flex;align-items:center;justify-content:space-between;gap:var(--space-lg);height:var(--nav-h)}
 .brand{display:block;flex:none}
-.brand img{width:auto;height:52px}
+.brand img{width:auto;height:48px}
 .nav-row{display:flex;align-items:center;gap:var(--space-lg)}
 .nav{display:flex;align-items:center;gap:var(--space-xl)}
 .nav>a,.nav summary{display:flex;align-items:center;gap:var(--space-2xs);min-height:48px;font-size:var(--text-sm);font-weight:600;white-space:nowrap;transition:color var(--dur-short) var(--ease-out)}
@@ -80,85 +77,65 @@ button,a,input,select,textarea,summary{-webkit-tap-highlight-color:transparent}
 .dropdown{position:absolute;top:100%;left:calc(-1 * var(--space-md));z-index:var(--z-dropdown);min-width:260px;padding:var(--space-xs);background:var(--color-paper);border:1px solid var(--color-rule);border-radius:var(--radius-card)}
 .dropdown a{display:block;padding:var(--space-sm) var(--space-md);border-radius:var(--radius-card);font-size:var(--text-sm)}
 .dropdown a:hover{background:var(--color-paper-2)}
-.bag-button{width:auto;gap:var(--space-2xs);padding-inline:var(--space-xs)}
+.bag-button{width:auto;gap:var(--space-2xs);padding-inline:var(--space-sm)}
 .bag-button .icon{width:24px;height:24px}
-.bag-count{min-width:20px;height:20px;display:grid;place-items:center;border-radius:var(--radius-pill);background:var(--color-accent);color:var(--color-accent-ink);font-size:var(--text-xs);font-weight:600;font-variant-numeric:tabular-nums}
+.bag-count{min-width:22px;height:22px;display:grid;place-items:center;border-radius:var(--radius-pill);background:var(--color-accent);color:var(--color-accent-ink);font-size:var(--text-xs);font-weight:600;font-variant-numeric:tabular-nums}
 .menu-button{display:none}
 
-.collections{display:flex;flex-direction:column;gap:var(--space-xl);min-height:calc(100dvh - var(--nav-h));padding-block:var(--space-lg) var(--space-xl)}
-.collection-grid{flex:1;display:flex;gap:var(--gap-columns);min-height:300px;max-height:700px}
-.collection-link{position:relative;flex:5 1 0;min-width:0;display:block;overflow:hidden;border-radius:var(--radius-card);background:var(--color-paper-2)}
-.collection-link:first-child{flex-grow:7}
-.collection-photo{position:absolute;inset:0}
-.collection-photo img{width:100%;height:100%;object-fit:cover}
-.collection-caption{position:absolute;inset:auto 0 0 0;z-index:var(--z-base);display:flex;align-items:end;justify-content:space-between;gap:var(--space-md);padding:var(--space-3xl) var(--space-lg) var(--space-md);background:linear-gradient(to top,var(--color-scrim-strong) 0%,var(--color-scrim-strong) 50%,transparent 100%);color:var(--color-paper)}
-.collection-name{font-family:var(--font-display);font-size:var(--text-2xl);font-weight:400;line-height:1.1}
-.collection-caption .text-link{flex:none}
-.collection-caption .icon{filter:brightness(0) invert(1)}
-.collection-link:hover .text-link{color:var(--color-paper);border-bottom-color:var(--color-paper)}
-.intro{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);gap:var(--space-lg) var(--gap-columns);align-items:end}
+.hero{position:relative;display:flex;align-items:end;min-height:calc(100dvh - var(--nav-h));overflow:hidden;background:var(--color-paper-2)}
+.hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 40%;animation:settle 1400ms var(--ease-out) both}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--color-veil-strong) 0%,var(--color-veil) 40%,var(--color-veil-none) 66%)}
+.hero>.wrap{position:relative;z-index:var(--z-raised);padding-block:var(--space-3xl)}
+.intro{max-width:44rem}
 .intro>div{min-width:0}
-.intro h1{max-width:none;font-size:var(--text-hero)}
-.intro p{margin-top:var(--space-md);font-size:var(--text-lead);color:var(--color-ink-2)}
-.intro>.button{justify-self:end}
+.intro h1{max-width:12ch;font-size:var(--text-display);line-height:.98;animation:rise 700ms var(--ease-out) both}
+.intro p{max-width:30ch;margin-top:var(--space-lg);font-size:var(--text-lead);color:var(--color-ink);animation:rise 700ms var(--ease-out) 90ms both}
+.intro>.button{margin-top:var(--space-xl);animation:rise 700ms var(--ease-out) 180ms both}
+@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@keyframes settle{from{transform:scale(1.05)}to{transform:none}}
+@keyframes appear{from{opacity:0}to{opacity:1}}
 
-.custom-band{padding-block:var(--section-gap-s);background:var(--color-sage-deep);color:var(--color-paper)}
-.custom-band :focus-visible{outline-color:var(--color-paper)}
-.custom-band-inner{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:var(--space-xl) var(--gap-columns);align-items:center}
-.custom-band h2{color:var(--color-paper)}
-.custom-band p{margin-block:var(--space-md) var(--space-xl);font-size:var(--text-lead)}
-.custom-band .button{background:var(--color-paper);border-color:var(--color-paper);color:var(--color-sage-deep)}
-.custom-band .button:hover{background:var(--color-paper-3)}
-.custom-band .button .icon{filter:none}
-.custom-band-photo{width:100%;aspect-ratio:5/4;object-fit:cover;object-position:50% 55%;border-radius:var(--radius-card)}
-
-.new-collections .lead{margin-top:var(--space-md)}
-.discovery-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-top:var(--space-2xl);border-top:1px solid var(--color-rule)}
-.discovery-card,.quick-links{display:flex;flex-direction:column;align-items:start;gap:var(--space-md);padding:var(--space-xl) var(--space-xl) 0;border-left:1px solid var(--color-rule);scroll-margin-top:calc(var(--nav-h) + var(--space-lg))}
-.discovery-grid>:first-child{padding-left:0;border-left:0}
-.discovery-grid>:last-child{padding-right:0}
-.discovery-card h3,.quick-links h3{font-size:var(--text-2xl)}
-.discovery-card p{color:var(--color-ink-2)}
-.discovery-card strong{font-weight:600;color:var(--color-ink)}
-.discovery-card .button{margin-top:auto}
-.color-list{list-style:none;display:grid;gap:var(--space-xs);margin:0;padding:0;font-size:var(--text-sm)}
-.color-list li{display:flex;align-items:center;gap:var(--space-sm)}
-.swatch{width:20px;height:20px;flex:none;border:1px solid var(--color-muted);border-radius:var(--radius-pill)}
-.swatch-manto{background:var(--swatch-manto)}
-.swatch-jardim{background:var(--swatch-jardim)}
-.swatch-perola{background:var(--swatch-perola)}
-.quick-links{align-items:stretch;gap:0}
-.quick-links h3{margin-bottom:var(--space-md)}
-.quick-links .text-link{justify-content:space-between;min-height:56px;border-bottom-color:var(--color-rule);font-family:var(--font-display);font-size:var(--text-lg);font-weight:400}
-
+.catalog{padding-top:var(--space-2xl)}
+.collection-grid{display:flex;gap:var(--space-2xl);overflow-x:auto;border-bottom:1px solid var(--color-rule);scrollbar-width:none}
+.collection-grid:focus-visible{outline-offset:var(--space-2xs)}
+.collection-link{position:relative;flex:none;display:flex;align-items:center;gap:var(--space-md);padding-block:var(--space-md);color:var(--color-muted);transition:color var(--dur-short) var(--ease-out)}
+.collection-link:focus-visible{outline-offset:-2px}
+.collection-photo{flex:none;width:64px;height:80px;overflow:hidden;border-radius:var(--radius-arch);background:var(--color-paper-2)}
+.collection-photo img{width:100%;height:100%;object-fit:cover}
+.collection-name{font-family:var(--font-display);font-size:var(--text-xl);font-weight:500;line-height:1.05;white-space:nowrap}
+.collection-link::after{content:"";position:absolute;inset:auto 0 0 0;height:2px;background:var(--color-accent);transform:scaleX(0);transform-origin:left;transition:transform var(--dur-long) var(--ease-out)}
+.collection-link:hover,.collection-link[aria-current=true]{color:var(--color-display)}
+.collection-link[aria-current=true]::after{transform:scaleX(1)}
+#catalogSections>.section{padding-block:var(--space-2xl) var(--section-gap-s);animation:appear var(--dur-long) var(--ease-out) both}
 .section-heading{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);justify-content:space-between;gap:var(--space-lg) var(--space-3xl);align-items:end;margin-bottom:var(--space-2xl)}
+.section-heading h2{font-size:var(--text-display-s);line-height:1}
 .section-heading .lead{margin-bottom:var(--space-xs)}
-.product-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-2xl) var(--gap-columns)}
-.product{min-width:0;display:flex;flex-direction:column}
+.product-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:var(--space-2xl) var(--gap-columns)}
+.product{min-width:0;display:flex;flex-direction:column;animation:rise 600ms var(--ease-out) both;animation-delay:calc(var(--i,0) * 50ms)}
+.product:nth-child(2){--i:1}.product:nth-child(3){--i:2}.product:nth-child(4){--i:3}.product:nth-child(5){--i:4}.product:nth-child(6){--i:5}.product:nth-child(7){--i:6}.product:nth-child(8){--i:7}
 .product-figure{position:relative;aspect-ratio:4/5;overflow:hidden;border-radius:var(--radius-card);background:var(--color-paper-2)}
 .product-figure>img{width:100%;height:100%;object-fit:cover}
 .zoom-button{position:absolute;right:var(--space-xs);bottom:var(--space-xs);width:44px;height:44px;background:var(--color-paper)}
 .product-info{flex:1;display:flex;flex-direction:column;padding-top:var(--space-md)}
-.product-info h3{margin-bottom:var(--space-xs);font-size:var(--text-lg)}
+.product-info h3{margin-bottom:var(--space-xs);font-size:var(--text-xl);line-height:1.1}
 .product-info p{font-size:var(--text-sm);color:var(--color-ink-2)}
 .product-details{margin-top:var(--space-2xs)}
-.product-details summary{display:flex;align-items:center;min-height:44px;font-size:var(--text-sm);color:var(--color-accent);text-decoration:underline;text-underline-offset:4px}
-.product-details summary::after{content:' +';margin-left:var(--space-xs)}
-.product-details[open] summary::after{content:' −'}
+.product-details summary{display:flex;align-items:center;min-height:44px;font-size:var(--text-sm);color:var(--color-display);text-decoration:underline;text-underline-offset:4px}
+.product-details summary::after{content:" +";margin-left:var(--space-xs)}
+.product-details[open] summary::after{content:" −"}
 .product-details p{padding-bottom:var(--space-xs)}
 .product-price{display:flex;align-items:baseline;justify-content:space-between;gap:var(--space-xs);margin-top:auto;padding-top:var(--space-md);border-top:1px solid var(--color-rule);font-variant-numeric:tabular-nums}
-.product-price strong{font-size:var(--text-lg);font-weight:600}
-.product-price small{font-size:var(--text-sm);color:var(--color-sage-deep)}
+.product-price strong{font-family:var(--font-display);font-size:var(--text-xl);font-weight:500;line-height:1;font-variant-numeric:tabular-nums lining-nums;color:var(--color-display)}
+.product-price small{font-size:var(--text-sm);color:var(--color-ink-2)}
 .product-info .product-option{margin-top:var(--space-sm);font-size:var(--text-sm);color:var(--color-muted)}
-.product-info>.button{width:100%;margin-top:var(--space-md)}
+.product-info>.button{width:100%;min-height:48px;margin-top:var(--space-md);padding-inline:var(--space-md)}
 .product-info>.text-link{align-self:start;margin-top:var(--space-xs)}
 .field-label{display:block;margin-block:var(--space-md) var(--space-xs);font-size:var(--text-sm);font-weight:600}
-select,input,textarea{width:100%;min-height:48px;padding:0 var(--space-md);border:1px solid var(--color-muted);border-radius:var(--radius-card);background:var(--color-paper);color:var(--color-ink);font-size:var(--text-md);outline:2px solid transparent;outline-offset:-3px}
+select,input,textarea{width:100%;min-height:52px;padding:0 var(--space-md);border:1px solid var(--color-muted);border-radius:var(--radius-card);background:var(--color-paper);color:var(--color-ink);font-size:var(--text-md);outline:2px solid transparent;outline-offset:-3px}
 select:focus-visible,input:focus-visible,textarea:focus-visible{outline-color:var(--color-focus)}
 textarea{min-height:112px;padding-block:var(--space-sm);resize:vertical}
-.collection-more{margin-top:var(--space-xl)}
+.collection-more{margin-top:var(--space-2xl)}
 .collection-note{margin-top:var(--space-lg);font-size:var(--text-sm);color:var(--color-muted)}
-.jardim,.kits{background:var(--color-paper-2)}
 .sinfonia .product-figure{aspect-ratio:1/1}
 .sinfonia .product-figure>img{object-fit:contain}
 .kits .product-grid,.presentes .product-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -167,83 +144,132 @@ textarea{min-height:112px;padding-block:var(--space-sm);resize:vertical}
 .kit-images{height:100%;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-xs);padding:var(--space-md);align-items:center}
 .kit-images img{width:100%;height:100%;object-fit:contain}
 .product .product-figure>img[src$="jardim-hibisco.jpg"],.product .product-figure>img[src$="jardim-lavanda.jpg"]{transform:scale(1.3);transform-origin:50% 42%}
-.film-row{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);justify-content:space-between;gap:var(--space-xl) var(--space-3xl);align-items:center;margin-top:var(--space-3xl);padding-top:var(--space-2xl);border-top:1px solid var(--color-rule)}
-.film-row video{width:100%;height:560px;object-fit:contain;border-radius:var(--radius-card);background:var(--color-paper-2)}
-.film-copy h3{font-size:var(--text-section)}
+.film-row{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,6fr);justify-content:space-between;gap:var(--space-xl) var(--space-3xl);align-items:center;margin-top:var(--space-3xl);padding-top:var(--space-2xl);border-top:1px solid var(--color-rule)}
+.film-row video{width:100%;height:600px;object-fit:contain;border-radius:var(--radius-card);background:var(--color-paper-2)}
+.film-copy h3{font-size:var(--text-section);line-height:1}
 .film-copy p{margin-top:var(--space-md);color:var(--color-ink-2)}
 .film-copy .muted{font-size:var(--text-sm);color:var(--color-muted)}
 .film-copy .text-link{margin-top:var(--space-md)}
 
+.custom-band{padding-block:var(--section-gap-s);background:var(--color-paper-2)}
+.custom-band-inner{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,6fr);justify-content:space-between;gap:var(--space-xl) var(--space-3xl);align-items:center}
+.custom-band h2{max-width:11ch;font-size:var(--text-display);line-height:.98}
+.custom-band p{margin-block:var(--space-lg) var(--space-xl);font-size:var(--text-lead);color:var(--color-ink-2)}
+.custom-band-photo{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:var(--radius-arch)}
+
+.feature{padding-block:var(--section-gap-s) var(--space-3xl)}
+.feature-layout{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);justify-content:space-between;gap:var(--space-xl) var(--space-3xl);align-items:center}
+.feature-photo{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:var(--radius-card)}
+.feature-copy{scroll-margin-top:calc(var(--nav-h) + var(--space-lg))}
+.feature-copy h2{font-size:var(--text-display);line-height:.98}
+.feature-copy .lead{margin-top:var(--space-md);font-family:var(--font-display);font-size:var(--text-2xl);font-weight:500;line-height:1.2;color:var(--color-ink)}
+.feature-copy p{margin-top:var(--space-md);color:var(--color-ink-2)}
+.feature-copy strong{font-weight:600;color:var(--color-ink)}
+.feature-copy .color-list{margin-block:var(--space-lg) var(--space-xl)}
+.new-collections{margin-top:var(--space-3xl)}
+.discovery-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));margin-top:var(--space-xl);border-top:1px solid var(--color-rule)}
+.discovery-card,.quick-links{display:flex;flex-direction:column;align-items:start;gap:var(--space-md);padding:var(--space-xl) var(--space-xl) 0;border-left:1px solid var(--color-rule);scroll-margin-top:calc(var(--nav-h) + var(--space-lg))}
+.discovery-grid>:first-child{padding-left:0;border-left:0}
+.discovery-grid>:last-child{padding-right:0}
+.discovery-card h3,.quick-links h3{font-size:var(--text-3xl);line-height:1.05}
+.discovery-card p{color:var(--color-ink-2)}
+.discovery-card strong{font-weight:600;color:var(--color-ink)}
+.discovery-card .button{margin-top:auto}
+.color-list{list-style:none;display:grid;gap:var(--space-sm);margin:0;padding:0;font-size:var(--text-sm)}
+.color-list li{display:flex;align-items:center;gap:var(--space-sm)}
+.swatch{width:28px;height:28px;flex:none;border:1px solid var(--color-muted);border-radius:var(--radius-pill)}
+.swatch-manto{background:var(--swatch-manto)}
+.swatch-jardim{background:var(--swatch-jardim)}
+.swatch-perola{background:var(--swatch-perola)}
+.quick-links{align-items:stretch;gap:0}
+.quick-links h3{margin-bottom:var(--space-md)}
+.quick-links .text-link{justify-content:space-between;min-height:60px;border-bottom-color:var(--color-rule);font-family:var(--font-display);font-size:var(--text-xl);font-weight:500}
+
 .personalize{background:var(--color-paper-2)}
-.personalize-layout{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);justify-content:space-between;gap:var(--space-2xl) var(--space-3xl)}
+.personalize-layout{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);justify-content:space-between;gap:var(--space-2xl) var(--space-3xl);align-items:start}
+.personalize-copy h2{font-size:var(--text-display-s);line-height:1}
 .personalize-copy p{margin-top:var(--space-lg);color:var(--color-ink-2)}
 .steps{list-style:none;counter-reset:step;margin:var(--space-xl) 0 0;padding:0}
 .steps li{counter-increment:step;display:flex;align-items:baseline;gap:var(--space-md);padding-block:var(--space-md);border-top:1px solid var(--color-rule)}
-.steps li::before{content:counter(step);min-width:1.5ch;font-family:var(--font-display);font-size:var(--text-xl);color:var(--color-display)}
-.custom-form{min-width:0}
+.steps li::before{content:counter(step);min-width:1.5ch;font-family:var(--font-display);font-size:var(--text-2xl);line-height:1;color:var(--color-display)}
+.custom-form{min-width:0;padding:var(--space-xl);border-radius:var(--radius-card);background:var(--color-paper);color:var(--color-ink)}
 .custom-form fieldset{min-width:0;margin:0 0 var(--space-lg);padding:0;border:0}
-.custom-form legend{margin-bottom:var(--space-sm);padding:0;font-size:var(--text-sm);font-weight:600}
+.custom-form legend{margin-bottom:var(--space-sm);padding:0;font-family:var(--font-display);font-size:var(--text-xl);font-weight:500;color:var(--color-display)}
 .choices{display:flex;flex-wrap:wrap;gap:var(--space-xs)}
 .choice{position:relative}
 .choice input{position:absolute;opacity:0;width:1px;height:1px;min-height:0;padding:0}
-.choice span{display:flex;align-items:center;min-height:44px;padding:0 var(--space-md);border:1px solid var(--color-muted);border-radius:var(--radius-card);background:var(--color-paper);font-size:var(--text-sm);cursor:pointer}
+.choice span{display:flex;align-items:center;min-height:44px;padding:0 var(--space-md);border:1px solid var(--color-muted);border-radius:var(--radius-pill);background:var(--color-paper);font-size:var(--text-sm);cursor:pointer;transition:background-color var(--dur-short) var(--ease-out)}
+.choice span:hover{background:var(--color-paper-2)}
 .choice input:checked+span{background:var(--color-accent);border-color:var(--color-accent);color:var(--color-accent-ink)}
 .choice input:focus-visible+span{outline:2px solid var(--color-focus);outline-offset:2px}
 .request-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 var(--space-md)}
 .request-fields>div{min-width:0}
-.message-preview{margin-block:var(--space-lg);padding-block:var(--space-md);border-block:1px solid var(--color-rule)}
+.message-preview{margin-block:var(--space-lg);padding:var(--space-md);border-radius:var(--radius-card);background:var(--color-paper-2)}
 .message-preview span{font-size:var(--text-sm);font-weight:600}
 .message-preview p{margin-top:var(--space-xs);font-size:var(--text-sm);white-space:pre-line;color:var(--color-ink-2)}
 .form-note{min-height:1lh;margin-top:var(--space-xs);font-size:var(--text-sm);color:var(--color-muted)}
 
-.story{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);justify-content:space-between;gap:var(--space-2xl) var(--space-3xl);align-items:start}
+#historia{padding-block:var(--section-gap)}
+.story{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,6fr);justify-content:space-between;gap:var(--space-2xl) var(--space-3xl);align-items:start}
 .founder-photo{position:sticky;top:calc(var(--nav-h) + var(--space-lg))}
-.portrait-frame{aspect-ratio:3/4;overflow:hidden;border-radius:var(--radius-card)}
+.portrait-frame{aspect-ratio:3/4;overflow:hidden;border-radius:var(--radius-arch)}
 .story .portrait-frame>img{width:100%;height:100%;object-fit:cover;object-position:left top}
 .story .portrait-frame>img[src$="priscila-presentes.png"]{transform:scale(1.8);transform-origin:left top}
-.founder-photo figcaption{padding-block:var(--space-md);border-bottom:1px solid var(--color-rule);font-family:var(--font-display);font-size:var(--text-xl);color:var(--color-display)}
-.founder-photo figcaption span{display:block;margin-top:var(--space-2xs);font-family:var(--font-body);font-size:var(--text-sm);color:var(--color-muted)}
+.founder-photo figcaption{padding-block:var(--space-md);border-bottom:1px solid var(--color-rule);font-family:var(--font-display);font-size:var(--text-2xl);font-weight:500;line-height:1.1;color:var(--color-display)}
+.founder-photo figcaption span{display:block;margin-top:var(--space-2xs);font-family:var(--font-body);font-size:var(--text-sm);font-weight:400;color:var(--color-muted)}
+.story-copy h2{font-size:var(--text-display-s);line-height:1}
 .story-copy p{margin-top:var(--space-lg);color:var(--color-ink-2)}
+.story-copy>p:first-of-type{font-family:var(--font-display);font-size:var(--text-2xl);font-weight:500;line-height:1.25;color:var(--color-ink)}
+.story-more{margin-top:var(--space-lg);border-block:1px solid var(--color-rule)}
+.story-more summary{display:flex;align-items:center;justify-content:space-between;min-height:60px;font-weight:600;list-style:none}
+.story-more summary::-webkit-details-marker{display:none}
+.story-more summary::after{content:"+";font-family:var(--font-display);font-size:var(--text-2xl);line-height:1;color:var(--color-display)}
+.story-more[open] summary::after{content:"−"}
+.story-more p:last-child{padding-bottom:var(--space-lg)}
+.story-more p:first-of-type{margin-top:0}
 .story-copy .text-link{margin-top:var(--space-lg)}
-.founder-gallery{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);justify-content:space-between;gap:var(--space-xl) var(--space-3xl);align-items:center;margin-top:var(--space-3xl);padding-top:var(--space-2xl);border-top:1px solid var(--color-rule)}
+.founder-gallery{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,7fr);justify-content:space-between;gap:var(--space-xl) var(--space-3xl);align-items:center;margin-top:var(--space-3xl);padding-top:var(--space-2xl);border-top:1px solid var(--color-rule)}
 .founder-gallery figure>img{width:100%;height:auto;aspect-ratio:3/4;object-fit:cover;object-position:center 25%;border-radius:var(--radius-card)}
 .founder-gallery figure>img[src$="priscila-sinfonia.png"]{aspect-ratio:941/1672;object-fit:contain}
-.founder-gallery h3{font-size:var(--text-section)}
+.founder-gallery h3{font-size:var(--text-display-s);line-height:1}
 .founder-gallery p{margin-block:var(--space-md) var(--space-lg);font-size:var(--text-lead);color:var(--color-ink-2)}
 
 #faq{border-top:1px solid var(--color-rule)}
 .faq-layout{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);justify-content:space-between;gap:var(--space-xl) var(--space-3xl)}
+.faq-layout h2{font-size:var(--text-display-s);line-height:1}
 .faq-layout>div>p{margin-block:var(--space-md);color:var(--color-ink-2)}
 .faq details{border-bottom:1px solid var(--color-rule)}
 .faq details:first-child{border-top:1px solid var(--color-rule)}
-.faq summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:var(--space-md);padding-block:var(--space-lg);font-family:var(--font-display);font-size:var(--text-lg);transition:color var(--dur-short) var(--ease-out)}
+.faq summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:var(--space-md);padding-block:var(--space-lg);font-family:var(--font-display);font-size:var(--text-xl);font-weight:500;line-height:1.15;transition:color var(--dur-short) var(--ease-out)}
 .faq summary::-webkit-details-marker{display:none}
-.faq summary:hover{color:var(--color-accent)}
+.faq summary:hover{color:var(--color-display)}
 .faq summary .icon{transition:transform var(--dur-short) var(--ease-in-out)}
 .faq details[open] summary .icon{transform:rotate(180deg)}
 .faq details p{padding:0 var(--space-xl) var(--space-lg) 0;color:var(--color-ink-2)}
 blockquote{margin:0}
 .article-text p{margin-top:var(--space-sm)}
 
-.footer{padding-block:var(--space-3xl) var(--space-lg);background:var(--color-accent);color:var(--color-accent-ink)}
-.footer :focus-visible{outline-color:var(--color-accent-ink)}
+.footer{padding-block:var(--space-3xl) var(--space-lg);background:var(--color-field);color:var(--color-on-field)}
+.footer :focus-visible{outline-color:var(--color-gold)}
 .footer-main{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,5fr) minmax(0,4fr);gap:var(--space-2xl) var(--gap-columns)}
-.footer-logo{width:220px;filter:brightness(0) invert(1)}
-.footer p{margin-top:var(--space-md);font-size:var(--text-sm);color:var(--color-accent-soft)}
-.footer-main>div:first-child p{max-width:28ch;margin-top:var(--space-lg);font-family:var(--font-display);font-size:var(--text-xl);line-height:1.3;color:var(--color-accent-ink)}
-.footer h3{margin-bottom:var(--space-sm);font-family:var(--font-body);font-size:var(--text-sm);font-weight:600;letter-spacing:0;color:var(--color-accent-soft)}
+.footer-logo{width:min(100%,360px);filter:brightness(0) invert(1)}
+.footer p{margin-top:var(--space-md);font-size:var(--text-sm);color:var(--color-on-field-soft)}
+.footer-main>div:first-child p{max-width:28ch;margin-top:var(--space-lg);font-family:var(--font-display);font-size:var(--text-2xl);font-weight:500;line-height:1.2;color:var(--color-on-field)}
+.footer h3{margin-bottom:var(--space-sm);font-family:var(--font-body);font-size:var(--text-sm);font-weight:600;letter-spacing:0;line-height:1.4;color:var(--color-gold)}
 .footer-main>div:not(:first-child) a,#extraLinks a{display:block;padding-block:var(--space-2xs)}
 .footer a:hover{text-decoration:underline}
-.footer-bottom{display:flex;justify-content:space-between;gap:var(--space-lg);margin-top:var(--space-2xl);padding-top:var(--space-md);border-top:1px solid color-mix(in oklab,var(--color-accent-ink) 22%,transparent);font-size:var(--text-sm);color:var(--color-accent-soft)}
+.footer-bottom{display:flex;justify-content:space-between;gap:var(--space-lg);margin-top:var(--space-2xl);padding-top:var(--space-md);border-top:1px solid var(--color-field-rule);font-size:var(--text-sm);color:var(--color-on-field-soft)}
 #extraLinks{display:flex;flex-wrap:wrap;gap:0 var(--space-lg)}
 
-.toast{position:fixed;left:50%;bottom:var(--space-lg);z-index:var(--z-toast);max-width:calc(100% - 32px);padding:var(--space-sm) var(--space-md);border-radius:var(--radius-card);background:var(--color-accent-deep);color:var(--color-accent-ink);font-size:var(--text-sm);text-align:center;transform:translateX(-50%)}
+.toast{position:fixed;left:50%;bottom:var(--space-lg);z-index:var(--z-toast);max-width:calc(100% - 32px);padding:var(--space-sm) var(--space-lg);border-radius:var(--radius-pill);background:var(--color-field);color:var(--color-on-field);font-size:var(--text-sm);text-align:center;transform:translateX(-50%)}
 dialog{max-height:100dvh;border:0;background:var(--color-paper);color:var(--color-ink)}
 dialog::backdrop{background:var(--color-scrim)}
-.bag{width:460px;max-width:100%;height:100dvh;margin:0 0 0 auto;padding:0}
+.bag{width:480px;max-width:100%;height:100dvh;margin:0 0 0 auto;padding:0}
+.bag[open]{animation:slide var(--dur-long) var(--ease-out)}
+@keyframes slide{from{transform:translateX(32px);opacity:0}to{transform:none;opacity:1}}
 .bag-inner{height:100%;display:flex;flex-direction:column}
 .bag-header{flex:none;display:flex;align-items:center;justify-content:space-between;padding:var(--space-md) var(--space-lg);border-bottom:1px solid var(--color-rule)}
-.bag-header h2{font-size:var(--text-xl)}
+.bag-header h2{font-size:var(--text-2xl)}
 .bag-body{flex:1;overflow-y:auto;padding-inline:var(--space-lg);overscroll-behavior:contain}
 .empty{min-height:240px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--space-md);text-align:center}
 .empty>.icon{width:40px;height:40px;opacity:.5}
@@ -263,41 +289,53 @@ dialog::backdrop{background:var(--color-scrim)}
 .totals{display:grid;gap:var(--space-2xs);margin-bottom:var(--space-md);font-variant-numeric:tabular-nums}
 .totals>div{display:flex;justify-content:space-between;font-size:var(--text-sm)}
 .totals .total{margin-top:var(--space-2xs);padding-top:var(--space-xs);border-top:1px solid var(--color-rule);font-size:var(--text-md);font-weight:600}
-.totals .pix{color:var(--color-sage-deep)}
+.totals .pix{color:var(--color-display)}
 .totals strong{font-weight:600}
 .bag-footer .button{width:100%}
 .bag-footer .button[aria-disabled=true]{pointer-events:none}
 .bag-footer>p{margin-top:var(--space-xs);font-size:var(--text-sm);color:var(--color-muted);text-align:center}
 .lightbox{width:min(900px,calc(100% - 32px));max-height:92dvh;margin:auto;padding:var(--space-md);border-radius:var(--radius-card)}
+.lightbox[open]{animation:appear var(--dur-short) var(--ease-out)}
 .lightbox-top{display:flex;align-items:center;justify-content:space-between;gap:var(--space-md);margin-bottom:var(--space-sm)}
-.lightbox-top h2{font-size:var(--text-xl)}
+.lightbox-top h2{font-size:var(--text-2xl)}
 .lightbox-image{width:100%;height:calc(85dvh - 100px);object-fit:contain;background:var(--color-paper-2)}
 .lightbox>p{padding-top:var(--space-xs);font-size:var(--text-sm);color:var(--color-muted)}
 
+.js [data-reveal]{opacity:0;transform:translateY(20px);transition:opacity 700ms var(--ease-out),transform 700ms var(--ease-out);transition-delay:calc(var(--i,0) * 90ms)}
+.js [data-reveal].is-in{opacity:1;transform:none}
+[data-reveal]:nth-child(2){--i:1}
+[data-reveal]:nth-child(3){--i:2}
+
+@media(min-width:75.01rem){
+  .jardim .product-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:75rem){
+  .product-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
 @media(max-width:60rem){
   .menu-button{display:inline-flex}
   .nav-row{gap:var(--space-2xs)}
   .nav{display:none;position:absolute;top:100%;left:0;right:0;padding:var(--space-xs) var(--gutter) var(--space-md);background:var(--color-paper);border-bottom:1px solid var(--color-rule)}
   .nav.open{display:block}
   .nav>a,.nav summary{font-size:var(--text-md)}
-  .dropdown{position:static;min-width:0;padding:0 0 var(--space-xs) var(--space-sm);border:0}
+  .dropdown{position:static;min-width:0;padding:0 0 var(--space-xs) var(--space-sm);border:0;background:transparent}
   .dropdown a{font-size:var(--text-md)}
-  .brand img{height:44px}
-  .collections{min-height:0;padding-top:var(--space-md)}
-  .collection-grid{flex:none;min-height:0;max-height:none}
-  .collection-link,.collection-link:first-child{flex:1 1 0;aspect-ratio:4/5}
-  .collection-caption{flex-direction:column;align-items:start;gap:0;padding:var(--space-2xl) var(--space-md) var(--space-xs)}
-  .collection-name{font-size:var(--text-xl)}
-  .intro,.custom-band-inner,.section-heading,.film-row,.personalize-layout,.story,.founder-gallery,.faq-layout{grid-template-columns:minmax(0,1fr)}
-  .intro>.button{justify-self:start}
+  .brand img{height:42px}
+  .hero{min-height:min(86dvh,720px)}
+  .hero-photo{object-position:84% 30%}
+  .hero::after{background:linear-gradient(0deg,var(--color-veil-strong) 0%,var(--color-veil-strong) 40%,var(--color-veil-none) 80%)}
+  .hero>.wrap{padding-block:var(--space-2xl)}
+  .collection-grid{gap:var(--space-xl);margin-inline:calc(-1 * var(--gutter));padding-inline:var(--gutter);scroll-padding-inline:var(--gutter)}
+  .section-heading,.film-row,.feature-layout,.custom-band-inner,.personalize-layout,.story,.founder-gallery,.faq-layout{grid-template-columns:minmax(0,1fr)}
+  .custom-band-photo{max-width:320px}
   .discovery-grid{grid-template-columns:minmax(0,1fr)}
   .discovery-card,.quick-links{padding:var(--space-xl) 0;border-left:0;border-top:1px solid var(--color-rule)}
   .discovery-grid>:first-child{border-top:0}
   .discovery-grid>:last-child{padding-bottom:0}
   .product-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-xl) var(--gap-columns)}
-  .film-row video{height:420px}
-  .founder-photo{position:static}
-  .founder-gallery figure{max-width:280px}
+  .film-row video{height:440px}
+  .founder-photo{position:static;max-width:360px}
+  .founder-gallery figure{max-width:240px}
   .footer-main{grid-template-columns:repeat(2,minmax(0,1fr))}
   .footer-main>div:first-child{grid-column:1/-1}
 }
@@ -305,15 +343,17 @@ dialog::backdrop{background:var(--color-scrim)}
   .footer-main{grid-template-columns:minmax(0,1fr)}
 }
 @media(max-width:40rem){
-  .collection-caption .text-link{min-height:36px;font-size:var(--text-xs);white-space:nowrap}
-  .collection-caption .icon{display:none}
   .intro>.button{width:100%}
-  .product-price{flex-direction:column;gap:0}
+  .collection-photo{width:48px;height:60px}
+  .collection-name{font-size:var(--text-lg)}
+  .product-price{flex-direction:column;gap:var(--space-2xs)}
+  .product-info h3{font-size:var(--text-lg)}
   .product-info>.button{padding-inline:var(--space-xs)}
   .product-info>.button .icon{display:none}
   .kits .product-grid,.presentes .product-grid{grid-template-columns:minmax(0,1fr)}
+  .custom-form{padding:var(--space-lg) var(--space-md)}
   .request-fields{grid-template-columns:minmax(0,1fr)}
-  .custom-form .button,.discovery-card .button,.collection-more{width:100%}
+  .custom-form .button,.custom-band .button,.discovery-card .button,.founder-gallery .button,.collection-more{width:100%}
   .faq details p{padding-right:0}
   .footer-bottom{flex-direction:column;gap:var(--space-xs)}
   .bag-header,.bag-footer,.bag-body{padding-inline:var(--space-md)}
@@ -324,7 +364,12 @@ dialog::backdrop{background:var(--color-scrim)}
   .product-grid{grid-template-columns:minmax(0,1fr)}
   .product-info>.button .icon{display:block}
 }
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.button,.icon-button,.text-link,.nav>a,.nav summary,.faq summary,.faq summary .icon{transition:none}}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .js [data-reveal]{opacity:1;transform:none;transition:none}
+  .hero-photo,.intro h1,.intro p,.intro>.button,.product,#catalogSections>.section,.bag[open],.lightbox[open]{animation:none}
+  .button,.icon-button,.text-link,.nav>a,.nav summary,.collection-link,.collection-link::after,.choice span,.faq summary,.faq summary .icon{transition:none}
+}
   </style>
 </head>
 <body>
@@ -343,26 +388,29 @@ dialog::backdrop{background:var(--color-scrim)}
     </div>
   </header>
   <main id="conteudo">
-    <section class="collections wrap" id="colecoes" aria-labelledby="pageTitle">
-      <div class="collection-grid">
-        <a class="collection-link" href="#jardim"><figure class="collection-photo"><img src="assets/jardim-cover.webp" width="1400" height="850" fetchpriority="high" alt="Laço verde-sálvia com margarida branca e borboleta lilás no cabelo"></figure><div class="collection-caption"><strong class="collection-name">Jardim de Encantos</strong><span class="text-link">Conhecer a coleção <img class="icon" src="assets/icons/arrow-right.svg" alt=""></span></div></a>
-        <a class="collection-link" href="#sinfonia"><figure class="collection-photo"><img src="assets/bow-coruja.webp" width="600" height="600" alt="Laço com bordado de corujinha tocando saxofone"></figure><div class="collection-caption"><strong class="collection-name">Sinfonia das Matas</strong><span class="text-link">Conhecer a coleção <img class="icon" src="assets/icons/arrow-right.svg" alt=""></span></div></a>
-      </div>
-      <div class="intro"><div><h1 id="pageTitle">Laços e bordados personalizados em Teixeiras, MG</h1><p>Escolha uma coleção. Encontre o seu encanto.</p></div><a class="button" href="#jardim">Explorar coleções <img class="icon" src="assets/icons/arrow-right.svg" alt=""></a></div>
+    <section class="hero" aria-labelledby="pageTitle">
+      <img class="hero-photo" src="assets/hero-mae-aparecida.webp" width="1536" height="1024" fetchpriority="high" alt="Menina de costas com o Laço Mãe Aparecida no cabelo, em uma capela clara">
+      <div class="wrap"><div class="intro"><div><h1 id="pageTitle">Laços e bordados personalizados em Teixeiras, MG</h1><p>Escolha uma coleção. Encontre o seu encanto.</p></div><a class="button" href="#colecoes">Explorar coleções <img class="icon" src="assets/icons/arrow-right.svg" alt=""></a></div></div>
     </section>
-    <section class="custom-band" aria-labelledby="customBandTitle"><div class="wrap custom-band-inner"><div><h2 id="customBandTitle">Do seu jeito, ponto por ponto.</h2><p>Um nome, uma lembrança, uma ideia para bordar.</p><a class="button" href="#personalizados">Criar meu personalizado <img class="icon" src="assets/icons/arrow-right.svg" alt=""></a></div><img class="custom-band-photo" src="assets/jardim-margarida.webp" width="1122" height="1402" alt="Detalhe do bordado de margarida" loading="lazy"></div></section>
-    <section class="section new-collections" aria-labelledby="newCollectionsTitle"><div class="wrap"><h2 id="newCollectionsTitle">Conheça também nossas coleções</h2><p class="lead">Fé e carinho em cada escolha.</p><div class="discovery-grid">
-      <article class="discovery-card" id="mae-rainha"><h3>Mãe &amp; Rainha</h3><p><strong>Laços bordados.</strong> Uma homenagem à Nossa Senhora Aparecida, em três cores para escolher com carinho.</p><ul class="color-list"><li><span class="swatch swatch-manto"></span><span><strong>Manto Celeste</strong>, azul suave</span></li><li><span class="swatch swatch-jardim"></span><span><strong>Jardim de Maria</strong>, rosa antigo</span></li><li><span class="swatch swatch-perola"></span><span><strong>Pérola da Rainha</strong>, off-white</span></li></ul><a class="button secondary" href="#personalizados" data-inquiry="Gostaria de conhecer os laços da coleção Mãe &amp; Rainha e consultar cores, fotos e valores.">Consultar cores e modelos</a></article>
-      <article class="discovery-card" id="colinho-do-ceu"><h3>Colinho do Céu</h3><p><strong>Naninhas bordadas.</strong> Um presente de fé. Um carinho para guardar.</p><p>Conheça nossas naninhas bordadas e escolha uma lembrança que converse com a sua história. Consulte as fotos dos modelos, os valores e as possibilidades de encomenda.</p><a class="button secondary" href="#personalizados" data-project="Enxoval / Maternidade" data-inquiry="Gostaria de conhecer as naninhas da coleção Colinho do Céu. Podem me enviar fotos dos modelos, valores e prazo?">Conhecer as naninhas</a></article>
-      <nav class="quick-links" aria-labelledby="quickLinksTitle"><h3 id="quickLinksTitle">Atalhos do catálogo</h3><a class="text-link" href="#jardim">Laços florais</a><a class="text-link" href="#sinfonia">Bichinhos músicos</a><a class="text-link" href="#kits">Kits de 3 laços</a><a class="text-link" href="#presentes">Presentes personalizados</a></nav>
+    <section class="feature" aria-labelledby="maeRainhaTitle"><div class="wrap feature-layout"><img class="feature-photo" data-reveal src="assets/mae-rainha-lacos.webp" width="1448" height="1086" alt="Três Laços Mãe Aparecida sobre linho: off-white, azul e rosa" loading="lazy"><article class="feature-copy" id="mae-rainha" data-reveal><h2 id="maeRainhaTitle">Mãe &amp; Rainha</h2><p class="lead">Fé e carinho em cada escolha.</p><p><strong>Laços bordados.</strong> Uma homenagem à Nossa Senhora Aparecida, em três cores para escolher com carinho.</p><ul class="color-list"><li><span class="swatch swatch-perola"></span><span><strong>Pérola da Rainha</strong>, off-white</span></li><li><span class="swatch swatch-manto"></span><span><strong>Manto Celeste</strong>, azul suave</span></li><li><span class="swatch swatch-jardim"></span><span><strong>Jardim de Maria</strong>, rosa antigo</span></li></ul><a class="button" href="#personalizados" data-inquiry="Gostaria de conhecer os laços da coleção Mãe &amp; Rainha e consultar cores, fotos e valores.">Consultar cores e modelos</a></article></div>
+      <div class="wrap new-collections"><h2 id="newCollectionsTitle">Conheça também nossas coleções</h2><div class="discovery-grid">
+      <article class="discovery-card" id="colinho-do-ceu" data-reveal><h3>Colinho do Céu</h3><p><strong>Naninhas bordadas.</strong> Um presente de fé. Um carinho para guardar.</p><p>Conheça nossas naninhas bordadas e escolha uma lembrança que converse com a sua história. Consulte as fotos dos modelos, os valores e as possibilidades de encomenda.</p><a class="button secondary" href="#personalizados" data-project="Enxoval / Maternidade" data-inquiry="Gostaria de conhecer as naninhas da coleção Colinho do Céu. Podem me enviar fotos dos modelos, valores e prazo?">Conhecer as naninhas</a></article>
+      <nav class="quick-links" aria-labelledby="quickLinksTitle" data-reveal><h3 id="quickLinksTitle">Atalhos do catálogo</h3><a class="text-link" href="#jardim">Laços florais</a><a class="text-link" href="#sinfonia">Bichinhos músicos</a><a class="text-link" href="#kits">Kits de 3 laços</a><a class="text-link" href="#presentes">Presentes personalizados</a></nav>
     </div></div></section>
-    <div id="catalogSections"></div>
+    <section class="catalog" id="colecoes" aria-label="Coleções">
+      <div class="wrap"><nav class="collection-grid" aria-label="Escolha uma coleção">
+        <a class="collection-link" href="#jardim"><figure class="collection-photo"><img src="assets/jardim-cover.webp" width="1400" height="850" alt=""></figure><span class="collection-name">Jardim de Encantos</span></a>
+        <a class="collection-link" href="#sinfonia"><figure class="collection-photo"><img src="assets/bow-coruja.webp" width="600" height="600" alt=""></figure><span class="collection-name">Sinfonia das Matas</span></a>
+      </nav></div>
+      <div id="catalogSections"></div>
+    </section>
     <template id="filmTemplate"><div class="film-row"><div><video controls playsinline preload="none" poster="assets/sinfonia-poster.webp" width="540" height="960" aria-label="Vídeo da coleção Sinfonia das Matas"><source src="assets/sinfonia-reel.mp4" type="video/mp4">Seu navegador não suporta vídeo. <a href="assets/sinfonia-reel.mp4">Abrir vídeo da coleção</a></video></div><div class="film-copy"><h3>A coleção em movimento.</h3><p>Descubra as cores e os desenhos da Sinfonia das Matas. Depois, conte para a gente qual personagem combina com a sua ideia.</p><p class="muted">Solicite fotos e informações da peça no atendimento.</p><a class="text-link" href="#sinfonia">Escolher meu laço <img class="icon" src="assets/icons/arrow-right.svg" alt=""></a></div></div></template>
     <noscript><p class="wrap">Ative o JavaScript para montar sua sacola ou consulte as peças pelo WhatsApp.</p></noscript>
-    <section class="section personalize" id="personalizados" aria-labelledby="personalizadosTitle"><div class="wrap personalize-layout"><div class="personalize-copy"><h2 id="personalizadosTitle">O que vamos bordar?</h2><p>A próxima criação começa com você. Conte um pouco da sua ideia. A gente conversa sobre desenhos, materiais, possibilidades e prazo antes de confirmar a encomenda.</p><ol class="steps"><li>Escolha o tipo de projeto.</li><li>Conte os detalhes que imaginou.</li><li>Continue a conversa no WhatsApp.</li></ol></div>
-      <form class="custom-form" id="customForm"><fieldset><legend>Qual é a sua ideia?</legend><div class="choices" id="chipsType"><label class="choice"><input type="radio" name="project" value="Laços e coleções" checked><span>Laços e coleções</span></label><label class="choice"><input type="radio" name="project" value="Enxoval / Maternidade"><span>Enxoval e maternidade</span></label><label class="choice"><input type="radio" name="project" value="Batizado & Celebrações"><span>Batizado e celebrações</span></label><label class="choice"><input type="radio" name="project" value="Lembrancinhas Afetivas"><span>Presentes e lembranças</span></label><label class="choice"><input type="radio" name="project" value="Corporativo / Marca"><span>Empresas e marcas</span></label></div></fieldset><fieldset><legend>Quantas peças você imagina?</legend><div class="choices" id="chipsQty"><label class="choice"><input type="radio" name="quantity" value="1 a 5 peças" checked><span>1 a 5</span></label><label class="choice"><input type="radio" name="quantity" value="6 a 15 peças"><span>6 a 15</span></label><label class="choice"><input type="radio" name="quantity" value="16 a 50 peças"><span>16 a 50</span></label><label class="choice"><input type="radio" name="quantity" value="Acima de 50 peças"><span>Mais de 50</span></label></div></fieldset><label class="field-label" for="simDetailInput">Nome, desenho ou outros detalhes <span class="muted">(opcional)</span></label><textarea id="simDetailInput" name="details" maxlength="1200" placeholder="Ex.: um laço com margaridas, um nome para bordar ou a marca da minha empresa." rows="3"></textarea><div class="request-fields"><div><label class="field-label" for="requestCity">Cidade de entrega (opcional)</label><input id="requestCity" name="city" maxlength="120" autocomplete="address-level2" placeholder="Ex.: Teixeiras, MG"></div><div><label class="field-label" for="requestDate">Para quando precisa? (opcional)</label><input id="requestDate" name="date" type="date"><p class="form-note">A data será confirmada no atendimento.</p></div></div><div class="message-preview"><span>Sua ideia até aqui</span><p id="simMsgPreviewText"></p></div><a class="button" id="customWhatsApp" href="https://wa.me/5531997954792" target="_blank" rel="noopener">Conversar pelo WhatsApp <img class="icon" src="assets/icons/arrow-up-right.svg" alt=""></a><p class="form-note">Você poderá revisar a mensagem no WhatsApp antes de enviar.</p></form>
+    <section class="custom-band" aria-labelledby="customBandTitle"><div class="wrap custom-band-inner"><img class="custom-band-photo" data-reveal src="assets/ambiente-linho.webp" width="1122" height="1402" alt="Linha bordô, agulha e fita de cetim sobre linho claro" loading="lazy"><div data-reveal><h2 id="customBandTitle">Do seu jeito, ponto por ponto.</h2><p>Um nome, uma lembrança, uma ideia para bordar.</p><a class="button" href="#personalizados">Criar meu personalizado <img class="icon" src="assets/icons/arrow-right.svg" alt=""></a></div></div></section>
+    <section class="section personalize" id="personalizados" aria-labelledby="personalizadosTitle"><div class="wrap personalize-layout"><div class="personalize-copy" data-reveal><h2 id="personalizadosTitle">O que vamos bordar?</h2><p>A próxima criação começa com você. Conte um pouco da sua ideia. A gente conversa sobre desenhos, materiais, possibilidades e prazo antes de confirmar a encomenda.</p><ol class="steps"><li>Escolha o tipo de projeto.</li><li>Conte os detalhes que imaginou.</li><li>Continue a conversa no WhatsApp.</li></ol></div>
+      <form class="custom-form" id="customForm" data-reveal><fieldset><legend>Qual é a sua ideia?</legend><div class="choices" id="chipsType"><label class="choice"><input type="radio" name="project" value="Laços e coleções" checked><span>Laços e coleções</span></label><label class="choice"><input type="radio" name="project" value="Enxoval / Maternidade"><span>Enxoval e maternidade</span></label><label class="choice"><input type="radio" name="project" value="Batizado & Celebrações"><span>Batizado e celebrações</span></label><label class="choice"><input type="radio" name="project" value="Lembrancinhas Afetivas"><span>Presentes e lembranças</span></label><label class="choice"><input type="radio" name="project" value="Corporativo / Marca"><span>Empresas e marcas</span></label></div></fieldset><fieldset><legend>Quantas peças você imagina?</legend><div class="choices" id="chipsQty"><label class="choice"><input type="radio" name="quantity" value="1 a 5 peças" checked><span>1 a 5</span></label><label class="choice"><input type="radio" name="quantity" value="6 a 15 peças"><span>6 a 15</span></label><label class="choice"><input type="radio" name="quantity" value="16 a 50 peças"><span>16 a 50</span></label><label class="choice"><input type="radio" name="quantity" value="Acima de 50 peças"><span>Mais de 50</span></label></div></fieldset><label class="field-label" for="simDetailInput">Nome, desenho ou outros detalhes <span class="muted">(opcional)</span></label><textarea id="simDetailInput" name="details" maxlength="1200" placeholder="Ex.: um laço com margaridas, um nome para bordar ou a marca da minha empresa." rows="3"></textarea><div class="request-fields"><div><label class="field-label" for="requestCity">Cidade de entrega (opcional)</label><input id="requestCity" name="city" maxlength="120" autocomplete="address-level2" placeholder="Ex.: Teixeiras, MG"></div><div><label class="field-label" for="requestDate">Para quando precisa? (opcional)</label><input id="requestDate" name="date" type="date"><p class="form-note">A data será confirmada no atendimento.</p></div></div><div class="message-preview"><span>Sua ideia até aqui</span><p id="simMsgPreviewText"></p></div><a class="button" id="customWhatsApp" href="https://wa.me/5531997954792" target="_blank" rel="noopener">Conversar pelo WhatsApp <img class="icon" src="assets/icons/arrow-up-right.svg" alt=""></a><p class="form-note">Você poderá revisar a mensagem no WhatsApp antes de enviar.</p></form>
     </div></section>
-    <section class="section" id="historia" aria-labelledby="historiaTitle"><div class="wrap story"><figure class="founder-photo"><div class="portrait-frame"><img id="storyPortrait" src="assets/priscila-presentes.png" width="1024" height="1536" alt="Priscila, idealizadora da Bordô" loading="lazy"></div><figcaption>Priscila <span>Idealizadora da Bordô · Teixeiras, MG</span></figcaption></figure><div class="story-copy"><h2 id="historiaTitle">Priscila, por trás da Bordô.</h2><p>A Bordô tem um rosto e um nome: Priscila, idealizadora deste projeto em Teixeiras, Minas Gerais. Por trás dos laços e dos bordados, está uma proposta simples: dar forma ao carinho que acompanha um presente.</p><a class="text-link" href="https://www.instagram.com/bordobordadospersonalizados/" target="_blank" rel="noopener">Acompanhe a Bordô no Instagram <img class="icon" src="assets/icons/arrow-up-right.svg" alt=""></a></div></div><div class="wrap"><div class="founder-gallery"><figure><img id="storySecondary" src="assets/priscila-sinfonia.png" width="941" height="1672" alt="Retrato de Priscila, idealizadora da marca" loading="lazy"></figure><div><h3>Presentes que contam histórias.</h3><p>Um nome, uma flor, um personagem. Qual detalhe vai fazer parte da sua próxima lembrança?</p><a class="button secondary" href="#personalizados">Conversar sobre meu presente <img class="icon" src="assets/icons/arrow-right.svg" alt=""></a></div></div></div></section>
+    <section class="section" id="historia" aria-labelledby="historiaTitle"><div class="wrap story"><figure class="founder-photo" data-reveal><div class="portrait-frame"><img id="storyPortrait" src="assets/priscila-presentes.png" width="1024" height="1536" alt="Priscila, idealizadora da Bordô" loading="lazy"></div><figcaption>Priscila <span>Idealizadora da Bordô · Teixeiras, MG</span></figcaption></figure><div class="story-copy" data-reveal><h2 id="historiaTitle">Priscila, por trás da Bordô.</h2><p>A Bordô tem um rosto e um nome: Priscila, idealizadora deste projeto em Teixeiras, Minas Gerais. Por trás dos laços e dos bordados, está uma proposta simples: dar forma ao carinho que acompanha um presente.</p><a class="text-link" href="https://www.instagram.com/bordobordadospersonalizados/" target="_blank" rel="noopener">Acompanhe a Bordô no Instagram <img class="icon" src="assets/icons/arrow-up-right.svg" alt=""></a></div></div><div class="wrap"><div class="founder-gallery"><figure><img id="storySecondary" src="assets/priscila-sinfonia.png" width="941" height="1672" alt="Retrato de Priscila, idealizadora da marca" loading="lazy"></figure><div><h3>Presentes que contam histórias.</h3><p>Um nome, uma flor, um personagem. Qual detalhe vai fazer parte da sua próxima lembrança?</p><a class="button secondary" href="#personalizados">Conversar sobre meu presente <img class="icon" src="assets/icons/arrow-right.svg" alt=""></a></div></div></div></section>
     <div id="editorialSections"></div>
     <section class="section" id="faq" aria-labelledby="faqTitle"><div class="wrap faq-layout"><div><h2 id="faqTitle">Antes do seu pedido</h2><p>Alguns detalhes para escolher com tranquilidade.</p><a class="text-link" href="https://wa.me/5531997954792" target="_blank" rel="noopener">Falar com a Bordô <img class="icon" src="assets/icons/arrow-up-right.svg" alt=""></a></div><div class="faq">
       <details name="faq"><summary>Como faço uma encomenda?<img class="icon" src="assets/icons/chevron-down.svg" alt=""></summary><p>Escolha as peças do catálogo ou preencha sua ideia na seção de personalizados. O pedido continua pelo WhatsApp, onde combinamos disponibilidade, detalhes, frete e prazo antes da confirmação.</p></details>
@@ -376,7 +424,7 @@ dialog::backdrop{background:var(--color-scrim)}
   <dialog class="bag" id="cartDrawer" aria-labelledby="bagTitle"><div class="bag-inner"><div class="bag-header"><h2 id="bagTitle">Sua sacola</h2><button class="icon-button" type="button" data-close="cartDrawer" aria-label="Fechar sacola" title="Fechar sacola" autofocus><img class="icon" src="assets/icons/x.svg" alt=""></button></div><div class="bag-body" id="cartItemsList"></div><div class="bag-footer"><label class="gift"><input type="checkbox" id="cartGiftCheck"><span>Embalagem kraft para presente <strong>+ R$ 15,00</strong><br><span class="muted">Uma embalagem por pedido.</span></span></label><div class="totals"><div><span>Subtotal das peças</span><span id="cartSubtotalText">R$ 0,00</span></div><div id="giftTotalRow" hidden><span>Embalagem</span><span>R$ 15,00</span></div><div class="total"><span>Total estimado</span><span id="cartTotalText">R$ 0,00</span></div><div class="pix"><span>Ou no Pix (5% nas peças)</span><strong id="cartPixText">R$ 0,00</strong></div></div><a class="button" id="cartCheckout" href="https://wa.me/5531997954792" target="_blank" rel="noopener" aria-disabled="true" tabindex="-1">Continuar no WhatsApp <img class="icon" src="assets/icons/arrow-up-right.svg" alt=""></a><p>Frete e prazo a combinar. Nenhum pagamento é feito aqui.</p></div></div></dialog>
   <dialog class="lightbox" id="imageDialog" aria-labelledby="imageTitle"><div class="lightbox-top"><h2 id="imageTitle">Detalhes da peça</h2><button class="icon-button" type="button" data-close="imageDialog" aria-label="Fechar imagem" title="Fechar imagem" autofocus><img class="icon" src="assets/icons/x.svg" alt=""></button></div><img class="lightbox-image" id="lightboxImage" src="assets/brand-logo.png" width="1964" height="800" alt=""><p>Consulte os detalhes da peça no atendimento.</p></dialog>
   <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
-  <script src="assets/content.js?v=20261117-hallmark"></script>
-  <script src="assets/site.js?v=20261117-hallmark"></script>
+  <script src="assets/content.js?v=20261117-bordo"></script>
+  <script src="assets/site.js?v=20261117-bordo"></script>
 </body>
 </html>

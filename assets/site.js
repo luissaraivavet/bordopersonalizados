@@ -25,13 +25,16 @@
     }
     function renderProducts() {
       document.querySelector('.dropdown').innerHTML = '<a href="#mae-rainha">Mãe &amp; Rainha</a><a href="#colinho-do-ceu">Colinho do Céu</a>' + collections.map(c => `<a href="#${escapeHTML(c.id)}">${escapeHTML(c.name)}</a>`).join('');
-      document.querySelector('.collection-grid').innerHTML = collections.filter(c => c.featured).map((c,index) => `<a class="collection-link" href="#${escapeHTML(c.id)}"><figure class="collection-photo"><img src="${escapeHTML(c.image)}" alt="${escapeHTML(c.name)}" width="1400" height="850" ${index ? '' : 'fetchpriority="high"'}></figure><div class="collection-caption"><strong class="collection-name">${escapeHTML(c.name)}</strong><span class="text-link">Conhecer a coleção ${icon('arrow-right')}</span></div></a>`).join('');
-      document.getElementById('catalogSections').innerHTML = collections.map(c => `<section class="section ${escapeHTML(c.id)}" id="${escapeHTML(c.id)}" aria-labelledby="${escapeHTML(c.id)}Title"><div class="wrap"><div class="section-heading"><h2 id="${escapeHTML(c.id)}Title">${escapeHTML(c.name)}</h2><div><p class="lead">${escapeHTML(c.description)}</p><a class="text-link" href="#personalizados">Conversar sobre uma peça ${icon('arrow-up-right')}</a></div></div><div class="product-grid" id="grid-${escapeHTML(c.id)}">${products.filter(p => p.collection === c.id).map((p,index) => productCard(p).replace('<article class="product">', `<article class="product"${index >= 6 ? ' hidden data-extra-product' : ''}>`)).join('')}</div>${products.filter(p => p.collection === c.id).length > 6 ? `<button class="button secondary collection-more" type="button" data-expand="${escapeHTML(c.id)}" aria-expanded="false" aria-controls="grid-${escapeHTML(c.id)}">Ver coleção completa (${products.filter(p => p.collection === c.id).length} peças)</button>` : ''}<p class="collection-note">Disponibilidade, frete, materiais e prazo são confirmados no atendimento.</p>${c.id === 'sinfonia' ? document.getElementById('filmTemplate').innerHTML : ''}</div></section>`).join('');
+      document.querySelector('.collection-grid').innerHTML = [...collections].sort((a,b) => Number(b.featured) - Number(a.featured)).map(c => `<a class="collection-link" href="#${escapeHTML(c.id)}"><figure class="collection-photo"><img src="${escapeHTML(c.image)}" alt="" width="128" height="160"></figure><span class="collection-name">${escapeHTML(c.name)}</span></a>`).join('');
+      document.getElementById('catalogSections').innerHTML = collections.map(c => `<section class="section ${escapeHTML(c.id)}" id="${escapeHTML(c.id)}" aria-labelledby="${escapeHTML(c.id)}Title"><div class="wrap"><div class="section-heading"><h2 id="${escapeHTML(c.id)}Title">${escapeHTML(c.name)}</h2><div><p class="lead">${escapeHTML(c.description)}</p><a class="text-link" href="#personalizados">Conversar sobre uma peça ${icon('arrow-up-right')}</a></div></div><div class="product-grid" id="grid-${escapeHTML(c.id)}">${products.filter(p => p.collection === c.id).map((p,index) => productCard(p).replace('<article class="product">', `<article class="product"${index >= 8 ? ' hidden data-extra-product' : ''}>`)).join('')}</div>${products.filter(p => p.collection === c.id).length > 8 ? `<button class="button secondary collection-more" type="button" data-expand="${escapeHTML(c.id)}" aria-expanded="false" aria-controls="grid-${escapeHTML(c.id)}">Ver coleção completa (${products.filter(p => p.collection === c.id).length} peças)</button>` : ''}<p class="collection-note">Disponibilidade, frete, materiais e prazo são confirmados no atendimento.</p>${c.id === 'sinfonia' ? document.getElementById('filmTemplate').innerHTML : ''}</div></section>`).join('');
       document.getElementById('pageTitle').textContent=settings.headline;
       document.querySelector('.intro p').textContent=settings.intro;
       const story=document.querySelector('.story-copy'), link=story.querySelector('a');
       story.querySelectorAll('p').forEach(p=>p.remove());
-      settings.story.split(/\n\s*\n/).forEach(text=>{const p=document.createElement('p');p.textContent=text;story.insertBefore(p,link);});
+      const storyParts=settings.story.split(/\n\s*\n/), storyMore=document.createElement('details');
+      storyMore.className='story-more';storyMore.innerHTML='<summary>Ler a história completa</summary>';
+      storyParts.forEach((text,index)=>{const p=document.createElement('p');p.textContent=text;if(index)storyMore.append(p);else story.insertBefore(p,link);});
+      if(storyParts.length>1)story.insertBefore(storyMore,link);
       document.getElementById('storyPortrait').src=settings.storyImage||'assets/priscila-presentes.png';
       document.getElementById('storySecondary').src=settings.storyImageSecondary||'assets/priscila-sinfonia.png';
       document.querySelectorAll('a[href*="instagram.com"]').forEach(a=>a.href=settings.instagram);
@@ -98,11 +101,20 @@
       document.getElementById('simMsgPreviewText').textContent=summary;
       document.getElementById('customWhatsApp').href=whatsApp(`Olá! Vim pelo site da Bordô e gostaria de um orçamento personalizado.\n\n${summary}\n\nPodem me informar possibilidades, valores e prazo?`);
     }
+    // One collection is open at a time; any link to a collection id switches to it.
+    function showCollection(id){
+      if(!collections.some(c=>c.id===id)) return false;
+      document.querySelectorAll('#catalogSections>section').forEach(section=>{section.hidden=section.id!==id;if(section.hidden)section.querySelectorAll('video').forEach(video=>video.pause());});
+      document.querySelectorAll('.collection-grid a').forEach(link=>{if(link.getAttribute('href')===`#${id}`){link.setAttribute('aria-current','true');link.scrollIntoView({block:'nearest',inline:'nearest'});}else link.removeAttribute('aria-current');});
+      return true;
+    }
     function closeMenu(){document.getElementById('mainNav').classList.remove('open');document.getElementById('menuButton').setAttribute('aria-expanded','false');document.getElementById('menuButton').setAttribute('aria-label','Abrir menu');document.querySelector('.collection-nav').open=false;}
     document.getElementById('menuButton').addEventListener('click',()=>{const open=document.getElementById('mainNav').classList.toggle('open');document.getElementById('menuButton').setAttribute('aria-expanded',String(open));document.getElementById('menuButton').setAttribute('aria-label',open?'Fechar menu':'Abrir menu');});
     document.getElementById('mainNav').addEventListener('click',event=>{if(event.target.closest('a'))closeMenu();});
     document.addEventListener('keydown',event=>{if(event.key==='Escape'){const menuWasOpen=document.getElementById('mainNav').classList.contains('open');closeMenu();if(menuWasOpen)document.getElementById('menuButton').focus();}});
     document.addEventListener('click',event=>{
+      const anchor=event.target.closest('a[href^="#"]');
+      if(anchor && showCollection(anchor.getAttribute('href').slice(1)) && anchor.closest('.collection-grid')){event.preventDefault();history.replaceState(null,'',anchor.getAttribute('href'));}
       const button=event.target.closest('button');
       if(button?.dataset.expand){const grid=document.getElementById(`grid-${button.dataset.expand}`);const expanded=button.getAttribute('aria-expanded')==='true';grid.querySelectorAll('[data-extra-product]').forEach(item=>item.hidden=expanded);button.setAttribute('aria-expanded',String(!expanded));button.textContent=expanded?`Ver coleção completa (${grid.children.length} peças)`:'Mostrar menos';if(!expanded)grid.querySelector('[data-extra-product] button')?.focus();return;}
       if(button?.dataset.add){addToCart(button.dataset.add);return;}
@@ -121,4 +133,12 @@
     document.getElementById('customForm').addEventListener('submit',event=>event.preventDefault());
     for(const dialog of document.querySelectorAll('dialog')) dialog.addEventListener('click',event=>{if(event.target!==dialog)return;const rect=dialog.getBoundingClientRect();if(event.clientX<rect.left||event.clientX>rect.right||event.clientY<rect.top||event.clientY>rect.bottom)dialog.close();});
     window.addEventListener('storage',event=>{if(event.key===STORAGE_KEY || event.key===null){cart=loadCart();renderCartUI();}});
+    window.addEventListener('hashchange',()=>{showCollection(location.hash.slice(1));});
     document.getElementById('year').textContent=new Date().getFullYear();renderProducts();updateSimulatorPreview();renderCartUI();
+    showCollection(location.hash.slice(1)) || showCollection((collections.find(c=>c.featured)||collections[0]).id);
+    // Reveal on scroll runs only after everything above succeeded, so a failed script never hides content.
+    if('IntersectionObserver' in window){
+      document.documentElement.classList.add('js');
+      const reveal=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-in');reveal.unobserve(entry.target);}}),{rootMargin:'0px 0px -8% 0px'});
+      document.querySelectorAll('[data-reveal]').forEach(element=>reveal.observe(element));
+    }
