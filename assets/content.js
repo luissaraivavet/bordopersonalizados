@@ -32,6 +32,15 @@ window.BORDO_CONTENT = {
       "illustrative": true
     },
     {
+      "id": "colinho",
+      "name": "Colinho do Céu",
+      "description": "Naninhas bordadas de Nossa Senhora Aparecida. Um presente de fé, um carinho para guardar.",
+      "image": "assets/colinho-do-ceu.webp",
+      "published": true,
+      "featured": true,
+      "illustrative": false
+    },
+    {
       "id": "kits",
       "name": "Kits de 3 laços",
       "description": "Três desenhos para variar os penteados e presentear. Escolha seu kit por R$ 119,90 e economize R$ 29,80 em relação a três laços avulsos de R$ 49,90.",
@@ -621,6 +630,32 @@ window.BORDO_CONTENT = {
       "collection": "presentes",
       "published": true,
       "illustrative": true
+    },
+    {
+      "id": "naninha-aparecida-azul",
+      "title": "Naninha bordada Nossa Senhora Aparecida – Manto Azul",
+      "price": 59.9,
+      "image": "assets/naninha-aparecida-azul.webp",
+      "description": "Nossa Senhora Aparecida bordada com manto azul, coroa dourada e bandeirinhas do Brasil, em naninha macia off-white. Um presente de fé para o berço, o batizado ou a maternidade.",
+      "options": [
+        "Acabamento a confirmar no atendimento"
+      ],
+      "collection": "colinho",
+      "published": true,
+      "illustrative": false
+    },
+    {
+      "id": "naninha-aparecida-lilas",
+      "title": "Naninha bordada Nossa Senhora Aparecida – Manto Lilás",
+      "price": 59.9,
+      "image": "assets/naninha-aparecida-lilas.webp",
+      "description": "Nossa Senhora Aparecida bordada com manto azul e arabescos dourados, vestido lilás e terço, em naninha macia off-white. Um carinho de fé para guardar perto.",
+      "options": [
+        "Acabamento a confirmar no atendimento"
+      ],
+      "collection": "colinho",
+      "published": true,
+      "illustrative": false
     }
   ],
   "testimonials": [],
