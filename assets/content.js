@@ -642,7 +642,7 @@ window.BORDO_CONTENT = {
     },
     {
       "id": "naninha-aparecida-azul",
-      "title": "Naninha Mãe Cidinha – Nossa Senhora Aparecida, manto azul",
+      "title": "Naninha Mãe Cidinha, manto azul",
       "price": 59.9,
       "image": "assets/naninha-aparecida-azul.webp",
       "description": "Nossa Senhora Aparecida bordada com manto azul, coroa dourada e bandeirinhas do Brasil, em naninha macia off-white. Um presente de fé para o berço, o batizado ou a maternidade.",
@@ -655,7 +655,7 @@ window.BORDO_CONTENT = {
     },
     {
       "id": "naninha-aparecida-lilas",
-      "title": "Naninha Mãe Cidinha – Nossa Senhora Aparecida, manto lilás",
+      "title": "Naninha Mãe Cidinha, manto lilás",
       "price": 59.9,
       "image": "assets/naninha-aparecida-lilas.webp",
       "description": "Nossa Senhora Aparecida bordada com manto azul e arabescos dourados, vestido lilás e terço, em naninha macia off-white. Um carinho de fé para guardar perto.",
@@ -668,7 +668,7 @@ window.BORDO_CONTENT = {
     },
     {
       "id": "naninha-fatima",
-      "title": "Naninha Nossa Senhora de Fátima – manto branco",
+      "title": "Naninha Nossa Senhora de Fátima, manto branco",
       "price": 59.9,
       "image": "assets/naninha-fatima.webp",
       "description": "Naninha macia off-white com Nossa Senhora de Fátima de manto branco bordado à máquina. Um presente de fé para o berço, o batizado ou a maternidade.",
@@ -681,7 +681,7 @@ window.BORDO_CONTENT = {
     },
     {
       "id": "naninha-fatima-rosa",
-      "title": "Naninha Nossa Senhora de Fátima – manto rosa",
+      "title": "Naninha Nossa Senhora de Fátima, manto rosa",
       "price": 59.9,
       "image": "assets/naninha-fatima-rosa.webp",
       "description": "Naninha macia off-white com Nossa Senhora de Fátima de manto rosa bordado à máquina. Um presente de fé para o berço, o batizado ou a maternidade.",
@@ -798,7 +798,7 @@ window.BORDO_CONTENT = {
     },
     {
       "id": "laco-perola-da-rainha",
-      "title": "Laço Mãe Aparecida – Pérola da Rainha",
+      "title": "Laço Mãe Aparecida, Pérola da Rainha",
       "price": 49.9,
       "image": "assets/rainha-perola.webp",
       "description": "Laço bordado com Nossa Senhora Aparecida, flores e crucifixo, na cor off-white. Uma homenagem à Mãe Aparecida para passeios, missas e momentos especiais.",
@@ -811,7 +811,7 @@ window.BORDO_CONTENT = {
     },
     {
       "id": "laco-manto-celeste",
-      "title": "Laço Mãe Aparecida – Manto Celeste",
+      "title": "Laço Mãe Aparecida, Manto Celeste",
       "price": 49.9,
       "image": "assets/rainha-manto-celeste.webp",
       "description": "Laço bordado com Nossa Senhora Aparecida, flores e crucifixo, na cor azul suave. Uma homenagem à Mãe Aparecida para passeios, missas e momentos especiais.",
@@ -824,7 +824,7 @@ window.BORDO_CONTENT = {
     },
     {
       "id": "laco-jardim-de-maria",
-      "title": "Laço Mãe Aparecida – Jardim de Maria",
+      "title": "Laço Mãe Aparecida, Jardim de Maria",
       "price": 49.9,
       "image": "assets/rainha-jardim-maria.webp",
       "description": "Laço bordado com Nossa Senhora Aparecida, flores e crucifixo, na cor rosa antigo. Uma homenagem à Mãe Aparecida para passeios, missas e momentos especiais.",
