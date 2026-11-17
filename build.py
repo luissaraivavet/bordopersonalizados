@@ -59,7 +59,7 @@ def check_assets():
         'sinfonia-reel.mp4', 'jardim-margarida.webp', 'jardim-girassol.webp',
         'jardim-rosa.webp', 'site.js', 'content.js', 'fonts/Lora.ttf', 'fonts/Manrope.ttf',
         'tokens.css', 'base.css', 'fonts/CormorantGaramond.woff2',
-        'hero-mae-aparecida.webp', 'mae-rainha-lacos.webp', 'ambiente-linho.webp'
+        'hero-mae-aparecida.webp', 'mae-rainha-lacos.webp', 'embalagem-unboxing.webp'
     ]
     all_ok = True
     print("\nVerificando arquivos em assets/:")
