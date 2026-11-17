@@ -52,7 +52,7 @@ Regras de `validate` que costumam surpreender:
 
 ## Página principal
 
-`index.html` traz todo o CSS inline e apenas os contêineres; `assets/site.js` preenche o catálogo, os textos de `settings`, os links de WhatsApp/Instagram e o rodapé.
+`index.html` traz o CSS da página inline e importa `assets/tokens.css` (cores, fontes e escalas) e `assets/base.css` (regras-base); `design.md` descreve o sistema visual compartilhado com as páginas de SEO. O HTML traz apenas os contêineres; `assets/site.js` preenche o catálogo, os textos de `settings`, os links de WhatsApp/Instagram e o rodapé.
 
 - `site.js` localiza elementos por seletor estrutural (`.footer-main>div:last-child a`, `.intro>.button`, `.story-copy`, `#catalogSections`, `.collection-grid`). Reorganizar o HTML quebra a renderização sem erro de build; confira no navegador.
 - O `id` de cada coleção vira âncora e classe CSS da seção (`.section.jardim`). A coleção `sinfonia` recebe o vídeo de `#filmTemplate`.
