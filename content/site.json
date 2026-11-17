@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "settings": {
     "headline": "Laços e bordados personalizados",
-    "intro": "Escolha uma coleção. Encontre o seu encanto.",
+    "intro": "Laços e naninhas bordados com fé, a partir de R$ 49,90.",
     "location": "Teixeiras, MG",
     "whatsapp": "5531997954792",
     "instagram": "https://www.instagram.com/bordobordadospersonalizados/",
@@ -13,6 +13,24 @@
     "storyImageSecondary": "assets/priscila-sinfonia.png"
   },
   "collections": [
+    {
+      "id": "rainha",
+      "name": "Mãe & Rainha",
+      "description": "Laços bordados com Nossa Senhora Aparecida, em três cores, a R$ 49,90. Fé e carinho em cada escolha.",
+      "image": "assets/rainha-manto-celeste.webp",
+      "published": true,
+      "featured": true,
+      "illustrative": true
+    },
+    {
+      "id": "colinho",
+      "name": "Colinho do Céu",
+      "description": "Naninhas bordadas de santos e de Nossa Senhora, a R$ 59,90. Um presente de fé, um carinho para guardar.",
+      "image": "assets/colinho-do-ceu.webp",
+      "published": true,
+      "featured": true,
+      "illustrative": false
+    },
     {
       "id": "jardim",
       "name": "Jardim de Encantos",
@@ -30,15 +48,6 @@
       "published": true,
       "featured": true,
       "illustrative": true
-    },
-    {
-      "id": "colinho",
-      "name": "Colinho do Céu",
-      "description": "Naninhas bordadas de santos e de Nossa Senhora, a R$ 59,90. Um presente de fé, um carinho para guardar.",
-      "image": "assets/colinho-do-ceu.webp",
-      "published": true,
-      "featured": true,
-      "illustrative": false
     },
     {
       "id": "kits",
@@ -786,6 +795,45 @@
       "collection": "colinho",
       "published": true,
       "illustrative": false
+    },
+    {
+      "id": "laco-perola-da-rainha",
+      "title": "Laço Mãe Aparecida – Pérola da Rainha",
+      "price": 49.9,
+      "image": "assets/rainha-perola.webp",
+      "description": "Laço bordado com Nossa Senhora Aparecida, flores e crucifixo, na cor off-white. Uma homenagem à Mãe Aparecida para passeios, missas e momentos especiais.",
+      "options": [
+        "Acabamento a confirmar no atendimento"
+      ],
+      "collection": "rainha",
+      "published": true,
+      "illustrative": true
+    },
+    {
+      "id": "laco-manto-celeste",
+      "title": "Laço Mãe Aparecida – Manto Celeste",
+      "price": 49.9,
+      "image": "assets/rainha-manto-celeste.webp",
+      "description": "Laço bordado com Nossa Senhora Aparecida, flores e crucifixo, na cor azul suave. Uma homenagem à Mãe Aparecida para passeios, missas e momentos especiais.",
+      "options": [
+        "Acabamento a confirmar no atendimento"
+      ],
+      "collection": "rainha",
+      "published": true,
+      "illustrative": true
+    },
+    {
+      "id": "laco-jardim-de-maria",
+      "title": "Laço Mãe Aparecida – Jardim de Maria",
+      "price": 49.9,
+      "image": "assets/rainha-jardim-maria.webp",
+      "description": "Laço bordado com Nossa Senhora Aparecida, flores e crucifixo, na cor rosa antigo. Uma homenagem à Mãe Aparecida para passeios, missas e momentos especiais.",
+      "options": [
+        "Acabamento a confirmar no atendimento"
+      ],
+      "collection": "rainha",
+      "published": true,
+      "illustrative": true
     }
   ],
   "testimonials": [],
