@@ -425,17 +425,6 @@ dialog::backdrop{background:var(--color-scrim)}
 .tone-all[aria-pressed=true]{display:none}
 @media(prefers-reduced-motion:reduce){.feature-frame .feature-photo,.tone{transition:none}}
 
-/* A linha que costura (assets/linha.js): ponto corrido bordado com a rolagem */
-.linha{position:absolute;top:0;left:0;width:100%;overflow:visible;pointer-events:none;z-index:1}
-.linha-guia{stroke-width:12;stroke-dasharray:1 1;stroke-dashoffset:1}
-.linha-fio{stroke:var(--color-accent);stroke-width:1.6;stroke-linecap:round;stroke-dasharray:9 6;opacity:.72}
-.linha-agulha{fill:var(--color-accent);opacity:0;transition:opacity var(--dur-short) var(--ease-out)}
-.linha.is-started .linha-agulha{opacity:.9}
-.linha.is-tied .linha-agulha{opacity:0}
-.linha-no{fill:var(--color-accent);transform-box:fill-box;transform-origin:center;scale:0;transition:scale var(--dur-long) var(--ease-out)}
-.linha.is-tied .linha-no{scale:1}
-@media(prefers-reduced-motion:reduce){.linha-no{scale:1;transition:none}.linha-agulha{display:none}}
-@media print{.linha{display:none}}
 
 /* História: o ponto alto da rolagem. Retrato grande no arco, título na escala da capa. */
 #historia{padding-block:var(--section-gap-l)}
@@ -504,7 +493,6 @@ dialog::backdrop{background:var(--color-scrim)}
   <dialog class="lightbox" id="imageDialog" aria-labelledby="imageTitle"><div class="lightbox-top"><h2 id="imageTitle">Detalhes da peça</h2><button class="icon-button" type="button" data-close="imageDialog" aria-label="Fechar imagem" title="Fechar imagem" autofocus><img class="icon" src="assets/icons/x.svg" alt=""></button></div><img class="lightbox-image" id="lightboxImage" src="assets/brand-logo.png" width="1964" height="800" alt=""><p>Consulte os detalhes da peça no atendimento.</p></dialog>
   <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
   <script src="assets/content.js?v=20261118-lookbook"></script>
-  <script src="assets/site.js?v=20261118-costura"></script>
-  <script src="assets/linha.js?v=20261118"></script>
+  <script src="assets/site.js?v=20261118-semlinha"></script>
 </body>
 </html>
