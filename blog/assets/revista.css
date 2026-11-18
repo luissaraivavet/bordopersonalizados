@@ -70,8 +70,6 @@ h1,h2,h3,.price,.num,.index button{font-variant-numeric:lining-nums}
 .index button[aria-pressed=true]::after{clip-path:inset(0);animation:stitch 520ms steps(6,end) both}
 @keyframes stitch{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0)}}
 
-/* Trama de linho sob o papel (Creative Fabrica, ver ornamentos/LICENCA.txt) */
-body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:url(/assets/trama-linho.webp) 0 0/540px 540px repeat;mix-blend-mode:multiply;opacity:.16}
 
 /* Título: uma palavra em itálico */
 .cover h1 em{font-style:italic;font-weight:500;color:var(--color-accent)}
@@ -90,9 +88,9 @@ body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;ba
 @media(min-width:48rem){.index{display:none}.menu{display:block}}
 
 /* Ponto corrido entre seções */
-.seam{height:22px;margin-inline:var(--gutter);background:var(--color-gold-deep);opacity:.75;-webkit-mask:url(ornamentos/ponto-ramo.png) left center/auto 100% repeat-x;mask:url(ornamentos/ponto-ramo.png) left center/auto 100% repeat-x}
+.seam{height:22px;margin-inline:var(--gutter);background:var(--color-gold-deep);opacity:.75;-webkit-mask:url(/assets/ornamentos/ponto-ramo.png) left center/auto 100% repeat-x;mask:url(/assets/ornamentos/ponto-ramo.png) left center/auto 100% repeat-x}
 .band{position:relative}
-.band::before{content:"";position:absolute;inset:0 0 auto 0;height:18px;background:var(--color-accent);opacity:.35;-webkit-mask:url(ornamentos/ponto-folhas.png) left center/auto 100% repeat-x;mask:url(ornamentos/ponto-folhas.png) left center/auto 100% repeat-x}
+.band::before{content:"";position:absolute;inset:0 0 auto 0;height:18px;background:var(--color-accent);opacity:.35;-webkit-mask:url(/assets/ornamentos/ponto-folhas.png) left center/auto 100% repeat-x;mask:url(/assets/ornamentos/ponto-folhas.png) left center/auto 100% repeat-x}
 
 /* Os itens */
 .issue{padding-block:var(--space-2xl) var(--space-3xl)}

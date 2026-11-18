@@ -18,8 +18,6 @@ h1{font-size:3.25rem;line-height:1.02}
 .answer-first::before{content:"";position:absolute;inset:0 auto 0 0;width:2px;background:repeating-linear-gradient(180deg,var(--color-gold-deep) 0 10px,transparent 10px 16px)}
 .editorial-note{background:var(--color-paper-2);border-color:var(--color-rule);color:var(--color-ink-2)}
 .footer{background:var(--color-field)!important;color:var(--color-on-field)}
-/* Trama de linho (Creative Fabrica, ver blog/assets/ornamentos/LICENCA.txt) */
-body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:url(/assets/trama-linho.webp) 0 0/540px 540px repeat;mix-blend-mode:multiply;opacity:.16}
 a:focus-visible,button:focus-visible{outline:2px solid var(--color-focus);outline-offset:2px}
 @media(max-width:600px){h1{font-size:2.25rem}.article-content h2,.section-head h2{font-size:1.875rem}}
 @media(prefers-reduced-motion:reduce){.card-image,.btn{transition:none}}

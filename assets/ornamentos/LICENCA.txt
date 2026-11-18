@@ -18,5 +18,5 @@ Obtido em 18/11/2026 pela assinatura Creative Fabrica do proprietário do site.
 Licença: Creative Fabrica Subscription License, uso comercial permitido.
 
 Uso neste site: uma das 14 texturas, reduzida a 540 px em tons de cinza e salva em
-assets/trama-linho.webp, aplicada com opacidade de 16 % sob o fundo das páginas.
+assets/ornamentos/trama-linho.webp, aplicada com opacidade de 16 % sob o fundo das páginas.
 Os arquivos originais não fazem parte do repositório.

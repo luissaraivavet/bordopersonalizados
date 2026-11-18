@@ -297,7 +297,7 @@ def page(spec):
             f'<meta property="og:description" content="{esc(spec["description"])}"><meta property="og:url" content="{url}"><meta property="og:image" content="{cover}"><meta name="twitter:card" content="summary_large_image">'
             f'<link rel="icon" href="/assets/brand-logo-491.png" type="image/png"><link rel="alternate" type="application/rss+xml" title="Bordô | Casa &amp; Inspiração" href="../feed.xml">'
             f'<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/CormorantGaramond.woff2" crossorigin>{preload}'
-            f'<link rel="stylesheet" href="/assets/tokens.css"><link rel="stylesheet" href="/assets/base.css"><link rel="stylesheet" href="../assets/revista.css?v={STYLE_VERSION}">'
+            f'<link rel="stylesheet" href="/assets/tokens.css"><link rel="stylesheet" href="/assets/base.css"><link rel="stylesheet" href="/assets/acabamento.css?v=20261118"><link rel="stylesheet" href="../assets/revista.css?v={STYLE_VERSION}">'
             f'<script type="application/ld+json">{json.dumps({"@context": "https://schema.org", "@graph": graph}, ensure_ascii=False, separators=(",", ":"))}</script></head>')
     thumbs = ''.join(f'<button type="button" data-i="{index}" aria-pressed="{str(index == most).lower()}" aria-label="Destacar o item {d["pos"]}: {esc(d["name"])}" title="{esc(d["name"])}"><img{" class=\"shot\"" if d["shot"] else ""} src="{esc(d["img"])}" width="128" height="128" loading="lazy" decoding="async" referrerpolicy="no-referrer" alt="">{d["pos"]:02d}</button>' for index, d in enumerate(stage_data))
     word = spec['em']

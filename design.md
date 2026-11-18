@@ -45,5 +45,12 @@ The spacing scale, the type scale, the easings and the durations are the scaffol
 - Ornament: embroidered stitch borders (`blog/assets/ornamentos/`) used as colour masks, gold between sections and bordô over a band.
 - Motion: photo reveal by clip-path on scroll, the running stitch under the active index number, view transitions when the list is re-sorted.
 
+## Acabamento (all pages)
+- `assets/acabamento.css` is loaded by the shop, the SEO pages and the blog.
+- Linen weave under the paper (16 %, multiply), from the Creative Fabrica pack in `assets/ornamentos/`.
+- One word per heading in Cormorant italic, in bordô; the words themselves never change.
+- `.costura`: an embroidered stitch border as a colour mask between sections (gold; `.folhas` in bordô).
+- `.revela`: photos unmask with the scroll where the browser supports view timelines; never on the first-screen photo.
+
 ## Exports
 `assets/tokens.css` in this project. Tailwind, DTCG or shadcn blocks are added here on request.
