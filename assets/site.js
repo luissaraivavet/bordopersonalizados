@@ -28,10 +28,16 @@
     function renderProducts() {
       document.querySelector('.dropdown').innerHTML = collections.map(c => `<a href="#${escapeHTML(c.id)}">${escapeHTML(c.name)}</a>`).join('');
       document.querySelector('.collection-grid').innerHTML = [...collections].sort((a,b) => Number(b.featured) - Number(a.featured)).map(c => `<a class="collection-link" href="#${escapeHTML(c.id)}"><figure class="collection-photo"><img src="${escapeHTML(c.image)}" alt="" width="128" height="160"></figure><span class="collection-name">${escapeHTML(c.name)}</span></a>`).join('');
+      // No celular a faixa rola: o esmaecido na borda some quando chega ao fim.
+      const strip=document.querySelector('.collection-grid');
+      const stripEdge=()=>strip.classList.toggle('is-end',strip.scrollLeft+strip.clientWidth>=strip.scrollWidth-4);
+      strip.addEventListener('scroll',stripEdge,{passive:true}); window.addEventListener('resize',stripEdge); stripEdge();
       document.getElementById('catalogSections').innerHTML = collections.map(c => `<section class="section ${escapeHTML(c.id)}" id="${escapeHTML(c.id)}" aria-labelledby="${escapeHTML(c.id)}Title"><div class="wrap"><div class="section-heading"><h2 id="${escapeHTML(c.id)}Title">${escapeHTML(c.name)}</h2><div><p class="lead">${escapeHTML(c.description)}</p><a class="text-link" href="#personalizados">Conversar sobre uma peça ${icon('arrow-up-right')}</a></div></div><div class="product-grid" id="grid-${escapeHTML(c.id)}">${products.filter(p => p.collection === c.id).map((p,index) => productCard(p).replace('<article class="product">', `<article class="product"${index >= 8 ? ' hidden data-extra-product' : ''}>`)).join('')}</div>${products.filter(p => p.collection === c.id).length > 8 ? `<button class="button secondary collection-more" type="button" data-expand="${escapeHTML(c.id)}" aria-expanded="false" aria-controls="grid-${escapeHTML(c.id)}">Ver coleção completa (${products.filter(p => p.collection === c.id).length} peças)</button>` : ''}<p class="collection-note">Disponibilidade, frete, materiais e prazo são confirmados no atendimento.</p>${c.id === 'sinfonia' ? document.getElementById('filmTemplate').innerHTML : ''}</div></section>`).join('');
-      const place=escapeHTML(settings.location), head=escapeHTML(settings.headline);
-      document.getElementById('pageTitle').innerHTML=head.includes(place) ? head.replace(place,`<em>${place}</em>`) : `${head} em <em>${place}</em>`;
+      // A cidade fica na linha de apoio: a Bordô vende para todo o Brasil.
+      const head=escapeHTML(settings.headline), lastWord=head.lastIndexOf(' ');
+      document.getElementById('pageTitle').innerHTML=lastWord>0 ? `${head.slice(0,lastWord)} <em>${head.slice(lastWord+1)}</em>` : head;
       document.querySelector('.intro p').textContent=settings.intro;
+      document.querySelector('.intro .intro-place').textContent=`Bordados em ${settings.location}, com envio para todo o Brasil.`;
       const story=document.querySelector('.story-copy'), link=story.querySelector('a');
       story.querySelectorAll('p').forEach(p=>p.remove());
       const storyParts=settings.story.split(/\n\s*\n/), storyMore=document.createElement('details');
@@ -44,7 +50,7 @@
       document.querySelectorAll('a[href^="https://wa.me/"]').forEach(a=>a.href=whatsApp('Olá, Bordô! Gostaria de saber mais sobre uma encomenda.'));
       const contact=document.querySelector('.footer-main>div:last-child a');
       contact.textContent=`WhatsApp: +${PHONE}`;
-      document.querySelector('.footer-main>div:last-child p').textContent=`${settings.location}. Atendimento online e por encomenda. Envio sob consulta.`;
+      document.querySelector('.footer-main>div:last-child p').textContent=`${settings.location}. Atendimento online e por encomenda, com envio para todo o Brasil.`;
       document.querySelector('.footer-main>div:first-child p').textContent=`Laços e bordados personalizados. Atendimento online, por encomenda. ${settings.location}.`;
       document.querySelector('.gift span').textContent=`Adicionar embalagem kraft para presente (+ ${money(GIFT_PRICE)})`;
       document.querySelector('#giftTotalRow span:last-child').textContent=money(GIFT_PRICE);
