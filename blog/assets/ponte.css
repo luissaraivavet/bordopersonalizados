@@ -21,3 +21,20 @@ h1{font-size:3.25rem;line-height:1.02}
 a:focus-visible,button:focus-visible{outline:2px solid var(--color-focus);outline-offset:2px}
 @media(max-width:600px){h1{font-size:2.25rem}.article-content h2,.section-head h2{font-size:1.875rem}}
 @media(prefers-reduced-motion:reduce){.card-image,.btn{transition:none}}
+
+/* Tipografia: os guias seguem a escala da loja.
+   Duas famílias (Cormorant nos títulos e números, Manrope no texto), pesos 400/500/600,
+   texto corrido em 16px, secundário em 14px e letra miúda nunca abaixo de 13px. */
+.affiliate-visual strong,.bd-review-big,.product-info h3,.reviews-heading h4,.bd-review-title h4,.product-rating strong,.bd-rating{font-family:var(--font-display)!important;font-weight:500;letter-spacing:0;font-variant-numeric:lining-nums}
+.article-content{line-height:1.7}
+.article-content a{font-weight:600}
+.navigation a,.side-card ul,.side-card a,.side-card p,.editorial-note,.footer p,.footer a,.product-subtitle,.bd-procon p,.bd-review-intro p,.btn,.more,.product-info .product-cta,.product-rating>a,.reviews-heading>a,.media-foot a,.bd-pdp-trust a,.bd-review-title>a,.bd-feature-footer a,.affiliate-visual>span:not(.eyebrow){font-size:var(--text-sm)!important;letter-spacing:0}
+.product-info>p:not(.product-subtitle):not(.disclosure){font-size:var(--text-sm);line-height:1.65}
+.mast-note,.breadcrumbs,.meta,.disclosure,.footline,.product-photo figcaption,.product-facts span,.product-info .disclosure,.reviews-grid cite,.review-caution,.media-foot span,.bd-gallery-source,.bd-social-proof,.bd-review-footnote,.bd-feature-footer p,.bd-gallery-dialog p,.affiliate-visual small,.bd-gallery-count,.bd-gallery-zoom,.bd-gallery-tabs button{font-size:var(--text-xs)!important;line-height:1.55!important}
+.navigation a,.eyebrow,.more,.btn,.product-subtitle,.product-rating>a,.reviews-heading>a,.media-foot a,.bd-gallery-tabs button,.bd-pdp-trust a,.bd-review-title>a,.bd-feature-footer a,.bd-gallery-count,.affiliate-visual>span:not(.eyebrow),.product-facts strong{font-weight:600}
+.eyebrow,.mast-note{text-transform:none;letter-spacing:0}
+.eyebrow{font-size:var(--text-xs);letter-spacing:.06em}
+.product-facts strong{letter-spacing:0;font-variant-numeric:tabular-nums}
+strong,b,th,output,.bd-gallery-zoom{font-weight:600}
+.bd-rating span,.review-stars{font-size:var(--text-xs)}
+.checklist output{font-weight:600}

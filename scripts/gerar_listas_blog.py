@@ -23,7 +23,7 @@ PRODUCTS = {item['id']: item for item in DATA['produtos']}
 CHECKED = '17 e 18 de novembro de 2026'
 PUBLISHED = '2026-11-18'
 PUBLISHED_TEXT = '18 de novembro de 2026'
-STYLE_VERSION = '20261118b'
+STYLE_VERSION = '20261118-tipo'
 
 # Nome curto, por que entrou e o que vale saber. Tudo sai do titulo e dos numeros do anuncio.
 COPY = {
