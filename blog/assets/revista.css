@@ -48,8 +48,8 @@ h1,h2,h3,.price,.num,.index button{font-variant-numeric:lining-nums}
 .proof{font-size:var(--text-xs);font-weight:600;line-height:1.5;color:var(--color-ink-2)}
 .stage-para{display:none;margin-top:var(--space-sm);color:var(--color-ink-2)}
 .price{margin-block:var(--space-md);font-family:var(--font-display);font-size:1.75rem;line-height:1;color:var(--color-display);font-variant-numeric:lining-nums}
-.price small{margin-left:var(--space-xs);font-family:var(--font-body);font-size:.6875rem;color:var(--color-muted)}
-.safe{margin-top:var(--space-xs);font-size:.6875rem;color:var(--color-muted)}
+.price small{margin-left:var(--space-xs);font-family:var(--font-body);font-size:var(--text-xs);color:var(--color-muted)}
+.safe{margin-top:var(--space-xs);font-size:var(--text-xs);color:var(--color-muted)}
 .button{min-height:52px;display:inline-flex;align-items:center;justify-content:center;gap:var(--space-sm);padding:0 var(--space-lg);border:1px solid var(--color-accent);border-radius:var(--radius-pill);background:var(--color-accent);color:var(--color-accent-ink);font-size:var(--text-sm);font-weight:600;line-height:1.2;text-align:center;text-decoration:none;transition:background-color var(--dur-short) var(--ease-out),transform var(--dur-micro) var(--ease-out)}
 .button:hover{background:var(--color-accent-deep)}
 .button:active{transform:scale(.98)}
@@ -115,7 +115,7 @@ h1,h2,h3,.price,.num,.index button{font-variant-numeric:lining-nums}
 .js .piece.is-in:hover .ph img{transform:scale(1.04)}
 .js .piece .meta{opacity:0;transform:translateY(14px);transition:opacity 600ms var(--ease-out) 180ms,transform 600ms var(--ease-out) 180ms}
 .js .piece.is-in .meta{opacity:1;transform:none}
-.badge{position:absolute;left:var(--space-sm);top:var(--space-sm);padding:var(--space-2xs) var(--space-sm);border-radius:var(--radius-pill);background:var(--color-paper);color:var(--color-accent);font-size:.6875rem;font-weight:600;line-height:1.5}
+.badge{position:absolute;left:var(--space-sm);top:var(--space-sm);padding:var(--space-2xs) var(--space-sm);border-radius:var(--radius-pill);background:var(--color-paper);color:var(--color-accent);font-size:var(--text-xs);font-weight:600;line-height:1.5}
 .meta{display:grid;grid-template-columns:auto minmax(0,1fr);gap:0 var(--space-md);padding-top:var(--space-md)}
 .num{grid-row:1/span 5;font-family:var(--font-display);font-size:2.5rem;line-height:.9;color:var(--color-gold-deep);font-variant-numeric:lining-nums}
 .piece h3{grid-column:2;max-width:none;font-size:var(--name);line-height:1.12;color:var(--color-display)}
@@ -229,3 +229,4 @@ h1,h2,h3,.price,.num,.index button{font-variant-numeric:lining-nums}
   .row{grid-template-columns:96px minmax(0,1fr)}
   .row>.icon{display:none}
 }
+strong,b{font-weight:600}

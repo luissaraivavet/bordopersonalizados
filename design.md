@@ -22,6 +22,11 @@ The locked system. Every Hallmark run reads this first and pages share it. Chang
 ```
 The spacing scale, the type scale, the easings and the durations are the scaffold's and live in `assets/tokens.css`. `assets/base.css` holds the base rules. Each page keeps its own CSS inline and imports both files.
 
+## Type roles
+- Two families only: Cormorant Garamond (500, italic 500) for headings, prices and big numbers; Manrope (400, 600) for everything else. Bold text is 600, never 700+.
+- Body 16px; secondary 14px (`--text-sm`); fine print 13px (`--text-xs`) is the floor. The one exception is the blog's commission line, kept at 11px on the owner's request.
+- Fonts ship as woff2 (`Manrope.woff2` is a Latin subset of the variable font, weight axis 200-800). The hand-written blog pages reach this scale through `blog/assets/ponte.css`.
+
 ## Roles
 - Bordô is a highlight, never a field: headings (`--color-display`), the primary action (`--color-accent`) and the footer (`--color-field`), the one dark surface on a page.
 - Paper is pale and rosy; `--color-paper-2` marks a band.
