@@ -93,6 +93,9 @@ button,a,input,select,textarea,summary{-webkit-tap-highlight-color:transparent}
 .intro>.button{margin-top:var(--space-xl);animation:rise 700ms var(--ease-out) 180ms both}
 @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
 @keyframes settle{from{transform:scale(1.05)}to{transform:none}}
+/* A foto da capa recua devagar enquanto a página sobe; só onde o navegador liga animação à rolagem. */
+@keyframes drift{to{translate:0 9%;scale:1.06}}
+@supports (animation-timeline:scroll()){.hero-photo{animation:settle 1400ms var(--ease-out) both,drift linear both;animation-timeline:auto,scroll(root);animation-range:normal,0 100vh}}
 @keyframes appear{from{opacity:0}to{opacity:1}}
 
 .catalog{padding-top:var(--space-2xl)}
@@ -395,7 +398,7 @@ dialog::backdrop{background:var(--color-scrim)}
   <a class="skip" href="#conteudo">Ir para o conteúdo</a>
   <header class="masthead">
     <div class="wrap">
-      <a class="brand" href="#conteudo" aria-label="Bordô, início"><img src="assets/brand-logo.png" width="1964" height="800" alt="Bordô — Bordados personalizados"></a>
+      <a class="brand" href="#conteudo" aria-label="Bordô, início"><img src="assets/brand-logo-491.png" width="491" height="200" alt="Bordô — Bordados personalizados"></a>
       <div class="nav-row">
         <button class="icon-button menu-button" id="menuButton" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="mainNav" title="Abrir menu"><img class="icon" src="assets/icons/menu.svg" alt=""></button>
         <nav class="nav" id="mainNav" aria-label="Navegação principal">

@@ -39,5 +39,11 @@ The spacing scale, the type scale, the easings and the durations are the scaffol
 - Signature: the running stitch. The active collection tab is underlined by a dashed bordô line sewn in 16 steps (640ms) when the collection changes.
 - Feedback: in the bag, a new piece rises in and a changed quantity and price tick (220ms); the form error and the toast fade in. FAQ answers open with animated height where the browser supports `interpolate-size`.
 
+## Blog (Casa & Inspiração)
+- The list pages (`blog/assets/revista.css`) follow this system: an oversized Cormorant numeral opens the page, a spotlight piece swaps with a vertical wipe, and the items sit in an asymmetric 7/5 and 4/4/4 grid.
+- Type on the blog moves in fixed steps per breakpoint, never by viewport width.
+- Ornament: embroidered stitch borders (`blog/assets/ornamentos/`) used as colour masks, gold between sections and bordô over a band.
+- Motion: photo reveal by clip-path on scroll, the running stitch under the active index number, view transitions when the list is re-sorted.
+
 ## Exports
 `assets/tokens.css` in this project. Tailwind, DTCG or shadcn blocks are added here on request.
