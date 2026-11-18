@@ -1,0 +1,32 @@
+Ornamentos de ponto de bordado
+
+Origem: "Hand Drawn Embroidery Stitch Borders", de Melissa Held Designs.
+Fonte: https://www.creativefabrica.com/product/hand-drawn-embroidery-stitch-borders/ (ID 114351712)
+Obtido em 18/11/2026 pela assinatura Creative Fabrica do proprietário do site.
+Licença: Creative Fabrica Subscription License, uso comercial permitido.
+https://www.creativefabrica.com/subscription-license/
+
+Uso neste site: duas bordas (b2 e b13) reduzidas a 40 px de altura e usadas como
+máscara de cor nos divisores das páginas. Os arquivos originais (AI, EPS, PNG, JPG)
+não fazem parte do repositório e não podem ser redistribuídos.
+
+Trama de linho
+
+Origem: "White Linen Seamless Paper", de DigiArt.
+Fonte: https://www.creativefabrica.com/product/white-linen-seamless-paper/ (ID 149955902)
+Obtido em 18/11/2026 pela assinatura Creative Fabrica do proprietário do site.
+Licença: Creative Fabrica Subscription License, uso comercial permitido.
+
+Uso neste site: uma das 14 texturas, reduzida a 540 px em tons de cinza e salva em
+assets/ornamentos/trama-linho.webp, aplicada com opacidade de 16 % sob o fundo das páginas.
+Os arquivos originais não fazem parte do repositório.
+
+Modelos de site usados como referência de interação (nenhum arquivo copiado)
+
+- "Home Decor Landing Page", de novexora (ID 162029512): o lookbook em que cada
+  aba troca foto e legenda inspirou a troca de cores da seção Mãe & Rainha.
+- "Jewellery Landing Page" (ID 154783839) e "LuxDin - Restaurant Website"
+  (ID 98017554): referência para o cardápio das listas e o itálico nos títulos.
+Todos obtidos em 18/11/2026 pela assinatura Creative Fabrica, licença comercial.
+O código foi escrito para este site; nenhum trecho, imagem ou texto dos modelos
+foi incorporado.

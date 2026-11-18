@@ -25,6 +25,7 @@
 /* Hallmark · dismissed 77 · the page keeps the four sections it had; a redesign adds no section, claim or picture the owner did not write */
 @import url("/assets/tokens.css?v=20261117-bordo");
 @import url("/assets/base.css?v=20261117-bordo");
+@import url("/assets/acabamento.css?v=20261118");
 html,body{overflow-x:clip}
 h1,h2{color:var(--color-display);text-wrap:balance}
 a{text-decoration:none}
@@ -86,14 +87,20 @@ figure{margin:0}
   .action{width:100%}
 }
 @media(prefers-reduced-motion:reduce){.action,.nav a,.text-link{transition:none}}
+/* Acabamento: etapas numeradas em ouro e foto da capa revelada */
+.sections{counter-reset:etapa}
+.sections article{counter-increment:etapa;position:relative}
+.sections h2::before{content:counter(etapa,decimal-leading-zero);display:block;margin-bottom:var(--space-sm);font-family:var(--font-display);font-size:1.25rem;font-style:normal;color:var(--color-gold-deep);font-variant-numeric:lining-nums}
+
   </style>
 </head>
 <body>
-<header class="masthead"><div class="wrap"><a class="brand" href="/" aria-label="Bordô - página inicial"><img src="/assets/brand-logo.png" alt="Bordô Bordados Personalizados" width="1964" height="800"></a><nav class="nav" aria-label="Navegação"><a href="/">Início</a><a href="/lacos-infantis-bordados/">Laços bordados</a><a href="/bordados-personalizados/">Bordados personalizados</a><a href="/presentes-personalizados/">Presentes personalizados</a></nav></div></header>
+<header class="masthead"><div class="wrap"><a class="brand" href="/" aria-label="Bordô - página inicial"><img src="/assets/brand-logo-491.png" alt="Bordô Bordados Personalizados" width="491" height="200"></a><nav class="nav" aria-label="Navegação"><a href="/">Início</a><a href="/lacos-infantis-bordados/">Laços bordados</a><a href="/bordados-personalizados/">Bordados personalizados</a><a href="/presentes-personalizados/">Presentes personalizados</a></nav></div></header>
 <main>
-<section class="hero wrap"><div><h1>Presentes bordados personalizados com carinho</h1><p class="lead">Presentear também é contar uma história. Na Bordô, uma ideia, um nome ou um detalhe especial pode inspirar um bordado personalizado.</p><a class="action" href="/#personalizados">Solicitar orçamento</a><p class="hero-note">Atendimento online e por encomenda. Consulte prazo, opções, frete e disponibilidade pelo WhatsApp.</p></div><figure><img fetchpriority="high" src="/assets/gifts.webp" width="800" height="800" alt="Apresentação de presentes personalizados e peças Bordô"><figcaption>Uma criação Bordô, de Teixeiras, MG.</figcaption></figure></section>
+<section class="hero wrap"><div><h1>Presentes bordados personalizados com <em>carinho</em></h1><p class="lead">Presentear também é contar uma história. Na Bordô, uma ideia, um nome ou um detalhe especial pode inspirar um bordado personalizado.</p><a class="action" href="/#personalizados">Solicitar orçamento</a><p class="hero-note">Atendimento online e por encomenda. Consulte prazo, opções, frete e disponibilidade pelo WhatsApp.</p></div><figure><img fetchpriority="high" src="/assets/gifts.webp" width="800" height="800" alt="Apresentação de presentes personalizados e peças Bordô"><figcaption>Uma criação Bordô, de Teixeiras, MG.</figcaption></figure></section>
+<span class="costura" aria-hidden="true"></span>
 <div class="sections wrap"><article><h2>Lembranças e presentes exclusivos</h2><p>Converse com a Bordô sobre o presente que deseja criar. Materiais, prazos e disponibilidade são confirmados no atendimento.</p><a class="text-link" href="/#personalizados">Saiba mais na Bordô</a></article><article><h2>Laços bordados para presentear</h2><p>Explore modelos das coleções Jardim de Encantos e Sinfonia das Matas.</p><a class="text-link" href="/lacos-infantis-bordados/">Saiba mais na Bordô</a></article></div>
-<section class="closing"><div class="wrap"><div><h2>Seu próximo bordado começa com uma conversa</h2><p>A Bordô atende em Teixeiras, Minas Gerais, e recebe pedidos online. Cada detalhe do projeto é confirmado antes da encomenda.</p></div><a class="action" href="https://wa.me/5531997954792?text=Ol%C3%A1%2C%20Bord%C3%B4%21%20Gostaria%20de%20um%20or%C3%A7amento." target="_blank" rel="noopener noreferrer">Conversar pelo WhatsApp</a></div></section>
+<section class="closing"><div class="wrap"><div><h2>Seu próximo bordado começa com uma <em>conversa</em></h2><p>A Bordô atende em Teixeiras, Minas Gerais, e recebe pedidos online. Cada detalhe do projeto é confirmado antes da encomenda.</p></div><a class="action" href="https://wa.me/5531997954792?text=Ol%C3%A1%2C%20Bord%C3%B4%21%20Gostaria%20de%20um%20or%C3%A7amento." target="_blank" rel="noopener noreferrer">Conversar pelo WhatsApp</a></div></section>
 </main>
 <footer class="footer"><div class="wrap"><p><strong>Bordô | Bordados Personalizados</strong>Teixeiras, Minas Gerais.</p><nav aria-label="Rodapé"><a href="/">Página inicial</a><a href="/#historia">Conheça a Priscila e a história da Bordô</a></nav></div></footer>
 </body></html>

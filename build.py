@@ -58,7 +58,7 @@ def check_assets():
         'craft.webp', 'art.webp', 'caixa-artesanal.webp',
         'sinfonia-reel.mp4', 'jardim-margarida.webp', 'jardim-girassol.webp',
         'jardim-rosa.webp', 'site.js', 'content.js', 'fonts/Lora.ttf', 'fonts/Manrope.ttf',
-        'tokens.css', 'base.css', 'fonts/CormorantGaramond.woff2',
+        'tokens.css', 'base.css', 'fonts/CormorantGaramond.woff2', 'acabamento.css', 'brand-logo-491.png', 'fonts/CormorantGaramond-Italic.woff2', 'ornamentos/trama-linho.webp', 'ornamentos/ponto-ramo.png', 'ornamentos/ponto-folhas.png',
         'hero-mae-aparecida.webp', 'mae-rainha-lacos.webp', 'embalagem-unboxing.webp'
     ]
     all_ok = True

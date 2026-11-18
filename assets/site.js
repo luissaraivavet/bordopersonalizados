@@ -29,7 +29,8 @@
       document.querySelector('.dropdown').innerHTML = collections.map(c => `<a href="#${escapeHTML(c.id)}">${escapeHTML(c.name)}</a>`).join('');
       document.querySelector('.collection-grid').innerHTML = [...collections].sort((a,b) => Number(b.featured) - Number(a.featured)).map(c => `<a class="collection-link" href="#${escapeHTML(c.id)}"><figure class="collection-photo"><img src="${escapeHTML(c.image)}" alt="" width="128" height="160"></figure><span class="collection-name">${escapeHTML(c.name)}</span></a>`).join('');
       document.getElementById('catalogSections').innerHTML = collections.map(c => `<section class="section ${escapeHTML(c.id)}" id="${escapeHTML(c.id)}" aria-labelledby="${escapeHTML(c.id)}Title"><div class="wrap"><div class="section-heading"><h2 id="${escapeHTML(c.id)}Title">${escapeHTML(c.name)}</h2><div><p class="lead">${escapeHTML(c.description)}</p><a class="text-link" href="#personalizados">Conversar sobre uma peça ${icon('arrow-up-right')}</a></div></div><div class="product-grid" id="grid-${escapeHTML(c.id)}">${products.filter(p => p.collection === c.id).map((p,index) => productCard(p).replace('<article class="product">', `<article class="product"${index >= 8 ? ' hidden data-extra-product' : ''}>`)).join('')}</div>${products.filter(p => p.collection === c.id).length > 8 ? `<button class="button secondary collection-more" type="button" data-expand="${escapeHTML(c.id)}" aria-expanded="false" aria-controls="grid-${escapeHTML(c.id)}">Ver coleção completa (${products.filter(p => p.collection === c.id).length} peças)</button>` : ''}<p class="collection-note">Disponibilidade, frete, materiais e prazo são confirmados no atendimento.</p>${c.id === 'sinfonia' ? document.getElementById('filmTemplate').innerHTML : ''}</div></section>`).join('');
-      document.getElementById('pageTitle').textContent=settings.headline.includes(settings.location) ? settings.headline : `${settings.headline} em ${settings.location}`;
+      const place=escapeHTML(settings.location), head=escapeHTML(settings.headline);
+      document.getElementById('pageTitle').innerHTML=head.includes(place) ? head.replace(place,`<em>${place}</em>`) : `${head} em <em>${place}</em>`;
       document.querySelector('.intro p').textContent=settings.intro;
       const story=document.querySelector('.story-copy'), link=story.querySelector('a');
       story.querySelectorAll('p').forEach(p=>p.remove());
@@ -147,6 +148,22 @@
     window.addEventListener('hashchange',()=>{showCollection(location.hash.slice(1));});
     document.getElementById('year').textContent=new Date().getFullYear();renderProducts();updateSimulatorPreview();renderCartUI();
     showCollection(location.hash.slice(1)) || showCollection((collections.find(c=>c.featured)||collections[0]).id);
+    // Lookbook das cores Mãe & Rainha: cada botão troca a foto da seção.
+    (function(){
+      const list=document.getElementById('toneList'), frame=document.getElementById('tonePhoto'), img=document.getElementById('toneImg'), caption=document.getElementById('toneCaption');
+      if(!list||!frame||!img) return;
+      const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let swap=null;
+      list.addEventListener('click',event=>{
+        const button=event.target.closest('.tone'); if(!button||button.getAttribute('aria-pressed')==='true') return;
+        list.querySelectorAll('.tone').forEach(item=>item.setAttribute('aria-pressed',String(item===button)));
+        const apply=()=>{img.src=button.dataset.src;img.alt=button.dataset.alt;caption.textContent=button.dataset.caption;frame.classList.toggle('is-solo',!button.classList.contains('tone-all'));};
+        new Image().src=button.dataset.src;
+        if(reduce){apply();return;}
+        clearTimeout(swap); frame.classList.add('is-changing');
+        swap=setTimeout(()=>{apply();void frame.offsetWidth;frame.classList.remove('is-changing');},520);
+      });
+    })();
     // Reveal on scroll runs only after everything above succeeded, so a failed script never hides content.
     if('IntersectionObserver' in window){
       document.documentElement.classList.add('js');
