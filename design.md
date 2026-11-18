@@ -52,5 +52,8 @@ The spacing scale, the type scale, the easings and the durations are the scaffol
 - `.costura`: an embroidered stitch border as a colour mask between sections (gold; `.folhas` in bordô).
 - `.revela`: photos unmask with the scroll where the browser supports view timelines; never on the first-screen photo.
 
+## Lookbook (Mãe & Rainha)
+- The three colours are buttons: each swaps the section photo with a vertical wipe and an italic caption; "Ver as três juntas" returns to the trio. Single-colour photos sit on paper inside the same 4:3 frame, so nothing shifts.
+
 ## Exports
 `assets/tokens.css` in this project. Tailwind, DTCG or shadcn blocks are added here on request.

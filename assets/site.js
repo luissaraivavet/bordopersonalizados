@@ -148,6 +148,22 @@
     window.addEventListener('hashchange',()=>{showCollection(location.hash.slice(1));});
     document.getElementById('year').textContent=new Date().getFullYear();renderProducts();updateSimulatorPreview();renderCartUI();
     showCollection(location.hash.slice(1)) || showCollection((collections.find(c=>c.featured)||collections[0]).id);
+    // Lookbook das cores Mãe & Rainha: cada botão troca a foto da seção.
+    (function(){
+      const list=document.getElementById('toneList'), frame=document.getElementById('tonePhoto'), img=document.getElementById('toneImg'), caption=document.getElementById('toneCaption');
+      if(!list||!frame||!img) return;
+      const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      let swap=null;
+      list.addEventListener('click',event=>{
+        const button=event.target.closest('.tone'); if(!button||button.getAttribute('aria-pressed')==='true') return;
+        list.querySelectorAll('.tone').forEach(item=>item.setAttribute('aria-pressed',String(item===button)));
+        const apply=()=>{img.src=button.dataset.src;img.alt=button.dataset.alt;caption.textContent=button.dataset.caption;frame.classList.toggle('is-solo',!button.classList.contains('tone-all'));};
+        new Image().src=button.dataset.src;
+        if(reduce){apply();return;}
+        clearTimeout(swap); frame.classList.add('is-changing');
+        swap=setTimeout(()=>{apply();void frame.offsetWidth;frame.classList.remove('is-changing');},520);
+      });
+    })();
     // Reveal on scroll runs only after everything above succeeded, so a failed script never hides content.
     if('IntersectionObserver' in window){
       document.documentElement.classList.add('js');
