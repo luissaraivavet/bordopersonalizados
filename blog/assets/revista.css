@@ -70,6 +70,25 @@ h1,h2,h3,.price,.num,.index button{font-variant-numeric:lining-nums}
 .index button[aria-pressed=true]::after{clip-path:inset(0);animation:stitch 520ms steps(6,end) both}
 @keyframes stitch{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0)}}
 
+/* Trama de linho sob o papel (Creative Fabrica, ver ornamentos/LICENCA.txt) */
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:url(/assets/trama-linho.webp) 0 0/540px 540px repeat;mix-blend-mode:multiply;opacity:.16}
+
+/* Título: uma palavra em itálico */
+.cover h1 em{font-style:italic;font-weight:500;color:var(--color-accent)}
+
+/* Cardápio: número, nome, pontilhado e preço */
+.menu{display:none;margin:var(--space-xl) 0 0;padding:0;list-style:none;columns:2;column-gap:var(--space-3xl)}
+.menu li{break-inside:avoid}
+.menu button{display:grid;grid-template-columns:auto minmax(0,auto) minmax(var(--space-md),1fr) auto;align-items:baseline;gap:var(--space-sm);width:100%;min-height:48px;padding:var(--space-xs) 0;border:0;border-bottom:1px solid var(--color-rule);background:none;color:var(--color-ink);cursor:pointer;text-align:left;font:inherit;transition:color var(--dur-short) var(--ease-out)}
+.menu-num{font-family:var(--font-display);font-size:1.0625rem;color:var(--color-gold-deep);font-variant-numeric:lining-nums}
+.menu-name{overflow:hidden;font-family:var(--font-display);font-size:1.3125rem;line-height:1.2;white-space:nowrap;text-overflow:ellipsis}
+.menu-dots{align-self:end;height:1px;margin-bottom:.4em;background:radial-gradient(circle,var(--color-muted) 0 .8px,transparent 1.2px) 0 0/6px 1px repeat-x;opacity:.7}
+.menu-price{font-size:var(--text-sm);font-weight:600;color:var(--color-ink-2);font-variant-numeric:tabular-nums}
+.menu button:hover .menu-name,.menu button[aria-pressed=true] .menu-name{color:var(--color-display)}
+.menu button[aria-pressed=true] .menu-name{font-style:italic}
+.menu button[aria-pressed=true]{border-bottom-color:var(--color-accent)}
+@media(min-width:48rem){.index{display:none}.menu{display:block}}
+
 /* Ponto corrido entre seções */
 .seam{height:22px;margin-inline:var(--gutter);background:var(--color-gold-deep);opacity:.75;-webkit-mask:url(ornamentos/ponto-ramo.png) left center/auto 100% repeat-x;mask:url(ornamentos/ponto-ramo.png) left center/auto 100% repeat-x}
 .band{position:relative}

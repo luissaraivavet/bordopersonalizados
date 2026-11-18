@@ -9,3 +9,14 @@ https://www.creativefabrica.com/subscription-license/
 Uso neste site: duas bordas (b2 e b13) reduzidas a 40 px de altura e usadas como
 máscara de cor nos divisores das páginas. Os arquivos originais (AI, EPS, PNG, JPG)
 não fazem parte do repositório e não podem ser redistribuídos.
+
+Trama de linho
+
+Origem: "White Linen Seamless Paper", de DigiArt.
+Fonte: https://www.creativefabrica.com/product/white-linen-seamless-paper/ (ID 149955902)
+Obtido em 18/11/2026 pela assinatura Creative Fabrica do proprietário do site.
+Licença: Creative Fabrica Subscription License, uso comercial permitido.
+
+Uso neste site: uma das 14 texturas, reduzida a 540 px em tons de cinza e salva em
+assets/trama-linho.webp, aplicada com opacidade de 16 % sob o fundo das páginas.
+Os arquivos originais não fazem parte do repositório.

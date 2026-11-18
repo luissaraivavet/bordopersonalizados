@@ -390,6 +390,9 @@ dialog::backdrop{background:var(--color-scrim)}
 .blog-list a{display:flex;align-items:center;min-height:44px;padding-block:var(--space-md);font-family:var(--font-display);font-size:var(--text-xl);font-weight:500;line-height:1.15;transition:color var(--dur-short) var(--ease-out)}
 .blog-list a:hover{color:var(--color-display)}
 @media(max-width:60rem){.blog-layout{grid-template-columns:minmax(0,1fr)}}
+/* Trama de linho sob o papel (Creative Fabrica, ver blog/assets/ornamentos/LICENCA.txt) */
+body::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:url(assets/trama-linho.webp) 0 0/540px 540px repeat;mix-blend-mode:multiply;opacity:.16}
+@media(prefers-contrast:more){body::before{display:none}}
 .field-error{margin-top:var(--space-xs);animation:tick var(--dur-short) var(--ease-out) both;color:var(--color-accent);font-size:var(--text-sm);font-weight:600;line-height:1.4}
 .custom-form textarea[aria-invalid=true]{border-color:var(--color-accent);box-shadow:0 0 0 1px var(--color-accent)}
 </style>

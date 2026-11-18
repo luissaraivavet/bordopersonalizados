@@ -23,7 +23,7 @@ PRODUCTS = {item['id']: item for item in DATA['produtos']}
 CHECKED = '17 e 18 de novembro de 2026'
 PUBLISHED = '2026-11-18'
 PUBLISHED_TEXT = '18 de novembro de 2026'
-STYLE_VERSION = '20261118'
+STYLE_VERSION = '20261118b'
 
 # Nome curto, por que entrou e o que vale saber. Tudo sai do titulo e dos numeros do anuncio.
 COPY = {
@@ -91,7 +91,7 @@ PARA = {
 
 LISTS = [
     {
-        'slug': 'presentes-ate-50-reais', 'cover': 'capa-ate-50.webp', 'section': 'Presentes', 'own': 'laco', 'limit': 50,
+        'slug': 'presentes-ate-50-reais', 'em': 'amigo secreto', 'cover': 'capa-ate-50.webp', 'section': 'Presentes', 'own': 'laco', 'limit': 50,
         'h1': '10 presentes até R$ 50 para o amigo secreto de 2026',
         'title': '10 presentes até R$ 50 para amigo secreto (2026) | Bordô',
         'card': 'Lista de presentes · até R$ 50',
@@ -101,7 +101,7 @@ LISTS = [
         'items': ['A012+A013', 'A015', 'A018', 'A010', 'A017', 'A016', 'A026', 'A002', 'A014', 'B001'],
     },
     {
-        'slug': 'presentes-para-homem', 'cover': 'capa-homem.webp', 'section': 'Presentes', 'own': 'encomenda', 'limit': 150,
+        'slug': 'presentes-para-homem', 'em': 'homem', 'cover': 'capa-homem.webp', 'section': 'Presentes', 'own': 'encomenda', 'limit': 150,
         'h1': '10 presentes para homem até R$ 150 no Natal de 2026',
         'title': '10 presentes para homem até R$ 150 (Natal 2026) | Bordô',
         'card': 'Lista de presentes · para ele',
@@ -111,7 +111,7 @@ LISTS = [
         'items': ['A004', 'A001', 'A003', 'A006', 'A002', 'A005', 'B002', 'B003', 'B004', 'B005'],
     },
     {
-        'slug': 'presentes-para-mulher', 'cover': 'capa-mulher.webp', 'section': 'Presentes', 'own': 'rainha', 'limit': 100,
+        'slug': 'presentes-para-mulher', 'em': 'mulher', 'cover': 'capa-mulher.webp', 'section': 'Presentes', 'own': 'rainha', 'limit': 100,
         'h1': '10 presentes para mulher até R$ 100 no Natal de 2026',
         'title': '10 presentes para mulher até R$ 100 (Natal 2026) | Bordô',
         'card': 'Lista de presentes · para ela',
@@ -121,7 +121,7 @@ LISTS = [
         'items': ['A012', 'A008', 'A010', 'A007', 'A011', 'A009', 'B006', 'B007', 'B008', 'B009'],
     },
     {
-        'slug': 'presentes-para-familia-e-criancas', 'cover': 'capa-familia.webp', 'section': 'Presentes', 'own': 'naninha', 'limit': 180,
+        'slug': 'presentes-para-familia-e-criancas', 'em': 'família', 'cover': 'capa-familia.webp', 'section': 'Presentes', 'own': 'naninha', 'limit': 180,
         'h1': '10 presentes para a família e as crianças até R$ 180',
         'title': '10 presentes para a família e crianças até R$ 180 | Bordô',
         'card': 'Lista de presentes · família',
@@ -131,7 +131,7 @@ LISTS = [
         'items': ['A024', 'A025', 'A022', 'A023', 'A020', 'A021', 'A026', 'A019', 'B010', 'B011'],
     },
     {
-        'slug': 'enfeites-de-natal-ate-70-reais', 'cover': 'capa-enfeites.webp', 'section': 'Decoração de Natal', 'own': 'naninha', 'limit': 70,
+        'slug': 'enfeites-de-natal-ate-70-reais', 'em': 'Natal', 'cover': 'capa-enfeites.webp', 'section': 'Decoração de Natal', 'own': 'naninha', 'limit': 70,
         'h1': '5 enfeites de Natal até R$ 70 para porta, parede e árvore',
         'title': '5 enfeites de Natal até R$ 70: porta, parede e árvore | Bordô',
         'card': 'Lista de decoração · até R$ 70',
@@ -145,14 +145,14 @@ LISTS = [
 esc = html.escape
 
 SCRIPT = """<script>(function(){
-var root=document.documentElement,data=JSON.parse(document.getElementById('listData').textContent),stage=document.getElementById('stage'),index=document.getElementById('index'),grid=document.getElementById('pieces');
+var menu=document.getElementById('menu'),root=document.documentElement,data=JSON.parse(document.getElementById('listData').textContent),stage=document.getElementById('stage'),index=document.getElementById('index'),grid=document.getElementById('pieces');
 var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,current=Number(stage.dataset.current),timer=null,swap=null;
 function q(id){return document.getElementById(id);}
 function fill(i){var d=data[i],img=q('stageImg');img.src=d.img;img.alt=d.name;img.className=d.shot?'shot':'';q('stagePhoto').href=d.link;q('stageStep').textContent=(d.badge?d.badge+' \\u00b7 ':'')+'item '+d.pos+' de '+data.length;q('stageName').textContent=d.name;q('stageProof').textContent=d.proof;q('stagePara').textContent='Combina com '+d.para+'.';q('stagePrice').firstChild.textContent=d.price;q('stageDate').textContent='em '+d.date;q('stageLink').href=d.link;
-index.querySelectorAll('button').forEach(function(b,k){b.setAttribute('aria-pressed',String(k===i));});}
+[index,menu].forEach(function(g){g.querySelectorAll('button').forEach(function(b,k){b.setAttribute('aria-pressed',String(k===i));});});}
 function show(i){current=i;clearTimeout(swap);if(reduce){fill(i);return;}new Image().src=data[i].img;stage.classList.add('is-changing');swap=setTimeout(function(){fill(i);void stage.offsetWidth;stage.classList.remove('is-changing');},520);}
 function stop(){clearInterval(timer);timer=null;}
-index.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;stop();show(Number(b.dataset.i));});
+index.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;stop();show(Number(b.dataset.i));});var hover=null;menu.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;stop();show(Number(b.dataset.i));});menu.addEventListener('pointerover',function(e){var b=e.target.closest('button');if(!b||e.pointerType!=='mouse')return;stop();clearTimeout(hover);hover=setTimeout(function(){if(Number(b.dataset.i)!==current)show(Number(b.dataset.i));},120);});menu.addEventListener('focusin',function(e){var b=e.target.closest('button');if(!b)return;stop();if(Number(b.dataset.i)!==current)show(Number(b.dataset.i));});
 stage.addEventListener('pointerenter',stop);stage.addEventListener('focusin',stop);
 if(!reduce&&data.length>1){timer=setInterval(function(){if(document.hidden)return;show((current+1)%data.length);},5200);}
 q('sort').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;var group=this;
@@ -300,6 +300,9 @@ def page(spec):
             f'<link rel="stylesheet" href="/assets/tokens.css"><link rel="stylesheet" href="/assets/base.css"><link rel="stylesheet" href="../assets/revista.css?v={STYLE_VERSION}">'
             f'<script type="application/ld+json">{json.dumps({"@context": "https://schema.org", "@graph": graph}, ensure_ascii=False, separators=(",", ":"))}</script></head>')
     thumbs = ''.join(f'<button type="button" data-i="{index}" aria-pressed="{str(index == most).lower()}" aria-label="Destacar o item {d["pos"]}: {esc(d["name"])}" title="{esc(d["name"])}"><img{" class=\"shot\"" if d["shot"] else ""} src="{esc(d["img"])}" width="128" height="128" loading="lazy" decoding="async" referrerpolicy="no-referrer" alt="">{d["pos"]:02d}</button>' for index, d in enumerate(stage_data))
+    word = spec['em']
+    title_html = esc(rest).replace(esc(word), f'<em>{esc(word)}</em>', 1)
+    menu = ''.join(f'<li><button type="button" data-i="{index}" aria-pressed="{str(index == most).lower()}"><span class="menu-num">{d["pos"]:02d}</span><span class="menu-name">{esc(d["name"])}</span><span class="menu-dots" aria-hidden="true"></span><span class="menu-price">{d["price"]}</span></button></li>' for index, d in enumerate(stage_data))
     pieces = ''.join(render_piece(index, entry, badges.get(index - 1)) for index, entry in enumerate(items, 1))
     share = 'https://wa.me/?text=' + quote(f'{spec["h1"]}: {url}')
     chevron = '<img class="icon" src="/assets/icons/chevron-down.svg" alt="">'
@@ -307,13 +310,13 @@ def page(spec):
     rows = ''.join(f'<a class="row" href="../{other["slug"]}/"><img src="../assets/listas/{other["cover"]}" width="320" height="208" loading="lazy" decoding="async" alt=""><div><strong>{esc(other["h1"])}</strong><span>{esc(other["lead"])}</span></div><img class="icon" src="/assets/icons/arrow-right.svg" alt=""></a>' for other in others)
     safe = items[most]
     body = (f'<body>{HEADER}<main id="conteudo"><section class="cover"><div class="wrap"><nav class="crumbs" aria-label="Você está aqui"><a href="{BASE}/">Bordô</a> / <a href="../">Casa &amp; Inspiração</a></nav>'
-            f'<div class="cover-grid"><div><h1><span class="fig">{figure}</span> {esc(rest)}</h1><p class="lead">{esc(spec["lead"])}</p><p class="count" id="natalCount" hidden></p>'
+            f'<div class="cover-grid"><div><h1><span class="fig">{figure}</span> {title_html}</h1><p class="lead">{esc(spec["lead"])}</p><p class="count" id="natalCount" hidden></p>'
             f'<p class="ad-note">Publicidade: links de afiliado do Mercado Livre; a Bordô pode receber comissão. Preços e notas de {CHECKED}, sujeitos a alteração. <a href="../como-selecionamos/">Critérios</a>.</p></div>'
             f'<div class="stage" id="stage" data-current="{most}"><a class="stage-photo" id="stagePhoto" href="{esc(first["link"])}" {AFF}><img id="stageImg"{first_shot} src="{esc(first["img"])}" width="640" height="800" fetchpriority="high" decoding="async" referrerpolicy="no-referrer" alt="{esc(first["name"])}"></a>'
             f'<div class="stage-info"><p class="stage-step" id="stageStep">{first["badge"]} · item {first["pos"]} de {len(items)}</p><h2 id="stageName">{esc(first["name"])}</h2><p class="proof" id="stageProof">{first["proof"]}</p>'
             f'<p class="stage-para" id="stagePara">Combina com {esc(first["para"])}.</p><p class="price" id="stagePrice">{first["price"]}<small id="stageDate">em {first["date"]}</small></p>'
             f'<a class="button" id="stageLink" href="{esc(first["link"])}" {AFF}>Ver o preço de hoje {ARROW}</a><p class="safe">Você confere preço, frete e prazo antes de pagar.</p></div></div></div>'
-            f'<div class="index" id="index" role="group" aria-label="Itens da lista">{thumbs}</div></div></section><div class="seam" aria-hidden="true"></div>'
+            f'<div class="index" id="index" role="group" aria-label="Itens da lista">{thumbs}</div><ol class="menu" id="menu" aria-label="Os itens desta lista">{menu}</ol></div></section><div class="seam" aria-hidden="true"></div>'
             f'<section class="issue" aria-labelledby="lista"><div class="wrap"><div class="issue-head"><h2 id="lista">Os {len(items)} itens</h2><div class="seg" id="sort" role="group" aria-label="Ordenar a lista"><button type="button" data-sort="pos" aria-pressed="true">Mais avaliados</button><button type="button" data-sort="price" aria-pressed="false">Menor preço</button><button type="button" data-sort="sold" aria-pressed="false">Mais vendidos</button></div></div>'
             f'<div class="pieces" id="pieces">{pieces}</div></div></section>'
             f'<section class="band"><div class="wrap"><h2>Ainda em dúvida? Vá de {esc(safe["name"])}.</h2><p>Foi o item que mais gente avaliou nesta lista: {number(safe["opinioes"])} opiniões, nota {note(safe["nota"])}.</p>'
