@@ -178,6 +178,23 @@
         swap=setTimeout(()=>{apply();void frame.offsetWidth;frame.classList.remove('is-changing');},520);
       });
     })();
+    // Lanterna da capa: o ponteiro abre um círculo com o risco do bordado (só com mouse e movimento liberado).
+    (function(){
+      const hero=document.querySelector('.hero'), risco=document.querySelector('.hero-risco');
+      if(!hero||!risco||!matchMedia('(hover:hover) and (pointer:fine) and (min-width:60.0625rem) and (prefers-reduced-motion:no-preference)').matches) return;
+      const RAIO=240, SEGUE=.14, ABRE=.1;
+      let x=0,y=0,r=0,tx=0,ty=0,tr=0,dentro=false,quadro=0;
+      const pinta=()=>{risco.style.setProperty('--lx',x.toFixed(1)+'px');risco.style.setProperty('--ly',y.toFixed(1)+'px');risco.style.setProperty('--lr',r.toFixed(1)+'px');};
+      const passo=()=>{x+=(tx-x)*SEGUE;y+=(ty-y)*SEGUE;r+=(tr-r)*ABRE;pinta();
+        quadro=(Math.abs(tx-x)>.3||Math.abs(ty-y)>.3||Math.abs(tr-r)>.3)?requestAnimationFrame(passo):0;};
+      hero.addEventListener('pointermove',e=>{
+        const box=risco.getBoundingClientRect(), k=risco.offsetWidth/box.width;
+        tx=(e.clientX-box.left)*k; ty=(e.clientY-box.top)*k; tr=RAIO;
+        if(!dentro){x=tx;y=ty;dentro=true;}
+        if(!quadro) quadro=requestAnimationFrame(passo);
+      });
+      hero.addEventListener('pointerleave',()=>{tr=0;dentro=false;if(!quadro) quadro=requestAnimationFrame(passo);});
+    })();
     // Reveal on scroll runs only after everything above succeeded, so a failed script never hides content.
     if('IntersectionObserver' in window){
       document.documentElement.classList.add('js');
