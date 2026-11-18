@@ -195,6 +195,113 @@ EXTRA_CSS = """
 
 esc = html.escape
 
+VITRINE_CSS = """
+.vhero{background:var(--cream);padding:26px 0 36px}
+.vhero h1{font-size:40px;margin:10px 0 10px;max-width:24ch}
+.vhero .lead{margin:0 0 6px}
+.vcount{margin:0 0 22px;font-size:14px;font-weight:700;color:var(--wine)}
+.stage{display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);gap:44px;align-items:center;margin-top:18px}
+.stage-photo{display:block;border-radius:4px;overflow:hidden;background:#fff;border:1px solid var(--line)}
+.stage-photo img{aspect-ratio:4/5;object-fit:cover;transition:opacity .35s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1)}
+.stage-photo img.shot{object-fit:contain;padding:22px}
+.stage.is-changing .stage-photo img{opacity:0;transform:scale(1.03)}
+.stage-info>*{transition:opacity .3s cubic-bezier(.16,1,.3,1),transform .45s cubic-bezier(.16,1,.3,1)}
+.stage.is-changing .stage-info>*{opacity:0;transform:translateY(10px)}
+.stage-step{font-size:13px;font-weight:700;color:var(--muted);margin:0 0 10px}
+.stage-info h2{font-size:38px;margin:0 0 12px}
+.stage-proof{font-size:15px;font-weight:700;color:#3f503d;margin:0 0 6px}
+.stage-para{font-size:16px;line-height:1.7;margin:0 0 16px;max-width:44ch}
+.stage-price{font-family:Lora,Georgia,serif;font-size:34px;color:var(--wine);margin:0 0 18px;line-height:1}
+.stage-price small{font-family:Manrope,Arial,sans-serif;font-size:12px;color:var(--muted);margin-left:8px}
+.stage-safe{font-size:12px;color:var(--muted);margin:10px 0 0}
+.thumbs{display:flex;gap:10px;margin-top:18px;overflow-x:auto;padding:4px 2px 8px;scrollbar-width:thin}
+.thumbs button{flex:none;width:72px;padding:0;border:2px solid transparent;border-radius:4px;background:#fff;cursor:pointer;overflow:hidden;transition:border-color .2s,transform .2s}
+.thumbs button img{aspect-ratio:1;object-fit:cover}
+.thumbs button img.shot{object-fit:contain;padding:4px}
+.thumbs button:hover{transform:translateY(-2px)}
+.thumbs button[aria-pressed=true]{border-color:var(--wine)}
+.vbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px;margin:44px 0 22px}
+.vbar h2{margin:0;font-size:32px}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:4px;overflow:hidden;background:#fff}
+.seg button{min-height:44px;padding:0 16px;border:0;border-right:1px solid var(--line);background:#fff;color:var(--ink);font-size:13px;font-weight:700;cursor:pointer}
+.seg button:last-child{border-right:0}
+.seg button[aria-pressed=true]{background:var(--wine);color:#fff}
+.vgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:34px 24px}
+.vcard{display:flex;flex-direction:column;min-width:0;scroll-margin-top:24px}
+.js .vcard{opacity:0;transform:translateY(18px);transition:opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1);transition-delay:calc(var(--i,0)*70ms)}
+.js .vcard.is-in{opacity:1;transform:none}
+.vcard-photo{position:relative;display:block;border-radius:4px;overflow:hidden;background:#fff;border:1px solid var(--line)}
+.vcard-photo img{aspect-ratio:4/5;object-fit:cover;transition:transform .6s cubic-bezier(.16,1,.3,1)}
+.vcard-photo img.shot{object-fit:contain;padding:16px}
+.vcard:hover .vcard-photo img{transform:scale(1.045)}
+.vcard-num{position:absolute;left:10px;top:10px;min-width:34px;height:34px;display:grid;place-items:center;border-radius:3px;background:#fff;color:var(--wine);font-family:Lora,Georgia,serif;font-size:18px}
+.vcard-badge{position:absolute;left:0;right:0;bottom:0;padding:7px 12px;background:var(--wine);color:#fff;font-size:12px;font-weight:700;line-height:1.3}
+.vcard h3{font-size:21px;line-height:1.25;margin:14px 0 6px}
+.vcard-proof{margin:0 0 8px;font-size:13px;font-weight:700;color:#3f503d;line-height:1.5}
+.vcard-price{margin:0 0 12px;font-family:Lora,Georgia,serif;font-size:26px;color:var(--wine);line-height:1}
+.vcard-price small{font-family:Manrope,Arial,sans-serif;font-size:11px;color:var(--muted);margin-left:6px}
+.vcard .btn{width:100%;margin-top:auto}
+.vcard-alt{display:block;margin-top:8px;font-size:13px;font-weight:700;text-underline-offset:3px}
+.vcard-more{margin-top:10px;font-size:14px;line-height:1.65}
+.vcard-more summary{cursor:pointer;min-height:44px;display:flex;align-items:center;font-weight:700;color:var(--wine);text-decoration:underline;text-underline-offset:4px;list-style:none}
+.vcard-more summary::-webkit-details-marker{display:none}
+.vcard-more p{margin:0 0 10px}
+.vmain{padding-bottom:70px}
+.vtext{max-width:760px}
+@media(max-width:920px){.stage{grid-template-columns:minmax(0,150px) minmax(0,1fr);gap:16px;align-items:start}.stage-para,.stage-safe{display:none}.stage-price{font-size:26px;margin-bottom:12px}.stage-info .btn{padding:12px 10px;font-size:12px;min-height:46px}.vgrid{grid-template-columns:repeat(2,minmax(0,1fr))}.vhero h1{font-size:30px}.stage-info h2{font-size:22px;margin-bottom:8px}.stage-proof{font-size:13px}}
+@media(max-width:600px){.vgrid{gap:28px 14px}.vcard h3{font-size:17px}.vcard-price{font-size:22px}.vcard .btn{padding:12px 8px;font-size:12px}.vbar h2{font-size:26px}.seg{width:100%}.seg button{flex:1;padding:0 6px}}
+@media(prefers-reduced-motion:reduce){.js .vcard{opacity:1;transform:none;transition:none}.stage-photo img,.stage-info>*,.vcard-photo img,.thumbs button{transition:none}}
+"""
+
+VITRINE_JS = """<script>(function(){
+var data=JSON.parse(document.getElementById('vitrineData').textContent),stage=document.getElementById('stage'),thumbs=document.getElementById('thumbs'),grid=document.getElementById('vgrid');
+var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches,current=Number(stage.dataset.current),timer=null,swap=null;
+function q(id){return document.getElementById(id);}
+function fill(i){var d=data[i],img=q('stageImg');img.src=d.img;img.alt=d.name;img.className=d.shot?'shot':'';q('stagePhoto').href=d.link;q('stageStep').textContent=(d.badge?d.badge+' \\u00b7 ':'')+'item '+d.pos+' de '+data.length;q('stageName').textContent=d.name;q('stageProof').textContent=d.proof;q('stagePara').textContent='Combina com '+d.para+'.';q('stagePrice').firstChild.textContent=d.price;q('stageDate').textContent='em '+d.date;q('stageLink').href=d.link;
+thumbs.querySelectorAll('button').forEach(function(b,k){b.setAttribute('aria-pressed',String(k===i));});}
+function show(i){current=i;clearTimeout(swap);if(reduce){fill(i);return;}stage.classList.add('is-changing');swap=setTimeout(function(){fill(i);void stage.offsetWidth;stage.classList.remove('is-changing');},260);}
+function stop(){clearInterval(timer);timer=null;}
+thumbs.addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;stop();show(Number(b.dataset.i));});
+stage.addEventListener('pointerenter',stop);stage.addEventListener('focusin',stop);
+if(!reduce&&data.length>1){timer=setInterval(function(){if(document.hidden)return;show((current+1)%data.length);},4500);}
+document.getElementById('sort').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;this.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',String(x===b));});
+var k=b.dataset.sort,cards=[].slice.call(grid.children);cards.sort(function(a,c){return k==='price'?a.dataset.price-c.dataset.price:k==='sold'?c.dataset.sold-a.dataset.sold||c.dataset.reviews-a.dataset.reviews:a.dataset.pos-c.dataset.pos;});cards.forEach(function(c){grid.appendChild(c);});});
+if('IntersectionObserver' in window){document.documentElement.classList.add('js');var io=new IntersectionObserver(function(es){es.forEach(function(e,k){if(e.isIntersecting){e.target.style.setProperty('--i',k%3);e.target.classList.add('is-in');io.unobserve(e.target);}});},{rootMargin:'0px 0px -6% 0px'});[].forEach.call(grid.children,function(c){io.observe(c);});}
+var n=new Date(),d=new Date(n.getFullYear(),11,25),k=Math.ceil((d-n)/864e5),c=q('natalCount');if(c&&k>0){c.textContent=(k===1?'Falta 1 dia':'Faltam '+k+' dias')+' para o Natal. Quanto antes pedir, mais folga no prazo.';c.hidden=false;}
+})();</script>"""
+
+
+def sold_number(value):
+    return int(value.replace('mil', '000') or 0)
+
+
+def image_of(entry):
+    return entry['img'] or f'../assets/listas/{entry["ids"][0]}.webp'
+
+
+def proof_of(entry):
+    text = f'Nota {note(entry["nota"])} em {number(entry["opinioes"])} avaliações'
+    return text + (f' · {sold(entry["vendidos"])}' if entry['vendidos'] else '')
+
+
+def short_date(text):
+    return text.replace(' de novembro de 2026', '/11')
+
+
+def render_card(position, entry, badge):
+    shot = ' class="shot"' if entry['img'] else ''
+    refer = ' referrerpolicy="no-referrer"' if entry['img'] else ''
+    first = entry['group'][0]['link']
+    tag = f'<span class="vcard-badge">{badge}</span>' if badge else ''
+    alt = link(entry['group'][1]['link'], 'Ver também em preto', 'vcard-alt') if len(entry['group']) > 1 else ''
+    caution = f'<p><strong>Vale saber:</strong> {esc(entry["caution"])}</p>' if entry['caution'] else ''
+    return (f'<article class="vcard" id="item-{position}" data-pos="{position}" data-price="{entry["price"]}" data-reviews="{entry["opinioes"]}" data-sold="{sold_number(entry["vendidos"])}">'
+            f'<a class="vcard-photo" href="{esc(first)}" target="_blank" rel="sponsored nofollow noopener noreferrer" aria-label="{esc(entry["name"])}: ver no Mercado Livre"><img{shot} src="{esc(image_of(entry))}" width="640" height="800" loading="lazy" decoding="async"{refer} alt="{esc(entry["name"])}"><span class="vcard-num">{position}</span>{tag}</a>'
+            f'<h3>{esc(entry["name"])}</h3><p class="vcard-proof">{proof_of(entry)}</p><p class="vcard-price">{money(entry["price"])}<small>em {short_date(entry["consultado"])}</small></p>'
+            f'{link(first, "Ver o preço de hoje")}{alt}'
+            f'<details class="vcard-more"><summary>Por que entrou na lista</summary><p><strong>Combina com:</strong> {esc(entry["para"])}.</p><p>{esc(entry["why"])}</p>{caution}</details></article>')
+
+
 # Contagem real ate 25 de dezembro; some depois do Natal.
 COUNTDOWN = ("<script>(function(){var n=new Date(),d=new Date(n.getFullYear(),11,25),k=Math.ceil((d-n)/864e5),e=document.getElementById('natalCount');"
              "if(e&&k>0){e.textContent=(k===1?'Falta 1 dia':'Faltam '+k+' dias')+' para o Natal. O prazo de entrega depende do seu CEP: quanto antes você pedir, mais folga.';e.hidden=false;}})();</script>")
@@ -293,7 +400,7 @@ def page(spec, template):
     assert all(e['price'] <= spec['limit'] for e in items), slug
     assert int(spec['h1'].split()[0]) == len(items), slug
     cover = f'{BASE}/blog/assets/listas/{spec["cover"]}'
-    style = template[template.index('<style>'):template.index('</style>')] + EXTRA_CSS + '</style>'
+    style = template[template.index('<style>'):template.index('</style>')] + EXTRA_CSS + VITRINE_CSS + '</style>'
     header = template[template.index('<body>') + 6:template.index('<main')]
     footer = template[template.index('<footer'):]
     questions = faq(spec, items)
@@ -331,19 +438,25 @@ def page(spec, template):
     share = 'https://wa.me/?text=' + quote(f'{spec["h1"]}: {url}')
     faq_html = ''.join(f'<details><summary>{esc(q)}</summary><p>{esc(a)}</p></details>' for q, a in questions)
     more = ''.join(f'<a href="../{other["slug"]}/">{esc(other["h1"])} →</a>' for other in others)
-    cards = ''.join(f'<article class="card"><a href="../{other["slug"]}/"><img class="card-image" src="../assets/listas/{other["cover"]}" width="1500" height="780" loading="lazy" decoding="async" alt=""><div class="card-content"><h3>{esc(other["h1"])}</h3><p>{esc(other["lead"])}</p><span class="more">Ver a lista →</span></div></a></article>' for other in others[:2])
-    main = (f'<main id="conteudo"><section class="article-hero"><div class="container"><nav class="breadcrumbs" aria-label="Você está aqui"><a href="{BASE}/">Bordô</a> / <a href="../">Casa &amp; Inspiração</a> / <span aria-current="page">{esc(spec["h1"])}</span></nav>'
-            f'<h1>{esc(spec["h1"])}</h1><p class="lead">{esc(spec["lead"])}</p><div class="meta"><span>Atualizado em {PUBLISHED_TEXT}</span><span>{len(items)} itens</span><span>Por Bordô | Casa &amp; Inspiração</span></div>'
-            f'<img class="cover" fetchpriority="high" decoding="async" src="../assets/listas/{spec["cover"]}" width="1500" height="780" alt="Quatro itens desta lista"></div></section>'
-            f'<div class="container article-layout"><article class="article-content"><section class="answer-first" aria-label="Resposta resumida"><h2>A lista em um minuto</h2><p>{esc(spec["intro"])}</p></section>'
+    cards = ''.join(f'<article class="card"><a href="../{other["slug"]}/"><img class="card-image" src="../assets/listas/{other["cover"]}" width="1500" height="780" loading="lazy" decoding="async" alt=""><div class="card-content"><h3>{esc(other["h1"])}</h3><p>{esc(other["lead"])}</p><span class="more">Ver a lista →</span></div></a></article>' for other in others)
+    stage_data = [{'pos': index, 'name': entry['name'], 'img': image_of(entry), 'shot': bool(entry['img']), 'price': money(entry['price']), 'date': short_date(entry['consultado']), 'proof': proof_of(entry), 'para': entry['para'], 'link': entry['group'][0]['link'], 'badge': badges.get(index - 1, '')} for index, entry in enumerate(items, 1)]
+    first = stage_data[most]
+    thumbs = ''.join(f'<button type="button" data-i="{index}" aria-pressed="{str(index == most).lower()}" aria-label="Destacar {esc(d["name"])}" title="{esc(d["name"])}"><img{" class=\"shot\"" if d["shot"] else ""} src="{esc(d["img"])}" width="144" height="144" loading="lazy" decoding="async" referrerpolicy="no-referrer" alt=""></button>' for index, d in enumerate(stage_data))
+    grid = ''.join(render_card(index, entry, badges.get(index - 1)) for index, entry in enumerate(items, 1))
+    main = (f'<main id="conteudo"><section class="vhero"><div class="container"><nav class="breadcrumbs" aria-label="Você está aqui"><a href="{BASE}/">Bordô</a> / <a href="../">Casa &amp; Inspiração</a> / <span aria-current="page">{esc(spec["h1"])}</span></nav>'
+            f'<h1>{esc(spec["h1"])}</h1><p class="lead">{esc(spec["lead"])}</p><p class="vcount" id="natalCount" hidden></p>'
             f'<p class="ad-note">Publicidade: links de afiliado do Mercado Livre; a Bordô pode receber comissão. Preços e notas de {CHECKED}, sujeitos a alteração. <a href="../como-selecionamos/">Critérios</a>.</p>'
-            f'{decide}<div class="rank-wrap"><table class="rank-table"><caption class="sr-only">Resumo da lista</caption><thead><tr><th scope="col">Nº</th><th scope="col">Produto</th><th scope="col">Preço</th><th scope="col">Nota (opiniões)</th></tr></thead><tbody>{rows}</tbody></table></div>'
-            f'<h2 id="lista">Os {len(items)} itens, um a um</h2>{body_items}'
-            f'<div class="decide closing"><h2>Ainda em dúvida?</h2><p>Volte ao item {most + 1}: {esc(safe["name"])}. Foi o que mais gente avaliou nesta lista. Ou guarde a lista para decidir depois.</p><div class="share-row"><a class="btn" href="#item-{most + 1}">Voltar à escolha segura</a><a class="btn ghost" href="{esc(share)}" target="_blank" rel="noopener noreferrer">Guardar a lista no WhatsApp</a></div></div>'
-            f'<h2 id="faq">Perguntas frequentes</h2><div class="faq-list">{faq_html}</div>'
-            f'<div class="share-row"><a class="btn" href="{esc(share)}" target="_blank" rel="noopener noreferrer">Enviar esta lista pelo WhatsApp</a><a class="btn ghost" href="#lista">Voltar ao início da lista</a></div></article>'
-            f'<aside class="sidebar"><div class="side-sticky"><div class="side-card"><h3>Outras listas</h3>{more}</div><div class="side-card"><h3>Da Bordô para presentear</h3><p>Laços e naninhas bordados por encomenda, em Teixeiras, MG.</p><a href="{BASE}/#colinho">Naninhas Colinho do Céu →</a><a href="{BASE}/#rainha">Laços Mãe &amp; Rainha →</a><a href="{BASE}/#personalizados">Encomendar um bordado →</a></div></div></aside></div></main>'
+            f'<div class="stage" id="stage" data-current="{most}"><a class="stage-photo" id="stagePhoto" href="{esc(first["link"])}" target="_blank" rel="sponsored nofollow noopener noreferrer"><img id="stageImg"{" class=\"shot\"" if first["shot"] else ""} src="{esc(first["img"])}" width="640" height="800" fetchpriority="high" decoding="async" referrerpolicy="no-referrer" alt="{esc(first["name"])}"></a>'
+            f'<div class="stage-info"><p class="stage-step" id="stageStep">{first["badge"]} · item {first["pos"]} de {len(items)}</p><h2 id="stageName">{esc(first["name"])}</h2><p class="stage-proof" id="stageProof">{first["proof"]}</p>'
+            f'<p class="stage-para" id="stagePara">Combina com {esc(first["para"])}.</p><p class="stage-price" id="stagePrice">{first["price"]}<small id="stageDate">em {first["date"]}</small></p>'
+            f'<a class="btn" id="stageLink" href="{esc(first["link"])}" target="_blank" rel="sponsored nofollow noopener noreferrer">Ver o preço de hoje no Mercado Livre</a><p class="stage-safe">Você confere preço, frete e prazo antes de pagar.</p></div></div>'
+            f'<div class="thumbs" id="thumbs" role="group" aria-label="Itens da lista">{thumbs}</div></div></section>'
+            f'<div class="container vmain"><div class="vbar"><h2 id="lista">Os {len(items)} itens</h2><div class="seg" id="sort" role="group" aria-label="Ordenar a lista"><button type="button" data-sort="pos" aria-pressed="true">Mais avaliados</button><button type="button" data-sort="price" aria-pressed="false">Menor preço</button><button type="button" data-sort="sold" aria-pressed="false">Mais vendidos</button></div></div>'
+            f'<div class="vgrid" id="vgrid">{grid}</div>'
+            f'<div class="vtext"><div class="decide closing"><h2>Ainda em dúvida?</h2><p>Vá de {esc(safe["name"])}: foi o que mais gente avaliou nesta lista. Ou guarde a lista para decidir depois.</p><div class="share-row"><a class="btn" href="#item-{most + 1}">Ver a escolha segura</a><a class="btn ghost" href="{esc(share)}" target="_blank" rel="noopener noreferrer">Guardar a lista no WhatsApp</a></div></div>'
+            f'<h2 id="faq">Perguntas frequentes</h2><div class="faq-list">{faq_html}</div></div></div></main>'
             f'<section class="related"><div class="container"><div class="section-head"><h2>Continue escolhendo</h2></div><div class="cards">{cards}</div></div></section>')
+    countdown = f'<script type="application/json" id="vitrineData">{json.dumps(stage_data, ensure_ascii=False)}</script>' + VITRINE_JS
     return head + '<body>' + header + main + countdown + footer
 
 
