@@ -1,5 +1,10 @@
 'use strict';
-    const content = window.BORDO_CONTENT;
+    // Sem o conteúdo (rede instável, bloqueio), a página avisa e oferece o WhatsApp em vez de ficar vazia.
+    const content = window.BORDO_CONTENT || (() => {
+      const box=document.getElementById('catalogSections'), whats=document.getElementById('customWhatsApp');
+      if(box){box.innerHTML='<p class="wrap catalog-fallback">Não conseguimos carregar as coleções agora. Recarregue a página ou <a></a>.</p>';const link=box.querySelector('a');link.textContent='fale com a Bordô pelo WhatsApp';link.href=whats?whats.href:'https://wa.me/';link.target='_blank';link.rel='noopener';}
+      throw new Error('Bordô: assets/content.js não carregou.');
+    })();
     const settings = content.settings;
     const PHONE = settings.whatsapp;
     const STORAGE_KEY = 'bordo_cart_v2';

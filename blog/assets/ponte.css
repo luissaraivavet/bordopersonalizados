@@ -38,3 +38,4 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--color-focus);outlin
 strong,b,th,output,.bd-gallery-zoom{font-weight:600}
 .bd-rating span,.review-stars{font-size:var(--text-xs)}
 .checklist output{font-weight:600}
+.bd-gallery-tabs button span{color:var(--color-muted)}

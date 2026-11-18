@@ -44,6 +44,14 @@ The spacing scale, the type scale, the easings and the durations are the scaffol
 - Signature: the running stitch. The active collection tab is underlined by a dashed bordô line sewn in 16 steps (640ms) when the collection changes.
 - Feedback: in the bag, a new piece rises in and a changed quantity and price tick (220ms); the form error and the toast fade in. FAQ answers open with animated height where the browser supports `interpolate-size`.
 
+## A linha que costura (shop)
+- `assets/linha.js` draws one bordô running-stitch thread down the left margin, from the first section after the hero to the "Falar com a Bordô" WhatsApp link in the FAQ, where it ends in a knot. It loops once at each `.costura`.
+- It stitches itself in step with the scroll (an SVG mask on `pathLength`, driven by a height-to-length table), with a needle dot at the tip. Reduced motion and no-JS show nothing moving: the thread is drawn complete. On phones the loops shrink to the 16px gutter.
+- This is the page's one authored motion moment; nothing else should compete with it.
+
+## História (shop)
+- The peak of the scroll: `--section-gap-l` around it, portrait 5fr in the arch next to a hero-scale title, the opening paragraph at `--text-3xl`, and the portrait unmasking with `.revela`.
+
 ## Blog (Casa & Inspiração)
 - The list pages (`blog/assets/revista.css`) follow this system: an oversized Cormorant numeral opens the page, a spotlight piece swaps with a vertical wipe, and the items sit in an asymmetric 7/5 and 4/4/4 grid.
 - Type on the blog moves in fixed steps per breakpoint, never by viewport width.
