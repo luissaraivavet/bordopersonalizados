@@ -404,15 +404,28 @@ dialog::backdrop{background:var(--color-scrim)}
   .button,.icon-button,.text-link,.nav>a,.nav summary,.collection-link,.collection-link::after,.choice span,.faq summary,.faq summary .icon{transition:none}
 }
 .blog-band{background:var(--color-paper-2)}
-.blog-layout{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:var(--space-xl) var(--space-3xl);align-items:start}
-.blog-layout h2{font-size:var(--text-display-s);line-height:1}
-.blog-layout p{margin-block:var(--space-md) var(--space-lg);color:var(--color-ink-2)}
-.blog-list{margin:0;padding:0;list-style:none}
-.blog-list li{border-bottom:1px solid var(--color-rule)}
-.blog-list li:first-child{border-top:1px solid var(--color-rule)}
-.blog-list a{display:flex;align-items:center;min-height:44px;padding-block:var(--space-md);font-family:var(--font-display);font-size:var(--text-xl);font-weight:500;line-height:1.15;transition:color var(--dur-short) var(--ease-out)}
-.blog-list a:hover{color:var(--color-display)}
-@media(max-width:60rem){.blog-layout{grid-template-columns:minmax(0,1fr)}}
+.blog-intro p{max-width:40ch;margin-bottom:var(--space-lg);color:var(--color-ink-2)}
+.guide-cards{display:grid;grid-template-columns:minmax(0,2fr) repeat(2,minmax(0,1fr));gap:var(--space-xl) var(--space-lg);margin:0;padding:0;list-style:none}
+.guide-card:first-child{grid-row:span 2}
+.guide-card a{display:flex;flex-direction:column;gap:var(--space-sm);height:100%;color:var(--color-ink)}
+.guide-photo{display:block;aspect-ratio:3/2;overflow:hidden;border-radius:var(--radius-card);background:var(--color-paper-3)}
+.guide-card:first-child .guide-photo{flex:1;aspect-ratio:auto;min-height:20rem}
+.guide-photo img{display:block;width:100%;height:100%;object-fit:cover}
+.guide-title{font-family:var(--font-display);font-size:var(--text-lg);font-weight:500;line-height:1.2;text-wrap:balance;transition:color var(--dur-short) var(--ease-out)}
+.guide-card:first-child .guide-title{font-size:var(--text-xl)}
+.guide-title .icon{display:inline-block;width:1em;height:1em;margin-left:.3em;vertical-align:-.12em;transition:translate var(--dur-short) var(--ease-out)}
+.guide-card a:hover .guide-title{color:var(--color-display)}
+.guide-card a:hover .guide-title .icon{translate:.2em 0}
+.guide-card a:focus-visible{outline-offset:4px}
+@media(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){.guide-photo img{transition:scale 900ms var(--ease-out)}.guide-card a:hover .guide-photo img{scale:1.045}}
+@media(prefers-reduced-motion:reduce){.guide-title,.guide-title .icon{transition:none}}
+@media(max-width:60rem){
+  .guide-cards{display:flex;gap:var(--space-md);overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:calc(-1 * var(--gutter));padding-inline:var(--gutter);scroll-padding-inline:var(--gutter);scrollbar-width:none}
+  .guide-cards::-webkit-scrollbar{display:none}
+  .guide-card{flex:0 0 min(78%,22rem);scroll-snap-align:start}
+  .guide-card:first-child .guide-photo{flex:none;aspect-ratio:3/2;min-height:0}
+  .guide-card:first-child .guide-title{font-size:var(--text-lg)}
+}
 
 /* Lookbook das cores: cada cor troca a foto com uma cortina */
 .feature-frame{position:relative;margin:0;overflow:hidden;border-radius:var(--radius-card);background:var(--color-paper-2)}
@@ -496,7 +509,7 @@ dialog::backdrop{background:var(--color-scrim)}
     <span class="costura folhas" aria-hidden="true"></span>
     <section class="section" id="historia" aria-labelledby="historiaTitle"><div class="wrap story"><figure class="founder-photo" data-reveal><div class="portrait-frame"><img id="storyPortrait" class="revela" src="assets/priscila-presentes.png" width="1024" height="1536" alt="Priscila, idealizadora da Bordô" loading="lazy"></div><figcaption>Priscila <span>Idealizadora da Bordô · Teixeiras, MG</span></figcaption></figure><div class="story-copy" data-reveal><h2 id="historiaTitle">Priscila, por trás da <em>Bordô</em>.</h2><p>A Bordô tem um rosto e um nome: Priscila, idealizadora deste projeto em Teixeiras, Minas Gerais. Por trás dos laços e dos bordados, está uma proposta simples: dar forma ao carinho que acompanha um presente.</p><a class="text-link" href="https://www.instagram.com/bordobordadospersonalizados/" target="_blank" rel="noopener">Acompanhe a Bordô no Instagram <img class="icon" src="assets/icons/arrow-up-right.svg" alt=""></a></div></div><div class="wrap"><div class="founder-gallery"><figure><img id="storySecondary" class="revela" src="assets/priscila-sinfonia.png" width="941" height="1672" alt="Retrato de Priscila, idealizadora da marca" loading="lazy"></figure><div><h3>Presentes que contam histórias.</h3><p>Um nome, uma flor, um personagem. Qual detalhe vai fazer parte da sua próxima lembrança?</p><a class="button secondary" href="#personalizados">Criar meu personalizado <img class="icon" src="assets/icons/arrow-right.svg" alt=""></a></div></div></div></section>
     <div id="editorialSections"></div>
-    <section class="section blog-band" aria-labelledby="blogTitle"><div class="wrap blog-layout"><div><h2 id="blogTitle">Casa &amp; <em>Inspiração</em></h2><p>Listas de presentes por pessoa e por preço, e guias para decorar a casa neste Natal.</p><a class="button secondary" href="/blog/">Ver todos os guias</a></div><ul class="blog-list"><li><a href="/blog/presentes-ate-50-reais/">10 presentes até R$ 50 para o amigo secreto de 2026</a></li><li><a href="/blog/presentes-para-homem/">10 presentes para homem até R$ 150 no Natal de 2026</a></li><li><a href="/blog/presentes-para-mulher/">10 presentes para mulher até R$ 100 no Natal de 2026</a></li><li><a href="/blog/presentes-para-familia-e-criancas/">10 presentes para a família e as crianças até R$ 180</a></li><li><a href="/blog/enfeites-de-natal-ate-70-reais/">5 enfeites de Natal até R$ 70 para porta, parede e árvore</a></li></ul></div></section>
+    <section class="section blog-band" aria-labelledby="blogTitle"><div class="wrap"><div class="section-heading blog-heading"><h2 id="blogTitle">Casa &amp; <em>Inspiração</em></h2><div class="blog-intro"><p>Listas de presentes por pessoa e por preço, e guias para decorar a casa neste Natal.</p><a class="button secondary" href="/blog/">Ver todos os guias</a></div></div><ul class="guide-cards"><li class="guide-card"><a href="/blog/presentes-ate-50-reais/"><span class="guide-photo"><img src="assets/guias/capa-ate-50.webp" width="960" height="640" alt="" loading="lazy" decoding="async"></span><span class="guide-title">10 presentes até R$ 50 para o amigo secreto de 2026<img class="icon" src="assets/icons/arrow-right.svg" alt=""></span></a></li><li class="guide-card"><a href="/blog/presentes-para-homem/"><span class="guide-photo"><img src="assets/guias/capa-homem.webp" width="960" height="640" alt="" loading="lazy" decoding="async"></span><span class="guide-title">10 presentes para homem até R$ 150 no Natal de 2026<img class="icon" src="assets/icons/arrow-right.svg" alt=""></span></a></li><li class="guide-card"><a href="/blog/presentes-para-mulher/"><span class="guide-photo"><img src="assets/guias/capa-mulher.webp" width="960" height="640" alt="" loading="lazy" decoding="async"></span><span class="guide-title">10 presentes para mulher até R$ 100 no Natal de 2026<img class="icon" src="assets/icons/arrow-right.svg" alt=""></span></a></li><li class="guide-card"><a href="/blog/presentes-para-familia-e-criancas/"><span class="guide-photo"><img src="assets/guias/capa-familia.webp" width="960" height="640" alt="" loading="lazy" decoding="async"></span><span class="guide-title">10 presentes para a família e as crianças até R$ 180<img class="icon" src="assets/icons/arrow-right.svg" alt=""></span></a></li><li class="guide-card"><a href="/blog/enfeites-de-natal-ate-70-reais/"><span class="guide-photo"><img src="assets/guias/capa-enfeites.webp" width="960" height="640" alt="" loading="lazy" decoding="async"></span><span class="guide-title">5 enfeites de Natal até R$ 70 para porta, parede e árvore<img class="icon" src="assets/icons/arrow-right.svg" alt=""></span></a></li></ul></div></section>
     <span class="costura" aria-hidden="true"></span>
     <section class="section" id="faq" aria-labelledby="faqTitle"><div class="wrap faq-layout"><div><h2 id="faqTitle">Antes do seu <em>pedido</em></h2><p>Alguns detalhes para escolher com tranquilidade.</p><a class="text-link" href="https://wa.me/5531997954792" target="_blank" rel="noopener">Falar com a Bordô <img class="icon" src="assets/icons/arrow-up-right.svg" alt=""></a></div><div class="faq">
       <details name="faq"><summary>Como faço uma encomenda?<img class="icon" src="assets/icons/chevron-down.svg" alt=""></summary><p>Escolha as peças do catálogo ou preencha sua ideia na seção de personalizados. O pedido continua pelo WhatsApp, onde combinamos disponibilidade, detalhes, frete e prazo antes da confirmação.</p></details>

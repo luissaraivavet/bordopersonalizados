@@ -51,6 +51,7 @@ The spacing scale, the type scale, the easings and the durations are the scaffol
 - The peak of the scroll: `--section-gap-l` around it, portrait 5fr in the arch next to a hero-scale title, the opening paragraph at reading size (`--text-xl`, 34ch; `--text-lg` on phones), and the portrait unmasking with `.revela`.
 
 ## Blog (Casa & Inspiração)
+- On the shop, the band shows the guides as photo cards (`assets/guias/`, 960×640 crops of the list covers): the newest guide tall on the left, four in a 2×2 grid beside it; on phones a snap carousel with the next card peeking.
 - The list pages (`blog/assets/revista.css`) follow this system: an oversized Instrument Sans numeral opens the page, a spotlight piece swaps with a vertical wipe, and the items sit in an asymmetric 7/5 and 4/4/4 grid.
 - Type on the blog moves in fixed steps per breakpoint, never by viewport width.
 - Ornament: embroidered stitch borders (`blog/assets/ornamentos/`) used as colour masks, gold between sections and bordô over a band.
