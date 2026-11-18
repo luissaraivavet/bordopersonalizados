@@ -5,8 +5,8 @@ The locked system. Every Hallmark run reads this first and pages share it. Chang
 ## System
 - Genre: editorial
 - Shape of the first page: Catalogue (`index.html`); the three discovery pages use Split Studio
-- Theme: brand (logo and bordô kept; Cormorant Garamond for display, Manrope for body; pale rosy paper)
-- Axes: light/high-contrast-serif/chromatic-red · posture: full-palette
+- Theme: brand (logo and bordô kept; Instrument Sans for display, Manrope for body; pale rosy paper)
+- Axes: light/grotesque-sans/chromatic-red · posture: full-palette
 
 ## Tokens
 `assets/tokens.css` is the source of truth. The roles:
@@ -16,14 +16,14 @@ The locked system. Every Hallmark run reads this first and pages share it. Chang
   --color-ink: oklch(22% 0.03 5);  --color-ink-2: oklch(38% 0.03 5);  --color-muted: oklch(50% 0.026 5);  --color-rule: oklch(86% 0.022 10);
   --color-accent: oklch(35.2% 0.1 4);  --color-accent-ink: oklch(97.6% 0.008 30);  --color-focus: oklch(40% 0.18 4);
   --color-display: oklch(30% 0.095 4);  --color-field: oklch(23.5% 0.072 4);  --color-gold-deep: oklch(58% 0.085 75);
-  --font-display: "Cormorant Garamond", Georgia, ui-serif, serif;  --font-body: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Instrument Sans", ui-sans-serif, system-ui, sans-serif;  --font-body: "Manrope", ui-sans-serif, system-ui, sans-serif;
   --radius-card: 2px;  --radius-arch: 999px 999px 2px 2px;  --radius-pill: 999px;  --rule-hair: 1px;  --shadow-card: none;
 }
 ```
 The spacing scale, the type scale, the easings and the durations are the scaffold's and live in `assets/tokens.css`. `assets/base.css` holds the base rules. Each page keeps its own CSS inline and imports both files.
 
 ## Type roles
-- Two families only: Cormorant Garamond (500, italic 500) for headings, prices and big numbers; Manrope (400, 600) for everything else. Bold text is 600, never 700+.
+- Two families only: Instrument Sans (500, italic 500; latin subset, width fixed at 100) for headings, prices and big numbers; Manrope (400, 600) for everything else. Bold text is 600, never 700+.
 - Body 16px; secondary 14px (`--text-sm`); fine print 13px (`--text-xs`) is the floor. The one exception is the blog's commission line, kept at 11px on the owner's request.
 - Fonts ship as woff2 (`Manrope.woff2` is a Latin subset of the variable font, weight axis 200-800). The hand-written blog pages reach this scale through `blog/assets/ponte.css`.
 
@@ -33,7 +33,7 @@ The spacing scale, the type scale, the easings and the durations are the scaffol
 - Gold (`--color-gold-deep`) is the hairline under text links, nothing else.
 - Arches (`--radius-arch`) frame the collection tabs and portraits only.
 - Photographs are bright and photographic: natural window light, real fabric weight and contact shadows, no dark velvet backgrounds.
-- Weights: Cormorant Garamond 500; Manrope 400 and 600.
+- Weights: Instrument Sans 500; Manrope 400 and 600.
 
 ## Controls
 - Primary: bordô fill · pill · 52px tall
@@ -48,7 +48,7 @@ The spacing scale, the type scale, the easings and the durations are the scaffol
 - The peak of the scroll: `--section-gap-l` around it, portrait 5fr in the arch next to a hero-scale title, the opening paragraph at `--text-3xl`, and the portrait unmasking with `.revela`.
 
 ## Blog (Casa & Inspiração)
-- The list pages (`blog/assets/revista.css`) follow this system: an oversized Cormorant numeral opens the page, a spotlight piece swaps with a vertical wipe, and the items sit in an asymmetric 7/5 and 4/4/4 grid.
+- The list pages (`blog/assets/revista.css`) follow this system: an oversized Instrument Sans numeral opens the page, a spotlight piece swaps with a vertical wipe, and the items sit in an asymmetric 7/5 and 4/4/4 grid.
 - Type on the blog moves in fixed steps per breakpoint, never by viewport width.
 - Ornament: embroidered stitch borders (`blog/assets/ornamentos/`) used as colour masks, gold between sections and bordô over a band.
 - Motion: photo reveal by clip-path on scroll, the running stitch under the active index number, view transitions when the list is re-sorted.
@@ -56,7 +56,7 @@ The spacing scale, the type scale, the easings and the durations are the scaffol
 ## Acabamento (all pages)
 - `assets/acabamento.css` is loaded by the shop, the SEO pages and the blog.
 - Linen weave under the paper (16 %, multiply), from the Creative Fabrica pack in `assets/ornamentos/`.
-- One word per heading in Cormorant italic, in bordô; the words themselves never change.
+- One word per heading in Instrument Sans italic, in bordô; the words themselves never change.
 - `.costura`: an embroidered stitch border as a colour mask between sections (gold; `.folhas` in bordô).
 - `.revela`: photos unmask with the scroll where the browser supports view timelines; never on the first-screen photo.
 
