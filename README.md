@@ -37,6 +37,7 @@ Para usar um pacote sem Git, exporte o ZIP e entregue os arquivos à hospedagem.
 - `content/site.json` e `assets/content.js`: conteúdo público equivalente.
 - `admin/` e `admin_server.py`: interface e servidor privado.
 - `tests/`: testes automatizados sem alteração do catálogo real.
+- `assets/thumbs/`: miniaturas do índice da capa. Depois de publicar fotos novas, rode `python scripts/gerar_miniaturas.py` (requer ffmpeg); sem a miniatura, o site usa a foto original.
 - `CNAME`: domínio configurado no GitHub Pages.
 
-O logo original e as fontes Lora/Manrope foram preservados. Preços e condições iniciais foram preservados do catálogo existente: desconto Pix de 5% sobre peças e embalagem opcional de R$ 15 por pedido. Frete, prazo, materiais e disponibilidade são confirmados no atendimento.
+O logo original foi preservado. A página principal usa as fontes Besley e Hanken Grotesk, em `assets/fonts/`; Lora e Manrope continuam nas páginas de descoberta, no blog e no painel. O produto está descrito em `PRODUCT.md` e o sistema visual em `DESIGN.md`. Preços e condições iniciais foram preservados do catálogo existente: desconto Pix de 5% sobre peças e embalagem opcional de R$ 15 por pedido. Frete, prazo, materiais e disponibilidade são confirmados no atendimento.

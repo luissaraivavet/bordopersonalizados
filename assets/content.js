@@ -595,20 +595,6 @@ window.BORDO_CONTENT = {
       ]
     },
     {
-      "id": "toalha",
-      "title": "Toalha Lavabo Monograma",
-      "price": 89,
-      "image": "assets/gifts.webp",
-      "description": "Uma inicial para tornar o presente ainda mais pessoal.",
-      "options": [
-        "Branco Nobre",
-        "Off-White Aveludado"
-      ],
-      "collection": "presentes",
-      "published": true,
-      "illustrative": true
-    },
-    {
       "id": "bastidor",
       "title": "Bastidor Afetivo Floral",
       "price": 145,

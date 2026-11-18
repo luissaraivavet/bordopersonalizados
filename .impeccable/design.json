@@ -1,0 +1,635 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-17T18:00:00-03:00",
+  "title": "Design System: Bordô",
+  "extensions": {
+    "colorMeta": {
+      "wine": {
+        "role": "primary",
+        "displayName": "Bordô de Capa",
+        "canonical": "#631f35",
+        "tonalRamp": [
+          "#1f0008",
+          "#45081f",
+          "#6c273c",
+          "#91495d",
+          "#b86c7f",
+          "#dd92a4",
+          "#f4bcc9",
+          "#ffe8ec"
+        ]
+      },
+      "wine-deep": {
+        "role": "primary",
+        "displayName": "Bordô Profundo",
+        "canonical": "#4a1427",
+        "tonalRamp": [
+          "#1c0109",
+          "#401021",
+          "#662d3f",
+          "#8a4e5f",
+          "#b17182",
+          "#d597a7",
+          "#eebfcb",
+          "#ffe8ed"
+        ]
+      },
+      "gold": {
+        "role": "secondary",
+        "displayName": "Dourado de Estampagem",
+        "canonical": "#d8b25a",
+        "tonalRamp": [
+          "#120a00",
+          "#302200",
+          "#543f02",
+          "#7c5e0a",
+          "#a58022",
+          "#c9a657",
+          "#e4cb94",
+          "#f9edd4"
+        ]
+      },
+      "gold-bright": {
+        "role": "secondary",
+        "displayName": "Dourado Claro",
+        "canonical": "#e6c373",
+        "tonalRamp": [
+          "#120a00",
+          "#2f2200",
+          "#553f00",
+          "#7d5e02",
+          "#a2812f",
+          "#c6a75f",
+          "#e2cb99",
+          "#f8eed6"
+        ]
+      },
+      "gold-ink": {
+        "role": "secondary",
+        "displayName": "Tinta do Dourado",
+        "canonical": "#3a0f1d",
+        "tonalRamp": [
+          "#1a0309",
+          "#3c1521",
+          "#61323e",
+          "#85525f",
+          "#aa7581",
+          "#ce9aa6",
+          "#e9c2ca",
+          "#fce9ed"
+        ]
+      },
+      "tab-jardim": {
+        "role": "tertiary",
+        "displayName": "Verde-folha",
+        "canonical": "#4f6b3f",
+        "tonalRamp": [
+          "#030f00",
+          "#142b04",
+          "#314b20",
+          "#516d41",
+          "#739063",
+          "#99b589",
+          "#c0d5b5",
+          "#e8f2e3"
+        ]
+      },
+      "tab-sinfonia": {
+        "role": "tertiary",
+        "displayName": "Ocre",
+        "canonical": "#8f5a1c",
+        "tonalRamp": [
+          "#160700",
+          "#371d00",
+          "#603803",
+          "#8a5516",
+          "#b0793e",
+          "#d49f6a",
+          "#edc6a0",
+          "#feebd9"
+        ]
+      },
+      "tab-kits": {
+        "role": "tertiary",
+        "displayName": "Petróleo",
+        "canonical": "#2f5f6b",
+        "tonalRamp": [
+          "#000e13",
+          "#002932",
+          "#184a55",
+          "#3b6b78",
+          "#5f8f9c",
+          "#86b3c0",
+          "#b4d4dd",
+          "#e2f2f6"
+        ]
+      },
+      "tab-presentes": {
+        "role": "tertiary",
+        "displayName": "Lilás",
+        "canonical": "#5f4f8a",
+        "tonalRamp": [
+          "#0e0422",
+          "#281849",
+          "#47366f",
+          "#675793",
+          "#8a7ab9",
+          "#aea0dc",
+          "#d0c6f3",
+          "#efecfe"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Papel de Prancha",
+        "canonical": "#e7ebe3",
+        "tonalRamp": [
+          "#0a0c08",
+          "#222520",
+          "#40443d",
+          "#61655e",
+          "#848880",
+          "#a9aca5",
+          "#cccfca",
+          "#eeefec"
+        ]
+      },
+      "paper-deep": {
+        "role": "neutral",
+        "displayName": "Papel Fundo",
+        "canonical": "#dbe1d5",
+        "tonalRamp": [
+          "#0a0c07",
+          "#22261d",
+          "#3f443b",
+          "#60655b",
+          "#83887d",
+          "#a8ada2",
+          "#cbcfc7",
+          "#edefeb"
+        ]
+      },
+      "label": {
+        "role": "neutral",
+        "displayName": "Papel de Rótulo",
+        "canonical": "#fbfaf6",
+        "tonalRamp": [
+          "#0c0b09",
+          "#252421",
+          "#43423f",
+          "#646360",
+          "#878683",
+          "#acaba7",
+          "#cececb",
+          "#efeeed"
+        ]
+      },
+      "white": {
+        "role": "neutral",
+        "displayName": "Branco Puro",
+        "canonical": "#fff",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242424",
+          "#424242",
+          "#636363",
+          "#868686",
+          "#ababab",
+          "#cecece",
+          "#eeeeee"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Tinta",
+        "canonical": "#2b1119",
+        "tonalRamp": [
+          "#15060a",
+          "#341b22",
+          "#563840",
+          "#795961",
+          "#9e7b84",
+          "#c2a1a9",
+          "#dfc6cc",
+          "#f7ebee"
+        ]
+      },
+      "ink-soft": {
+        "role": "neutral",
+        "displayName": "Tinta Suave",
+        "canonical": "#5a3b45",
+        "tonalRamp": [
+          "#15060b",
+          "#351b24",
+          "#573842",
+          "#7a5863",
+          "#9e7b86",
+          "#c2a0aa",
+          "#e0c6cd",
+          "#f7ebee"
+        ]
+      },
+      "ink-wash": {
+        "role": "neutral",
+        "displayName": "Tinta a 8%",
+        "canonical": "#2b111914",
+        "tonalRamp": [
+          "#15060a",
+          "#341b22",
+          "#563840",
+          "#795961",
+          "#9e7b84",
+          "#c2a1a9",
+          "#dfc6cc",
+          "#f7ebee"
+        ]
+      },
+      "scrim": {
+        "role": "neutral",
+        "displayName": "Véu de Tinta a 65%",
+        "canonical": "#2b1119a6",
+        "tonalRamp": [
+          "#15060a",
+          "#341b22",
+          "#563840",
+          "#795961",
+          "#9e7b84",
+          "#c2a1a9",
+          "#dfc6cc",
+          "#f7ebee"
+        ]
+      },
+      "cloth-text": {
+        "role": "neutral",
+        "displayName": "Creme de Tecido",
+        "canonical": "#f7eee6",
+        "tonalRamp": [
+          "#0e0a07",
+          "#29231d",
+          "#48413b",
+          "#69625b",
+          "#8d857d",
+          "#b1a9a2",
+          "#d2cdc7",
+          "#f1eeeb"
+        ]
+      },
+      "cloth-soft": {
+        "role": "neutral",
+        "displayName": "Rosa de Tecido",
+        "canonical": "#e6ccd2",
+        "tonalRamp": [
+          "#12080a",
+          "#301e23",
+          "#513c41",
+          "#735c62",
+          "#977f85",
+          "#bba4a9",
+          "#dac9cd",
+          "#f4ecee"
+        ]
+      },
+      "cloth-line": {
+        "role": "neutral",
+        "displayName": "Creme a 28%",
+        "canonical": "#f7eee647",
+        "tonalRamp": [
+          "#0e0a07",
+          "#29231d",
+          "#48413b",
+          "#69625b",
+          "#8d857d",
+          "#b1a9a2",
+          "#d2cdc7",
+          "#f1eeeb"
+        ]
+      },
+      "cloth-edge": {
+        "role": "neutral",
+        "displayName": "Creme a 60%",
+        "canonical": "#f7eee699",
+        "tonalRamp": [
+          "#0e0a07",
+          "#29231d",
+          "#48413b",
+          "#69625b",
+          "#8d857d",
+          "#b1a9a2",
+          "#d2cdc7",
+          "#f1eeeb"
+        ]
+      },
+      "cloth-wash": {
+        "role": "neutral",
+        "displayName": "Creme a 12%",
+        "canonical": "#f7eee61f",
+        "tonalRamp": [
+          "#0e0a07",
+          "#29231d",
+          "#48413b",
+          "#69625b",
+          "#8d857d",
+          "#b1a9a2",
+          "#d2cdc7",
+          "#f1eeeb"
+        ]
+      },
+      "line": {
+        "role": "neutral",
+        "displayName": "Fio de Papel",
+        "canonical": "#b9c2b1",
+        "tonalRamp": [
+          "#090d06",
+          "#20261a",
+          "#3e4537",
+          "#5e6657",
+          "#81897a",
+          "#a6ae9f",
+          "#cad0c5",
+          "#edf0ea"
+        ]
+      },
+      "field": {
+        "role": "neutral",
+        "displayName": "Fio de Campo",
+        "canonical": "#6f7a68",
+        "tonalRamp": [
+          "#080d05",
+          "#1f2719",
+          "#3c4636",
+          "#5d6756",
+          "#7f8a78",
+          "#a4af9d",
+          "#c9d1c4",
+          "#ecf0e9"
+        ]
+      },
+      "shadow": {
+        "role": "neutral",
+        "displayName": "Sombra de Vinho",
+        "canonical": "#1a040b",
+        "tonalRamp": [
+          "#15060a",
+          "#341c23",
+          "#563941",
+          "#795962",
+          "#9d7c84",
+          "#c1a1a9",
+          "#dfc6cc",
+          "#f7ebee"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Título da capa, em Besley 600; clamp(3.25rem, 5vw, 4.5rem) a partir de 1100px."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Títulos de seção, bordô sobre papel e creme sobre tecido."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Títulos de rótulos e de blocos internos."
+      },
+      "specimen": {
+        "displayName": "Espécime",
+        "purpose": "Nome próprio da peça, sempre em Besley itálico; 1.625rem a partir de 768px.",
+        "fontStyle": "italic"
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Texto corrido em Hanken Grotesk, com algarismos tabulares (font-variant-numeric: tabular-nums)."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Botões e controles, peso 650, sem caixa alta."
+      }
+    },
+    "shadows": [
+      {
+        "name": "specimen-mount",
+        "value": "0 22px 40px -24px #1a040b",
+        "purpose": "Foto em destaque da capa, montada em papel sobre o tecido."
+      },
+      {
+        "name": "dropdown",
+        "value": "0 18px 34px -18px #1a040b",
+        "purpose": "Lista de coleções e menu no celular."
+      },
+      {
+        "name": "toast",
+        "value": "0 14px 28px -14px #1a040b",
+        "purpose": "Aviso flutuante de peça adicionada."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease",
+        "value": "cubic-bezier(.16,1,.3,1)",
+        "purpose": "Curva única de todo o sistema (propriedade --ease)."
+      },
+      {
+        "name": "duration-state",
+        "value": ".2s",
+        "purpose": "Mudanças de cor em botões, links, fichas e miniaturas."
+      },
+      {
+        "name": "duration-disclosure",
+        "value": ".25s",
+        "purpose": "Giro da seta em menus e seções recolhíveis."
+      },
+      {
+        "name": "duration-tab",
+        "value": ".3s",
+        "purpose": "Avanço da aba lateral no hover e na seção atual."
+      },
+      {
+        "name": "duration-rail",
+        "value": ".5s",
+        "purpose": "Entrada da aba lateral depois da capa."
+      },
+      {
+        "name": "specimen-exit",
+        "value": ".14s",
+        "purpose": "Saída de foto, rótulos e linhas-guia na troca de espécime."
+      },
+      {
+        "name": "specimen-hold",
+        "value": "170ms",
+        "purpose": "Espera antes de trocar o conteúdo do espécime (assets/site.js)."
+      },
+      {
+        "name": "specimen-text-enter",
+        "value": ".45s",
+        "purpose": "Volta dos rótulos (opacidade e 6px de deslocamento)."
+      },
+      {
+        "name": "specimen-photo-enter",
+        "value": ".5s",
+        "purpose": "Volta da foto do espécime."
+      },
+      {
+        "name": "specimen-line-enter",
+        "value": ".6s",
+        "purpose": "Redesenho da linha-guia, da esquerda para a direita."
+      },
+      {
+        "name": "specimen-stagger",
+        "value": ".06s",
+        "purpose": "Atraso entre rótulos na volta (.06s no segundo, .12s no terceiro)."
+      },
+      {
+        "name": "specimen-autoplay",
+        "value": "6000ms",
+        "purpose": "Intervalo da troca automática de espécime, interrompida ao primeiro gesto (assets/site.js)."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "transition: none; animation: none",
+        "purpose": "Sob prefers-reduced-motion: reduce, todas as transições se desligam e a troca é imediata."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "tablet",
+        "value": "768px"
+      },
+      {
+        "name": "split",
+        "value": "900px"
+      },
+      {
+        "name": "cover",
+        "value": "1100px"
+      },
+      {
+        "name": "wide",
+        "value": "1200px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Botões sobre papel",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Ação de pedido em bordô e a variante de contorno, usadas sobre o papel de prancha (catálogo e sacola).",
+      "html": "<div class=\"ds-paper-actions\"><button class=\"ds-btn-wine\" type=\"button\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14\"/><path d=\"M12 5v14\"/></svg> Adicionar à sacola</button><button class=\"ds-btn-wine ds-btn-wine-outline\" type=\"button\">Ver coleção completa (34 peças)</button></div>",
+      "css": ".ds-paper-actions{display:flex;flex-wrap:wrap;gap:12px;padding:24px;background:var(--paper,#e7ebe3)}.ds-btn-wine{min-height:48px;display:inline-flex;align-items:center;justify-content:center;gap:12px;padding:12px 22px;border-radius:3px;font:650 .9375rem/1.2 var(--sans,'Hanken Grotesk',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif);text-align:center;text-decoration:none;cursor:pointer;transition:background-color .2s var(--ease,cubic-bezier(.16,1,.3,1)),border-color .2s var(--ease,cubic-bezier(.16,1,.3,1)),color .2s var(--ease,cubic-bezier(.16,1,.3,1))}.ds-btn-wine svg{width:20px;height:20px;flex:none}.ds-btn-wine{border:1.5px solid var(--wine,#631f35);background:var(--wine,#631f35);color:#fff}.ds-btn-wine:hover{background:var(--wine-deep,#4a1427);border-color:var(--wine-deep,#4a1427)}.ds-btn-wine:focus-visible{outline:3px solid var(--wine,#631f35);outline-offset:3px}.ds-btn-wine-outline{background:transparent;color:var(--wine,#631f35)}.ds-btn-wine-outline:hover{background:var(--label,#fbfaf6)}@media(prefers-reduced-motion:reduce){.ds-btn-wine{transition:none}}"
+    },
+    {
+      "name": "Botões sobre tecido",
+      "kind": "button",
+      "refersTo": "button-on-cloth",
+      "description": "Sobre o bordô, o botão padrão vira papel de rótulo e a ação secundária é um contorno creme.",
+      "html": "<div class=\"ds-cloth-actions\"><a class=\"ds-btn-cloth\" href=\"#colecoes\">Explorar coleções <svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14\"/><path d=\"m12 5 7 7-7 7\"/></svg></a></div>",
+      "css": ".ds-cloth-actions{display:flex;flex-wrap:wrap;gap:12px;padding:24px;background:var(--wine,#631f35)}.ds-btn-cloth{min-height:48px;display:inline-flex;align-items:center;justify-content:center;gap:12px;padding:12px 22px;border-radius:3px;font:650 .9375rem/1.2 var(--sans,'Hanken Grotesk',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif);text-align:center;text-decoration:none;cursor:pointer;transition:background-color .2s var(--ease,cubic-bezier(.16,1,.3,1)),border-color .2s var(--ease,cubic-bezier(.16,1,.3,1)),color .2s var(--ease,cubic-bezier(.16,1,.3,1))}.ds-btn-cloth svg{width:20px;height:20px;flex:none}.ds-btn-cloth{border:1.5px solid var(--label,#fbfaf6);background:var(--label,#fbfaf6);color:var(--wine,#631f35)}.ds-btn-cloth:hover{background:#fff;border-color:#fff}.ds-btn-cloth:focus-visible{outline:3px solid var(--gold,#d8b25a);outline-offset:3px}@media(prefers-reduced-motion:reduce){.ds-btn-cloth{transition:none}}"
+    },
+    {
+      "name": "Botão dourado de pedido",
+      "kind": "button",
+      "refersTo": "button-gold",
+      "description": "Dourado cheio, reservado a pôr na sacola e seguir ao WhatsApp, sempre sobre o bordô.",
+      "html": "<div class=\"ds-cloth-order\"><button class=\"ds-btn-gold\" type=\"button\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14\"/><path d=\"M12 5v14\"/></svg> Adicionar à sacola</button><a class=\"ds-btn-gold\" href=\"#personalizados\">Conversar pelo WhatsApp <svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M7 7h10v10\"/><path d=\"M7 17 17 7\"/></svg></a></div>",
+      "css": ".ds-cloth-order{display:flex;flex-wrap:wrap;gap:12px;padding:24px;background:var(--wine,#631f35)}.ds-btn-gold{min-height:48px;display:inline-flex;align-items:center;justify-content:center;gap:12px;padding:12px 22px;border-radius:3px;font:650 .9375rem/1.2 var(--sans,'Hanken Grotesk',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif);text-align:center;text-decoration:none;cursor:pointer;transition:background-color .2s var(--ease,cubic-bezier(.16,1,.3,1)),border-color .2s var(--ease,cubic-bezier(.16,1,.3,1)),color .2s var(--ease,cubic-bezier(.16,1,.3,1))}.ds-btn-gold svg{width:20px;height:20px;flex:none}.ds-btn-gold{border:1.5px solid var(--gold,#d8b25a);background:var(--gold,#d8b25a);color:var(--gold-ink,#3a0f1d)}.ds-btn-gold:hover{background:var(--gold-bright,#e6c373);border-color:var(--gold-bright,#e6c373)}.ds-btn-gold:focus-visible{outline:3px solid var(--gold,#d8b25a);outline-offset:3px}@media(prefers-reduced-motion:reduce){.ds-btn-gold{transition:none}}"
+    },
+    {
+      "name": "Ficha de escolha",
+      "kind": "chip",
+      "refersTo": "chip",
+      "description": "Opção de escolha única do formulário de encomenda, sobre o tecido; a selecionada vira papel de rótulo.",
+      "html": "<div class=\"ds-choices\" role=\"radiogroup\" aria-label=\"Qual é a sua ideia?\"><label class=\"ds-choice\"><input type=\"radio\" name=\"ds-project\" checked><span>Laços e coleções</span></label><label class=\"ds-choice\"><input type=\"radio\" name=\"ds-project\"><span>Batizado e celebrações</span></label><label class=\"ds-choice\"><input type=\"radio\" name=\"ds-project\"><span>Empresas e marcas</span></label></div>",
+      "css": ".ds-choices{display:flex;flex-wrap:wrap;gap:8px;padding:24px;background:var(--wine,#631f35);color:var(--cloth-text,#f7eee6);font:400 .9375rem/1.6 var(--sans,'Hanken Grotesk',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif)}.ds-choice{position:relative}.ds-choice input{position:absolute;opacity:0;width:1px;height:1px}.ds-choice span{display:flex;align-items:center;min-height:44px;padding:10px 16px;border:1px solid #f7eee699;border-radius:3px;cursor:pointer;transition:background-color .2s var(--ease,cubic-bezier(.16,1,.3,1)),color .2s var(--ease,cubic-bezier(.16,1,.3,1)),border-color .2s var(--ease,cubic-bezier(.16,1,.3,1))}.ds-choice span:hover{border-color:var(--cloth-text,#f7eee6)}.ds-choice input:checked+span{background:var(--label,#fbfaf6);border-color:var(--label,#fbfaf6);color:var(--wine,#631f35);font-weight:650}.ds-choice input:focus-visible+span{outline:3px solid var(--gold,#d8b25a);outline-offset:3px}@media(prefers-reduced-motion:reduce){.ds-choice span{transition:none}}"
+    },
+    {
+      "name": "Campo de texto",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Campo em papel de rótulo com borda de 1px em fio de campo; o foco usa o contorno de 3px do sistema.",
+      "html": "<div class=\"ds-field\"><label class=\"ds-field-label\" for=\"ds-city\">Cidade de entrega (opcional)</label><input class=\"ds-input\" id=\"ds-city\" placeholder=\"Ex.: Teixeiras, MG\"></div>",
+      "css": ".ds-field{max-width:360px;padding:24px;background:var(--paper,#e7ebe3);color:var(--ink,#2b1119);font-family:var(--sans,'Hanken Grotesk',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif)}.ds-field-label{display:block;margin:0 0 7px;font-size:.875rem;font-weight:600}.ds-input{box-sizing:border-box;width:100%;min-height:48px;padding:12px;border:1px solid var(--field,#6f7a68);border-radius:3px;background:var(--label,#fbfaf6);color:var(--ink,#2b1119);font:400 1rem/1.6 var(--sans,'Hanken Grotesk',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif);caret-color:var(--wine,#631f35)}.ds-input::placeholder{color:var(--ink-soft,#5a3b45);opacity:1}.ds-input:focus-visible{outline:3px solid var(--wine,#631f35);outline-offset:3px}"
+    },
+    {
+      "name": "Rótulo de papel",
+      "kind": "card",
+      "refersTo": "ficha",
+      "description": "Etiqueta de herbário: papel de rótulo com fio duplo, título em Besley e link de texto com sublinhado dourado.",
+      "html": "<article class=\"ds-ficha\"><h3>Mãe &amp; Rainha</h3><p class=\"ds-ficha-kind\">Laços bordados</p><p>Uma homenagem à Nossa Senhora Aparecida, em três cores para escolher com carinho.</p><a class=\"ds-ficha-link\" href=\"#personalizados\">Conhecer a coleção <svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14\"/><path d=\"m12 5 7 7-7 7\"/></svg></a></article>",
+      "css": ".ds-ficha{max-width:420px;padding:30px 28px;display:flex;flex-direction:column;align-items:flex-start;gap:14px;background:var(--label,#fbfaf6);border:1px solid var(--line,#b9c2b1);outline:1px solid var(--line,#b9c2b1);outline-offset:-6px;color:var(--ink,#2b1119);font:400 1.0625rem/1.6 var(--sans,'Hanken Grotesk',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif)}.ds-ficha h3{margin:0;font:600 clamp(1.6rem,2.4vw,2rem)/1.15 var(--serif,Besley,Georgia,'Times New Roman',serif);letter-spacing:-.01em;color:var(--wine,#631f35)}.ds-ficha p{margin:0}.ds-ficha .ds-ficha-kind{margin-top:-8px;font-size:.875rem;font-weight:600;color:var(--ink-soft,#5a3b45)}.ds-ficha-link{display:inline-flex;align-items:center;gap:8px;min-height:44px;color:inherit;font-size:.9375rem;font-weight:600;text-decoration:underline;text-decoration-color:var(--gold,#d8b25a);text-decoration-thickness:2px;text-underline-offset:6px;transition:text-decoration-color .2s var(--ease,cubic-bezier(.16,1,.3,1))}.ds-ficha-link svg{width:18px;height:18px;flex:none}.ds-ficha-link:hover{text-decoration-color:currentColor}.ds-ficha-link:focus-visible{outline:3px solid var(--wine,#631f35);outline-offset:3px;border-radius:2px}@media(prefers-reduced-motion:reduce){.ds-ficha-link{transition:none}}"
+    },
+    {
+      "name": "Cartão de espécime",
+      "kind": "card",
+      "refersTo": "product-figure",
+      "description": "Peça do catálogo: figura montada em papel com borda de 1px, três linhas de rótulo (tipo, nome em itálico, espécie), preço e ação de pedido em bordô.",
+      "html": "<article class=\"ds-product\"><figure class=\"ds-product-figure\"><span class=\"ds-product-crop\" role=\"img\" aria-label=\"Foto da peça\"></span><button class=\"ds-product-zoom\" type=\"button\" aria-label=\"Ampliar imagem\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"11\" cy=\"11\" r=\"8\"/><line x1=\"21\" x2=\"16.65\" y1=\"21\" y2=\"16.65\"/><line x1=\"11\" x2=\"11\" y1=\"8\" y2=\"14\"/><line x1=\"8\" x2=\"14\" y1=\"11\" y2=\"11\"/></svg></button></figure><div class=\"ds-product-info\"><h3><span class=\"ds-product-kind\">Laço bordado</span> <em>Daisy</em><span class=\"ds-product-species\">Margarida e Borboleta</span></h3><div class=\"ds-product-price\"><strong>R$ 49,90</strong><small>R$ 47,41 no Pix</small></div><button class=\"ds-product-add\" type=\"button\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 12h14\"/><path d=\"M12 5v14\"/></svg> Adicionar à sacola</button></div></article>",
+      "css": ".ds-product{box-sizing:border-box;width:288px;display:flex;flex-direction:column;padding:24px;background:var(--paper,#e7ebe3);color:var(--ink,#2b1119);font-family:var(--sans,'Hanken Grotesk',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif);font-variant-numeric:tabular-nums}.ds-product-figure{position:relative;margin:0;background:var(--label,#fbfaf6);padding:5px;border:1px solid var(--line,#b9c2b1)}.ds-product-crop{display:block;aspect-ratio:4/5;background:var(--paper-deep,#dbe1d5)}.ds-product-zoom{position:absolute;right:11px;top:11px;width:44px;height:44px;display:inline-flex;align-items:center;justify-content:center;padding:0;border:0;border-radius:50%;background:var(--label,#fbfaf6);color:var(--wine,#631f35);cursor:pointer;transition:background-color .2s var(--ease,cubic-bezier(.16,1,.3,1))}.ds-product-zoom svg{width:18px;height:18px}.ds-product-zoom:hover{background:#fff}.ds-product-zoom:focus-visible,.ds-product-add:focus-visible{outline:3px solid var(--wine,#631f35);outline-offset:3px}.ds-product-info{display:flex;flex-direction:column;padding-top:14px}.ds-product-info h3{margin:0;font:400 1rem/1.3 var(--sans,'Hanken Grotesk',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif);color:var(--ink,#2b1119)}.ds-product-kind{display:block;font-size:.875rem;color:var(--ink-soft,#5a3b45)}.ds-product-info em{display:block;margin:2px 0 3px;font:italic 600 1.5rem/1.1 var(--serif,Besley,Georgia,'Times New Roman',serif);letter-spacing:-.01em;color:var(--wine,#631f35)}.ds-product-species{display:block;font-size:.9375rem;font-weight:600}.ds-product-price{display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 12px;padding-top:14px}.ds-product-price strong{font-size:1.1875rem;font-weight:700}.ds-product-price small{font-size:.875rem;color:var(--ink-soft,#5a3b45)}.ds-product-add{width:100%;min-height:48px;margin-top:14px;display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 10px;border:1.5px solid var(--wine,#631f35);border-radius:3px;background:var(--wine,#631f35);color:#fff;font:650 .9375rem/1.2 var(--sans,'Hanken Grotesk',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif);cursor:pointer;transition:background-color .2s var(--ease,cubic-bezier(.16,1,.3,1)),border-color .2s var(--ease,cubic-bezier(.16,1,.3,1))}.ds-product-add svg{width:20px;height:20px;flex:none}.ds-product-add:hover{background:var(--wine-deep,#4a1427);border-color:var(--wine-deep,#4a1427)}@media(prefers-reduced-motion:reduce){.ds-product-zoom,.ds-product-add{transition:none}}"
+    },
+    {
+      "name": "Etiqueta de espécime",
+      "kind": "custom",
+      "description": "Assinatura da capa: rótulos ligados à peça por linha-guia dourada de 1.5px com alfinete de 8px, nome em Besley itálico dourado e miniaturas de índice.",
+      "html": "<div class=\"ds-specimen\"><div class=\"ds-tag ds-tag-name\"><span>Jardim de Encantos</span><strong>Daisy</strong><span class=\"ds-tag-species\">Margarida e Borboleta</span></div><div class=\"ds-tag ds-tag-option\"><span>Acabamento a confirmar no atendimento</span></div><div class=\"ds-specimen-index\" role=\"group\" aria-label=\"Peças em destaque\"><button type=\"button\" aria-pressed=\"true\"><span class=\"ds-thumb\"></span><span class=\"ds-thumb-name\">Daisy</span></button><button type=\"button\" aria-pressed=\"false\"><span class=\"ds-thumb\"></span><span class=\"ds-thumb-name\">Guto</span></button><button type=\"button\" aria-pressed=\"false\"><span class=\"ds-thumb\"></span><span class=\"ds-thumb-name\">Olívia</span></button></div></div>",
+      "css": ".ds-specimen{--ds-lead:56px;display:grid;gap:22px;padding:28px 24px 24px 32px;background:var(--wine,#631f35);color:var(--cloth-text,#f7eee6);font-family:var(--sans,'Hanken Grotesk',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif)}.ds-tag{position:relative;padding-left:var(--ds-lead);--ds-y:10px}.ds-tag::before{content:\"\";position:absolute;left:0;top:var(--ds-y);width:calc(var(--ds-lead) - 9px);border-top:1.5px solid var(--gold,#d8b25a);transform-origin:left;transition:transform .6s var(--ease,cubic-bezier(.16,1,.3,1))}.ds-tag::after{content:\"\";position:absolute;left:-4px;top:calc(var(--ds-y) - 3.25px);width:8px;height:8px;border-radius:50%;background:var(--gold,#d8b25a)}.ds-tag-name>span{display:block;font-size:.875rem;line-height:1.35;color:var(--cloth-soft,#e6ccd2)}.ds-tag-name strong{display:block;margin:4px 0 6px;font:italic 500 clamp(1.9rem,3.3vw,3.25rem)/1 var(--serif,Besley,Georgia,'Times New Roman',serif);letter-spacing:-.01em;color:var(--gold,#d8b25a)}.ds-tag-name>.ds-tag-species{font-size:1rem;color:var(--cloth-text,#f7eee6)}.ds-tag-option{font:italic 400 .9375rem/1.35 var(--serif,Besley,Georgia,'Times New Roman',serif);color:var(--cloth-soft,#e6ccd2)}.ds-specimen-index{display:flex;gap:14px;padding-top:18px;border-top:1px solid var(--cloth-line,#f7eee647)}.ds-specimen-index button{flex:0 0 78px;padding:0;border:0;background:none;text-align:left;color:var(--cloth-soft,#e6ccd2);cursor:pointer;transition:color .2s var(--ease,cubic-bezier(.16,1,.3,1))}.ds-thumb{display:block;aspect-ratio:1;border-radius:2px;background:var(--paper-deep,#dbe1d5);outline:1px solid var(--cloth-line,#f7eee647);transition:outline-color .2s var(--ease,cubic-bezier(.16,1,.3,1))}.ds-thumb-name{display:block;margin-top:8px;font:italic 500 .9375rem/1.2 var(--serif,Besley,Georgia,'Times New Roman',serif)}.ds-specimen-index button:hover{color:var(--cloth-text,#f7eee6)}.ds-specimen-index button[aria-pressed=true]{color:var(--gold,#d8b25a)}.ds-specimen-index button[aria-pressed=true] .ds-thumb{outline:2px solid var(--gold,#d8b25a);outline-offset:3px}.ds-specimen-index button:focus-visible{outline:3px solid var(--gold,#d8b25a);outline-offset:3px;border-radius:2px}@media(prefers-reduced-motion:reduce){.ds-tag::before,.ds-specimen-index button,.ds-thumb{transition:none}}"
+    },
+    {
+      "name": "Abas de índice",
+      "kind": "nav",
+      "refersTo": "rail-tab",
+      "description": "Abas na tinta de cada coleção: faixa de 44px no topo do catálogo até 1199px, verticais na margem direita a partir de 1200px.",
+      "html": "<nav class=\"ds-tabs\" aria-label=\"Abas das coleções\"><a class=\"ds-tab\" href=\"#jardim\" style=\"--tab:var(--tab-jardim)\">Jardim</a><a class=\"ds-tab\" href=\"#sinfonia\" style=\"--tab:var(--tab-sinfonia)\" aria-current=\"true\">Sinfonia</a><a class=\"ds-tab\" href=\"#kits\" style=\"--tab:var(--tab-kits)\">Kits</a><a class=\"ds-tab\" href=\"#presentes\" style=\"--tab:var(--tab-presentes)\">Presentes</a><a class=\"ds-tab\" href=\"#personalizados\">Personalizados</a></nav>",
+      "css": ".ds-tabs { display: flex; gap: 4px; padding: 0 20px; background: var(--paper); border-bottom: 1px solid var(--line); font-family: var(--sans); } .ds-tab { display: flex; align-items: center; min-height: 44px; padding: 0 16px; border-radius: 0 0 5px 5px; background: var(--tab, var(--wine)); color: #fff; font-size: .875rem; font-weight: 650; text-decoration: none; white-space: nowrap; } .ds-tab[aria-current=true] { box-shadow: inset 0 -4px 0 var(--label); } .ds-tab:focus-visible { outline: 3px solid #fff; outline-offset: -6px; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "O Guia de Campo",
+    "overview": "Um guia de campo de naturalista do Jardim e das Matas: cada laço é um espécime com nome próprio, linha de espécie e rótulo, e a página se folheia por abas de índice coloridas. Dois materiais e um metal: tecido bordô na capa, papel de prancha verde-acinzentado no catálogo e dourado de estampagem.\n\nA peça chega primeiro; o texto é legenda. Não pode parecer loja grande e fria, nem infantil, nem pesar no celular: o sistema é plano, com duas famílias de fonte locais e um único movimento autoral. A direção foi assumida pelo construtor depois que o proprietário não respondeu à segunda rodada de decisão, em 2026-11-17, e aguarda a confirmação dele.",
+    "keyCharacteristics": [
+      "Capa de tecido bordô com filete dourado; catálogo em pranchas de papel.",
+      "Cada peça é um espécime: nome em itálico, espécie e tipo.",
+      "Dourado cheio só nas ações de pedido sobre o bordô.",
+      "Uma tinta de aba por coleção; plano por padrão."
+    ],
+    "rules": [
+      {
+        "name": "A Regra do Dourado de Pedido",
+        "body": "Botão dourado cheio existe só para pôr na sacola e seguir ao WhatsApp, e só sobre o bordô. Sobre papel, a ação de pedido é bordô.",
+        "section": "colors"
+      },
+      {
+        "name": "A Regra da Tinta de Aba",
+        "body": "Cada coleção tem uma tinta e só ela: prancha, contagem e aba; nunca botões nem títulos.",
+        "section": "colors"
+      },
+      {
+        "name": "A Regra do Logo Intocado",
+        "body": "O logo é fixo, de uma cor, vinho. Sobre o bordô vem numa etiqueta de papel e nunca é recolorido.",
+        "section": "colors"
+      },
+      {
+        "name": "A Regra da Linha de Apoio",
+        "body": "Nenhum sobretítulo acima de títulos: a linha secundária vem abaixo, em Besley itálico 500 (1.1875rem, entrelinha 1.35). No rótulo de espécime o nome vem primeiro; espécie, tipo e coleção vêm abaixo dele.",
+        "section": "typography"
+      },
+      {
+        "name": "A Regra do Papel sobre Tecido",
+        "body": "Peças e rótulos levam borda de 1px, nunca sombra; sombra é só para a montagem do espécime e para o que flutua acima da página.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Faça a peça chegar antes do discurso: foto montada em papel, nome em itálico, espécie e preço.",
+      "Faça cada coleção nova receber uma única tinta de aba, com contraste de 4.5:1 para o texto branco.",
+      "Faça alvos de toque de 44px ou mais e foco visível de 3px."
+    ],
+    "donts": [
+      "Não faça parecer loja grande e fria: prancha de espécimes com nome, não vitrine de cartões com sombra.",
+      "Não faça infantil: paleta de bordô, papel e dourado, cantos entre 2px e 5px.",
+      "Não pese no celular: duas famílias de fonte locais, superfícies planas, um único movimento autoral.",
+      "Não ponha sobretítulo acima de títulos.",
+      "Não use dourado como texto sobre papel."
+    ]
+  }
+}

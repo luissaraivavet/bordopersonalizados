@@ -57,7 +57,9 @@ def check_assets():
         'bow-coruja.webp', 'bow-leao.webp', 'bow-gato.webp', 'gifts.webp',
         'craft.webp', 'art.webp', 'caixa-artesanal.webp',
         'sinfonia-reel.mp4', 'jardim-margarida.webp', 'jardim-girassol.webp',
-        'jardim-rosa.webp', 'site.js', 'content.js', 'fonts/Lora.ttf', 'fonts/Manrope.ttf'
+        'jardim-rosa.webp', 'site.js', 'content.js', 'fonts/Lora.ttf', 'fonts/Manrope.ttf',
+        'fonts/Besley.woff2', 'fonts/Besley-Italic.woff2', 'fonts/HankenGrotesk.woff2',
+        'brand-logo-360.png'
     ]
     all_ok = True
     print("\nVerificando arquivos em assets/:")
