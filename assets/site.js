@@ -73,7 +73,9 @@
       } catch { return []; }
     }
     let cart=loadCart();
-    function saveCart(){ try{localStorage.setItem(STORAGE_KEY,JSON.stringify(cart));}catch{notify('Sua sacola funciona nesta visita, mas não pôde ser salva neste navegador.');} renderCartUI(); }
+    // Marca a peça recém-adicionada ou alterada para a sacola animar só ela.
+    let cartMark=null;
+    function saveCart(){ try{localStorage.setItem(STORAGE_KEY,JSON.stringify(cart));}catch{notify('Sua sacola funciona nesta visita, mas não pôde ser salva neste navegador.');} renderCartUI(); cartMark=null; }
     function cartTotals(){ const subtotal=cart.reduce((sum,item)=>sum+item.price*item.qty,0); const gift=cart.length && document.getElementById('cartGiftCheck').checked ? GIFT_PRICE : 0; return {subtotal,gift,total:subtotal+gift,pix:pixPrice(subtotal)+gift}; }
     function checkoutMessage(){
       const totals=cartTotals();
@@ -83,7 +85,7 @@
       const list=document.getElementById('cartItemsList'); const count=cart.reduce((sum,item)=>sum+item.qty,0); const totals=cartTotals();
       document.getElementById('cartCountBadge').textContent=count;
       document.getElementById('bagButton').setAttribute('aria-label',`Abrir sacola, ${count} ${count===1?'item':'itens'}`);
-      list.innerHTML=cart.length ? cart.map((item,index)=>`<article class="bag-item"><img src="${item.imgPath}" alt="${escapeHTML(item.title)}" width="84" height="105"><div><h3>${escapeHTML(item.title)}</h3>${isPlaceholderOption(item.variation)?'':`<p>${escapeHTML(item.variation)}</p>`}<strong>${money(item.price*item.qty)}</strong><div class="quantity"><button class="icon-button" data-qty="${index}" data-delta="-1" aria-label="Diminuir quantidade de ${escapeHTML(item.title)}" title="Diminuir quantidade">${icon('minus')}</button><output aria-label="Quantidade">${item.qty}</output><button class="icon-button" data-qty="${index}" data-delta="1" aria-label="Aumentar quantidade de ${escapeHTML(item.title)}" title="Aumentar quantidade">${icon('plus')}</button><button class="icon-button remove" data-remove="${index}" aria-label="Remover ${escapeHTML(item.title)}" title="Remover peça">${icon('trash-2')}</button></div></div></article>`).join(''):`<div class="empty">${icon('shopping-bag')}<p>Sua sacola está esperando<br>o primeiro encanto.</p><button class="button secondary" id="emptyCollection">Explorar a coleção ${icon('arrow-right')}</button><button class="text-link" type="button" id="emptyCustom">Ou descreva uma encomenda</button></div>`;
+      list.innerHTML=cart.length ? cart.map((item,index)=>`<article class="bag-item${cartMark?.index===index?` is-${cartMark.kind}`:''}"><img src="${item.imgPath}" alt="${escapeHTML(item.title)}" width="84" height="105"><div><h3>${escapeHTML(item.title)}</h3>${isPlaceholderOption(item.variation)?'':`<p>${escapeHTML(item.variation)}</p>`}<strong>${money(item.price*item.qty)}</strong><div class="quantity"><button class="icon-button" data-qty="${index}" data-delta="-1" aria-label="Diminuir quantidade de ${escapeHTML(item.title)}" title="Diminuir quantidade">${icon('minus')}</button><output aria-label="Quantidade">${item.qty}</output><button class="icon-button" data-qty="${index}" data-delta="1" aria-label="Aumentar quantidade de ${escapeHTML(item.title)}" title="Aumentar quantidade">${icon('plus')}</button><button class="icon-button remove" data-remove="${index}" aria-label="Remover ${escapeHTML(item.title)}" title="Remover peça">${icon('trash-2')}</button></div></div></article>`).join(''):`<div class="empty">${icon('shopping-bag')}<p>Sua sacola está esperando<br>o primeiro encanto.</p><button class="button secondary" id="emptyCollection">Explorar a coleção ${icon('arrow-right')}</button><button class="text-link" type="button" id="emptyCustom">Ou descreva uma encomenda</button></div>`;
       document.getElementById('cartSubtotalText').textContent=money(totals.subtotal); document.getElementById('cartTotalText').textContent=money(totals.total); document.getElementById('cartPixText').textContent=money(totals.pix);
       document.getElementById('giftTotalRow').hidden=!totals.gift; document.getElementById('cartGiftCheck').disabled=!cart.length;
       // Uma sacola vazia não carrega a embalagem para o próximo pedido.
@@ -93,8 +95,8 @@
     function addToCart(id){
       const product=products.find(item=>item.id===id); if(!product || !Number.isFinite(product.price)) return;
       const variation=document.getElementById(`var-${id}`)?.value || product.options[0]; const existing=cart.find(item=>item.id===id && item.variation===variation);
-      if(existing){if(existing.qty>=99){notify('Para mais de 99 peças, consulte um projeto personalizado.');return;} existing.qty++;}
-      else cart.push({id,title:product.title,price:product.price,variation,imgPath:product.image,qty:1});
+      if(existing){if(existing.qty>=99){notify('Para mais de 99 peças, consulte um projeto personalizado.');return;} existing.qty++;cartMark={index:cart.indexOf(existing),kind:'changed'};}
+      else {cart.push({id,title:product.title,price:product.price,variation,imgPath:product.image,qty:1});cartMark={index:cart.length-1,kind:'new'};}
       saveCart(); document.getElementById('cartDrawer').showModal();
     }
     function updateSimulatorPreview(){
@@ -124,7 +126,7 @@
       if(button?.dataset.add){addToCart(button.dataset.add);return;}
       if(button?.dataset.close){document.getElementById(button.dataset.close).close();return;}
       if(button?.dataset.zoom){document.getElementById('lightboxImage').src=button.dataset.zoom;document.getElementById('lightboxImage').alt=button.dataset.title;document.getElementById('imageTitle').textContent=button.dataset.title;document.getElementById('imageDialog').showModal();return;}
-      if(button?.hasAttribute('data-qty')){const index=Number(button.dataset.qty);const delta=Number(button.dataset.delta);const item=cart[index];if(!item)return;if(item.qty+delta>99){notify('Para mais de 99 peças, consulte um projeto personalizado.');return;}item.qty+=delta;if(item.qty<=0)cart.splice(index,1);saveCart();const replacement=document.querySelector(`[data-qty="${index}"][data-delta="${delta}"]`);(replacement||document.querySelector('[data-close="cartDrawer"]')).focus();return;}
+      if(button?.hasAttribute('data-qty')){const index=Number(button.dataset.qty);const delta=Number(button.dataset.delta);const item=cart[index];if(!item)return;if(item.qty+delta>99){notify('Para mais de 99 peças, consulte um projeto personalizado.');return;}item.qty+=delta;if(item.qty<=0)cart.splice(index,1);else cartMark={index,kind:'changed'};saveCart();const replacement=document.querySelector(`[data-qty="${index}"][data-delta="${delta}"]`);(replacement||document.querySelector('[data-close="cartDrawer"]')).focus();return;}
       if(button?.hasAttribute('data-remove')){cart.splice(Number(button.dataset.remove),1);saveCart();document.querySelector('[data-close="cartDrawer"]').focus();return;}
       if(button?.id==='emptyCustom'){document.getElementById('cartDrawer').close();document.getElementById('personalizados').scrollIntoView();document.getElementById('simDetailInput').focus({preventScroll:true});return;}
       if(button?.id==='emptyCollection'){document.getElementById('cartDrawer').close();document.getElementById('colecoes').scrollIntoView();return;}

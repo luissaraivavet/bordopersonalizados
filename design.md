@@ -36,6 +36,8 @@ The spacing scale, the type scale, the easings and the durations are the scaffol
 
 ## Motion
 - Character: calm; one rise-and-fade reveal on scroll, a short entrance in the hero and on collection change; under reduced motion everything ends at once.
+- Signature: the running stitch. The active collection tab is underlined by a dashed bordô line sewn in 16 steps (640ms) when the collection changes.
+- Feedback: in the bag, a new piece rises in and a changed quantity and price tick (220ms); the form error and the toast fade in. FAQ answers open with animated height where the browser supports `interpolate-size`.
 
 ## Exports
 `assets/tokens.css` in this project. Tailwind, DTCG or shadcn blocks are added here on request.
