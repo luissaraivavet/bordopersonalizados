@@ -315,12 +315,11 @@ def page(spec, template):
     most = max(range(len(items)), key=lambda i: items[i]['opinioes'])
     highlights_unused = (f'<div class="highlights"><a href="#item-{most + 1}"><strong>Mais avaliado</strong>{esc(items[most]["name"])}, com {number(items[most]["opinioes"])} opiniões</a>'
                   f'<a href="#item-{cheapest + 1}"><strong>Mais barato</strong>{esc(items[cheapest]["name"])}, por {money(items[cheapest]["price"])}</a></div>')
-    half = (len(items) + 1) // 2
     sold_rank = max(range(len(items)), key=lambda i: (int(items[i]['vendidos'].replace('mil', '000') or 0), items[i]['opinioes']))
     badges = {most: 'Escolha segura: o mais avaliado', cheapest: 'O mais barato da lista'}
     badges.setdefault(sold_rank, 'Um dos mais vendidos')
     item = lambda index, entry: render_item(index, entry, spec, badges.get(index - 1))
-    body_items = ''.join(item(index, entry) for index, entry in enumerate(items[:half], 1)) + render_own(spec['own']) + ''.join(item(index, entry) for index, entry in enumerate(items[half:], half + 1))
+    body_items = ''.join(item(index, entry) for index, entry in enumerate(items, 1))
     safe = items[most]
     decide = (f'<div class="decide"><p class="decide-count" id="natalCount" hidden></p><h2>Sem tempo? Vá direto nestes dois</h2>'
               f'<p><strong>Na dúvida, escolha: {esc(safe["name"])}.</strong> É o item que mais gente já avaliou nesta lista: {number(safe["opinioes"])} opiniões, nota {note(safe["nota"])}. '
