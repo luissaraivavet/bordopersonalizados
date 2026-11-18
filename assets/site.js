@@ -207,6 +207,20 @@
       film.src='assets/hero-risco.mp4';
       const p=film.play(); if(p&&p.catch) p.catch(()=>film.remove());
     })();
+    // Cabeçalho que sai ao descer e volta ao subir; nunca some com menu aberto ou foco dentro dele.
+    (function(){
+      const head=document.querySelector('.masthead'); if(!head) return;
+      const quieto=matchMedia('(prefers-reduced-motion: reduce)');
+      let ultimo=scrollY, pedido=0;
+      const preso=()=>head.contains(document.activeElement)||!!head.querySelector('.nav.open, details[open]');
+      const passo=()=>{pedido=0; const y=scrollY, d=y-ultimo;
+        head.classList.toggle('is-scrolled',y>8);
+        if(y<160||d<-6||preso()||quieto.matches) head.classList.remove('is-hidden');
+        else if(d>6) head.classList.add('is-hidden');
+        if(Math.abs(d)>6) ultimo=y;};
+      addEventListener('scroll',()=>{if(!pedido) pedido=requestAnimationFrame(passo);},{passive:true});
+      head.addEventListener('focusin',()=>head.classList.remove('is-hidden'));
+    })();
     // Reveal on scroll runs only after everything above succeeded, so a failed script never hides content.
     if('IntersectionObserver' in window){
       document.documentElement.classList.add('js');

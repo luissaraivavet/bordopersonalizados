@@ -431,15 +431,24 @@ dialog::backdrop{background:var(--color-scrim)}
 #historia{padding-block:var(--section-gap-l)}
 #historia .story{grid-template-columns:minmax(0,5fr) minmax(0,6fr);align-items:center}
 #historia .story-copy h2{max-width:9ch;font-size:var(--text-display);line-height:.98}
-#historia .story-copy>p:first-of-type{font-size:var(--text-3xl);line-height:1.2}
+#historia .story-copy>p:first-of-type{max-width:34ch;font-size:var(--text-xl);line-height:1.45;font-weight:400}
 #historia .founder-photo figcaption{font-size:var(--text-3xl)}
-@media(max-width:60rem){#historia .story{grid-template-columns:minmax(0,1fr)}#historia .founder-photo{max-width:none}#historia .story-copy>p:first-of-type{font-size:var(--text-2xl)}}
+@media(max-width:60rem){#historia .story{grid-template-columns:minmax(0,1fr)}#historia .founder-photo{max-width:none}#historia .story-copy>p:first-of-type{font-size:var(--text-lg)}}
 
 ::placeholder{color:var(--color-muted);opacity:1}
 /* Lanterna da capa: o cursor abre um círculo que mostra o risco a lápis do bordado. */
 .hero-risco{display:none}
 /* Celular: o risco se desenha e vira a foto uma vez ao abrir; some no fim e deixa a foto parada. */
 .hero-film{display:none}
+/* Fotos dos produtos chegam mais perto devagar sob o mouse; usa `scale` para somar ao recorte de cada foto. */
+@media(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){.product-figure>img{transition:scale 900ms var(--ease-out)}.product:hover .product-figure>img{scale:1.045}}
+/* Cabeçalho: sai ao descer, volta ao subir; um ponto corrido bordô mostra quanto da página já passou. */
+.masthead{transition:translate 320ms var(--ease-out),box-shadow 320ms var(--ease-out)}
+.masthead.is-scrolled{box-shadow:0 6px 18px -14px rgb(90 26 46/.45)}
+.masthead.is-hidden{translate:0 -100%}
+@supports (animation-timeline:scroll()){.masthead::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2px;background:repeating-linear-gradient(90deg,var(--color-accent) 0 9px,transparent 9px 14px);clip-path:inset(0 100% 0 0);animation:costura-progresso linear both;animation-timeline:scroll(root);pointer-events:none}}
+@keyframes costura-progresso{to{clip-path:inset(0 0 0 0)}}
+@media(prefers-reduced-motion:reduce){.masthead{transition:none}}
 @media(max-width:60rem) and (prefers-reduced-motion:no-preference){.hero-media{position:relative}.hero-film.is-on{display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:var(--color-paper);transition:opacity 500ms var(--ease-out)}.hero-film.is-done{opacity:0}}
 @media(hover:hover) and (pointer:fine) and (min-width:60.0625rem) and (prefers-reduced-motion:no-preference){.hero-risco{--lx:-999px;--ly:-999px;--lr:0px;display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 40%;pointer-events:none;-webkit-mask-image:radial-gradient(circle var(--lr) at var(--lx) var(--ly),#000 0%,#000 40%,rgb(0 0 0/.75) 60%,rgb(0 0 0/.4) 75%,rgb(0 0 0/.12) 88%,transparent 100%);mask-image:radial-gradient(circle var(--lr) at var(--lx) var(--ly),#000 0%,#000 40%,rgb(0 0 0/.75) 60%,rgb(0 0 0/.4) 75%,rgb(0 0 0/.12) 88%,transparent 100%)}}
 .field-error{margin-top:var(--space-xs);animation:tick var(--dur-short) var(--ease-out) both;color:var(--color-accent);font-size:var(--text-sm);font-weight:600;line-height:1.4}
@@ -500,6 +509,6 @@ dialog::backdrop{background:var(--color-scrim)}
   <dialog class="lightbox" id="imageDialog" aria-labelledby="imageTitle"><div class="lightbox-top"><h2 id="imageTitle">Detalhes da peça</h2><button class="icon-button" type="button" data-close="imageDialog" aria-label="Fechar imagem" title="Fechar imagem" autofocus><img class="icon" src="assets/icons/x.svg" alt=""></button></div><img class="lightbox-image" id="lightboxImage" src="assets/brand-logo.png" width="1964" height="800" alt=""><p>Consulte os detalhes da peça no atendimento.</p></dialog>
   <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
   <script src="assets/content.js?v=20261118-lookbook"></script>
-  <script src="assets/site.js?v=20261118-filme"></script>
+  <script src="assets/site.js?v=20261118-rolagem"></script>
 </body>
 </html>
