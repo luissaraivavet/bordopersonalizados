@@ -84,7 +84,8 @@ button,a,input,select,textarea,summary{-webkit-tap-highlight-color:transparent}
 .menu-button{display:none}
 
 .hero{position:relative;display:flex;align-items:end;min-height:min(calc(100dvh - var(--nav-h) - var(--space-2xl)),60rem);overflow:hidden;background:var(--color-paper-2)}
-.hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 40%;animation:settle 1400ms var(--ease-out) both}
+.hero-media{position:absolute;inset:0;animation:settle 1400ms var(--ease-out) both}
+.hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 40%}
 .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--color-veil-strong) 0%,var(--color-veil) 40%,var(--color-veil-none) 66%)}
 .hero>.wrap{position:relative;z-index:var(--z-raised);padding-block:var(--space-3xl)}
 .intro{max-width:44rem}
@@ -97,7 +98,7 @@ button,a,input,select,textarea,summary{-webkit-tap-highlight-color:transparent}
 @keyframes settle{from{transform:scale(1.05)}to{transform:none}}
 /* A foto da capa recua devagar enquanto a página sobe; só onde o navegador liga animação à rolagem. */
 @keyframes drift{to{translate:0 9%;scale:1.06}}
-@supports (animation-timeline:scroll()){.hero-photo{animation:settle 1400ms var(--ease-out) both,drift linear both;animation-timeline:auto,scroll(root);animation-range:normal,0 100vh}}
+@supports (animation-timeline:scroll()){.hero-media{animation:settle 1400ms var(--ease-out) both,drift linear both;animation-timeline:auto,scroll(root);animation-range:normal,0 100vh}}
 @keyframes appear{from{opacity:0}to{opacity:1}}
 
 .catalog{padding-top:var(--space-2xl)}
@@ -348,6 +349,7 @@ dialog::backdrop{background:var(--color-scrim)}
   .dropdown a{font-size:var(--text-md)}
   .brand img{height:42px}
   .hero{display:block;min-height:0;background:var(--color-paper)}
+  .hero-media{position:static;animation:none}
   .hero-photo{position:static;height:auto;aspect-ratio:4/5;max-height:42dvh;object-position:82% 30%}
   .hero::after{display:none}
   .hero>.wrap{padding-block:var(--space-lg) var(--space-2xl)}
@@ -396,7 +398,7 @@ dialog::backdrop{background:var(--color-scrim)}
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .js [data-reveal]{opacity:1;transform:none;transition:none}
-  .hero-photo,.intro h1,.intro p,.intro>.button,.product,#catalogSections>.section,.bag[open],.lightbox[open]{animation:none}
+  .hero-media,.intro h1,.intro p,.intro>.button,.product,#catalogSections>.section,.bag[open],.lightbox[open]{animation:none}
   .button,.icon-button,.text-link,.nav>a,.nav summary,.collection-link,.collection-link::after,.choice span,.faq summary,.faq summary .icon{transition:none}
 }
 .blog-band{background:var(--color-paper-2)}
@@ -434,6 +436,9 @@ dialog::backdrop{background:var(--color-scrim)}
 @media(max-width:60rem){#historia .story{grid-template-columns:minmax(0,1fr)}#historia .founder-photo{max-width:none}#historia .story-copy>p:first-of-type{font-size:var(--text-2xl)}}
 
 ::placeholder{color:var(--color-muted);opacity:1}
+/* Lanterna da capa: o cursor abre um círculo que mostra o risco a lápis do bordado. */
+.hero-risco{display:none}
+@media(hover:hover) and (pointer:fine) and (min-width:60.0625rem) and (prefers-reduced-motion:no-preference){.hero-risco{--lx:-999px;--ly:-999px;--lr:0px;display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 40%;pointer-events:none;-webkit-mask-image:radial-gradient(circle var(--lr) at var(--lx) var(--ly),#000 0%,#000 40%,rgb(0 0 0/.75) 60%,rgb(0 0 0/.4) 75%,rgb(0 0 0/.12) 88%,transparent 100%);mask-image:radial-gradient(circle var(--lr) at var(--lx) var(--ly),#000 0%,#000 40%,rgb(0 0 0/.75) 60%,rgb(0 0 0/.4) 75%,rgb(0 0 0/.12) 88%,transparent 100%)}}
 .field-error{margin-top:var(--space-xs);animation:tick var(--dur-short) var(--ease-out) both;color:var(--color-accent);font-size:var(--text-sm);font-weight:600;line-height:1.4}
 .custom-form textarea[aria-invalid=true]{border-color:var(--color-accent);box-shadow:0 0 0 1px var(--color-accent)}
 </style>
@@ -455,7 +460,7 @@ dialog::backdrop{background:var(--color-scrim)}
   </header>
   <main id="conteudo">
     <section class="hero" aria-labelledby="pageTitle">
-      <img class="hero-photo" src="assets/hero-mae-aparecida.webp" width="1536" height="1024" fetchpriority="high" alt="Menina de costas com o Laço Mãe Aparecida no cabelo, em uma capela clara">
+      <div class="hero-media"><img class="hero-photo" src="assets/hero-mae-aparecida.webp" width="1536" height="1024" fetchpriority="high" alt="Menina de costas com o Laço Mãe Aparecida no cabelo, em uma capela clara"><img class="hero-risco" src="assets/hero-risco.webp" width="1536" height="1024" alt="" aria-hidden="true" decoding="async"></div>
       <div class="wrap"><div class="intro"><div><h1 id="pageTitle">Laços e bordados <em>personalizados</em></h1><p>Laços e naninhas bordados com fé, a partir de R$ 49,90.</p><p class="intro-place">Bordados em Teixeiras, MG, com envio para todo o Brasil.</p></div><a class="button" href="#rainha">Ver os laços Mãe &amp; Rainha <img class="icon" src="assets/icons/arrow-right.svg" alt=""></a></div></div>
     </section>
     <section class="feature" aria-labelledby="maeRainhaTitle"><div class="wrap feature-layout"><figure class="feature-frame" id="tonePhoto" data-reveal><img class="feature-photo revela" id="toneImg" src="assets/mae-rainha-lacos.webp" width="1448" height="1086" alt="Três Laços Mãe Aparecida sobre linho: off-white, azul e rosa" loading="lazy"><figcaption id="toneCaption">As três cores juntas</figcaption></figure><article class="feature-copy" id="mae-rainha" data-reveal><h2 id="maeRainhaTitle">Mãe &amp; <em>Rainha</em></h2><p class="lead">Fé e carinho em cada escolha.</p><p><strong>Laços bordados.</strong> Uma homenagem à Nossa Senhora Aparecida, em três cores para escolher com carinho.</p><ul class="color-list" id="toneList" aria-label="Ver cada cor"><li><button type="button" class="tone" aria-pressed="false" data-src="assets/rainha-perola.webp" data-alt="Laço Mãe Aparecida, Pérola da Rainha" data-caption="Pérola da Rainha, off-white"><span class="swatch swatch-perola"></span><span><strong>Pérola da Rainha</strong>, off-white</span></button></li><li><button type="button" class="tone" aria-pressed="false" data-src="assets/rainha-manto-celeste.webp" data-alt="Laço Mãe Aparecida, Manto Celeste" data-caption="Manto Celeste, azul suave"><span class="swatch swatch-manto"></span><span><strong>Manto Celeste</strong>, azul suave</span></button></li><li><button type="button" class="tone" aria-pressed="false" data-src="assets/rainha-jardim-maria.webp" data-alt="Laço Mãe Aparecida, Jardim de Maria" data-caption="Jardim de Maria, rosa antigo"><span class="swatch swatch-jardim"></span><span><strong>Jardim de Maria</strong>, rosa antigo</span></button></li><li><button type="button" class="tone tone-all" aria-pressed="true" data-src="assets/mae-rainha-lacos.webp" data-alt="Três Laços Mãe Aparecida sobre linho: off-white, azul e rosa" data-caption="As três cores juntas">Ver as três juntas</button></li></ul><p class="feature-price">R$ 49,90 cada</p><a class="button" href="#rainha">Escolher meu laço</a></article></div>
@@ -492,6 +497,6 @@ dialog::backdrop{background:var(--color-scrim)}
   <dialog class="lightbox" id="imageDialog" aria-labelledby="imageTitle"><div class="lightbox-top"><h2 id="imageTitle">Detalhes da peça</h2><button class="icon-button" type="button" data-close="imageDialog" aria-label="Fechar imagem" title="Fechar imagem" autofocus><img class="icon" src="assets/icons/x.svg" alt=""></button></div><img class="lightbox-image" id="lightboxImage" src="assets/brand-logo.png" width="1964" height="800" alt=""><p>Consulte os detalhes da peça no atendimento.</p></dialog>
   <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
   <script src="assets/content.js?v=20261118-lookbook"></script>
-  <script src="assets/site.js?v=20261118-titulos"></script>
+  <script src="assets/site.js?v=20261118-lanterna"></script>
 </body>
 </html>
