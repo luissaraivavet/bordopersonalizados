@@ -123,10 +123,17 @@
       document.getElementById('customWhatsApp').href=whatsApp(`Olá! Vim pelo site da Bordô e gostaria de um orçamento personalizado.\n\n${summary}\n\nPodem me informar possibilidades, valores e prazo?`);
     }
     // One collection is open at a time; any link to a collection id switches to it.
+    // Desliza só a fileira de abas até a aba ativa; nunca rola a página (scrollIntoView rolava a página ao abrir o site).
+    function revealTab(link){
+      const strip=link.parentElement; if(!strip||strip.scrollWidth<=strip.clientWidth) return;
+      const s=strip.getBoundingClientRect(), l=link.getBoundingClientRect(), pad=parseFloat(getComputedStyle(strip).paddingLeft)||0;
+      if(l.left<s.left+pad) strip.scrollLeft+=l.left-s.left-pad;
+      else if(l.right>s.right-pad) strip.scrollLeft+=l.right-s.right+pad;
+    }
     function showCollection(id){
       if(!collections.some(c=>c.id===id)) return false;
       document.querySelectorAll('#catalogSections>section').forEach(section=>{section.hidden=section.id!==id;if(section.hidden)section.querySelectorAll('video').forEach(video=>video.pause());});
-      document.querySelectorAll('.collection-grid a').forEach(link=>{if(link.getAttribute('href')===`#${id}`){link.setAttribute('aria-current','true');link.scrollIntoView({block:'nearest',inline:'nearest'});}else link.removeAttribute('aria-current');});
+      document.querySelectorAll('.collection-grid a').forEach(link=>{if(link.getAttribute('href')===`#${id}`){link.setAttribute('aria-current','true');revealTab(link);}else link.removeAttribute('aria-current');});
       return true;
     }
     function closeMenu(){document.getElementById('mainNav').classList.remove('open');document.getElementById('menuButton').setAttribute('aria-expanded','false');document.getElementById('menuButton').setAttribute('aria-label','Abrir menu');document.querySelector('.collection-nav').open=false;}
