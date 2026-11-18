@@ -60,12 +60,12 @@ button,a,input,select,textarea,summary{-webkit-tap-highlight-color:transparent}
 .text-link{display:inline-flex;align-items:center;gap:var(--space-xs);min-height:44px;border-bottom:1px solid var(--color-gold-deep);font-size:var(--text-sm);font-weight:600;transition:color var(--dur-short) var(--ease-out)}
 .text-link:hover{color:var(--color-accent)}
 .text-link:active{color:var(--color-accent-deep)}
-.skip{position:absolute;left:var(--space-md);top:calc(-1 * var(--space-3xl));z-index:var(--z-toast);padding:var(--space-xs) var(--space-md);background:var(--color-paper);color:var(--color-ink)}
+.skip{position:absolute;display:inline-flex;align-items:center;min-height:44px;left:var(--space-md);top:calc(-1 * var(--space-3xl));z-index:var(--z-toast);padding:var(--space-xs) var(--space-md);background:var(--color-paper);color:var(--color-ink)}
 .skip:focus-visible{top:var(--space-md)}
 
 .masthead{position:sticky;top:0;z-index:var(--z-sticky-nav);background:var(--color-paper);border-bottom:1px solid var(--color-rule)}
 .masthead>.wrap{position:relative;display:flex;align-items:center;justify-content:space-between;gap:var(--space-lg);height:var(--nav-h)}
-.brand{display:block;flex:none}
+.brand{display:flex;align-items:center;min-height:44px;flex:none}
 .brand img{width:auto;height:48px}
 .nav-row{display:flex;align-items:center;gap:var(--space-lg)}
 .nav{display:flex;align-items:center;gap:var(--space-xl)}
@@ -118,8 +118,10 @@ button,a,input,select,textarea,summary{-webkit-tap-highlight-color:transparent}
   .collection-name{white-space:normal}
 }
 @media(min-width:75.01rem){
-  .collection-grid{grid-template-columns:repeat(6,minmax(0,1fr));gap:0 var(--space-lg)}
-  .collection-name{font-size:var(--text-lg)}
+  .collection-grid{grid-template-columns:repeat(6,minmax(0,1fr));gap:0 var(--space-md)}
+  .collection-link{gap:var(--space-sm)}
+  .collection-photo{width:48px;height:60px}
+  .collection-name{font-size:var(--text-lg);text-wrap:balance}
 }
 @keyframes stitch{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0)}}
 #catalogSections>.section{padding-block:var(--space-2xl) var(--section-gap-s);animation:appear var(--dur-long) var(--ease-out) both}
@@ -509,6 +511,6 @@ dialog::backdrop{background:var(--color-scrim)}
   <dialog class="lightbox" id="imageDialog" aria-labelledby="imageTitle"><div class="lightbox-top"><h2 id="imageTitle">Detalhes da peça</h2><button class="icon-button" type="button" data-close="imageDialog" aria-label="Fechar imagem" title="Fechar imagem" autofocus><img class="icon" src="assets/icons/x.svg" alt=""></button></div><img class="lightbox-image" id="lightboxImage" src="assets/brand-logo.png" width="1964" height="800" alt=""><p>Consulte os detalhes da peça no atendimento.</p></dialog>
   <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
   <script src="assets/content.js?v=20261118-lookbook"></script>
-  <script src="assets/site.js?v=20261118-flow"></script>
+  <script src="assets/site.js?v=20261118-polish"></script>
 </body>
 </html>

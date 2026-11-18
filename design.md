@@ -41,11 +41,14 @@ The spacing scale, the type scale, the easings and the durations are the scaffol
 
 ## Motion
 - Character: calm; one rise-and-fade reveal on scroll, a short entrance in the hero and on collection change; under reduced motion everything ends at once.
-- Signature: the running stitch. The active collection tab is underlined by a dashed bordô line sewn in 16 steps (640ms) when the collection changes.
+- Signature: the running stitch. The active collection tab is underlined by a dashed bordô line sewn in 16 steps (640ms) when the collection changes; the same dashed line under the header shows how much of the page has passed, driven by `animation-timeline: scroll()` where supported.
+- Header: hides when scrolling down past 160px and returns on any scroll up; it never hides with the menu open, focus inside it or reduced motion.
+- Hero: on desktop with a mouse, a 240px lantern reveals the pencil pattern (`hero-risco.webp`) under the pointer. On phones, `hero-lacos.mp4` (the three Mãe Aparecida bows, from Google Flow) plays once and fades into the still photo; never with reduced motion or Save-Data.
+- Product photos ease 4.5% closer under a fine pointer (900ms, `scale`, so it stacks on per-photo crops).
 - Feedback: in the bag, a new piece rises in and a changed quantity and price tick (220ms); the form error and the toast fade in. FAQ answers open with animated height where the browser supports `interpolate-size`.
 
 ## História (shop)
-- The peak of the scroll: `--section-gap-l` around it, portrait 5fr in the arch next to a hero-scale title, the opening paragraph at `--text-3xl`, and the portrait unmasking with `.revela`.
+- The peak of the scroll: `--section-gap-l` around it, portrait 5fr in the arch next to a hero-scale title, the opening paragraph at reading size (`--text-xl`, 34ch; `--text-lg` on phones), and the portrait unmasking with `.revela`.
 
 ## Blog (Casa & Inspiração)
 - The list pages (`blog/assets/revista.css`) follow this system: an oversized Instrument Sans numeral opens the page, a spotlight piece swaps with a vertical wipe, and the items sit in an asymmetric 7/5 and 4/4/4 grid.
