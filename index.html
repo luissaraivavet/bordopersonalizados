@@ -83,14 +83,15 @@ button,a,input,select,textarea,summary{-webkit-tap-highlight-color:transparent}
 .bag-count{min-width:22px;height:22px;display:grid;place-items:center;border-radius:var(--radius-pill);background:var(--color-accent);color:var(--color-accent-ink);font-size:var(--text-xs);font-weight:600;font-variant-numeric:tabular-nums}
 .menu-button{display:none}
 
-.hero{position:relative;display:flex;align-items:end;min-height:calc(100dvh - var(--nav-h));overflow:hidden;background:var(--color-paper-2)}
+.hero{position:relative;display:flex;align-items:end;min-height:min(calc(100dvh - var(--nav-h) - var(--space-2xl)),60rem);overflow:hidden;background:var(--color-paper-2)}
 .hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 40%;animation:settle 1400ms var(--ease-out) both}
 .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--color-veil-strong) 0%,var(--color-veil) 40%,var(--color-veil-none) 66%)}
 .hero>.wrap{position:relative;z-index:var(--z-raised);padding-block:var(--space-3xl)}
 .intro{max-width:44rem}
 .intro>div{min-width:0}
-.intro h1{max-width:12ch;font-size:var(--text-display);line-height:.98;animation:rise 700ms var(--ease-out) both}
+.intro h1{max-width:15ch;text-wrap:balance;font-size:var(--text-display);line-height:.98;animation:rise 700ms var(--ease-out) both}
 .intro p{max-width:30ch;margin-top:var(--space-lg);font-size:var(--text-lead);color:var(--color-ink);animation:rise 700ms var(--ease-out) 90ms both}
+.intro p.intro-place{max-width:44ch;margin-top:var(--space-xs);font-size:var(--text-sm);color:var(--color-ink-2)}
 .intro>.button{margin-top:var(--space-xl);animation:rise 700ms var(--ease-out) 180ms both}
 @keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
 @keyframes settle{from{transform:scale(1.05)}to{transform:none}}
@@ -110,6 +111,15 @@ button,a,input,select,textarea,summary{-webkit-tap-highlight-color:transparent}
 .collection-link::after{content:"";position:absolute;inset:auto 0 0 0;height:2px;background:repeating-linear-gradient(90deg,var(--color-accent) 0 10px,transparent 10px 15px);clip-path:inset(0 100% 0 0)}
 .collection-link:hover,.collection-link[aria-current=true]{color:var(--color-display)}
 .collection-link[aria-current=true]::after{clip-path:inset(0);animation:stitch 640ms steps(16,end) both}
+/* Com espaço, todas as coleções ficam à vista: 3 por linha, e 6 numa linha só a partir de 75rem */
+@media(min-width:60.01rem){
+  .collection-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 var(--space-xl);overflow:visible}
+  .collection-name{white-space:normal}
+}
+@media(min-width:75.01rem){
+  .collection-grid{grid-template-columns:repeat(6,minmax(0,1fr));gap:0 var(--space-lg)}
+  .collection-name{font-size:var(--text-lg)}
+}
 @keyframes stitch{from{clip-path:inset(0 100% 0 0)}to{clip-path:inset(0)}}
 #catalogSections>.section{padding-block:var(--space-2xl) var(--section-gap-s);animation:appear var(--dur-long) var(--ease-out) both}
 .section-heading{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);justify-content:space-between;gap:var(--space-lg) var(--space-3xl);align-items:end;margin-bottom:var(--space-2xl)}
@@ -156,7 +166,10 @@ textarea{min-height:112px;padding-block:var(--space-sm);resize:vertical}
 .film-copy .muted{font-size:var(--text-sm);color:var(--color-muted)}
 .film-copy .text-link{margin-top:var(--space-md)}
 
-.custom-band{padding-block:var(--section-gap-s);background:var(--color-paper-2)}
+.custom-band{padding-block:var(--section-gap-s) min(var(--space-2xl),var(--section-gap-s));background:var(--color-paper-2)}
+/* O convite e o formulário são um capítulo só: mesma faixa, separados por um fio */
+.custom-band + .section.personalize{padding-top:0}
+.custom-band + .personalize .personalize-layout{padding-top:min(var(--space-2xl),var(--section-gap-s));border-top:1px solid var(--color-rule)}
 .custom-band-inner{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);justify-content:space-between;gap:var(--space-xl) var(--space-3xl);align-items:center}
 .custom-band h2{max-width:11ch;font-size:var(--text-display);line-height:.98}
 .custom-band p{margin-block:var(--space-lg) var(--space-xl);font-size:var(--text-lead);color:var(--color-ink-2)}
@@ -334,10 +347,13 @@ dialog::backdrop{background:var(--color-scrim)}
   .dropdown a{font-size:var(--text-md)}
   .brand img{height:42px}
   .hero{display:block;min-height:0;background:var(--color-paper)}
-  .hero-photo{position:static;height:auto;aspect-ratio:4/5;max-height:62dvh;object-position:82% 30%}
+  .hero-photo{position:static;height:auto;aspect-ratio:4/5;max-height:42dvh;object-position:82% 30%}
   .hero::after{display:none}
-  .hero>.wrap{padding-block:var(--space-xl) var(--space-2xl)}
-  .collection-grid{gap:var(--space-xl);margin-inline:calc(-1 * var(--gutter));padding-inline:var(--gutter);scroll-padding-inline:var(--gutter)}
+  .hero>.wrap{padding-block:var(--space-lg) var(--space-2xl)}
+  .intro>.button{margin-top:var(--space-lg)}
+  .feature{padding-bottom:var(--section-gap-s)}
+  .collection-grid{gap:var(--space-xl);margin-inline:calc(-1 * var(--gutter));padding-inline:var(--gutter);scroll-padding-inline:var(--gutter);-webkit-mask-image:linear-gradient(90deg,#000 calc(100% - 56px),transparent);mask-image:linear-gradient(90deg,#000 calc(100% - 56px),transparent)}
+  .collection-grid.is-end{-webkit-mask-image:none;mask-image:none}
   .section-heading,.film-row,.feature-layout,.custom-band-inner,.personalize-layout,.story,.founder-gallery,.faq-layout{grid-template-columns:minmax(0,1fr)}
   .discovery-grid{grid-template-columns:minmax(0,1fr)}
   .discovery-card,.quick-links{padding:var(--space-xl) 0;border-left:0;border-top:1px solid var(--color-rule)}
@@ -352,6 +368,7 @@ dialog::backdrop{background:var(--color-scrim)}
 }
 @media(max-width:48rem){
   .footer-main{grid-template-columns:minmax(0,1fr)}
+  #footerCollections{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:var(--space-md)}
 }
 @media(max-width:40rem){
   .intro>.button{width:100%}
@@ -429,7 +446,7 @@ dialog::backdrop{background:var(--color-scrim)}
   <main id="conteudo">
     <section class="hero" aria-labelledby="pageTitle">
       <img class="hero-photo" src="assets/hero-mae-aparecida.webp" width="1536" height="1024" fetchpriority="high" alt="Menina de costas com o Laço Mãe Aparecida no cabelo, em uma capela clara">
-      <div class="wrap"><div class="intro"><div><h1 id="pageTitle">Laços e bordados personalizados em Teixeiras, MG</h1><p>Laços e naninhas bordados com fé, a partir de R$ 49,90.</p></div><a class="button" href="#rainha">Ver os laços Mãe &amp; Rainha <img class="icon" src="assets/icons/arrow-right.svg" alt=""></a></div></div>
+      <div class="wrap"><div class="intro"><div><h1 id="pageTitle">Laços e bordados <em>personalizados</em></h1><p>Laços e naninhas bordados com fé, a partir de R$ 49,90.</p><p class="intro-place">Bordados em Teixeiras, MG, com envio para todo o Brasil.</p></div><a class="button" href="#rainha">Ver os laços Mãe &amp; Rainha <img class="icon" src="assets/icons/arrow-right.svg" alt=""></a></div></div>
     </section>
     <section class="feature" aria-labelledby="maeRainhaTitle"><div class="wrap feature-layout"><figure class="feature-frame" id="tonePhoto" data-reveal><img class="feature-photo revela" id="toneImg" src="assets/mae-rainha-lacos.webp" width="1448" height="1086" alt="Três Laços Mãe Aparecida sobre linho: off-white, azul e rosa" loading="lazy"><figcaption id="toneCaption">As três cores juntas</figcaption></figure><article class="feature-copy" id="mae-rainha" data-reveal><h2 id="maeRainhaTitle">Mãe &amp; <em>Rainha</em></h2><p class="lead">Fé e carinho em cada escolha.</p><p><strong>Laços bordados.</strong> Uma homenagem à Nossa Senhora Aparecida, em três cores para escolher com carinho.</p><ul class="color-list" id="toneList" aria-label="Ver cada cor"><li><button type="button" class="tone" aria-pressed="false" data-src="assets/rainha-perola.webp" data-alt="Laço Mãe Aparecida, Pérola da Rainha" data-caption="Pérola da Rainha, off-white"><span class="swatch swatch-perola"></span><span><strong>Pérola da Rainha</strong>, off-white</span></button></li><li><button type="button" class="tone" aria-pressed="false" data-src="assets/rainha-manto-celeste.webp" data-alt="Laço Mãe Aparecida, Manto Celeste" data-caption="Manto Celeste, azul suave"><span class="swatch swatch-manto"></span><span><strong>Manto Celeste</strong>, azul suave</span></button></li><li><button type="button" class="tone" aria-pressed="false" data-src="assets/rainha-jardim-maria.webp" data-alt="Laço Mãe Aparecida, Jardim de Maria" data-caption="Jardim de Maria, rosa antigo"><span class="swatch swatch-jardim"></span><span><strong>Jardim de Maria</strong>, rosa antigo</span></button></li><li><button type="button" class="tone tone-all" aria-pressed="true" data-src="assets/mae-rainha-lacos.webp" data-alt="Três Laços Mãe Aparecida sobre linho: off-white, azul e rosa" data-caption="As três cores juntas">Ver as três juntas</button></li></ul><p class="feature-price">R$ 49,90 cada</p><a class="button" href="#rainha">Escolher meu laço</a></article></div>
     </section>
@@ -465,6 +482,6 @@ dialog::backdrop{background:var(--color-scrim)}
   <dialog class="lightbox" id="imageDialog" aria-labelledby="imageTitle"><div class="lightbox-top"><h2 id="imageTitle">Detalhes da peça</h2><button class="icon-button" type="button" data-close="imageDialog" aria-label="Fechar imagem" title="Fechar imagem" autofocus><img class="icon" src="assets/icons/x.svg" alt=""></button></div><img class="lightbox-image" id="lightboxImage" src="assets/brand-logo.png" width="1964" height="800" alt=""><p>Consulte os detalhes da peça no atendimento.</p></dialog>
   <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
   <script src="assets/content.js?v=20261118-lookbook"></script>
-  <script src="assets/site.js?v=20261118-lookbook"></script>
+  <script src="assets/site.js?v=20261118-layout"></script>
 </body>
 </html>
