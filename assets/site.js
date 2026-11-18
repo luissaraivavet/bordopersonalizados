@@ -204,7 +204,7 @@
       film.addEventListener('ended',fim);
       film.addEventListener('error',()=>film.remove());
       film.addEventListener('playing',()=>film.classList.add('is-on'),{once:true});
-      film.src='assets/hero-risco.mp4';
+      film.src='assets/hero-risco.mp4?v=cinema';
       const p=film.play(); if(p&&p.catch) p.catch(()=>film.remove());
     })();
     // Cabeçalho que sai ao descer e volta ao subir; nunca some com menu aberto ou foco dentro dele.
