@@ -23,7 +23,7 @@ PRODUCTS = {item['id']: item for item in DATA['produtos']}
 CHECKED = '17 e 18 de novembro de 2026'
 PUBLISHED = '2026-11-18'
 PUBLISHED_TEXT = '18 de novembro de 2026'
-STYLE_VERSION = '20261118-tipo'
+STYLE_VERSION = '20261118-sans'
 
 # Nome curto, por que entrou e o que vale saber. Tudo sai do titulo e dos numeros do anuncio.
 COPY = {
@@ -296,8 +296,8 @@ def page(spec):
             f'<link rel="canonical" href="{url}"><meta property="og:type" content="article"><meta property="og:locale" content="pt_BR"><meta property="og:title" content="{esc(spec["h1"])}">'
             f'<meta property="og:description" content="{esc(spec["description"])}"><meta property="og:url" content="{url}"><meta property="og:image" content="{cover}"><meta name="twitter:card" content="summary_large_image">'
             f'<link rel="icon" href="/assets/brand-logo-491.png" type="image/png"><link rel="alternate" type="application/rss+xml" title="Bordô | Casa &amp; Inspiração" href="../feed.xml">'
-            f'<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/CormorantGaramond.woff2" crossorigin>{preload}'
-            f'<link rel="stylesheet" href="/assets/tokens.css"><link rel="stylesheet" href="/assets/base.css"><link rel="stylesheet" href="/assets/acabamento.css?v=20261118"><link rel="stylesheet" href="../assets/revista.css?v={STYLE_VERSION}">'
+            f'<link rel="preload" as="font" type="font/woff2" href="/assets/fonts/InstrumentSans.woff2" crossorigin>{preload}'
+            f'<link rel="stylesheet" href="/assets/tokens.css?v={STYLE_VERSION}"><link rel="stylesheet" href="/assets/base.css"><link rel="stylesheet" href="/assets/acabamento.css?v=20261118"><link rel="stylesheet" href="../assets/revista.css?v={STYLE_VERSION}">'
             f'<script type="application/ld+json">{json.dumps({"@context": "https://schema.org", "@graph": graph}, ensure_ascii=False, separators=(",", ":"))}</script></head>')
     thumbs = ''.join(f'<button type="button" data-i="{index}" aria-pressed="{str(index == most).lower()}" aria-label="Destacar o item {d["pos"]}: {esc(d["name"])}" title="{esc(d["name"])}"><img{" class=\"shot\"" if d["shot"] else ""} src="{esc(d["img"])}" width="128" height="128" loading="lazy" decoding="async" referrerpolicy="no-referrer" alt="">{d["pos"]:02d}</button>' for index, d in enumerate(stage_data))
     word = spec['em']
