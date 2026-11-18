@@ -60,7 +60,7 @@
       contact.textContent=`WhatsApp: +${PHONE}`;
       document.querySelector('.footer-main>div:last-child p').textContent=`${settings.location}. Atendimento online e por encomenda, com envio para todo o Brasil.`;
       document.querySelector('.footer-main>div:first-child p').textContent=`Laços e bordados personalizados. Atendimento online, por encomenda. ${settings.location}.`;
-      document.querySelector('.gift span').textContent=`Adicionar embalagem kraft para presente (+ ${money(GIFT_PRICE)})`;
+      document.querySelector('.gift span').textContent=`Adicionar embalagem kraft para presente (+\u00a0${money(GIFT_PRICE)})`;
       document.querySelector('#giftTotalRow span:last-child').textContent=money(GIFT_PRICE);
       document.querySelector('.totals .pix span').textContent=`Ou no Pix (${settings.pixDiscount}% nas peças)`;
       
