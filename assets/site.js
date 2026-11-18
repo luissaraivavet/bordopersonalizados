@@ -195,17 +195,51 @@
       });
       hero.addEventListener('pointerleave',()=>{tr=0;dentro=false;if(!quadro) quadro=requestAnimationFrame(passo);});
     })();
-    // Filme da capa no celular: os três laços Mãe Aparecida em closes, uma vez, antes da foto.
+    // Cena da capa guiada pela rolagem (todas as telas, menos com movimento reduzido).
     (function(){
-      const film=document.querySelector('.hero-film');
-      const lite=navigator.connection&&navigator.connection.saveData;
-      if(!film||lite||!matchMedia('(max-width:60rem) and (prefers-reduced-motion:no-preference)').matches) return;
-      const fim=()=>{film.classList.add('is-done');setTimeout(()=>film.remove(),600);};
-      film.addEventListener('ended',fim);
-      film.addEventListener('error',()=>film.remove());
-      film.addEventListener('playing',()=>film.classList.add('is-on'),{once:true});
-      film.src='assets/hero-lacos.mp4';
-      const p=film.play(); if(p&&p.catch) p.catch(()=>film.remove());
+      const hero=document.querySelector('.hero'), stage=hero&&hero.querySelector('.hero-stage');
+      const photo=hero&&hero.querySelector('.hero-photo'), traco=hero&&hero.querySelector('.hero-traco');
+      const lines=hero?[...hero.querySelectorAll('.hero-line')]:[];
+      if(!stage||!photo||!traco||lines.length!==3||matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      hero.classList.add('scene-on');
+      const LACO={x:.75,y:.4}; // centro do laço na foto de 1536x1024
+      const JANELAS=[[.12,.4],[.44,.68],[.72,2]];
+      const sm=x=>{x=Math.min(Math.max(x,0),1);return x*x*(3-2*x);};
+      let ox=0,oy=0,raio=0,perto=.8,pedido=0;
+      const quadro=()=>{
+        pedido=0;
+        const total=hero.offsetHeight-stage.offsetHeight; if(total<=0) return;
+        const p=Math.min(Math.max(-hero.getBoundingClientRect().top/total,0),1);
+        const intro=1-sm(p/.14);
+        hero.style.setProperty('--intro',intro.toFixed(3));
+        hero.classList.toggle('is-moving',p>.02); hero.classList.toggle('is-past',intro<.02);
+        const z=1+perto*sm((p-.04)/.42)*(1-sm((p-.62)/.3)), cam=`scale(${z.toFixed(4)})`;
+        photo.style.transform=cam; traco.style.transform=cam;
+        traco.style.setProperty('--tr',(sm((p-.16)/.24)*raio).toFixed(1)+'px');
+        traco.style.opacity=(1-sm((p-.46)/.18)).toFixed(3);
+        let veu=0;
+        lines.forEach((el,i)=>{
+          const [a,b]=JANELAS[i], entra=sm((p-a)/.07), sai=1-sm((p-b+.07)/.07), o=entra*sai;
+          veu=Math.max(veu,o);
+          el.style.opacity=o.toFixed(3);
+          el.style.transform=`translateY(${((1-entra)*28-(1-sai)*28).toFixed(1)}px)`;
+          el.style.filter=o>.99||o<.01?'none':`blur(${((1-o)*6).toFixed(2)}px)`;
+        });
+        hero.style.setProperty('--veil',veu.toFixed(3));
+      };
+      const medir=()=>{
+        const w=stage.clientWidth, h=stage.clientHeight, k=Math.max(w/1536,h/1024), dw=1536*k, dh=1024*k;
+        const [px,py]=getComputedStyle(photo).objectPosition.split(' ').map(v=>parseFloat(v)/100);
+        ox=(w-dw)*px+dw*LACO.x; oy=(h-dh)*py+dh*LACO.y;
+        raio=Math.hypot(Math.max(ox,w-ox),Math.max(oy,h-oy))*1.1; perto=w<=960?.55:.8;
+        photo.style.transformOrigin=traco.style.transformOrigin=`${ox.toFixed(1)}px ${oy.toFixed(1)}px`;
+        traco.style.setProperty('--tx',ox.toFixed(1)+'px'); traco.style.setProperty('--ty',oy.toFixed(1)+'px');
+        quadro();
+      };
+      addEventListener('scroll',()=>{if(!pedido) pedido=requestAnimationFrame(quadro);},{passive:true});
+      addEventListener('resize',medir);
+      hero.querySelector('.intro').addEventListener('focusin',()=>{const top=hero.getBoundingClientRect().top; if(top<-8) scrollTo({top:scrollY+top});});
+      medir();
     })();
     // Cabeçalho que sai ao descer e volta ao subir; nunca some com menu aberto ou foco dentro dele.
     (function(){
