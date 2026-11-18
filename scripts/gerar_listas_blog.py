@@ -172,6 +172,8 @@ EXTRA_CSS = """
 .own-pick h3{font-size:25px;margin:0 0 10px}
 .own-pick p{margin:0 0 14px;font-size:15px;line-height:1.75}
 .own-pick a{display:block;font-weight:700;margin-top:6px;text-underline-offset:3px}
+.ad-note{margin:0 0 18px!important;font-size:11px!important;line-height:1.5!important;color:var(--muted)}
+.ad-note a{color:inherit}
 .rank-badge{display:inline-block;margin:0 0 8px;padding:4px 10px;border-radius:3px;background:var(--wine);color:#fff;font-size:12px;font-weight:700;line-height:1.4}
 .rank-proof{margin:0 0 10px!important;font-size:14px!important;font-weight:700;color:#3f503d}
 .rank-safe{margin:10px 0 0!important;font-size:12px!important;color:var(--muted)}
@@ -334,7 +336,7 @@ def page(spec, template):
             f'<h1>{esc(spec["h1"])}</h1><p class="lead">{esc(spec["lead"])}</p><div class="meta"><span>Atualizado em {PUBLISHED_TEXT}</span><span>{len(items)} itens</span><span>Por Bordô | Casa &amp; Inspiração</span></div>'
             f'<img class="cover" fetchpriority="high" decoding="async" src="../assets/listas/{spec["cover"]}" width="1500" height="780" alt="Quatro itens desta lista"></div></section>'
             f'<div class="container article-layout"><article class="article-content"><section class="answer-first" aria-label="Resposta resumida"><h2>A lista em um minuto</h2><p>{esc(spec["intro"])}</p></section>'
-            f'<div class="editorial-note"><strong>Publicidade e método.</strong> Os links levam ao Mercado Livre e, em uma compra elegível, a Bordô poderá receber comissão. Não testamos fisicamente os produtos: preço, nota e número de opiniões vêm dos anúncios, consultados em {CHECKED}, e podem mudar. <a href="../como-selecionamos/">Saiba como selecionamos.</a></div>'
+            f'<p class="ad-note">Publicidade: links de afiliado do Mercado Livre; a Bordô pode receber comissão. Preços e notas de {CHECKED}, sujeitos a alteração. <a href="../como-selecionamos/">Critérios</a>.</p>'
             f'{decide}<div class="rank-wrap"><table class="rank-table"><caption class="sr-only">Resumo da lista</caption><thead><tr><th scope="col">Nº</th><th scope="col">Produto</th><th scope="col">Preço</th><th scope="col">Nota (opiniões)</th></tr></thead><tbody>{rows}</tbody></table></div>'
             f'<h2 id="lista">Os {len(items)} itens, um a um</h2>{body_items}'
             f'<div class="decide closing"><h2>Ainda em dúvida?</h2><p>Volte ao item {most + 1}: {esc(safe["name"])}. Foi o que mais gente avaliou nesta lista. Ou guarde a lista para decidir depois.</p><div class="share-row"><a class="btn" href="#item-{most + 1}">Voltar à escolha segura</a><a class="btn ghost" href="{esc(share)}" target="_blank" rel="noopener noreferrer">Guardar a lista no WhatsApp</a></div></div>'
