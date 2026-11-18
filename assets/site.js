@@ -195,6 +195,18 @@
       });
       hero.addEventListener('pointerleave',()=>{tr=0;dentro=false;if(!quadro) quadro=requestAnimationFrame(passo);});
     })();
+    // Filme da capa no celular: o risco a lápis se desenha e vira a foto bordada, uma vez.
+    (function(){
+      const film=document.querySelector('.hero-film');
+      const lite=navigator.connection&&navigator.connection.saveData;
+      if(!film||lite||!matchMedia('(max-width:60rem) and (prefers-reduced-motion:no-preference)').matches) return;
+      const fim=()=>{film.classList.add('is-done');setTimeout(()=>film.remove(),600);};
+      film.addEventListener('ended',fim);
+      film.addEventListener('error',()=>film.remove());
+      film.addEventListener('playing',()=>film.classList.add('is-on'),{once:true});
+      film.src='assets/hero-risco.mp4';
+      const p=film.play(); if(p&&p.catch) p.catch(()=>film.remove());
+    })();
     // Reveal on scroll runs only after everything above succeeded, so a failed script never hides content.
     if('IntersectionObserver' in window){
       document.documentElement.classList.add('js');
