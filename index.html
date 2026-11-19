@@ -158,6 +158,14 @@ select,input,textarea{width:100%;min-height:52px;padding:0 var(--space-md);borde
 select:focus-visible,input:focus-visible,textarea:focus-visible{outline-color:var(--color-focus)}
 textarea{min-height:112px;padding-block:var(--space-sm);resize:vertical}
 .collection-more{margin-top:var(--space-2xl)}
+.product-next{display:flex;flex-direction:column;min-width:0;color:var(--color-display);text-decoration:none}
+.product-next[hidden]{display:none}
+.product-next .product-figure>img{opacity:.92}
+.product-next-text{display:flex;flex-direction:column;gap:var(--space-2xs);padding-top:var(--space-md)}
+.product-next-label{font-size:var(--text-sm);color:var(--color-ink-2)}
+.product-next-name{display:block;font-family:var(--font-display);font-size:var(--text-xl);font-weight:500;line-height:1.1;text-decoration:underline;text-underline-offset:4px;text-decoration-thickness:1px}
+@media(hover:hover){.product-next:hover .product-next-name{color:var(--color-accent)}}
+.product-next-name .icon{display:inline-block;vertical-align:-.1em;margin-left:var(--space-2xs)}
 .collection-note{margin-top:var(--space-lg);font-size:var(--text-sm);color:var(--color-muted)}
 .sinfonia .product-figure{aspect-ratio:1/1}
 .sinfonia .product-figure>img{object-fit:contain}
@@ -555,6 +563,6 @@ dialog::backdrop{background:var(--color-scrim)}
   <dialog class="lightbox" id="imageDialog" aria-labelledby="imageTitle"><div class="lightbox-top"><h2 id="imageTitle">Detalhes da peça</h2><button class="icon-button" type="button" data-close="imageDialog" aria-label="Fechar imagem" title="Fechar imagem" autofocus><img class="icon" src="assets/icons/x.svg" alt=""></button></div><img class="lightbox-image" id="lightboxImage" src="assets/brand-logo.png" width="1964" height="800" alt=""><p>Consulte os detalhes da peça no atendimento.</p></dialog>
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <script src="assets/content.js?v=20261118-lookbook"></script>
-  <script src="assets/site.js?v=20261119-revisao"></script>
+  <script src="assets/site.js?v=20261119-proxima"></script>
 </body>
 </html>

@@ -33,6 +33,22 @@
       }
       return `<article class="product"><figure class="product-figure"><img src="${image}" alt="${title}" width="600" height="600" loading="lazy"><button class="icon-button zoom-button" data-zoom="${image}" data-title="${title}" aria-label="Ampliar ${title}" title="Ampliar imagem">${icon('zoom-in')}</button></figure><div class="product-info"><h3>${titleHTML(p.title)}</h3><p>${escapeHTML(p.description.split(/(?<=[.!?])\s/)[0])}</p>${p.description.split(/(?<=[.!?])\s/).length > 1 ? `<details class="product-details"><summary>Detalhes da peça</summary><p>${escapeHTML(p.description)}</p></details>` : ''}${Number.isFinite(p.price) ? `<div class="product-price"><strong>${money(p.price)}</strong><small>${money(pixPrice(p.price))} no Pix</small></div>${p.options.length > 1 ? `<label class="field-label" for="var-${id}">Opção da peça</label><select id="var-${id}">${p.options.map(o => `<option>${escapeHTML(o)}</option>`).join('')}</select>` : `<p class="product-option">${escapeHTML(plain(p.options[0] || 'Detalhes no atendimento'))}</p>`.replace(/<p class="product-option">Acabamento a (confirmar|combinar)[^<]*<\/p>/i,'')}<button class="button secondary" type="button" data-add="${id}">${icon('plus')} Adicionar à sacola</button>` : `<a class="text-link" href="#personalizados" data-inquiry="Gostaria de consultar: ${title}.">Quero este encanto ${icon('arrow-right')}</a>`}</div></article>`;
     }
+    // Cartão da próxima coleção: ocupa o espaço vazio da última fileira, sem inventar produto.
+    function nextTile(c){
+      const next=collections[(collections.indexOf(c)+1)%collections.length];
+      if(!next||next.id===c.id) return '';
+      return `<a class="product-next" href="#${escapeHTML(next.id)}" hidden><figure class="product-figure"><img src="${escapeHTML(next.image)}" alt="" loading="lazy" decoding="async"></figure><span class="product-next-text"><span class="product-next-label">Conheça também</span><span class="product-next-name">${escapeHTML(next.name)} ${icon('arrow-right')}</span></span></a>`;
+    }
+    function fillGaps(){
+      document.querySelectorAll('#catalogSections .product-grid').forEach(grid=>{
+        const tile=grid.querySelector('.product-next'); if(!tile||grid.closest('section[hidden]')) return;
+        tile.hidden=true;
+        const cols=getComputedStyle(grid).gridTemplateColumns.split(' ').filter(Boolean).length||1;
+        const shown=grid.querySelectorAll('.product:not([hidden])').length;
+        tile.hidden=cols<2||shown%cols===0;
+      });
+    }
+    addEventListener('resize',()=>fillGaps());
     function renderProducts() {
       document.querySelector('.dropdown').innerHTML = collections.map(c => `<a href="#${escapeHTML(c.id)}">${escapeHTML(c.name)}</a>`).join('');
       document.querySelector('.collection-grid').innerHTML = [...collections].sort((a,b) => Number(b.featured) - Number(a.featured)).map(c => `<a class="collection-link" href="#${escapeHTML(c.id)}"><figure class="collection-photo"><img src="${escapeHTML(c.image)}" alt="" width="128" height="160"></figure><span class="collection-name">${escapeHTML(c.name)}</span></a>`).join('');
@@ -40,7 +56,8 @@
       const strip=document.querySelector('.collection-grid');
       const stripEdge=()=>strip.classList.toggle('is-end',strip.scrollLeft+strip.clientWidth>=strip.scrollWidth-4);
       strip.addEventListener('scroll',stripEdge,{passive:true}); window.addEventListener('resize',stripEdge); stripEdge();
-      document.getElementById('catalogSections').innerHTML = collections.map(c => `<section class="section ${escapeHTML(c.id)}" id="${escapeHTML(c.id)}" aria-labelledby="${escapeHTML(c.id)}Title"><div class="wrap"><div class="section-heading"><h2 id="${escapeHTML(c.id)}Title">${escapeHTML(c.name)}</h2><div><p class="lead">${escapeHTML(c.description)}</p><a class="text-link" href="#personalizados">Conversar sobre uma peça ${icon('arrow-up-right')}</a></div></div><div class="product-grid" id="grid-${escapeHTML(c.id)}">${products.filter(p => p.collection === c.id).map((p,index) => productCard(p).replace('<article class="product">', `<article class="product"${index >= 8 ? ' hidden data-extra-product' : ''}>`)).join('')}</div>${products.filter(p => p.collection === c.id).length > 8 ? `<button class="button secondary collection-more" type="button" data-expand="${escapeHTML(c.id)}" aria-expanded="false" aria-controls="grid-${escapeHTML(c.id)}">Ver coleção completa (${products.filter(p => p.collection === c.id).length} peças)</button>` : ''}<p class="collection-note">Disponibilidade, frete, materiais e prazo são confirmados no atendimento.</p>${c.id === 'sinfonia' ? document.getElementById('filmTemplate').innerHTML : ''}</div></section>`).join('');
+      document.getElementById('catalogSections').innerHTML = collections.map(c => `<section class="section ${escapeHTML(c.id)}" id="${escapeHTML(c.id)}" aria-labelledby="${escapeHTML(c.id)}Title"><div class="wrap"><div class="section-heading"><h2 id="${escapeHTML(c.id)}Title">${escapeHTML(c.name)}</h2><div><p class="lead">${escapeHTML(c.description)}</p><a class="text-link" href="#personalizados">Conversar sobre uma peça ${icon('arrow-up-right')}</a></div></div><div class="product-grid" id="grid-${escapeHTML(c.id)}">${products.filter(p => p.collection === c.id).map((p,index) => productCard(p).replace('<article class="product">', `<article class="product"${index >= 8 ? ' hidden data-extra-product' : ''}>`)).join('')}${nextTile(c)}</div>${products.filter(p => p.collection === c.id).length > 8 ? `<button class="button secondary collection-more" type="button" data-expand="${escapeHTML(c.id)}" aria-expanded="false" aria-controls="grid-${escapeHTML(c.id)}">Ver coleção completa (${products.filter(p => p.collection === c.id).length} peças)</button>` : ''}<p class="collection-note">Disponibilidade, frete, materiais e prazo são confirmados no atendimento.</p>${c.id === 'sinfonia' ? document.getElementById('filmTemplate').innerHTML : ''}</div></section>`).join('');
+      fillGaps();
       // A cidade fica na linha de apoio: a Bordô vende para todo o Brasil.
       const head=escapeHTML(settings.headline), lastWord=head.lastIndexOf(' ');
       document.getElementById('pageTitle').innerHTML=lastWord>0 ? `${head.slice(0,lastWord)} <em>${head.slice(lastWord+1)}</em>` : head;
@@ -137,6 +154,7 @@
       if(!collections.some(c=>c.id===id)) return false;
       document.querySelectorAll('#catalogSections>section').forEach(section=>{section.hidden=section.id!==id;if(section.hidden)section.querySelectorAll('video').forEach(video=>video.pause());});
       document.querySelectorAll('.collection-grid a').forEach(link=>{if(link.getAttribute('href')===`#${id}`){link.setAttribute('aria-current','true');revealTab(link);}else link.removeAttribute('aria-current');});
+      fillGaps();
       return true;
     }
     function closeMenu(){document.getElementById('mainNav').classList.remove('open');document.getElementById('menuButton').setAttribute('aria-expanded','false');document.getElementById('menuButton').setAttribute('aria-label','Abrir menu');document.querySelector('.collection-nav').open=false;}
@@ -147,7 +165,7 @@
       const anchor=event.target.closest('a[href^="#"]');
       if(anchor && showCollection(anchor.getAttribute('href').slice(1)) && anchor.closest('.collection-grid')){event.preventDefault();history.replaceState(null,'',anchor.getAttribute('href'));}
       const button=event.target.closest('button');
-      if(button?.dataset.expand){const grid=document.getElementById(`grid-${button.dataset.expand}`);const expanded=button.getAttribute('aria-expanded')==='true';grid.querySelectorAll('[data-extra-product]').forEach(item=>item.hidden=expanded);button.setAttribute('aria-expanded',String(!expanded));button.textContent=expanded?`Ver coleção completa (${grid.children.length} peças)`:'Mostrar menos';if(!expanded)grid.querySelector('[data-extra-product] button')?.focus();return;}
+      if(button?.dataset.expand){const grid=document.getElementById(`grid-${button.dataset.expand}`);const expanded=button.getAttribute('aria-expanded')==='true';grid.querySelectorAll('[data-extra-product]').forEach(item=>item.hidden=expanded);button.setAttribute('aria-expanded',String(!expanded));button.textContent=expanded?`Ver coleção completa (${grid.children.length} peças)`:'Mostrar menos';fillGaps();if(!expanded)grid.querySelector('[data-extra-product] button')?.focus();return;}
       if(button?.dataset.add){addToCart(button.dataset.add);return;}
       if(button?.dataset.close){document.getElementById(button.dataset.close).close();return;}
       if(button?.dataset.zoom){document.getElementById('lightboxImage').src=button.dataset.zoom;document.getElementById('lightboxImage').alt=button.dataset.title;document.getElementById('imageTitle').textContent=button.dataset.title;document.getElementById('imageDialog').showModal();return;}
