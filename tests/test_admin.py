@@ -24,8 +24,17 @@ class ValidationTests(unittest.TestCase):
         self.assertEqual(len(bows), 39)
         self.assertTrue(all(p['price'] == 49.90 for p in bows))
         kits = [p for p in self.data['products'] if p['collection'] == 'kits']
-        self.assertEqual(len(kits), 2)
-        self.assertTrue(all(p['price'] == 119.90 and len(p['bundle']) == 3 for p in kits))
+        bow_ids = {p['id'] for p in bows}
+        bow_kits = [p for p in kits if set(p['bundle']) <= bow_ids]
+        self.assertEqual(len(bow_kits), 2)
+        self.assertTrue(all(p['price'] == 119.90 and len(p['bundle']) == 3 for p in bow_kits))
+        # Kit de naninhas: mesmo desconto proporcional do kit de laços (119,90 / 149,70).
+        prices = {p['id']: p['price'] for p in self.data['products']}
+        nap_kits = [p for p in kits if p not in bow_kits]
+        self.assertEqual(len(nap_kits), 2)
+        for kit in nap_kits:
+            self.assertTrue(all(ident.startswith('naninha-') for ident in kit['bundle']))
+            self.assertAlmostEqual(kit['price'], round(sum(prices[i] for i in kit['bundle']) * 119.90 / 149.70, 0) - 0.10, places=2)
         self.assertFalse(any('faix' in option.lower() for p in self.data['products'] for option in p['options']))
 
     def test_founder_images_are_local(self):

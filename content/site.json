@@ -51,8 +51,8 @@
     },
     {
       "id": "kits",
-      "name": "Kits de 3 laços",
-      "description": "Três desenhos para variar os penteados e presentear. Escolha seu kit por R$ 119,90 e economize R$ 29,80 em relação a três laços avulsos de R$ 49,90.",
+      "name": "Kits de 3 peças",
+      "description": "Três peças para variar e presentear. Três laços por R$ 119,90, com economia de R$ 29,80, ou três naninhas por R$ 143,90, com economia de R$ 35,80 sobre as peças avulsas.",
       "image": "assets/caixa-artesanal.webp",
       "published": true,
       "featured": false,
@@ -611,6 +611,42 @@
         "leao",
         "gato"
       ]
+    },
+    {
+      "id": "kit-naninhas-nossas-senhoras",
+      "title": "Kit 3 naninhas bordadas Nossas Senhoras",
+      "price": 143.9,
+      "image": "assets/colinho-do-ceu.webp",
+      "collection": "kits",
+      "published": true,
+      "illustrative": false,
+      "bundle": [
+        "naninha-aparecida-azul",
+        "naninha-fatima",
+        "naninha-guadalupe"
+      ],
+      "options": [
+        "Aparecida + Fátima + Guadalupe — acabamento a confirmar"
+      ],
+      "description": "Aparecida, Fátima e Guadalupe: três naninhas macias off-white com Nossa Senhora bordada, para o berço, o batizado ou a maternidade. Economia de R$ 35,80 sobre três naninhas avulsas. Acabamento a combinar no atendimento."
+    },
+    {
+      "id": "kit-naninhas-santos-protetores",
+      "title": "Kit 3 naninhas bordadas Santos protetores",
+      "price": 143.9,
+      "image": "assets/colinho-do-ceu.webp",
+      "collection": "kits",
+      "published": true,
+      "illustrative": false,
+      "bundle": [
+        "naninha-sao-bento",
+        "naninha-sao-francisco",
+        "naninha-sao-rafael"
+      ],
+      "options": [
+        "São Bento + São Francisco + São Rafael — acabamento a confirmar"
+      ],
+      "description": "São Bento, São Francisco de Assis e São Rafael Arcanjo: três naninhas macias off-white bordadas para guardar perto o sono do bebê. Economia de R$ 35,80 sobre três naninhas avulsas. Acabamento a combinar no atendimento."
     },
     {
       "id": "bastidor",
