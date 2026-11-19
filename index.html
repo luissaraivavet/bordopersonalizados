@@ -92,6 +92,8 @@ button,a,input,select,textarea,summary{-webkit-tap-highlight-color:transparent}
 .intro{max-width:44rem}
 .intro>div{min-width:0}
 .intro h1{max-width:15ch;text-wrap:balance;font-size:var(--text-display);line-height:.98;animation:rise 700ms var(--ease-out) both}
+/* Abaixo de 368px o piso de --text-display (40px) vira três linhas sobre o laço e, em 320px, quebra "personalizados" no meio. */
+@media(max-width:23rem){.intro h1{font-size:var(--text-2xl)}}
 .intro p{max-width:30ch;margin-top:var(--space-lg);font-size:var(--text-lead);color:var(--color-ink);animation:rise 700ms var(--ease-out) 90ms both}
 .intro p.intro-place{max-width:44ch;margin-top:var(--space-xs);font-size:var(--text-sm);color:var(--color-ink-2)}
 .intro>.button{margin-top:var(--space-xl);animation:rise 700ms var(--ease-out) 180ms both}
@@ -189,6 +191,7 @@ textarea{min-height:112px;padding-block:var(--space-sm);resize:vertical}
 .feature-copy strong{font-weight:600;color:var(--color-ink)}
 .feature-price{font-family:var(--font-display);font-size:var(--text-2xl);font-weight:500;line-height:1.2;font-variant-numeric:lining-nums;color:var(--color-display)}
 .feature-copy .color-list{margin-block:var(--space-lg) var(--space-xl)}
+.feature-price+.button{margin-top:var(--space-md)}
 .new-collections{margin-top:var(--space-3xl)}
 .discovery-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));margin-top:var(--space-xl);border-top:1px solid var(--color-rule)}
 .discovery-card,.quick-links{display:flex;flex-direction:column;align-items:start;gap:var(--space-md);padding:var(--space-xl) var(--space-xl) 0;border-left:1px solid var(--color-rule);scroll-margin-top:calc(var(--nav-h) + var(--space-lg))}
@@ -374,7 +377,7 @@ dialog::backdrop{background:var(--color-scrim)}
 }
 @media(max-width:48rem){
   .footer-main{grid-template-columns:minmax(0,1fr)}
-  #footerCollections{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:var(--space-md)}
+  #footerCollections{display:grid;grid-template-columns:repeat(auto-fill,minmax(10rem,1fr));column-gap:var(--space-md)}
 }
 @media(max-width:40rem){
   .intro>.button{width:100%}
@@ -475,6 +478,8 @@ dialog::backdrop{background:var(--color-scrim)}
   .hero.scene-on .hero-photo,.hero.scene-on .hero-traco{position:absolute;inset:0;height:100%;max-height:none;aspect-ratio:auto;object-position:84% 34%}
   .hero.scene-on .hero-stage::after{display:block;background:linear-gradient(0deg,var(--color-veil-strong) 0%,var(--color-veil-strong) 26%,var(--color-veil) 44%,var(--color-veil-none) 64%)}
   .hero.scene-on .hero-stage>.wrap{padding-bottom:calc(var(--space-xl) + var(--nav-h))}
+  /* Celular estreito: o título ocupa três linhas e sobe até o laço; o véu acompanha. */
+  @media(max-width:23rem){.hero.scene-on .hero-stage::after{background:linear-gradient(0deg,var(--color-veil-strong) 0%,var(--color-veil-strong) 34%,var(--color-veil) 52%,var(--color-veil-none) 72%)}}
 }
 /* Fotos dos produtos chegam mais perto devagar sob o mouse; usa `scale` para somar ao recorte de cada foto. */
 @media(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){.product-figure>img{transition:scale 900ms var(--ease-out)}.product:hover .product-figure>img{scale:1.045}}
