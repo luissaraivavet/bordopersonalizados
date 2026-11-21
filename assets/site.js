@@ -8,9 +8,12 @@
     const settings = content.settings;
     const PHONE = settings.whatsapp;
     const STORAGE_KEY = 'bordo_cart_v2';
-    const GIFT_PRICE = settings.giftPrice;
     const collections = content.collections.filter(item => item.published);
     const products = content.products.filter(item => item.published && collections.some(group => group.id === item.collection));
+    // Três naninhas quaisquer formam um kit pelo preço do kit montado no catálogo.
+    const KIT_COLLECTION = 'colinho';
+    const collectionOf = id => products.find(item => item.id === id)?.collection;
+    const freeKit = products.find(item => item.bundle && item.bundle.every(id => collectionOf(id) === KIT_COLLECTION));
     const pixPrice = value => Math.round(Math.round(value * 100) * (100 - settings.pixDiscount) / 100) / 100;
     const money = value => value.toLocaleString('pt-BR', {style:'currency', currency:'BRL'});
     const icon = name => `<img class="icon" src="assets/icons/${name}.svg" alt="">`;
@@ -83,13 +86,11 @@
       contact.textContent=`WhatsApp: +${PHONE}`;
       document.querySelector('.footer-main>div:last-child p').textContent=`${settings.location}. Atendimento online e por encomenda, com envio para todo o Brasil.`;
       document.querySelector('.footer-main>div:first-child p').textContent=`Laços e bordados personalizados. Atendimento online, por encomenda. ${settings.location}.`;
-      document.querySelector('.gift span').textContent=`Adicionar embalagem kraft para presente (+\u00a0${money(GIFT_PRICE)})`;
-      document.querySelector('#giftTotalRow span:last-child').textContent=money(GIFT_PRICE);
       document.querySelector('.totals .pix span').textContent=`Ou no Pix (${settings.pixDiscount}% nas peças)`;
       
       const footerCollections=document.getElementById('footerCollections');
       footerCollections.innerHTML=collections.map(c=>`<a href="#${escapeHTML(c.id)}">${escapeHTML(c.name)}</a>`).join('');
-      document.getElementById('paymentAnswer').textContent=`A sacola apresenta o total e a alternativa com ${settings.pixDiscount}% de desconto no Pix sobre as peças. A embalagem para presente é opcional, por ${money(GIFT_PRICE)} por pedido. Frete e condições finais são confirmados pelo WhatsApp. Não há cobrança pelo site.`;
+      document.getElementById('paymentAnswer').textContent=`A sacola apresenta o total e a alternativa com ${settings.pixDiscount}% de desconto no Pix sobre as peças. Três naninhas quaisquer formam um kit${freeKit?` de ${money(freeKit.price)}`:''}, e o desconto entra sozinho na sacola. Frete e condições finais são confirmados pelo WhatsApp. Não há cobrança pelo site.`;
       const reviews=content.testimonials.filter(i=>i.published), articles=content.articles.filter(i=>i.published);
       document.getElementById('editorialSections').innerHTML=(reviews.length ? `<section class="section"><div class="wrap"><div class="section-heading"><h2>Quem recebeu um encanto</h2></div><div class="product-grid">${reviews.map(r=>`<blockquote><p>“${escapeHTML(r.text)}”</p><footer>${escapeHTML(r.name)}</footer></blockquote>`).join('')}</div></div></section>` : '')+(articles.length ? `<section class="section"><div class="wrap"><div class="section-heading"><h2>Histórias e cuidados</h2></div><div class="product-grid">${articles.map(a=>`<article><img src="${escapeHTML(a.image)}" alt="${escapeHTML(a.title)}" loading="lazy" style="width:100%;aspect-ratio:4/3;object-fit:cover"><h3 style="margin-top:18px">${escapeHTML(a.title)}</h3><p>${escapeHTML(a.excerpt)}</p><details class="article-text"><summary class="text-link">Ler artigo ${icon('arrow-right')}</summary>${a.body.split(/\n\s*\n/).map(p=>`<p>${escapeHTML(p)}</p>`).join('')}</details></article>`).join('')}</div></div></section>` : '');
       document.getElementById('extraLinks').innerHTML=content.links.filter(l=>l.published).map(l=>`<a href="${escapeHTML(l.url)}" target="_blank" rel="noopener">${escapeHTML(l.title)}</a>`).join('');
@@ -116,10 +117,18 @@
     // Peça tirada da sacola: fica uma linha para desfazer até a próxima mudança ou até fechar a sacola.
     let removed=null;
     function saveCart(){ try{localStorage.setItem(STORAGE_KEY,JSON.stringify(cart));}catch{notify('Sua sacola funciona nesta visita, mas não pôde ser salva neste navegador.');} renderCartUI(); cartMark=null; }
-    function cartTotals(){ const subtotal=cart.reduce((sum,item)=>sum+item.price*item.qty,0); const gift=cart.length && document.getElementById('cartGiftCheck').checked ? GIFT_PRICE : 0; return {subtotal,gift,total:subtotal+gift,pix:pixPrice(subtotal)+gift}; }
+    // Agrupa as naninhas da sacola de três em três, das mais caras para as mais baratas, e desconta a diferença para o preço do kit. Tudo em centavos.
+    function kitDiscount(){
+      if(!freeKit) return {kits:0,cents:0};
+      const units=cart.filter(item=>collectionOf(item.id)===KIT_COLLECTION).flatMap(item=>Array(item.qty).fill(Math.round(item.price*100))).sort((a,b)=>b-a);
+      const kits=Math.floor(units.length/3), kitCents=Math.round(freeKit.price*100); let cents=0;
+      for(let k=0;k<kits;k++) cents+=Math.max(0,units[3*k]+units[3*k+1]+units[3*k+2]-kitCents);
+      return {kits,cents};
+    }
+    function cartTotals(){ const subtotalCents=cart.reduce((sum,item)=>sum+Math.round(item.price*100)*item.qty,0); const kit=kitDiscount(); const total=(subtotalCents-kit.cents)/100; return {subtotal:subtotalCents/100,kit:kit.cents/100,kits:kit.kits,total,pix:pixPrice(total)}; }
     function checkoutMessage(){
       const totals=cartTotals();
-      return `Olá, Bordô! Gostaria de consultar este pedido:\n\n`+cart.map(item=>`${item.qty}x ${item.title}\n${isPlaceholderOption(item.variation)?'':`Opção: ${item.variation}\n`}Valor: ${money(item.price*item.qty)}`).join('\n\n')+`\n\nSubtotal: ${money(totals.subtotal)}\n`+(totals.gift?`Embalagem kraft para presente: ${money(totals.gift)}\n`:'Sem embalagem adicional\n')+`Total estimado: ${money(totals.total)}\nAlternativa no Pix (${settings.pixDiscount}% de desconto nas peças): ${money(totals.pix)}\n\nPor favor, confirmem disponibilidade, prazo, frete e formas de pagamento.`;
+      return `Olá, Bordô! Gostaria de consultar este pedido:\n\n`+cart.map(item=>`${item.qty}x ${item.title}\n${isPlaceholderOption(item.variation)?'':`Opção: ${item.variation}\n`}Valor: ${money(item.price*item.qty)}`).join('\n\n')+`\n\nSubtotal: ${money(totals.subtotal)}\n`+(totals.kit?`Desconto de ${totals.kits} ${totals.kits===1?'kit':'kits'} de 3 naninhas: -${money(totals.kit)}\n`:'')+`Total estimado: ${money(totals.total)}\nAlternativa no Pix (${settings.pixDiscount}% de desconto nas peças): ${money(totals.pix)}\n\nPor favor, confirmem disponibilidade, prazo, frete e formas de pagamento.`;
     }
     function renderCartUI(){
       const list=document.getElementById('cartItemsList'); const count=cart.reduce((sum,item)=>sum+item.qty,0); const totals=cartTotals();
@@ -128,9 +137,7 @@
       list.innerHTML=cart.length ? cart.map((item,index)=>`<article class="bag-item${cartMark?.index===index?` is-${cartMark.kind}`:''}"><img src="${item.imgPath}" alt="${escapeHTML(plain(item.title))}" width="84" height="105"><div><h3>${escapeHTML(plain(item.title))}</h3>${isPlaceholderOption(item.variation)?'':`<p>${escapeHTML(item.variation)}</p>`}<strong>${money(item.price*item.qty)}</strong><div class="quantity"><button class="icon-button" data-qty="${index}" data-delta="-1" aria-label="Diminuir quantidade de ${escapeHTML(item.title)}" title="Diminuir quantidade">${icon('minus')}</button><output aria-label="Quantidade">${item.qty}</output><button class="icon-button" data-qty="${index}" data-delta="1" aria-label="Aumentar quantidade de ${escapeHTML(item.title)}" title="Aumentar quantidade">${icon('plus')}</button><button class="icon-button remove" data-remove="${index}" aria-label="Remover ${escapeHTML(item.title)}" title="Remover peça">${icon('trash-2')}</button></div></div></article>`).join(''):`<div class="empty">${icon('shopping-bag')}<p>Sua sacola está esperando<br>o primeiro encanto.</p><button class="button secondary" id="emptyCollection">Explorar a coleção ${icon('arrow-right')}</button><button class="text-link" type="button" id="emptyCustom">Ou descreva uma encomenda</button></div>`;
       if(removed){const undo=`<div class="bag-undo"><p>${escapeHTML(plain(removed.item.title))} saiu da sacola.</p><button class="text-link" type="button" data-undo>Desfazer</button></div>`;const rows=[...list.children];const at=cart.length?rows[Math.min(removed.index,rows.length)]:rows[0];if(at)at.insertAdjacentHTML('beforebegin',undo);else list.insertAdjacentHTML('beforeend',undo);}
       document.getElementById('cartSubtotalText').textContent=money(totals.subtotal); document.getElementById('cartTotalText').textContent=money(totals.total); document.getElementById('cartPixText').textContent=money(totals.pix);
-      document.getElementById('giftTotalRow').hidden=!totals.gift; document.getElementById('cartGiftCheck').disabled=!cart.length;
-      // Uma sacola vazia não carrega a embalagem para o próximo pedido.
-      if(!cart.length) document.getElementById('cartGiftCheck').checked=false;
+      document.getElementById('kitDiscountRow').hidden=!totals.kit; document.getElementById('kitDiscountLabel').textContent=`Desconto de ${totals.kits} ${totals.kits===1?'kit':'kits'} de naninhas`; document.getElementById('cartKitText').textContent=`-${money(totals.kit)}`;
       const checkout=document.getElementById('cartCheckout'); checkout.setAttribute('aria-disabled',String(!cart.length)); checkout.tabIndex=cart.length?0:-1; checkout.href=whatsApp(checkoutMessage());
     }
     function addToCart(id){
@@ -185,7 +192,6 @@
     });
     document.getElementById('bagButton').addEventListener('click',()=>{closeMenu();document.getElementById('cartDrawer').showModal();});
     document.getElementById('cartDrawer').addEventListener('close',()=>{if(removed){removed=null;renderCartUI();}});
-    document.getElementById('cartGiftCheck').addEventListener('change',renderCartUI);
     document.getElementById('cartCheckout').addEventListener('click',event=>{if(!cart.length)event.preventDefault();});
     document.getElementById('customForm').addEventListener('input',updateSimulatorPreview);
     // Sem nenhum detalhe a conversa começa no escuro; o link só segue com a ideia descrita.

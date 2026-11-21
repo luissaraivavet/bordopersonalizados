@@ -33,7 +33,7 @@ Cada peça parte de um desenho com significado: uma flor, um bichinho músico, u
 
 - Site estático, sem frameworks: `index.html` com CSS embutido, `assets/tokens.css`, `assets/base.css` e `assets/site.js`. Preservar. O sistema visual em vigor está em `design.md`.
 - Catálogo publicado (2026-11-18): Mãe & Rainha (3 laços a R$ 49,90), Colinho do Céu (12 naninhas a R$ 59,90), Jardim de Encantos (5 laços) e Sinfonia das Matas (34 laços) a R$ 49,90 cada; 2 kits de 3 laços a R$ 119,90; Bastidor Afetivo Floral (R$ 145). A Toalha Lavabo Monograma está oculta no painel até existir uma foto real da peça.
-- Desconto de 5% no Pix sobre as peças; embalagem kraft para presente opcional por R$ 15 por pedido. Mudanças em contatos e condições comerciais exigem confirmação do proprietário.
+- Desconto de 5% no Pix sobre as peças; três naninhas quaisquer formam um kit pelo preço do kit do catálogo (R$ 143,90), com desconto automático na sacola; não há embalagem kraft cobrada. Mudanças em contatos e condições comerciais exigem confirmação do proprietário.
 - `assets/site.js` localiza elementos por seletores estruturais; reorganizar o HTML exige ajustar o script junto.
 - Imagens são arquivos locais em `assets/`. Uma peça só fica à venda com foto real dela.
 - Não exibir avisos de "imagem ilustrativa" (pedido do proprietário).

@@ -58,7 +58,7 @@ Regras de `validate` que costumam surpreender:
 - O `id` de cada coleção vira âncora e classe CSS da seção (`.section.jardim`). A coleção `sinfonia` recebe o vídeo de `#filmTemplate`.
 - "Mãe & Rainha" e "Colinho do Céu" não estão no JSON: são seções fixas em `index.html` com links fixos no menu em `renderProducts` (`site.js`).
 - Os scripts são carregados com `?v=...` em `index.html`. O painel não altera esse valor; ao mudar `site.js` ou a estrutura do conteúdo, atualize o parâmetro para invalidar o cache.
-- A sacola (`bordo_cart_v2`) é reconciliada com o catálogo em `loadCart`: preço, título e imagem vêm sempre do produto atual, nunca do `localStorage`. O desconto Pix é calculado em centavos e incide só sobre as peças, não sobre a embalagem. O pedido termina em um link `wa.me`; não há backend.
+- A sacola (`bordo_cart_v2`) é reconciliada com o catálogo em `loadCart`: preço, título e imagem vêm sempre do produto atual, nunca do `localStorage`. Três naninhas quaisquer da coleção `colinho` formam um kit pelo preço do kit de naninhas do catálogo (`kitDiscount`); o desconto Pix é calculado em centavos sobre as peças já com esse desconto. Não há mais embalagem cobrada; `settings.giftPrice` segue no esquema, sem uso no site. O pedido termina em um link `wa.me`; não há backend.
 
 ## Painel privado
 
