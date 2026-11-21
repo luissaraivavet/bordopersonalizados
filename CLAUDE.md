@@ -80,6 +80,7 @@ Regras de `validate` que costumam surpreender:
 
 - `ValidationTests.test_original_catalog` fixa fatos do catálogo real: 39 laços a R$ 49,90 em `jardim` e `sinfonia`, 2 kits a R$ 119,90, `Teixeiras, MG` e nenhuma opção com "faix". Uma mudança legítima de catálogo ou preço exige atualizar esse teste junto.
 - `PrivateServerTests` copia `assets/`, `admin/`, `content/` e `index.html` para um diretório temporário e redireciona `ROOT`, `STATE` e `CONTENT` com `patch`. Depende de `assets/priscila-bordo.jpg` e `assets/brand-logo.png`.
+- `python scripts/gerar_catalogo_meta.py` (exige Pillow) gera `catalogo-meta.csv` e `assets/catalogo/*.jpg`, o feed da Loja do Instagram/Facebook que o Commerce Manager lê pela URL todo dia. O painel não regenera o feed: depois de publicar produtos, rode o script e faça commit; `tests/test_catalogo_meta.py` falha enquanto o feed estiver desatualizado. Produtos "sob consulta" ficam fora porque a Meta exige preço.
 - `scripts/` contém migrações pontuais já aplicadas (preços de outubro de 2026, história da marca). Elas gravam `site.json`, `content.js` e o rascunho local; `update_bow_catalog.py` ainda exige Pillow e fotos em `~/Downloads`. Não fazem parte da validação.
 
 <!-- imported-from: codex:project:instructions -->
